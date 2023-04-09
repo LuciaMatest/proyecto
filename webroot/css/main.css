@@ -1,0 +1,204 @@
+main {
+  background-color: #115053;
+}
+
+main section {
+  padding: 50px;
+}
+
+main section h2 {
+  margin-top: 0;
+}
+
+/* Home */
+#section1>.background {
+  background-image: url(../recursos/fondo/central_home.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#section1>.background img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80%;
+}
+
+/* Proyectos */
+#section2>.background {
+  background-image: url(../recursos/fondo/central_proyectos.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#section2>.background>.proyectos {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section2>.background>.proyectos>a {
+  background-color: #115053;
+  border: 2px white solid;
+  font-size: 25px;
+}
+
+#section2>.background>.proyectos>a:hover {
+  background-color: white;
+  color: #115053;
+  border: 2px #115053 solid;
+  font-weight: bold;
+}
+
+
+/* Sobre mi */
+#section3>.background {
+  background-image: url(../recursos/fondo/central_sobremi.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+#section3>.background>.sobremi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#section3>.background>.sobremi>p {
+  color: white;
+  font-size: large;
+  font-weight: lighter;
+}
+
+#redes>a {
+  width: 50px;
+  height: 50px;
+}
+
+#redes>a:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+#section3>.background>.perfil {
+  width: 22%;
+  transform: translate(0%, 40%);
+  border-radius: 5px;
+}
+
+/* Navegador */
+#navegador {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 150px;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.circle {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Formulario */
+#form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#black-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+#form-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Contacto */
+.fondo {
+  background-color: #115053;
+  height: 100vh;
+}
+
+.card {
+  border: none;
+  transform: translate(0%, 30%);
+}
+
+.card-body {
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #115053;
+}
+
+.btn-primary {
+  background-color: #115053;
+  border: 2px white solid;
+  font-size: 15px;
+}
+
+.btn-primary:hover {
+  background-color: #1a6f74;
+  border: 2px white solid;
+}
+
+.btn-primary:focus {
+  box-shadow: none;
+}
+
+/* Botón para volver atras */
+.btn-back {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+footer > div {
+  background-color: #083638;
+}
