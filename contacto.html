@@ -31,12 +31,18 @@
     <header class="cabecera navbar navbar-expand-lg fixed-top" id="headerNav">
         <div class="container-fluid px-4 px-lg-5">
             <h2 class="titulo text-light mx-3">Lulú</h2>
-            <div class="navbar">
-                <ul class="navbar-nav ms-1 ms-lg-auto my-2 my-lg-0">
+            <button class="menuBtn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0">
                     <li class="nav-item"><a class="popover btn-outline-primary mx-3" href="#" id="login"
-                            data-content="Iniciar sesión/Registro"><i class="bi bi-arrow-right-circle"></i></a></li>
-                    <li class="nav-item"><a class="popover btn-outline-primary active" href="#" id="contacto"
-                            data-content="Contacto"><i class="bi bi-question-circle"></i></a></li>
+                            data-content="Iniciar sesión/Registro"><i class="bi bi-arrow-right-circle"></i></a>
+                    </li>
+                    <li class="nav-item"><a class="popover btn-outline-primary mx-3" href="contacto.html" id="contacto"
+                            data-content="Contacto"><i class="bi bi-question-circle"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
