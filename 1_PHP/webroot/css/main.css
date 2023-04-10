@@ -114,8 +114,8 @@ main section h2 {
 }
 
 #section3>.background>div>div>.manos {
-  width: 35%;
-  margin-top: 10px;
+  width: 45%;
+  margin-top: 13px;
 }
 
 /* Navegador */
@@ -234,7 +234,7 @@ footer>div {
   }
 
   #section3>.background>div>.sobre {
-    width: 100%;
+    width: 70%;
   }
 
   #section1>.background>div>.person {
@@ -243,7 +243,7 @@ footer>div {
   }
 
   #section3>.background>div>div>.manos {
-    width: 80%;
+    width: 45%;
     margin-top: 5px;
   }
 

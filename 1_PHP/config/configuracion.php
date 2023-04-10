@@ -7,6 +7,7 @@ $controladores = array(
     'home' => './controlador/HomeController.php',
     'login' => './controlador/LoginController.php',
     'contacto' => './controlador/ContactoController.php',
+    'proyectos' => './controlador/ProyectosController.php',
 );
 
 //Modelo
@@ -25,6 +26,7 @@ $vistas = array(
     'home' => './vista/homeView.php',
     'login' => './vista/loginView.php',
     'contacto' => './vista/contactoView.php',
+    'proyectos' => './vista/proyectosView.php',
 );
 
 //Core

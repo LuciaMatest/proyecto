@@ -26,6 +26,11 @@ if (isset($_REQUEST['home'])) {
             $_SESSION['vista'] = $vistas['contacto'];
             $_SESSION['pagina'] = 'Contacto';
             require_once($_SESSION['controlador']);
+        } elseif (isset($_REQUEST['proyectos'])) {
+            $_SESSION['controlador'] = $controladores['proyectos'];
+            $_SESSION['vista'] = $vistas['proyectos'];
+            $_SESSION['pagina'] = 'Proyectos';
+            require_once($_SESSION['controlador']);
         } else {
             require_once($_SESSION['controlador']);
         }

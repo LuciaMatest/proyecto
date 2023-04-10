@@ -18,7 +18,10 @@
         <div class="background">
             <div class="d-flex flex-column align-items-center">
                 <img src="webroot/recursos/Proyectos.png" alt="proyectos" class="proyectos rounded mx-auto d-block mb-5">
-                <a href="proyectos.html" class="btn btn-lg btn-block btn-primary">Saber más</a>
+                <form action="./index.php" method="post">
+                    <input type="hidden" name="" value="">
+                    <input type="submit" value="Ver proyectos" name="ver" class="btn btn-lg btn-block btn-primary">
+                </form>
             </div>
         </div>
     </section>

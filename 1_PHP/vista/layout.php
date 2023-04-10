@@ -42,15 +42,9 @@
                         <i class="bi bi-x-circle"></i></button></li>';
                     } else {
                     ?>
-                        <li class="nav-item">
-                            <button type="submit" class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login">
-                                <i class="bi bi-arrow-right-circle"></i>
-                            </button>
+                        <li class="nav-item"><a class="popover btn-outline-primary mx-3" href="#" id="login" data-content="Iniciar sesión/Registro"><i class="bi bi-arrow-right-circle"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <button type="submit" class="popover btn-outline-primary  mx-2" data-toggle="popover" data-content="Contacto" name="contacto">
-                            <i class="bi bi-question-circle"></i>
-                            </button>
+                        <li class="nav-item"><a class="popover btn-outline-primary mx-3" href="contacto.html" id="contacto" data-content="Contacto"><i class="bi bi-question-circle"></i></a>
                         </li>
                     <?php
                     }
@@ -71,7 +65,7 @@
         <div class="form-background"></div>
         <div class="form-content">
             <a href="#" id="closeBtn"><i class="bi bi-x-lg"></i></a>
-            <form action="./index.php" method="post">
+            <form>
                 <div class="section">
                     <div class="container-fluid">
                         <div class="row full-height justify-content-center">
@@ -94,17 +88,11 @@
                                                             <input type="password" class="form-style" placeholder="Contraseña">
                                                             <i class="input-icon bi bi-lock"></i>
                                                         </div>
-                                                        <?
-                                                        if (isset($_SESSION['error'])) {
-                                                            echo $_SESSION['error'];
-                                                            unset($_SESSION['error']);
-                                                        }
-                                                        ?>
-                                                        <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
-                                                        <!-- <p class="mb-0 mt-4 text-center">
-                                                        <a href="" class="link" id="pwd">¿Olvidaste tu
-                                                            contraseña?</a>
-                                                    </p> -->
+                                                        <a href="https://www.web-leb.com/code" class="btn mt-4">Iniciar</a>
+                                                        <p class="mb-0 mt-4 text-center">
+                                                            <a href="" class="link" id="pwd">¿Olvidaste tu
+                                                                contraseña?</a>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,80 +101,22 @@
                                                     <div class="section text-center">
                                                         <h4 class="mb-3 pb-3">Registrarse</h4>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-style" placeholder="Nombre completo" name="nombre" id="nombre">
+                                                            <input type="text" class="form-style" placeholder="Nombre completo">
                                                             <i class="input-icon bi bi-person"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido
-                                                            if (isset($_REQUEST['registrar'])) {
-                                                                if (vacio("nombre")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce nombre completo</span>
-                                                            <?
-                                                                }
-                                                            }
-                                                            ?>
                                                         </div>
                                                         <div class="form-group mt-2">
-                                                            <input type="tel" class="form-style" placeholder="Teléfono" name="telefono" id="telefono">
+                                                            <input type="tel" class="form-style" placeholder="Teléfono">
                                                             <i class="input-icon bi bi-telephone"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
-                                                            if (isset($_REQUEST['registrar'])) {
-                                                                if (vacio("telefono")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce telefono</span>
-                                                                <?
-                                                                } elseif (!patronTelefono()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Teléfono no válida, revise</span>
-                                                            <?
-                                                                }
-                                                            }
-                                                            ?>
                                                         </div>
                                                         <div class="form-group mt-2">
-                                                            <input type="email" class="form-style" placeholder="Email" name="email" id="email">
+                                                            <input type="email" class="form-style" placeholder="Email">
                                                             <i class="input-icon bi bi-at"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
-                                                            if (isset($_REQUEST['registrar'])) {
-                                                                if (vacio("email")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce email</span>
-                                                                <?
-                                                                } elseif (!patronEmail()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Email no válida, revise</span>
-                                                            <?
-                                                                }
-                                                            }
-                                                            ?>
                                                         </div>
                                                         <div class="form-group mt-2">
-                                                            <input type="password" class="form-style" placeholder="Contraseña" name="contraseña" id="contraseña">
+                                                            <input type="password" class="form-style" placeholder="Contraseña">
                                                             <i class="input-icon bi bi-lock"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
-                                                            if (isset($_REQUEST['registrar'])) {
-                                                                if (vacio("contraseña")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce contraseña</span>
-                                                                <?
-                                                                } elseif (!patronContraseña()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Contraseña no válida, revise</span>
-                                                            <?
-                                                                }
-                                                            }
-                                                            ?>
                                                         </div>
-                                                        <?
-                                                        if (isset($_SESSION['error'])) {
-                                                            echo $_SESSION['error'];
-                                                            unset($_SESSION['error']);
-                                                        }
-                                                        ?>
-                                                        <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
+                                                        <a href="" class="btn mt-4">Registrar</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,6 +130,7 @@
             </form>
         </div>
     </div>
+
     <!-- Footer -->
     <footer class="text-center text-white">
         <!-- Copyright -->
