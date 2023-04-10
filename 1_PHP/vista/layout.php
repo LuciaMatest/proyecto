@@ -36,9 +36,9 @@
                 <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0">
                     <?php
                     if (estaValidado()) {
-                        echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-3" data-toggle="popover" data-content="Área privada" name="privada">
+                        echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada">
                         <i class="bi bi-person-circle"></i></button></li>';
-                        echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-3" data-toggle="popover" data-content="Logout" name="logout">
+                        echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout">
                         <i class="bi bi-x-circle"></i></button></li>';
                     } else {
                     ?>
