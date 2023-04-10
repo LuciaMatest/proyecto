@@ -17,17 +17,17 @@ main section h2 {
   height: 100vh;
 }
 
-#section1>.background>div>.home{
+#section1>.background>div>.home {
   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-  width: 32%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  width: 28%;
   margin-top: 30px;
 }
 
-#section1>.background>div>.person{
+#section1>.background>div>.person {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -49,11 +49,11 @@ main section h2 {
 
 #section2>.background>div>img {
   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -75%);
-    -webkit-transform: translate(-50%, -75%);
-  width: 35%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -75%);
+  -webkit-transform: translate(-50%, -75%);
+  width: 30%;
 }
 
 #section2>.background>div>a {
@@ -86,15 +86,15 @@ main section h2 {
 
 #section3>.background>div {
   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   margin-top: 50px;
 }
 
-#section3>.background>div>.sobre{
-    width: 70%;
+#section3>.background>div>.sobre {
+  width: 50%;
 }
 
 #section3>.background>div>p {
@@ -221,24 +221,23 @@ footer>div {
 }
 
 @media screen and (min-width: 320px) and (max-width: 739px) {
+
   #section1>.background,
   #section2>.background,
-  #section3>.background
-  {
+  #section3>.background {
     background-size: auto;
   }
 
   #section1>.background>div>.home,
-  #section2>.background>div>.proyectos
-   {
+  #section2>.background>div>.proyectos {
     width: 50%;
   }
 
-  #section3>.background>div>.sobre{
+  #section3>.background>div>.sobre {
     width: 100%;
   }
 
-  #section1>.background>div>.person{
+  #section1>.background>div>.person {
     transform: translate(-97%, 0%);
     width: 60%;
   }
@@ -252,13 +251,13 @@ footer>div {
 
 
 @media screen and (min-width: 740px) and (max-width: 1000px) {
+
   #section1>.background>div>.home,
-  #section2>.background>div>.proyectos
-   {
+  #section2>.background>div>.proyectos {
     width: 40%;
   }
 
-  #section3>.background>div>.sobre{
+  #section3>.background>div>.sobre {
     width: 70%;
   }
 }

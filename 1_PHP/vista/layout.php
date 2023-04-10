@@ -29,8 +29,11 @@
     <header class="cabecera navbar navbar-expand-lg fixed-top" id="headerNav">
         <div class="container-fluid px-4 px-lg-5">
             <h2 class="titulo text-light mx-3">Lulú</h2>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+            <button class="menuBtn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0">
                     <?php
                     if (estaValidado()) {
                         echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-3" data-toggle="popover" data-content="Área privada" name="privada">
@@ -40,13 +43,13 @@
                     } else {
                     ?>
                         <li class="nav-item">
-                            <button type="submit" class="popover btn-outline-primary mx-3" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login">
+                            <button type="submit" class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login">
                                 <i class="bi bi-arrow-right-circle"></i>
                             </button>
                         </li>
                         <li class="nav-item">
-                            <button type="submit" class="popover btn-outline-primary" data-toggle="popover" data-content="Contacto" name="contacto">
-                                <i class="bi bi-question-circle"></i>
+                            <button type="submit" class="popover btn-outline-primary  mx-2" data-toggle="popover" data-content="Contacto" name="contacto">
+                            <i class="bi bi-question-circle"></i>
                             </button>
                         </li>
                     <?php
