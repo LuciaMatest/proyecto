@@ -2,10 +2,6 @@ main {
   background-color: #115053;
 }
 
-main section {
-  padding: 50px;
-}
-
 main section h2 {
   margin-top: 0;
 }
@@ -21,12 +17,22 @@ main section h2 {
   height: 100vh;
 }
 
-#section1>.background>div>img {
+#section1>.background>div>.home{
+  position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  width: 32%;
+  margin-top: 30px;
+}
+
+#section1>.background>div>.person{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -55%);
-  width: 32%;
+  transform: translate(-90%, -50%);
+  width: 50%;
 }
 
 /* Proyectos */
@@ -38,13 +44,15 @@ main section h2 {
   position: relative;
   width: 100%;
   height: 100vh;
+  margin-top: 10%;
 }
 
 #section2>.background>div>img {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -75%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -75%);
+    -webkit-transform: translate(-50%, -75%);
   width: 35%;
 }
 
@@ -78,13 +86,15 @@ main section h2 {
 
 #section3>.background>div {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  margin-top: 50px;
 }
 
-#section3>.background>div>img {
-  width: 35%;
+#section3>.background>div>.sobre{
+    width: 70%;
 }
 
 #section3>.background>div>p {
@@ -103,10 +113,9 @@ main section h2 {
   transition: transform 0.2s ease-in-out;
 }
 
-#section3>.background>div>.perfil {
-  width: 40%;
-  transform: translate(130%, 0%);
-  border-radius: 5px;
+#section3>.background>div>div>.manos {
+  width: 35%;
+  margin-top: 10px;
 }
 
 /* Navegador */
@@ -212,54 +221,44 @@ footer>div {
 }
 
 @media screen and (min-width: 320px) and (max-width: 739px) {
-
   #section1>.background,
-  #section2>.background {
-    transform: translate(0%, -5%);
+  #section2>.background,
+  #section3>.background
+  {
+    background-size: auto;
   }
 
-  #section1>.background>div>img {
-    width: 70%;
+  #section1>.background>div>.home,
+  #section2>.background>div>.proyectos
+   {
+    width: 50%;
   }
 
-  #section2>.background>div>img {
-    width: 75%;
-  }
-
-  #section3>.background>div>img {
+  #section3>.background>div>.sobre{
     width: 100%;
   }
 
-  #section3>.background>div>.miniatura {
-    width: 160%;
-    transform: translate(0%, -440%);
-    border-radius: 5px;
+  #section1>.background>div>.person{
+    transform: translate(-97%, 0%);
+    width: 60%;
   }
+
+  #section3>.background>div>div>.manos {
+    width: 80%;
+    margin-top: 5px;
+  }
+
 }
 
 
 @media screen and (min-width: 740px) and (max-width: 1000px) {
-
-  #section1>.background,
-  #section2>.background {
-    transform: translate(0%, -5%);
+  #section1>.background>div>.home,
+  #section2>.background>div>.proyectos
+   {
+    width: 40%;
   }
 
-  #section1>.background>div>img {
+  #section3>.background>div>.sobre{
     width: 70%;
-  }
-
-  #section2>.background>div>img {
-    width: 75%;
-  }
-
-  #section3>.background>div>img {
-    width: 100%;
-  }
-
-  #section3>.background>div>.miniatura {
-    width: 160%;
-    transform: translate(0%, -200%);
-    border-radius: 5px;
   }
 }
