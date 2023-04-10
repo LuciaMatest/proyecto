@@ -4,35 +4,31 @@
 </div>
 <!-- Contenido de la página web -->
 <div class="contenido-pagina">
-    <!-- Navegador de circulos -->
-    <div id="navegador" class="mx-2">
-        <a href="#section1" class="circle"></a>
-        <a href="#section2" class="circle"></a>
-        <a href="#section3" class="circle"></a>
-    </div>
     <!-- Home -->
     <section id="section1">
-        <div class="background" style="height: 100vh;">
+        <div class="background">
             <div class="text-center">
-                <img src="./webroot/recursos/home.png" alt="Logo" class="img-fluid w-25">
+                <img src="webroot/recursos/home.png" alt="home" class="home rounded mx-auto d-block">
+                <img src="webroot/recursos/pru.png" alt="person" class="person">
             </div>
         </div>
     </section>
     <!-- Proyectos -->
     <section id="section2">
-        <div class="background" style="height: 100vh;">
-            <div class="proyectos d-flex flex-column align-items-center">
-                <img src="./webroot/recursos/Proyectos.png" alt="proyectos" class="img-fluid w-75 mb-4">
-                <input type="submit" value="Ver proyectos" name="proyectos" class="btn btn-lg btn-primary">
+        <div class="background">
+            <div class="d-flex flex-column align-items-center">
+                <img src="webroot/recursos/Proyectos.png" alt="proyectos" class="proyectos rounded mx-auto d-block mb-5">
+                <a href="proyectos.html" class="btn btn-lg btn-block btn-primary">Saber más</a>
             </div>
         </div>
     </section>
     <!-- Sobre mi -->
     <section id="section3">
-        <div class="background" style="height: 100vh;">
-            <div class="sobremi d-flex flex-column align-items-center col-md-8">
-                <img src="./webroot/recursos/Sobre mi.png" alt="Logo" class="img-fluid w-50 mb-4">
-                <p class="text-center mt-2">¡Hola! Soy Lucía, una apasionada ilustradora, diseñadora gráfica y
+        <div class="background">
+            <div class="d-flex flex-column align-items-center">
+                <img src="webroot/recursos/Sobre mi.png" alt="sobre" class="sobre rounded mx-auto d-block mb-4">
+                <p class="text-center justify-text mt-2">¡Hola! Soy Lucía, una apasionada ilustradora,
+                    diseñadora gráfica y
                     desarrolladora web.
                     <br>Me encanta combinar mi creatividad y habilidades técnicas para crear soluciones visuales
                     efectivas e impactantes.
@@ -41,17 +37,25 @@
                 </p>
                 <div class="d-flex justify-content-center align-items-center mt-2" id="redes">
                     <a href="https://instagram.com/lulu.ilustracion?igshid=YmMyMTA2M2Y=" class="mx-2 p-1">
-                        <img src="./webroot/recursos/redes/instagram.png" alt="ig" class="img-fluid">
+                        <img src="webroot/recursos/redes/instagram.png" alt="ig" class="img-fluid">
                     </a>
                     <a href="https://www.linkedin.com/in/luluilustracion/" class="mx-2 p-1">
-                        <img src="./webroot/recursos/redes/linkedin.png" alt="link" class="img-fluid">
+                        <img src="webroot/recursos/redes/linkedin.png" alt="link" class="img-fluid">
                     </a>
                     <a href="https://www.tiktok.com/@lulu.ilustracion?_t=8bFX3XdNlh8&_r=1" class="mx-2 p-1">
-                        <img src="./webroot/recursos/redes/tik-tok.png" alt="tik" class="img-fluid">
+                        <img src="webroot/recursos/redes/tik-tok.png" alt="tik" class="img-fluid">
                     </a>
                 </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="webroot/recursos/pru2.png" class="manos">
+                </div>
             </div>
-            <img src="./webroot/recursos/artist.jpg" class="perfil float-end" alt="perfil">
         </div>
     </section>
+    <!-- Navegador de circulos -->
+    <div id="navegador" class="mx-2">
+        <a href="#section1" class="circle"></a>
+        <a href="#section2" class="circle"></a>
+        <a href="#section3" class="circle"></a>
+    </div>
 </div>

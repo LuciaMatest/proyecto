@@ -21,6 +21,18 @@ header>div>.titulo {
   font-weight: normal;
 }
 
+header>div>.menuBtn {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+  font-size: 27px;
+}
+
+header>div>div>.btn-group {
+  position: absolute;
+  right: 20px;
+}
+
 /* Botones para iniciar sesión o registrarse y contacto */
 .btn-outline-primary {
   background-color: transparent;
