@@ -17,17 +17,17 @@ main section h2 {
   height: 100vh;
 }
 
-#section1>.background>div>.home {
+#section1>.background>div>.home{
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  width: 28%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  width: 32%;
   margin-top: 30px;
 }
 
-#section1>.background>div>.person {
+#section1>.background>div>.person{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,16 +47,16 @@ main section h2 {
   margin-top: 10%;
 }
 
-#section2>.background>div>div>.proyectos {
+#section2>.background>div>img {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -75%);
-  -webkit-transform: translate(-50%, -75%);
-  width: 30%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -75%);
+    -webkit-transform: translate(-50%, -75%);
+  width: 35%;
 }
 
-#section2>.background>div>div>form>input {
+#section2>.background>div>a {
   background-color: #115053;
   border: 2px white solid;
   font-size: 25px;
@@ -66,7 +66,7 @@ main section h2 {
   transform: translate(-50%, 200%);
 }
 
-#section2>.background>div>div>form>input:hover {
+#section2>.background>div>a:hover {
   background-color: white;
   color: #115053;
   border: 2px #115053 solid;
@@ -86,15 +86,15 @@ main section h2 {
 
 #section3>.background>div {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
   margin-top: 50px;
 }
 
-#section3>.background>div>.sobre {
-  width: 50%;
+#section3>.background>div>.sobre{
+    width: 70%;
 }
 
 #section3>.background>div>p {
@@ -114,8 +114,8 @@ main section h2 {
 }
 
 #section3>.background>div>div>.manos {
-  width: 45%;
-  margin-top: 13px;
+  width: 35%;
+  margin-top: 10px;
 }
 
 /* Navegador */
@@ -216,64 +216,49 @@ main section h2 {
   cursor: pointer;
 }
 
-.pie {
+footer>div {
   background-color: #083638;
-  color: white;
-}
-
-.pie>footer>a>img {
-  width: 60px;
-}
-
-.pie>footer>ul>li>a {
-  text-decoration: none;
-  color: white;
 }
 
 @media screen and (min-width: 320px) and (max-width: 739px) {
-
   #section1>.background,
   #section2>.background,
-  #section3>.background {
+  #section3>.background
+  {
     background-size: auto;
   }
 
-  #section1>.background>div>.home {
+  #section1>.background>div>.home,
+  #section2>.background>div>.proyectos
+   {
     width: 50%;
   }
 
-  #section2>.background>div>div>.proyectos {
-    width: 60%;
+  #section3>.background>div>.sobre{
+    width: 100%;
   }
 
-  #section3>.background>div>.sobre {
-    width: 70%;
-  }
-
-  #section1>.background>div>.person {
+  #section1>.background>div>.person{
     transform: translate(-97%, 0%);
     width: 60%;
   }
 
-  #section2>.background>div>div>form>input {
-    font-size: 15px;
-  }
-
   #section3>.background>div>div>.manos {
-    width: 45%;
+    width: 80%;
     margin-top: 5px;
   }
 
 }
 
-@media screen and (min-width: 740px) and (max-width: 1000px) {
 
+@media screen and (min-width: 740px) and (max-width: 1000px) {
   #section1>.background>div>.home,
-  #section2>.background>div>div>.proyectos {
+  #section2>.background>div>.proyectos
+   {
     width: 40%;
   }
 
-  #section3>.background>div>.sobre {
+  #section3>.background>div>.sobre{
     width: 70%;
   }
 }

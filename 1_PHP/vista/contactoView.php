@@ -7,7 +7,7 @@
     </div>
     <div class="d-flex align-items-center justify-content-center">
         <div class="container-fluid">
-            <a href="index.html" class="btn-back"><i class="bi bi-chevron-left"></i></a>
+            <button class="btn-back"><i class="bi bi-chevron-left"></i></button>
             <div class="row">
                 <div class="col-lg-6 m-auto">
                     <div class="card shadow">
@@ -28,6 +28,7 @@
                                     <textarea class="form-control" id="mensaje" rows="5" placeholder="Ingresa tu mensaje"></textarea>
                                 </div>
                                 <a type="submit" class="btn btn-primary float-end">Enviar</a>
+                                
                             </form>
                         </div>
                     </div>

@@ -1,0 +1,29 @@
+/* Estilo para la pantalla de carga */
+.loader {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el gif de carga */
+.loader img {
+  width: 50%;
+}
+
+/* Estilo para ocultar la pantalla de carga una vez cargada la página */
+.contenido-pagina {
+  display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 739px) {
+  .loader img {
+    width: 80%;
+  }
+}

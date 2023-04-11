@@ -14,17 +14,19 @@
         </div>
     </section>
     <!-- Proyectos -->
-    <section id="section2">
+    <div id="section2" class="d-flex justify-content-center align-items-center vh-100">
         <div class="background">
-            <div class="d-flex flex-column align-items-center">
-                <img src="webroot/recursos/Proyectos.png" alt="proyectos" class="proyectos rounded mx-auto d-block mb-5">
-                <form action="./index.php" method="post">
-                    <input type="hidden" name="" value="">
-                    <input type="submit" value="Ver proyectos" name="ver" class="btn btn-lg btn-block btn-primary">
-                </form>
+            <div class="d-flex justify-content-center align-items-center vh-100">
+                <div class="text-center">
+                    <img src="webroot/recursos/Proyectos.png" alt="proyectos" class="proyectos rounded mx-auto d-block mb-5">
+                    <form action="./index.php" method="post">
+                        <input type="hidden" name="" value="">
+                        <input type="submit" value="Ver proyectos" name="ver" class="btn btn-lg btn-block btn-primary">
+                    </form>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- Sobre mi -->
     <section id="section3">
         <div class="background">
