@@ -1,14 +1,16 @@
 <section class="py-5 text-center container">
-        <button class="btn-back" onclick="window.history.back()"><i class="bi bi-chevron-left"></i></button>
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="pro text-light">Proyectos</h1>
-                <a class="categorias" href="#"><i class="bi bi-bounding-box-circles"></i><span class="">Diseño
-                        gráfico</span></a>
-                <a class="categorias" href="#"><i class="bi bi-brush"></i><span class="">Ilustraciones</span></a>
-                <a class="categorias" href="#"><i class="bi bi-pc-display-horizontal"></i><span class="">Diseño web</span></a>
-            </div>
+    <form action="./index.php" method="post">
+        <button class="btn-back"><i class="bi bi-chevron-left"></i></button>
+    </form>
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="pro text-light">Proyectos</h1>
+            <a class="categorias" href="#"><i class="bi bi-bounding-box-circles"></i><span class="">Diseño
+                    gráfico</span></a>
+            <a class="categorias" href="#"><i class="bi bi-brush"></i><span class="">Ilustraciones</span></a>
+            <a class="categorias" href="#"><i class="bi bi-pc-display-horizontal"></i><span class="">Diseño web</span></a>
         </div>
+    </div>
 </section>
 
 <div class="album bg-light">
