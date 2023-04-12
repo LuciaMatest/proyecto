@@ -4,4 +4,4 @@ if (isset($_REQUEST['ver'])) {
     $_SESSION['pagina'] = 'Proyectos';
     $_SESSION['vista'] = $vistas['proyectos'];
     require_once $_SESSION['controlador'];
-}
+} 
