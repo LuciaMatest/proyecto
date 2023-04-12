@@ -1,6 +1,6 @@
 <section class="py-5 text-center container">
     <form action="./index.php" method="post">
-        <button class="btn-back"><i class="bi bi-chevron-left"></i></button>
+        <button class="btn-back" name="volver"><i class="bi bi-chevron-left"></i></button>
     </form>
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
