@@ -65,3 +65,7 @@ closeBtn.addEventListener('click', function() {
   header.style.display = 'block';
   closeBtn.removeEventListener('click');
 });
+
+function goBack() {
+  window.history.back();
+}

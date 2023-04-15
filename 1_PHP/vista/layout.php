@@ -27,31 +27,28 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Navigation-->
-    <form action="./index.php" method="post">
-        <header class="cabecera navbar navbar-expand-lg fixed-top" id="headerNav">
-            <div class="container-fluid px-4 px-lg-5">
-                <h2 class="titulo text-light mx-3">Lulú</h2>
-                <button class="menuBtn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0">
+    <header class="cabecera navbar navbar-expand-lg fixed-top" id="headerNav">
+        <div class="container-fluid px-4 px-lg-5">
+            <h2 class="titulo text-light mx-3">Lulú</h2>
+            <form action="./index.php" method="post">
+                <!-- Navigation-->
+                <nav class="navbar-collapse">
+                    <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0 d-flex flex-row flex-wrap">
                         <?php
                         if (estaValidado()) {
-                            echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada">
-                        <i class="bi bi-person-circle"></i></button></li>';
-                            echo '<li class="nav-item"><button type="submit" class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout">
-                        <i class="bi bi-x-circle"></i></button></li>';
+                            echo '<li class="nav-item"><button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada" id="privada">
+                    <i class="bi bi-person-circle"></i></button></li>';
+                            echo '<li class="nav-item"><button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout" id="logout">
+                    <i class="bi bi-x-circle"></i></button></li>';
                         } else {
                         ?>
                             <li class="nav-item">
                                 <span class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login" id="login">
-                                    <i class="bi bi-arrow-right-circle"></i>
+                                    <i class="bi bi-person-circle"></i>
                                 </span>
                             </li>
                             <li class="nav-item">
-                                <button type="submit" class="popover btn-outline-primary  mx-2" data-toggle="popover" data-content="Contacto" name="contacto">
+                                <button class="popover btn-outline-primary" data-toggle="popover" data-content="Contacto" name="contacto" id="contacto">
                                     <i class="bi bi-question-circle"></i>
                                 </button>
                             </li>
@@ -59,10 +56,11 @@
                         }
                         ?>
                     </ul>
-                </div>
-            </div>
-        </header>
-    </form>
+                </nav>
+            </form>
+        </div>
+    </header>
+
 
     <main class="flex-grow-1">
         <?php
