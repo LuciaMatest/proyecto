@@ -22,6 +22,35 @@ botones.forEach(boton => {
   });
 });
 
+//Cuando se pulse en uno de los botones cambiaremos de categoria
+// Obtenemos los elementos necesarios
+const albumLinks = document.querySelectorAll('a[id^="album-"]');
+const albums = document.querySelectorAll('.album');
+
+// Función para mostrar un álbum y ocultar los demás
+function showAlbum(albumId) {
+  // Ocultamos todos los álbumes
+  albums.forEach((album) => {
+    album.classList.remove('active');
+  });
+  // Mostramos el álbum seleccionado
+  const albumToShow = document.getElementById(albumId);
+  albumToShow.classList.add('active');
+}
+
+// Agregamos un controlador de eventos a cada etiqueta "a" para mostrar el álbum correspondiente
+albumLinks.forEach((albumLink) => {
+  albumLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const albumId = event.target.getAttribute('id');
+    showAlbum(albumId);
+  });
+});
+
+// Mostramos el primer álbum por defecto
+showAlbum('album-1');
+
+
 //Login - Sign in
 //Cuando pulsemos el boton de loguearse aparecera una ventana emergente con un boton para cerrarlo
 const formBtn = document.getElementById("login");
