@@ -42,14 +42,6 @@
 	user-select: none;
 }
 
-.album {
-	display: none;
-}
-
-.album.active {
-	display: block;
-}
-
 .intro {
 	font-size: medium;
 	color: #bdbdbd;
