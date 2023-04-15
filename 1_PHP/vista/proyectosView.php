@@ -1,24 +1,24 @@
 <section class="py-5 text-center container">
     <form action="./index.php" method="post">
         <button class="btn-back" name="volver"><i class="bi bi-chevron-left"></i></button>
-    </form>
-    <div class="row pt-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="pro text-light">Proyectos</h1>
-            <a class="categorias" href="#album1"><i class="bi bi-bounding-box-circles"></i><span class="">Diseño gráfico</span></a>
-            <a class="categorias" href="#album2"><i class="bi bi-brush"></i><span class="">Ilustraciones</span></a>
-            <a class="categorias" href="#album3"><i class="bi bi-pc-display-horizontal"></i><span class="">Diseño web</span></a>
+        <div class="row pt-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="pro text-light">Proyectos</h1>
+                <a class="categorias" href="#" data-target="disenos"><i class="bi bi-bounding-box-circles"></i><span class="">Diseño gráfico</span></a>
+                <a class="categorias" href="#" data-target="ilustraciones"><i class="bi bi-brush"></i><span class="">Ilustraciones</span></a>
+                <a class="categorias" href="#" data-target="web"><i class="bi bi-pc-display-horizontal"></i><span class="">Diseño web</span></a>
+            </div>
         </div>
-    </div>
-    <p class="intro text-center justify-text">Bienvenido a este portafolio digital donde podrás encontras
-        mi pasión por el diseño y desarrollo web plasmada en cada uno de los proyectos que te presento.
-        <br>Aqui encontraras una selección de ilustraciones, diseños y sitios web que he creado con mucha
-        dedicación.
-        <br>¡Espero que te gusten!
-    </p>
+        <p class="intro text-center justify-text">Bienvenido a este portafolio digital donde podrás encontras
+            mi pasión por el diseño y desarrollo web plasmada en cada uno de los proyectos que te presento.
+            <br>Aqui encontraras una selección de ilustraciones, diseños y sitios web que he creado con mucha
+            dedicación.
+            <br>¡Espero que te gusten!
+        </p>
+    </form>
 </section>
 
-<div id="album1" class="album bg-light">
+<div id="disenos" class="album bg-light">
     <div class="container">
         <div class="row row-cols-1">
             <!-- Tamaño para las imagenes de portada 1294x300 -->
@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<div id="album2" class="album bg-light">
+<div id="ilustraciones" class="album bg-light">
     <div class="container">
         <div class="row row-cols-1">
             <!-- Tamaño para las imagenes de portada 1294x300 -->
@@ -122,7 +122,7 @@
     </div>
 </div>
 
-<div id="album3" class="album bg-light">
+<div id="web" class="album bg-light">
     <div class="container">
         <div class="row row-cols-1">
             <!-- Tamaño para las imagenes de portada 1294x300 -->

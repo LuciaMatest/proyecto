@@ -17,10 +17,34 @@ botones.forEach(boton => {
       boton.classList.remove('activo');
       boton.style.transform = 'scale(1)';
     });
+
     boton.classList.add('activo');
-    boton.style.transform = 'scale(1.2)';
+    boton.style.transform = 'scale(0.8)';
   });
 });
+
+//Categorias
+//Cuando se pulse en una de las categorias cada una mostrara el div correspondiente
+const disenosDiv = document.getElementById('disenos');
+const ilustracionesDiv = document.getElementById('ilustraciones');
+const webDiv = document.getElementById('web');
+
+const categorias = document.querySelectorAll('.categorias');
+
+categorias.forEach((categoria) => {
+  categoria.addEventListener('click', (evento) => {
+    const target = evento.currentTarget.getAttribute('data-target');
+
+    disenosDiv.style.display = 'none';
+    ilustracionesDiv.style.display = 'none';
+    webDiv.style.display = 'none';
+
+    const divToShow = document.querySelector(`#${target}`);
+    divToShow.style.display = 'block';
+  });
+});
+
+
 
 //Login - Sign in
 //Cuando pulsemos el boton de loguearse aparecera una ventana emergente con un boton para cerrarlo
@@ -28,11 +52,13 @@ const formBtn = document.getElementById("login");
 const formContainer = document.querySelector(".form-container");
 const header = document.getElementById("headerNav");
 const closeBtn = document.getElementById('closeBtn');
+
 // Cuando se pulse el botón de login se abrirá
 formBtn.addEventListener("click", () => {
   formContainer.style.display = "flex";
   header.style.display = "none";
 });
+
 // Cuando se pulse el botón X se cerrará
 closeBtn.addEventListener('click', function() {
   formContainer.style.display = 'none';

@@ -5,13 +5,15 @@
     <div class="position-fixed bottom-0 start-0">
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
+    <form action="./index.php" method="post">
+        <button class="btn-back" name="volver"><i class="bi bi-chevron-left"></i></button>
+    </form>
     <div class="d-flex align-items-center justify-content-center">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 m-auto">
                     <!-- Formulario -->
                     <form action="./index.php" method="post">
-                        <button class="btn-back"><i class="bi bi-chevron-left"></i></button>
                         <div class="card shadow">
                             <div class="card-body">
                                 <h3 class="card-title text-center">Formulario de contacto</h3>
