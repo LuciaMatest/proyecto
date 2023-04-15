@@ -5,7 +5,6 @@ require_once('./config/conexion.php');
 //Controladores
 $controladores = array(
     'home' => './controlador/HomeController.php',
-    'login' => './controlador/LoginController.php',
     'contacto' => './controlador/ContactoController.php',
     'proyectos' => './controlador/ProyectosController.php',
 );
@@ -24,7 +23,6 @@ require_once('./modelo/Usuario.php');
 $vistas = array(
     'layout' => './vista/layoutView.php',
     'home' => './vista/homeView.php',
-    'login' => './vista/loginView.php',
     'contacto' => './vista/contactoView.php',
     'proyectos' => './vista/proyectosView.php',
 );
