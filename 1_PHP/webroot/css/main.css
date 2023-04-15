@@ -168,42 +168,6 @@ main section h2 {
   transform: translate(-50%, -50%);
 }
 
-/* Contacto */
-.fondo {
-  background-color: #115053;
-  height: 100vh;
-}
-
-.fondo>div>div>div>div>.card {
-  border: none;
-  transform: translate(0%, 30%);
-}
-
-.card-body {
-  border-radius: 5px;
-  padding: 30px;
-}
-
-.form-control:focus {
-  box-shadow: none;
-  border-color: #115053;
-}
-
-.btn-primary {
-  background-color: #115053;
-  border: 2px white solid;
-  font-size: 15px;
-}
-
-.btn-primary:hover {
-  background-color: #1a6f74;
-  border: 2px white solid;
-}
-
-.btn-primary:focus {
-  box-shadow: none;
-}
-
 /* Botón para volver atras */
 .btn-back {
   position: absolute;
