@@ -14,6 +14,7 @@ class UsuarioDAO extends FactoryBD implements DAO
                 $objeto->telefono_usuario,
                 $objeto->email_usuario,
                 $objeto->contrasena_usuario,
+                $objeto->borrado_usuario,
                 $objeto->tipo_usuario
             );
             array_push($arrayUsuario, $usuario);
@@ -34,6 +35,7 @@ class UsuarioDAO extends FactoryBD implements DAO
                 $objeto->telefono_usuario,
                 $objeto->email_usuario,
                 $objeto->contrasena_usuario,
+                $objeto->borrado_usuario,
                 $objeto->tipo_usuario
             );
         } else {
@@ -43,13 +45,14 @@ class UsuarioDAO extends FactoryBD implements DAO
 
     public static function update($objeto)
     {
-        $actualiza = 'update usuario set nombre_usuario=?,telefono_usuario=?,email_usuario=?,contrasena_usuario=?,tipo_usuario=? where id_usuario=?;';
+        $actualiza = 'update usuario set nombre_usuario=?,telefono_usuario=?,email_usuario=?,contrasena_usuario=?,borrado_usuario=?,tipo_usuario=? where id_usuario=?;';
         $datos = array(
             $objeto->id_usuario,
             $objeto->nombre_usuario,
             $objeto->telefono_usuario,
             $objeto->email_usuario,
             $objeto->contrasena_usuario,
+            $objeto->borrado_usuario,
             $objeto->tipo_usuario
         );
         $resultado = parent::ejecuta($actualiza, $datos);
@@ -62,7 +65,7 @@ class UsuarioDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = 'insert into usuario values (?,?,?,?,?)';
+        $inserta = 'insert into usuario values (?,?,?,?,?,?)';
         $objeto = (array)$objeto;
         $datos = array();
         foreach ($objeto as $att) {
@@ -102,6 +105,7 @@ class UsuarioDAO extends FactoryBD implements DAO
                 $objeto->telefono_usuario,
                 $objeto->email_usuario,
                 $objeto->contrasena_usuario,
+                $objeto->borrado_usuario,
                 $objeto->tipo_usuario
             );
         } else {

@@ -1,7 +1,7 @@
 <section class="py-5 text-center container">
     <form action="./index.php" method="post">
-        <button class="btn-back" name="volver"><i class="bi bi-chevron-left"></i></button>
-        <div class="row pt-lg-5">
+        <button class="btn-back pt-sm-5 pt-lg-0" name="volver"><i class="bi bi-chevron-left"></i></button>
+        <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="pro text-light">Proyectos</h1>
                 <a class="categorias" href="#" data-target="disenos"><i class="bi bi-bounding-box-circles"></i><span class="">Diseño gráfico</span></a>
@@ -28,7 +28,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"Diseño El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -39,7 +39,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice"class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -50,7 +50,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice"class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -61,7 +61,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -80,7 +80,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png"  preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"Ilustraciones El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -91,7 +91,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png"  preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -102,7 +102,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -113,7 +113,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -132,7 +132,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"Web El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -143,7 +143,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -154,7 +154,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>
@@ -165,7 +165,7 @@
                         <title>Ilustraciones</title>
                         <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                         <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
-                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" class="negro" />
+                        <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                         <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
                     </svg>
                 </div>

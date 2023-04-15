@@ -90,10 +90,10 @@
                                                         <h4 class="mb-4 pb-3">Iniciar sesión</h4>
                                                         <div class="form-group">
                                                             <i class="input-icon bi bi-at"></i>
-                                                            <input type="email" class="form-style" placeholder="Email">
+                                                            <input type="email" class="form-style" id="email" name="email" placeholder="Email">
                                                         </div>
                                                         <div class="form-group mt-2">
-                                                            <input type="password" class="form-style" placeholder="Contraseña">
+                                                            <input type="password" class="form-style" id="password" name="password" placeholder="Contraseña">
                                                             <i class="input-icon bi bi-lock"></i>
                                                         </div>
                                                         <?
@@ -103,10 +103,6 @@
                                                         }
                                                         ?>
                                                         <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
-                                                        <!-- <p class="mb-0 mt-4 text-center">
-                                                        <a href="" class="link" id="pwd">¿Olvidaste tu
-                                                            contraseña?</a>
-                                                    </p> -->
                                                     </div>
                                                 </div>
                                             </div>
