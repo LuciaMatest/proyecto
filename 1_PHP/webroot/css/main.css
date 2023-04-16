@@ -1,9 +1,9 @@
-main {
-  background-color: #115053;
-}
-
 main section h2 {
   margin-top: 0;
+}
+
+.contenido-pagina {
+  background-color: #115053;
 }
 
 /* Home */

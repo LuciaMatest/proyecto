@@ -1,4 +1,5 @@
 .proyect {
+	background-color: #115053;
 	background-image: url(../recursos/fondo/central_proyectos.png);
 	background-position: center;
 }
@@ -78,6 +79,10 @@ svg.primero>text {
 
 .negro {
 	opacity: .5;
+}
+
+.album{
+	margin-top: 3%;
 }
 
 @media (min-width: 768px) {
