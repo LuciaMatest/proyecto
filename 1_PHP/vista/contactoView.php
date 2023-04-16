@@ -6,7 +6,7 @@
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
     <form action="./index.php" method="post">
-        <button class="btn-back" name="volver"><i class="bi bi-chevron-left"></i></button>
+        <button class="btn-back pt-sm-5 pt-lg-0" name="volver"><i class="bi bi-chevron-left"></i></button>
         <div class="d-flex align-items-center justify-content-center">
             <div class="container-fluid">
                 <div class="row">

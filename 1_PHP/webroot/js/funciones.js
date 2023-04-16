@@ -49,8 +49,6 @@ categorias.forEach((categoria) => {
   });
 });
 
-
-
 //Login - Sign in
 //Cuando pulsemos el boton de loguearse aparecera una ventana emergente con un boton para cerrarlo
 const formBtn = document.getElementById("login");
@@ -71,8 +69,7 @@ closeBtn.addEventListener('click', function() {
   closeBtn.removeEventListener('click');
 });
 
-window.onload = function(){
-  if(window.location.href.indexOf('?enviado') > -1) {
-      alert('¡Mensaje enviado con éxito!');
-  }
+function goBack() {
+  window.history.back();
 }
+

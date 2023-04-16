@@ -4,7 +4,7 @@ if (isset($_REQUEST['volver'])) {
     $_SESSION['pagina'] = 'Home';
     $_SESSION['vista'] = $vistas['home'];
     require_once $_SESSION['controlador'];
-} elseif (isset($_REQUEST['ver'])) {
+} elseif (isset($_REQUEST['producto'])) {
     $_SESSION['controlador'] = $controladores['producto'];
     $_SESSION['pagina'] = 'Producto';
     $_SESSION['vista'] = $vistas['producto'];
