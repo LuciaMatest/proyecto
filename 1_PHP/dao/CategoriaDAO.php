@@ -33,22 +33,6 @@ class CategoriaDAO extends FactoryBD implements DAO
         }
     }
 
-    public static function findByName($nombre)
-    {
-        $sql = 'select * from categoria where nombre_categoria=?;';
-        $datos = array($nombre);
-        $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
-        if ($objeto) {
-            return $categoria = new Categoria(
-                $objeto->id_categoria,
-                $objeto->nombre_categoria
-            );
-        } else {
-            return 'No existe el categoria';
-        }
-    }
-
     public static function update($objeto)
     {
         $actualiza = 'update categoria set nombre_categoria=? where id_categoria=?;';
