@@ -6,14 +6,12 @@
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
     <form action="./index.php" method="post">
-        <button class="btn-back" name="volver" onclick="goBack()"><i class="bi bi-chevron-left"></i></button>
-    </form>
-    <div class="d-flex align-items-center justify-content-center">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 m-auto">
-                    <!-- Formulario -->
-                    <form action="./index.php" method="post">
+        <button class="btn-back" name="volver"><i class="bi bi-chevron-left"></i></button>
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 m-auto">
+                        <!-- Formulario -->
                         <div class="card shadow">
                             <div class="card-body">
                                 <h3 class="card-title text-center">Formulario de contacto</h3>
@@ -30,12 +28,12 @@
                                     <label for="mensaje">Mensaje:</label>
                                     <textarea class="form-control" id="mensaje" rows="5" placeholder="Ingresa tu mensaje"></textarea>
                                 </div>
-                                <a type="submit" class="btn btn-primary float-end">Enviar</a>
+                                <input type="submit" value="Enviar" name="enviar" class="btn btn-primary float-end">
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>

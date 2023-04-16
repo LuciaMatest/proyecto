@@ -1,3 +1,8 @@
+.proyect {
+	background-image: url(../recursos/fondo/central_proyectos.png);
+	background-position: center;
+}
+
 .categorias {
 	display: inline-flex;
 	align-items: center;
@@ -46,6 +51,10 @@
 	font-size: medium;
 	color: white;
 	margin-top: 20px;
+}
+
+.oculto {
+	display: none;
 }
 
 svg {

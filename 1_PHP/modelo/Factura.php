@@ -6,18 +6,14 @@ class Factura
     private $fecha_pago;
     private $fecha_factura;
     private $estado;
-    private $proyecto_id;
-    private $detalles_id;
 
-    public function __construct($id_factura, $nombre_factura, $fecha_pago, $fecha_factura, $estado, $proyecto_id, $detalles_id)
+    public function __construct($id_factura, $nombre_factura, $fecha_pago, $fecha_factura, $estado)
     {
         $this->id_factura = $id_factura;
         $this->nombre_factura = $nombre_factura;
         $this->fecha_pago = $fecha_pago;
         $this->fecha_factura = $fecha_factura;
         $this->estado = $estado;
-        $this->proyecto_id = $proyecto_id;
-        $this->detalles_id = $detalles_id;
     }
 
     public function __get($get)

@@ -6,15 +6,15 @@ require_once('./config/conexion.php');
 $controladores = array(
     'home' => './controlador/HomeController.php',
     'contacto' => './controlador/ContactoController.php',
-    'proyectos' => './controlador/ProyectosController.php',
+    'proyecto' => './controlador/ProyectoController.php',
+    'producto' => './controlador/ProductoController.php'
 );
 
 //Modelo
 require_once('./modelo/Archivo.php');
 require_once('./modelo/Categoria.php');
-require_once('./modelo/Detalles.php');
 require_once('./modelo/Factura.php');
-require_once('./modelo/Mensajes.php');
+require_once('./modelo/Mensaje.php');
 require_once('./modelo/Producto.php');
 require_once('./modelo/Proyecto.php');
 require_once('./modelo/Usuario.php');
@@ -24,7 +24,8 @@ $vistas = array(
     'layout' => './vista/layoutView.php',
     'home' => './vista/homeView.php',
     'contacto' => './vista/contactoView.php',
-    'proyectos' => './vista/proyectosView.php',
+    'proyecto' => './vista/proyectoView.php',
+    'producto' => './vista/productoView.php'
 );
 
 //Core

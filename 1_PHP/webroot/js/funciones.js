@@ -39,8 +39,13 @@ categorias.forEach((categoria) => {
     ilustracionesDiv.style.display = 'none';
     webDiv.style.display = 'none';
 
+    disenosDiv.classList.add("oculto");
+    ilustracionesDiv.classList.add("oculto");
+    webDiv.classList.add("oculto");
+
     const divToShow = document.querySelector(`#${target}`);
     divToShow.style.display = 'block';
+    categorias.classList.remove("oculto");
   });
 });
 
@@ -66,6 +71,8 @@ closeBtn.addEventListener('click', function() {
   closeBtn.removeEventListener('click');
 });
 
-function goBack() {
-  window.history.back();
+window.onload = function(){
+  if(window.location.href.indexOf('?enviado') > -1) {
+      alert('¡Mensaje enviado con éxito!');
+  }
 }
