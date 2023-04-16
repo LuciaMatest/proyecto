@@ -35,3 +35,5 @@ require_once('./core/funciones.php');
 require_once('./dao/DAO.php');
 require_once('./dao/FactoryBD.php');
 require_once('./dao/UsuarioDAO.php');
+require_once('./dao/CategoriaDAO.php');
+require_once('./dao/ProductoDAO.php');

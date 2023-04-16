@@ -45,6 +45,28 @@ class ProductoDAO extends FactoryBD implements DAO
         }
     }
 
+    public static function findByCate($id)
+    {
+        $sql = 'select * from producto where categoria_id=?;';
+        $datos = array($id);
+        $resultado = parent::ejecuta($sql, $datos);
+        $objeto = $resultado->fetchObject();
+        if ($objeto) {
+            return $producto = new Producto(
+                $objeto->id_producto,
+                $objeto->nombre_producto,
+                $objeto->descripcion_producto,
+                $objeto->imagen_producto,
+                $objeto->precio,
+                $objeto->cantidad,
+                $objeto->categoria_id,
+                $objeto->proyecto_id
+            );
+        } else {
+            return 'No existe el producto';
+        }
+    }
+
     public static function update($objeto)
     {
         $actualiza = 'update producto set nombre_producto=?,descripcion_producto=?,imagen_producto=?,precio=?,cantidad=?,categoria_id=?,proyecto_id=? where id_producto=?;';

@@ -6,21 +6,37 @@ class CategoriaDAO extends FactoryBD implements DAO
         $sql = 'select * from categoria;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayProducto = array();
+        $arrayCategoria = array();
         while ($objeto = $resultado->fetchObject()) {
             $categoria = new Categoria(
                 $objeto->id_categoria,
                 $objeto->nombre_categoria
             );
-            array_push($arrayProducto, $objeto);
+            array_push($arrayCategoria, $objeto);
         }
-        return $arrayProducto;
+        return $arrayCategoria;
     }
 
     public static function findById($id)
     {
         $sql = 'select * from categoria where id_categoria=?;';
         $datos = array($id);
+        $resultado = parent::ejecuta($sql, $datos);
+        $objeto = $resultado->fetchObject();
+        if ($objeto) {
+            return $categoria = new Categoria(
+                $objeto->id_categoria,
+                $objeto->nombre_categoria
+            );
+        } else {
+            return 'No existe el categoria';
+        }
+    }
+
+    public static function findByName($nombre)
+    {
+        $sql = 'select * from categoria where nombre_categoria=?;';
+        $datos = array($nombre);
         $resultado = parent::ejecuta($sql, $datos);
         $objeto = $resultado->fetchObject();
         if ($objeto) {

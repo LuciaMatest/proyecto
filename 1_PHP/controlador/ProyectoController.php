@@ -6,5 +6,5 @@ if (isset($_REQUEST['volver'])) {
     require_once $_SESSION['controlador'];
 } else {
     $array_categorias = CategoriaDAO::findAll();
-    $array_productos = ProductoDAO::findAll();
+    $array_productos = ProductoDAO::findByCate($_REQUEST['categoria_id']);
 }
