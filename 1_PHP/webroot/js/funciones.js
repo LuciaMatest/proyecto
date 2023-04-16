@@ -70,6 +70,6 @@ closeBtn.addEventListener('click', function() {
 });
 
 function goBack() {
-  window.history.back();
+  window.history.go(-1);
 }
 
