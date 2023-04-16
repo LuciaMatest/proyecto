@@ -1,6 +1,17 @@
-.proyect {
-	background-image: url(../recursos/diseño.jpg);
+.product {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../recursos/proyecto/diseno1.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.productTitle {
+	background-color: #115053;
+	color: white;
+}
+
+.productDesc {
+	max-width: 1700px;
 }
 
 .categorias {

@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./webroot/css/login.css">
     <link rel="stylesheet" href="./webroot/css/proyectos.css">
     <link rel="stylesheet" href="./webroot/css/contacto.css">
+    <link rel="stylesheet" href="./webroot/css/producto.css">
     <title><? echo $_SESSION['pagina']; ?></title>
 </head>
 
