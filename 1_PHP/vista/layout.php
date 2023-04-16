@@ -178,6 +178,24 @@
                                                             }
                                                             ?>
                                                         </div>
+                                                        <div class="form-group mt-2">
+                                                            <input type="password" class="form-style" placeholder="Repetir contraseña" name="contraseña2" id="contraseña2">
+                                                            <i class="input-icon bi bi-lock"></i>
+                                                            <?
+                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
+                                                            if (isset($_REQUEST['registrar'])) {
+                                                                if (vacio("contraseña2")) {
+                                                            ?>
+                                                                    <span style="color:brown"> Introduce contraseña</span>
+                                                                <?
+                                                                } elseif (!patronContraseña()) {
+                                                                ?>
+                                                                    <span style="color:brown"> Contraseña no válida, revise</span>
+                                                            <?
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </div>
                                                         <?
                                                         if (isset($_SESSION['error'])) {
                                                             echo $_SESSION['error'];
