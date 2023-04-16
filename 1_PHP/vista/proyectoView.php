@@ -1,6 +1,15 @@
 <div class="proyect">
     <section class="py-5 text-center container">
         <form action="./index.php" method="post">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="#">Categoría</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Producto</li>
+                    </ol>
+                </nav>
+            </div>
             <button class="btn-back pt-sm-5 pt-lg-0" name="volver"><i class="bi bi-chevron-left"></i></button>
             <div class="row pt-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -32,13 +41,15 @@
                         <?php foreach ($array_productos as $producto) : ?>
                             <?php if ($producto->categoria_id === $categoria->id_categoria) : ?>
                                 <div class="col my-3">
-                                    <div class="card shadow-sm my-3">
-                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
+                                    <div class="svg card shadow-sm my-3">
+                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img" name="productoSVG">
                                             <title><?php echo $producto->nombre_producto ?></title>
                                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/<?php echo $producto->imagen_producto ?>" preserveAspectRatio="xMidYMid slice" />
                                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                                             <text x="50%" y="50%" fill="white"><?php echo $producto->descripcion_producto ?></text>
                                         </svg>
+                                        <input type="hidden" name="id_producto" value="<? echo $producto->id_producto ?>">
+                                        <input type="submit" value="Ver" name="ver" class="btn btn-lg btn-block btn-primary">
                                     </div>
                                 </div>
                             <?php endif; ?>

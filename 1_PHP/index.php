@@ -15,7 +15,6 @@ if (isset($_REQUEST['home'])) {
     header('Location: index.php');
 } else {
     if (!isset($_SESSION['pagina'])) {
-        //si no tiene una vista home
         $_SESSION['controlador'] = $controladores['home'];
         $_SESSION['pagina'] = 'Home';
         $_SESSION['vista'] = $vistas['home'];

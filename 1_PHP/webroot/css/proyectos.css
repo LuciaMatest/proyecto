@@ -58,12 +58,12 @@
 	display: none;
 }
 
-svg {
+.svg {
 	transition: transform 0.5s ease-out;
 	border-radius: 6px;
 }
 
-svg:hover {
+.svg:hover {
 	transform: scale(1.1);
 	cursor: pointer;
 }
@@ -72,16 +72,15 @@ svg:hover {
 	opacity: .8;
 }
 
-svg.primero>text {
-	font-size: x-large;
-	font-weight: bold;
-}
-
 .negro {
 	opacity: .5;
 }
 
-.album{
+.svg-container {
+	position: relative;
+}
+
+.album {
 	margin-top: 3%;
 }
 
