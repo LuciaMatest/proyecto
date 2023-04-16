@@ -44,7 +44,104 @@
         </div>
     </section>
 
-    <section class="row">
+    <section class="row row-cols-1 py-4">
+        <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="400px" role="img" name="productoSVG">
+                    <title>titulo</title>
+                    <image x="0" y="0" width="100%" height="100%" xlink:href="" preserveAspectRatio="xMidYMid slice" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-right d-flex justify-content-end pb-3">
+                    <a class="me-1" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#e33c13" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+                        </svg>
+                    </a>
+                    <a href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="#e33c13">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="img/sp1.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">Fútbol</h4>
+                                            </div>
+
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="img/sp2.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">Baloncesto</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="img/sp3.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">Tenis</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3 ">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="img/sp4.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">Yoga</h4>
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="img/sp5.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">Running</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280" src="img/sp6.jpg">
+                                            <div class="card-body">
+                                                <h4 class="card-title text-center">Skateboard</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row py-4">
         <div class="col-md-8">
             <div class="row featurette">
                 <div class="col-md-7 order-md-2">
@@ -173,106 +270,6 @@
                                 <rect width="100%" height="100%" fill="#eee" />
                                 <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
                             </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="row row-cols-1 mt-4">
-        <div class="col">
-            <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="400px" role="img" name="productoSVG">
-                    <title>titulo</title>
-                    <image x="0" y="0" width="100%" height="100%" xlink:href="" preserveAspectRatio="xMidYMid slice" />
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <section class="pt-5 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <h3 class="mb-3">Filtrar por deporte</h3>
-                </div>
-                <div class="col-6 text-right d-flex justify-content-end">
-                    <a class="me-1" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#e33c13" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
-                        </svg>
-                    </a>
-                    <a href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="#e33c13">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="img/sp1.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title text-center">Fútbol</h4>
-                                            </div>
-
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="img/sp2.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title text-center">Baloncesto</h4>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="img/sp3.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title text-center">Tenis</h4>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3 ">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="img/sp4.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title text-center">Yoga</h4>
-                                            </div>
-
-                                        </div>
-                                    </a>
-                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="img/sp5.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title text-center">Running</h4>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="col-12 col-md-4 col-sm-12 mb-3">
-                                        <div class="card">
-                                            <img class="img-fluid" alt="100%x280" src="img/sp6.jpg">
-                                            <div class="card-body">
-                                                <h4 class="card-title text-center">Skateboard</h4>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

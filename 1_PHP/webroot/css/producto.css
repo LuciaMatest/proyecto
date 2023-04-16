@@ -14,13 +14,6 @@
 	max-width: 1700px;
 }
 
-.textoProd {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
 .textoProd p {
 	font-size: large;
 	font-weight: lighter;
