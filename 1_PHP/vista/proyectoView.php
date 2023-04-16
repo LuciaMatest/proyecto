@@ -20,17 +20,16 @@
     </section>
 </div>
 
-<form action="./index.php" method="post">
+<!-- <form action="./index.php" method="post">
     <div id="disenos" class="album bg-light">
         <div class="container">
             <div class="row row-cols-1">
-                <!-- Tamaño para las imagenes de portada 1294x300 -->
                 <div class="col mt-5">
                     <div class="card shadow-sm my-3">
                         <a href="#" name="diseño">
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                                 <title>Ilustraciones</title>
-                                <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
+
                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                                 <text x="50%" y="50%" fill="white">"Diseño El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -42,7 +41,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -53,7 +51,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -64,7 +61,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -74,16 +70,14 @@
             </div>
         </div>
     </div>
-
+    
     <div id="ilustraciones" class="album bg-light oculto">
         <div class="container">
             <div class="row row-cols-1">
-                <!-- Tamaño para las imagenes de portada 1294x300 -->
                 <div class="col mt-5">
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"Ilustraciones El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -94,7 +88,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -105,7 +98,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -116,7 +108,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -130,12 +121,10 @@
     <div id="web" class="album bg-light oculto">
         <div class="container">
             <div class="row row-cols-1">
-                <!-- Tamaño para las imagenes de portada 1294x300 -->
                 <div class="col mt-5">
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"Web El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -146,7 +135,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -157,7 +145,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -168,7 +155,6 @@
                     <div class="card shadow-sm my-3">
                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img">
                             <title>Ilustraciones</title>
-                            <!-- <rect width="100%" height="100%" fill="#55595c"></rect> -->
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/diseño.jpg" preserveAspectRatio="xMidYMid slice" />
                             <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                             <text x="50%" y="50%" fill="white">"El mundo de la Tierra Media: Ilustraciones inspiradas en El Señor de los Anillos"</text>
@@ -178,14 +164,14 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
 <form action="./index.php" method="post">
     <? foreach ($array_categorias as $categoria) { ?>
         <div id="<? echo $categoria->nombre_categoria ?>" class="album bg-light">
             <div class="container">
                 <div class="row row-cols-1">
-                    <!-- Tamaño para las imagenes de portada 1294x300 -->
+
                     <? foreach ($array_productos as $producto) { ?>
                         <div class="col my-3">
                             <div class="card shadow-sm my-3">
