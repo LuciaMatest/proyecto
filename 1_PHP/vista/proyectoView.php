@@ -1,15 +1,6 @@
 <div class="proyect">
     <section class="py-5 text-center container">
         <form action="./index.php" method="post">
-            <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                        <li class="breadcrumb-item"><a href="#">Categoría</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Producto</li>
-                    </ol>
-                </nav>
-            </div>
             <button class="btn-back pt-sm-5 pt-lg-0" name="volver"><i class="bi bi-chevron-left"></i></button>
             <div class="row pt-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -49,7 +40,7 @@
                                             <text x="50%" y="50%" fill="white"><?php echo $producto->descripcion_producto ?></text>
                                         </svg>
                                         <input type="hidden" name="id_producto" value="<? echo $producto->id_producto ?>">
-                                        <input type="submit" value="Ver" name="ver" class="btn btn-lg btn-block btn-primary">
+                                        <input type="submit" value="Ver" name="ver" class="btn btn-lg btn-block btn-primary" style="display:none">
                                     </div>
                                 </div>
                             <?php endif; ?>
