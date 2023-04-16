@@ -4,4 +4,6 @@ if (isset($_REQUEST['volver'])) {
     $_SESSION['pagina'] = 'Home';
     $_SESSION['vista'] = $vistas['home'];
     require_once $_SESSION['controlador'];
-} 
+} else {
+    $array_productos = ProductoDAO::findAll();
+}

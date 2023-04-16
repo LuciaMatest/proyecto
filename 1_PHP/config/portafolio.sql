@@ -78,10 +78,12 @@ ALTER TABLE `archivo` ADD FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id
 
 ALTER TABLE `mensaje` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_usuario`);
 
-INSERT INTO categoria (nombre_categoria) VALUES('Ilustraciones');
-INSERT INTO categoria (nombre_categoria) VALUES('Diseño');
-INSERT INTO categoria (nombre_categoria) VALUES('Desarrollo web');
+INSERT INTO categoria (nombre_categoria) VALUES('disenos');
+INSERT INTO categoria (nombre_categoria) VALUES('ilustraciones');
+INSERT INTO categoria (nombre_categoria) VALUES('web');
 
 
 INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES ('ADMIN',656656565,'admin@gmail.com','admin', 0, 'admin');
 INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES('USER',666666666,'usuario1@gmail.com','usuario1', 0 ,'usuario');
+
+INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Diseño 1', '"El mundo de la Tierra Media: Ilustracion inspirada en El Señor de los Anillos"', 'diseno1.jpg', 99.99, 10, 1, null);
