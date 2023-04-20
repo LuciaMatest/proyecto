@@ -17,26 +17,25 @@
 //     } else {
 //         $_SESSION['error'] = '<span style="color:brown"> No se ha validado, compruebe </span>';
 //     }
-// } else {
-if (isset($_REQUEST['email_usuario'])) {
-    $email_usuario = $_REQUEST['email_usuario'];
-    $contrasena_usuario = $_REQUEST['contrasena_usuario'];
-    if (empty($email_usuario)) {
-        $_SESSION['error'] = '<span style="color:brown">Debe rellenar el email</span>';
-    }
-    if (empty($contrasena_usuario)) {
-        $_SESSION['error'] = '<span style="color:brown">Debe rellenar la contraseña</span>';
-    } else {
-        $usuario = UsuarioDAO::valida($email_usuario, $contrasena_usuario);
-        if ($usuario != null) {
-            $_SESSION['validado'] = true;
-            $_SESSION['email_usuario'] = $email_usuario;
-            $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
-            $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
-            $_SESSION['vista'] = $vistas['home'];
-            $_SESSION['controlador'] = $controladores['home'];
-            header('Location: ./index.php');
-        }
-    }
-}
+// } elseif (isset($_REQUEST['email_usuario'])) {
+//     $email_usuario = $_REQUEST['email_usuario'];
+//     $contrasena_usuario = $_REQUEST['contrasena_usuario'];
+//     if (empty($email_usuario)) {
+//         $_SESSION['error'] = '<span style="color:brown">Debe rellenar el email</span>';
+//     }
+//     if (empty($contrasena_usuario)) {
+//         $_SESSION['error'] = '<span style="color:brown">Debe rellenar la contraseña</span>';
+//     } else {
+//         $usuario = UsuarioDAO::valida($email_usuario, $contrasena_usuario);
+//         if ($usuario != null) {
+//             $_SESSION['validado'] = true;
+//             $_SESSION['email_usuario'] = $email_usuario;
+//             $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
+//             $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
+//             $_SESSION['vista'] = $vistas['home'];
+//             $_SESSION['controlador'] = $controladores['home'];
+//             header('Location: ./index.php');
+//         }
+//     }
+// }
 // }
