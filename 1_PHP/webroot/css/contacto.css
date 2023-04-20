@@ -4,7 +4,7 @@
   height: 100vh;
 }
 
-.fondo>div>div>div>div>form>.card {
+.fondo>form>div>div>div>div>.card {
   border: none;
   transform: translate(0%, 30%);
 }

@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['enviar'])) {
+if (isset($_REQUEST['enviar'])) {
 
     // Validar campos
     if (empty($_SESSION['nombre']) || empty($_SESSION['email']) || empty($_SESSION['mensaje'])) {
@@ -28,7 +28,16 @@ if (isset($_SESSION['enviar'])) {
     // Redirigir a la página de inicio
     header("Location: ./index.php");
     exit();
-} elseif (isset($_SESSION['volver'])) {
+
+} elseif (isset($_REQUEST['volver'])) {
+
+    // Definir la variable $previous_page
     $previous_page = isset($_SESSION['previous_page']) ? $_SESSION['previous_page'] : '';
     $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
+    
+} else {
+
+    // Definir la variable $previous_page
+    $previous_page = isset($_SESSION['previous_page']) ? $_SESSION['previous_page'] : '';
+    $_SESSION['previous_page'] = '';
 }
