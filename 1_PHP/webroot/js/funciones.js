@@ -68,3 +68,8 @@ closeBtn.addEventListener('click', function() {
   header.style.display = 'block';
   closeBtn.removeEventListener('click');
 });
+
+
+document.getElementById("volver").addEventListener("click", function(){
+  history.back();
+});
