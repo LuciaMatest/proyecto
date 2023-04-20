@@ -1,9 +1,7 @@
 <div class="product">
     <section class="py-5 text-center container">
         <form action="./index.php" method="post">
-            <span class="btn-back pt-sm-5 pt-lg-0" name="volver" onclick="goBack()" style="cursor:pointer;">
-                <i class="bi bi-chevron-left"></i>
-            </span>
+            <!-- BOTÓN VOLVER -->
         </form>
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
