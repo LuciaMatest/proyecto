@@ -4,6 +4,9 @@ if (isset($_REQUEST['ver'])) {
     $_SESSION['pagina'] = 'Proyectos';
     $_SESSION['vista'] = $vistas['proyecto'];
     require_once $_SESSION['controlador'];
-} else {
-    $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
+} elseif (isset($_REQUEST['contacto'])) {
+    $_SESSION['controlador'] = $controladores['contacto'];
+    $_SESSION['pagina'] = 'Contacto';
+    $_SESSION['vista'] = $vistas['contacto'];
+    require_once $_SESSION['controlador'];
 }
