@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./webroot/css/proyectos.css">
     <link rel="stylesheet" href="./webroot/css/contacto.css">
     <link rel="stylesheet" href="./webroot/css/producto.css">
+    <link rel="stylesheet" href="./webroot/css/privada.css">
     <title><? echo $_SESSION['pagina']; ?></title>
 </head>
 
