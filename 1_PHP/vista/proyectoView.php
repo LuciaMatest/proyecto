@@ -1,16 +1,10 @@
 <div class="proyect">
     <section class="py-5 text-center container">
         <form>
-            <button id="volver" class="btn-back pt-sm-5 pt-lg-0">
+            <span class="btn-back pt-sm-5 pt-lg-0" name="volver" onclick="goBack()" style="cursor:pointer;">
                 <i class="bi bi-chevron-left"></i>
-            </button>
+            </span>
         </form>
-        <button type="button" class="btn-back pt-sm-5 pt-lg-0" onClick="window.history.back();">
-            <i class="bi bi-chevron-left"></i>
-        </button>
-        <a href="#" onClick="window.history.go(-1); return false;" class="btn-back pt-sm-5 pt-lg-0">
-            <i class="bi bi-chevron-left"></i>
-        </a>
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="pro text-light">Proyectos</h1>
