@@ -52,6 +52,16 @@
                         <? } else {
                         ?>
                             <li class="nav-item">
+                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada" id="privada">
+                                    <i class="bi bi-person-fill-lock"></i>
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout" id="logout">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </li>
+                            <li class="nav-item">
                                 <span class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login" id="login">
                                     <i class="bi bi-person-circle"></i>
                                 </span>

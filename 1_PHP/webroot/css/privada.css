@@ -2,3 +2,23 @@
     max-height: calc(3 * 200px);
     overflow-y: auto;
 }
+
+.privadas {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .1s ease-in;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 24px;
+    height: 40px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 8px;
+    margin-top: 10px;
+}

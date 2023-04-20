@@ -1,11 +1,11 @@
-<div class="">
+<div class="product">
   <section class="py-5 text-center container">
     <form>
       <!-- BOTÓN VOLVER -->
     </form>
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="text-light"><? echo $_SESSION['nombre_usuario']; ?></h1>
+        <h1 class="text-light">Admin</h1>
         <a class="privadas" href="#" data-target="perfil">
           <i class="bi bi-person-gear"></i>
           <span>Perfil</span>

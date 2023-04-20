@@ -49,6 +49,32 @@ categorias.forEach((categoria) => {
   });
 });
 
+//Área privada
+//Cuando se pulse en una de las areas cada una mostrara el div correspondiente
+const perfilDiv = document.getElementById('perfil');
+const gestorDiv = document.getElementById('gestor');
+const chatDiv = document.getElementById('chat');
+
+const privadas = document.querySelectorAll('.privadas');
+
+privadas.forEach((categoria) => {
+  categoria.addEventListener('click', (evento) => {
+    const target = evento.currentTarget.getAttribute('data-target');
+
+    perfilDiv.style.display = 'none';
+    gestorDiv.style.display = 'none';
+    chatDiv.style.display = 'none';
+
+    perfilDiv.classList.add("oculto");
+    gestorDiv.classList.add("oculto");
+    chatDiv.classList.add("oculto");
+
+    const divToShow = document.querySelector(`#${target}`);
+    divToShow.style.display = 'block';
+    privadas.classList.remove("oculto");
+  });
+});
+
 //Login - Sign in
 //Cuando pulsemos el boton de loguearse aparecera una ventana emergente con un boton para cerrarlo
 const formBtn = document.getElementById("login");
