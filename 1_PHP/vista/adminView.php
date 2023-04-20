@@ -182,7 +182,7 @@
                   </div>
                 </div>
 
-                <div class="collapse" id="home-collapse" style="">
+                <div class="collapse" id="home-collapse">
                   <div class="container mt-4">
                     <form>
                       <div class="mb-2">
@@ -219,7 +219,7 @@
                   </div>
                 </div>
 
-                <div class="collapse" id="home-collapse" style="">
+                <div class="collapse" id="home-collapse">
                   <div class="container mt-4">
                     <form>
                       <div class="mb-2">
@@ -256,7 +256,7 @@
                   </div>
                 </div>
 
-                <div class="collapse" id="home-collapse" style="">
+                <div class="collapse" id="home-collapse">
                   <div class="container mt-4">
                     <form>
                       <div class="mb-2">
