@@ -8,11 +8,6 @@
     <section id="section1">
         <div class="background">
             <div class="text-center">
-                <?php
-                if (estaValidado()) {
-                    echo "<p>Bienvenido"?> <? echo $_SESSION['nombre_usuario']; ?><?"</p>";
-                }
-                ?>
                 <img src="webroot/recursos/home.png" alt="home" class="home rounded mx-auto d-block">
                 <img src="webroot/recursos/pru.png" alt="person" class="person">
             </div>
