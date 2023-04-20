@@ -28,7 +28,7 @@ if (isset($_SESSION['enviar'])) {
     // Redirigir a la página de inicio
     header("Location: ./index.php");
     exit();
-} else {
+} elseif (isset($_SESSION['volver'])) {
     $previous_page = isset($_SESSION['previous_page']) ? $_SESSION['previous_page'] : '';
     $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 }
