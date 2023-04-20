@@ -275,124 +275,14 @@
 
   <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
-    <h5 class="font-weight-bold mb-3 text-center text-lg-start">Clientes</h5>
-
     <div class="card">
-      <div class="card-body">
-
-        <ul class="list-unstyled mb-0">
-          <li class="my-2">
-            <div class="container">
-              <div class="row align-items-center justify-content-between">
-                <div class="col-auto">
-                  <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                  <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
-                </div>
-                <div class="col-auto">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Editar</button>
-                  <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="collapse" id="home-collapse" style="">
-              <div class="container mt-4">
-                <form>
-                  <div class="mb-2">
-                    <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-                  </div>
-                  <div class="mb-2">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                  </div>
-                  <div class="mb-2">
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                  </div>
-                  <div class="mb-2">
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme su contraseña">
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-toggle align-items-center rounded collapsed">Guardar cambios</button>
-                    <button class="btn btn-toggle align-items-center rounded collapsed">Cancelar</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </li>
-          <li class="my-2">
-            <div class="container">
-              <div class="row align-items-center justify-content-between">
-                <div class="col-auto">
-                  <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                  <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
-                </div>
-                <div class="col-auto">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Editar</button>
-                  <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="collapse" id="home-collapse" style="">
-              <div class="container mt-4">
-                <form>
-                  <div class="mb-2">
-                    <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-                  </div>
-                  <div class="mb-2">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                  </div>
-                  <div class="mb-2">
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                  </div>
-                  <div class="mb-2">
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme su contraseña">
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-toggle align-items-center rounded collapsed">Guardar cambios</button>
-                    <button class="btn btn-toggle align-items-center rounded collapsed">Cancelar</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </li>
-          <li class="my-2">
-            <div class="container">
-              <div class="row align-items-center justify-content-between">
-                <div class="col-auto">
-                  <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                  <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
-                </div>
-                <div class="col-auto">
-                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Editar</button>
-                  <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="collapse" id="home-collapse" style="">
-              <div class="container mt-4">
-                <form>
-                  <div class="mb-2">
-                    <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-                  </div>
-                  <div class="mb-2">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                  </div>
-                  <div class="mb-2">
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                  </div>
-                  <div class="mb-2">
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme su contraseña">
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-toggle align-items-center rounded collapsed">Guardar cambios</button>
-                    <button class="btn btn-toggle align-items-center rounded collapsed">Cancelar</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </li>
-        </ul>
+      <div class="card-body text-center">
+        <div class="list-unstyled ">
+          <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+          <h5 class="my-3">John Smith</h5>
+          <p class="text-muted mb-1">Full Stack Developer</p>
+          <p class="text-muted">Bay Area, San Francisco, CA</p>
+        </div>
       </div>
     </div>
   </div>
