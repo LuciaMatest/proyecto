@@ -37,12 +37,19 @@
                 <nav class="navbar-collapse">
                     <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0 d-flex flex-row flex-wrap">
                         <?php
-                        if (estaValidado()) {
-                            echo '<li class="nav-item"><button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada" id="privada">
-                    <i class="bi bi-person-circle"></i></button></li>';
-                            echo '<li class="nav-item"><button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout" id="logout">
-                    <i class="bi bi-x-circle"></i></button></li>';
-                        } else {
+                        if (estaValidado()) { ?>
+                            <li class="nav-item">
+                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada" id="privada">
+                                    <i class="bi bi-person-fill-lock"></i>
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout" id="logout">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </li>
+
+                        <? } else {
                         ?>
                             <li class="nav-item">
                                 <span class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login" id="login">
@@ -71,7 +78,7 @@
     </main>
 
     <!-- Formulario login y sign in -->
-    <div class="form-container">
+    <div id="login" class="form-container">
         <div class="form-background"></div>
         <div class="form-content">
             <form action="./index.php" method="post">
