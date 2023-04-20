@@ -93,7 +93,7 @@ class UsuarioDAO extends FactoryBD implements DAO
 
     public static function valida($user, $pass)
     {
-        $sql = 'select * from usuario where email_usuario=? and contrasena_usuario=?;';
+        $sql = 'select * from usuario where nombre_usuario=? and contrasena_usuario=?;';
         $passh = sha1($pass);
         $datos = array($user, $passh);
         $resultado = parent::ejecuta($sql, $datos);

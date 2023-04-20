@@ -99,11 +99,11 @@
                                                         <h4 class="mb-4 pb-3">Iniciar sesión</h4>
                                                         <div class="form-group">
                                                             <i class="input-icon bi bi-at"></i>
-                                                            <input type="email" class="form-style" id="email" name="email" placeholder="Email">
+                                                            <input type="email" class="form-style" id="email_usuario" name="email_usuario" placeholder="Email">
                                                         </div>
                                                         <div class="form-group mt-2">
-                                                            <input type="password" class="form-style" id="password" name="password" placeholder="Contraseña">
                                                             <i class="input-icon bi bi-lock"></i>
+                                                            <input type="password" class="form-style" id="contrasena_usuario" name="contrasena_usuario" placeholder="Contraseña">
                                                         </div>
                                                         <?
                                                         if (isset($_SESSION['error'])) {
