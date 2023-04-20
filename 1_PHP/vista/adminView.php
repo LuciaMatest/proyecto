@@ -88,7 +88,7 @@
   </div>
 </section>
 
-<section id="gestor">
+<section id="gestor" style="display: none;">
   <div class="d-flex justify-content-start">
     <button class="new btn btn-primary my-3 ml-3" name="nuevoProyecto">Nuevo proyecto</button>
   </div>
@@ -155,7 +155,7 @@
   </div>
 </section>
 
-<section id="chat">
+<section id="chat" style="display: none;">
   <div class="container py-5">
 
     <div class="row">
@@ -176,13 +176,13 @@
                       <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
                     </div>
                     <div class="col-auto">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Editar</button>
+                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cliente1" aria-expanded="false">Editar</button>
                       <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
                     </div>
                   </div>
                 </div>
 
-                <div class="collapse" id="home-collapse">
+                <div class="collapse" id="cliente1">
                   <div class="container mt-4">
                     <form>
                       <div class="mb-2">
@@ -213,13 +213,13 @@
                       <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
                     </div>
                     <div class="col-auto">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Editar</button>
+                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cliente2" aria-expanded="false">Editar</button>
                       <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
                     </div>
                   </div>
                 </div>
 
-                <div class="collapse" id="home-collapse">
+                <div class="collapse" id="cliente2">
                   <div class="container mt-4">
                     <form>
                       <div class="mb-2">
@@ -250,13 +250,13 @@
                       <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
                     </div>
                     <div class="col-auto">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Editar</button>
+                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cliente3" aria-expanded="false">Editar</button>
                       <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
                     </div>
                   </div>
                 </div>
 
-                <div class="collapse" id="home-collapse">
+                <div class="collapse" id="cliente3">
                   <div class="container mt-4">
                     <form>
                       <div class="mb-2">

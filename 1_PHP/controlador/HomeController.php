@@ -12,9 +12,14 @@ if (isset($_REQUEST['ver'])) {
     $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
     require_once $_SESSION['controlador'];
 } elseif (isset($_REQUEST['privada'])) {
-    $_SESSION['controlador'] = $controladores['admin'];
+    // $_SESSION['controlador'] = $controladores['admin'];
+    // $_SESSION['pagina'] = 'Área privada';
+    // $_SESSION['vista'] = $vistas['admin'];
+    // $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
+    // require_once $_SESSION['controlador'];
+    $_SESSION['controlador'] = $controladores['user'];
     $_SESSION['pagina'] = 'Área privada';
-    $_SESSION['vista'] = $vistas['admin'];
+    $_SESSION['vista'] = $vistas['user'];
     $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
     require_once $_SESSION['controlador'];
 } 

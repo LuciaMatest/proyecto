@@ -1,11 +1,11 @@
-<div class="">
+<div class="product">
   <section class="py-5 text-center container">
     <form>
       <!-- BOTÓN VOLVER -->
     </form>
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="text-light"><? echo $_SESSION['nombre_usuario']; ?></h1>
+        <h1 class="text-light">Usuario<? //echo $_SESSION['nombre_usuario']; ?></h1>
         <a class="privadas" href="#" data-target="perfil">
           <i class="bi bi-person-gear"></i>
           <span>Perfil</span>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <p class="intro text-center justify-text">
-      Bienvenido/a a tu área privada <? echo $_SESSION["nombre_usuario"]; ?>, donde encontrarás todo lo que necesitas para mantener tus proyectos y comunicarte con el diseñador a cargo.
+      Bienvenido/a a tu área privada <? //echo $_SESSION["nombre_usuario"]; ?>, donde encontrarás todo lo que necesitas para mantener tus proyectos y comunicarte con el diseñador a cargo.
       <br>Aquí encontrarás tu perfil, todos tus proyectos y un chat donde podrás contactarme directamente.
       <br>¡Explora y disfruta de tu experiencia!
     </p>
@@ -93,7 +93,7 @@
   </div>
 </section>
 
-<section id="gestor">
+<section id="gestor" style="display: none;">
   <div class="table-responsive" style="text-align: center;">
     <table class="table table-striped text-successtable-border border-light">
       <thead class="border-light">
@@ -147,7 +147,7 @@
   </div>
 </section>
 
-<section id="chat">
+<section id="chat" style="display: none;">
   <div class="container py-5">
 
     <div class="row">
