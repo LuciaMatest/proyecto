@@ -10,7 +10,7 @@
             <div class="text-center">
                 <?php
                 if (estaValidado()) {
-                    echo "<p>Bienvenido <? echo $_SESSION['nombre_usuario']; ?></p>";
+                    echo "<p>Bienvenido"?> <? echo $_SESSION['nombre_usuario']; ?><?"</p>";
                 }
                 ?>
                 <img src="webroot/recursos/home.png" alt="home" class="home rounded mx-auto d-block">
