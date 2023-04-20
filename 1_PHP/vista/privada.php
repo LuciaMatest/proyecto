@@ -148,5 +148,122 @@
 </section>
 
 <section id="gestor">
-
+    <?php if (esAdmin()) { ?>
+        <div class="d-flex justify-content-start">
+            <button class="new btn btn-primary my-3 ml-3">Nuevo proyecto</button>
+        </div>
+        <div class="table-responsive" style="text-align: center;">
+            <table class="table table-striped text-successtable-border border-light">
+                <thead class="border-light">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"><strong>Proyecto</strong></th>
+                    <th scope="col"><strong>Fecha</strong></th>
+                    <th scope="col"><strong>Cliente</strong></th>
+                    <th scope="col"><strong>Factura</strong></th>
+                    <th scope="col"><strong>-</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">1</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td>Pepe</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Editar</button>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row"> 2</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td>Pepe</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Editar</button>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">3</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td>Pepe</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Editar</button>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">4</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td>Pepe</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Editar</button>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <? } else {?>
+        <div class="table-responsive" style="text-align: center;">
+            <table class="table table-striped text-successtable-border border-light">
+                <thead class="border-light">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"><strong>Proyecto</strong></th>
+                    <th scope="col"><strong>Fecha</strong></th>
+                    <th scope="col"><strong>Factura</strong></th>
+                    <th scope="col"><strong>-</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">1</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row"> 2</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">3</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">4</th>
+                    <td>Ilustración familiar</td>
+                    <td>20/04/2023</td>
+                    <td><a href="#">enlace</a></td>
+                    <td>
+                        <button class="btn btn-primary mb-1">Archivos</button>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <? } ?>
+  </div>
 </section>
