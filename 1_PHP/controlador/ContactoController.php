@@ -1,9 +1,5 @@
 <?php
-if (isset($_SESSION['volver'])) {
-    $_SESSION['vista'] = $vistas['home'];
-    $_SESSION['controlador'] = $controladores['home'];
-    require_once $_SESSION['controlador'];
-} elseif (isset($_SESSION['enviar'])) {
+if (isset($_SESSION['enviar'])) {
 
     // Validar campos
     if (empty($_SESSION['nombre']) || empty($_SESSION['email']) || empty($_SESSION['mensaje'])) {
@@ -32,4 +28,7 @@ if (isset($_SESSION['volver'])) {
     // Redirigir a la página de inicio
     header("Location: ./index.php");
     exit();
+} else {
+    $previous_page = isset($_SESSION['previous_page']) ? $_SESSION['previous_page'] : '';
+    $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
 }

@@ -6,9 +6,9 @@
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
     <form action="./index.php" method="post">
-        <span class="btn-back pt-sm-5 pt-lg-0" name="volver" onclick="goBack()" style="cursor:pointer;">
+        <a href="<?php echo $previous_page; ?>" class="btn-back pt-sm-5 pt-lg-0">
             <i class="bi bi-chevron-left"></i>
-        </span>
+        </a>
         <div class="d-flex align-items-center justify-content-center">
             <div class="container-fluid">
                 <div class="row">
