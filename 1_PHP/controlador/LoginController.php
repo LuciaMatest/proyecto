@@ -21,10 +21,10 @@
 if (isset($_REQUEST['email_usuario'])) {
     $email_usuario = $_REQUEST['email_usuario'];
     $contrasena_usuario = $_REQUEST['contrasena_usuario'];
-    if (empty($user)) {
+    if (empty($email_usuario)) {
         $_SESSION['error'] = '<span style="color:brown">Debe rellenar el email</span>';
     }
-    if (empty($pass)) {
+    if (empty($contrasena_usuario)) {
         $_SESSION['error'] = '<span style="color:brown">Debe rellenar la contraseña</span>';
     } else {
         $usuario = UsuarioDAO::valida($email_usuario, $contrasena_usuario);
