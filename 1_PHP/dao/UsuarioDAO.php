@@ -65,12 +65,14 @@ class UsuarioDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = 'insert into usuario values (?,?,?,?,?,?)';
-        $objeto = (array)$objeto;
-        $datos = array();
-        foreach ($objeto as $att) {
-            array_push($datos, $att);
-        }
+        $inserta = "insert into usuario (nombre_usuario, telefono_usuario, email_usuario, contrasena_usuario, borrado_usuario) values (?,?,?,?,?)";
+        $datos = array(
+            $objeto->nombre_usuario,
+            $objeto->telefono_usuario,
+            $objeto->email_usuario,
+            $objeto->contrasena_usuario,
+            0
+        );
         $resultado = parent::ejecuta($inserta, $datos);
         if ($resultado->rowCount() == 0) {
             return false;
@@ -78,6 +80,7 @@ class UsuarioDAO extends FactoryBD implements DAO
             return true;
         }
     }
+
 
     public static function delete($id)
     {
@@ -91,11 +94,10 @@ class UsuarioDAO extends FactoryBD implements DAO
         }
     }
 
-    public static function valida($user, $pass)
+    public static function valida($email, $pass)
     {
         $sql = 'select * from usuario where email_usuario=? and contrasena_usuario=?;';
-        $passh = sha1($pass);
-        $datos = array($user, $passh);
+        $datos = array($email, $pass);
         $resultado = parent::ejecuta($sql, $datos);
         $objeto = $resultado->fetchObject();
         if ($objeto) {

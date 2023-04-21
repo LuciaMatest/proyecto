@@ -42,7 +42,7 @@
                 echo '<button type="button" class="btn btn-outline-primary ms-1">Cancelar</button>';
               } else {
               ?>
-                <button type="button" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-primary">Editar perfíl</button>
               <? } ?>
             </div>
           </div>

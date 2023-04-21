@@ -112,8 +112,8 @@
           <td>Pepe</td>
           <td><a href="#">enlace</a></td>
           <td>
-            <button class="btn btn-primary mb-1" name="editar">Editar</button>
-            <button class="btn btn-primary mb-1" name="archivos">Archivos</button>
+            <button class="btn btn-primary mb-1" name="editar"><i class="bi bi-pencil-square me-2"></i>Editar</button>
+            <button class="btn btn-primary mb-1" name="archivos"><i class="bi bi-file-earmark me-2"></i>Archivos</button>
           </td>
         </tr>
         <tr>
@@ -362,7 +362,7 @@
           <form>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Escribe un mensaje...">
-              <button class="btn btn-primary" type="submit">Enviar</button>
+              <button class="btn btn-primary" type="submit"><i class="bi bi-send me-2"></i>Enviar</button>
             </div>
           </form>
         </div>

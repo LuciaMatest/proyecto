@@ -5,7 +5,7 @@
         </form>
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="pro text-light">Proyectos</h1>
+                <h1 class="pro text-light">Categorías</h1>
                 <a class="categorias" href="#" data-target="disenos">
                     <i class="bi bi-bounding-box-circles"></i>
                     <span>Diseño gráfico</span>

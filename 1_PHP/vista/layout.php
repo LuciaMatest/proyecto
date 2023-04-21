@@ -39,36 +39,25 @@
                         <?php
                         if (estaValidado()) { ?>
                             <li class="nav-item">
-                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada" id="privada">
-                                    <i class="bi bi-person-fill-lock"></i>
+                                <button class="btn-outline-primary mx-2" name="privada" id="privada">
+                                    <i class="bi bi-person-fill-lock  me-2"></i> MI PERFIL
                                 </button>
                             </li>
                             <li class="nav-item">
-                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout" id="logout">
-                                    <i class="bi bi-x-circle"></i>
+                                <button class="btn-outline-primary" name="logout" id="logout">
+                                    <i class="bi bi-x-circle me-2"></i> CERRAR SESIÓN
                                 </button>
                             </li>
-
                         <? } else {
                         ?>
                             <li class="nav-item">
-                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Área privada" name="privada" id="privada">
-                                    <i class="bi bi-person-fill-lock"></i>
-                                </button>
-                            </li>
-                            <li class="nav-item">
-                                <button class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Logout" name="logout" id="logout">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
-                            </li>
-                            <li class="nav-item">
-                                <span class="popover btn-outline-primary mx-2" data-toggle="popover" data-content="Iniciar sesión/Registro" name="login" id="login">
-                                    <i class="bi bi-person-circle"></i>
+                                <span class="btn-outline-primary mx-2" name="login" id="login">
+                                    <i class="bi bi-person-circle me-2"></i> INICIAR SESIÓN / REGISTRO
                                 </span>
                             </li>
                             <li class="nav-item">
-                                <button class="popover btn-outline-primary" data-toggle="popover" data-content="Contacto" name="contacto" id="contacto">
-                                    <i class="bi bi-question-circle"></i>
+                                <button class="btn-outline-primary" name="contacto" id="contacto">
+                                    <i class="bi bi-question-circle me-2"></i> CONTACTO
                                 </button>
                             </li>
                         <?php
@@ -99,7 +88,7 @@
                             <div class="col-12 text-center align-self-center py-5">
                                 <div class="section pb-5 pt-5 pt-sm-2 text-center">
                                     <h6 class="mb-0 pb-3"><span>Iniciar sesión </span><span>Registrarse</span></h6>
-                                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                                    <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" value="1" />
                                     <label for="reg-log"></label>
                                     <div class="card-3d-wrap mx-auto">
                                         <div class="card-3d-wrapper">
@@ -115,12 +104,14 @@
                                                             <i class="input-icon bi bi-lock"></i>
                                                             <input type="password" class="form-style" id="contrasena_usuario" name="contrasena_usuario" placeholder="Contraseña">
                                                         </div>
-                                                        <?
-                                                        if (isset($_SESSION['error'])) {
-                                                            echo $_SESSION['error'];
-                                                            unset($_SESSION['error']);
-                                                        }
-                                                        ?>
+                                                        <div class="mt-2">
+                                                            <?
+                                                            if (isset($_SESSION['error'])) {
+                                                                echo $_SESSION['error'];
+                                                                unset($_SESSION['error']);
+                                                            }
+                                                            ?>
+                                                        </div>
                                                         <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
                                                     </div>
                                                 </div>
