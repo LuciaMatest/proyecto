@@ -6,11 +6,7 @@
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
     <form action="./index.php" method="post">
-        <div class="circle-wrapper">
-            <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver">
-            <i class="fas fa-arrow-left"></i>
-        </div>
-        <!-- <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver">s -->
+        <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver" value="Atrás">
         <!-- <a href="" class="btn-back pt-sm-5 pt-lg-0" name="volver">
             <i class="bi bi-chevron-left"></i>
         </a> -->
