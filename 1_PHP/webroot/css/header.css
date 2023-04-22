@@ -1,6 +1,7 @@
 * {
   font-family: 'Barlow Semi Condensed', sans-serif;
   box-sizing: border-box;
+  cursor: url('cursor_1.png'), auto;
 }
 
 body {
