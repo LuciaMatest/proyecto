@@ -1,11 +1,14 @@
 <div class="product">
   <section class="py-5 text-center container">
-    <form>
-      <!-- BOTÓN VOLVER -->
+    <form action="./index.php" method="post">
+      <a href="" class="btn-back pt-sm-5 pt-lg-0" name="volver">
+        <i class="bi bi-chevron-left"></i>
+      </a>
     </form>
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="text-light">Usuario<? //echo $_SESSION['nombre_usuario']; ?></h1>
+        <h1 class="text-light">Usuario<? //echo $_SESSION['nombre_usuario']; 
+                                      ?></h1>
         <a class="privadas" href="#" data-target="perfil">
           <i class="bi bi-person-gear"></i>
           <span>Perfil</span>
@@ -21,7 +24,8 @@
       </div>
     </div>
     <p class="intro text-center justify-text">
-      Bienvenido/a a tu área privada <? //echo $_SESSION["nombre_usuario"]; ?>, donde encontrarás todo lo que necesitas para mantener tus proyectos y comunicarte con el diseñador a cargo.
+      Bienvenido/a a tu área privada <? //echo $_SESSION["nombre_usuario"]; 
+                                      ?>, donde encontrarás todo lo que necesitas para mantener tus proyectos y comunicarte con el diseñador a cargo.
       <br>Aquí encontrarás tu perfil, todos tus proyectos y un chat donde podrás contactarme directamente.
       <br>¡Explora y disfruta de tu experiencia!
     </p>

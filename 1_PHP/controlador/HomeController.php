@@ -3,26 +3,22 @@ if (isset($_REQUEST['ver'])) {
     $_SESSION['controlador'] = $controladores['proyecto'];
     $_SESSION['pagina'] = 'Proyectos';
     $_SESSION['vista'] = $vistas['proyecto'];
-    $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
     require_once $_SESSION['controlador'];
 } elseif (isset($_REQUEST['contacto'])) {
     $_SESSION['controlador'] = $controladores['contacto'];
     $_SESSION['pagina'] = 'Contacto';
     $_SESSION['vista'] = $vistas['contacto'];
-    $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
     require_once $_SESSION['controlador'];
 } elseif (isset($_REQUEST['privada'])) {
     if (esAdmin()) {
         $_SESSION['controlador'] = $controladores['admin'];
         $_SESSION['pagina'] = 'Área privada - Admin';
         $_SESSION['vista'] = $vistas['admin'];
-        $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
         require_once $_SESSION['controlador'];
     } else {
         $_SESSION['controlador'] = $controladores['user'];
         $_SESSION['pagina'] = 'Área privada - Usuario';
         $_SESSION['vista'] = $vistas['user'];
-        $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
         require_once $_SESSION['controlador'];
     }
 } else {

@@ -1,7 +1,6 @@
 * {
   font-family: 'Barlow Semi Condensed', sans-serif;
   box-sizing: border-box;
-  cursor: url('cursor_1.png'), auto;
 }
 
 body {
@@ -49,6 +48,10 @@ header>div>div>.btn-group {
   background-color: transparent;
   border-color: transparent;
   color: #b3b3b3;
+}
+
+span{
+  cursor: pointer;
 }
 
 /* Cuando alguien pase por encima de los botones el ratón aparecerá un mensaje para saber que hace ese botón */

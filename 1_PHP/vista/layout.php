@@ -37,29 +37,33 @@
             <form action="./index.php" method="post">
                 <!-- Navigation-->
                 <nav class="navbar-collapse">
-                    <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0 d-flex flex-row flex-wrap">
+                    <ul class="btn-group navbar-nav ms-auto my-2 my-lg-0 d-flex flex-row flex-wrap align-items-center">
                         <?php
                         if (estaValidado()) { ?>
                             <li class="nav-item">
-                                <button class="btn-outline-primary mx-2" name="privada" id="privada">
-                                    <i class="bi bi-person-fill-lock  me-2"></i> MI PERFIL
+                                <button class="btn-outline-primary" name="privada" id="privada">
+                                    <i class="bi bi-person-fill-lock me-2"></i>
+                                    <span>Mi perfil</span>
                                 </button>
                             </li>
                             <li class="nav-item">
                                 <button class="btn-outline-primary" name="logout" id="logout">
-                                    <i class="bi bi-x-circle me-2"></i> CERRAR SESIÓN
+                                    <i class="bi bi-x-circle me-2"></i>
+                                    <span>Cerrar sesión</span>
                                 </button>
                             </li>
                         <? } else {
                         ?>
                             <li class="nav-item">
-                                <span class="btn-outline-primary mx-2" name="login" id="login">
-                                    <i class="bi bi-person-circle me-2"></i> INICIAR SESIÓN / REGISTRO
+                                <span class="btn-outline-primary d-flex align-items-center" name="login" id="login">
+                                    <i class="bi bi-person-circle me-2"></i>
+                                    <span>Iniciar Sesión / Registro</span>
                                 </span>
                             </li>
                             <li class="nav-item">
-                                <button class="btn-outline-primary" name="contacto" id="contacto">
-                                    <i class="bi bi-question-circle me-2"></i> CONTACTO
+                                <button class="btn btn-outline-primary d-flex align-items-center" name="contacto" id="contacto">
+                                    <i class="bi bi-question-circle me-2"></i>
+                                    <span>Contacto</span>
                                 </button>
                             </li>
                         <?php
@@ -244,6 +248,8 @@
         </footer>
     </div>
     <script src="./webroot/js/funciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

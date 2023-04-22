@@ -1,7 +1,9 @@
 <div class="proyect">
     <section class="py-5 text-center container">
-        <form>
-            <!-- BOTÓN VOLVER -->
+        <form action="./index.php" method="post">
+            <a href="" class="btn-back pt-sm-5 pt-lg-0" name="volver">
+                <i class="bi bi-chevron-left"></i>
+            </a>
         </form>
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">

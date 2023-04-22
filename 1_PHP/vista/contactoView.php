@@ -6,7 +6,7 @@
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
     <form action="./index.php" method="post">
-        <a href="<?php echo $previous_page; ?>" class="btn-back pt-sm-5 pt-lg-0" name="volver">
+        <a href="" class="btn-back pt-sm-5 pt-lg-0" name="volver">
             <i class="bi bi-chevron-left"></i>
         </a>
         <div class="d-flex align-items-center justify-content-center">

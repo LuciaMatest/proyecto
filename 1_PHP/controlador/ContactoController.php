@@ -1,7 +1,6 @@
 <?php
 if (isset($_REQUEST['volver'])) {
-    $previous_page = isset($_SESSION['previous_page']) ? $_SESSION['previous_page'] : '';
-    $_SESSION['previous_page'] = $_SERVER['REQUEST_URI'];
+
 } elseif (isset($_REQUEST['enviar'])) {
 
     // Validar campos
