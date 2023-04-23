@@ -153,11 +153,8 @@
 
 <section id="chat" style="display: none;">
   <div class="container py-5">
-
     <div class="row">
-
       <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
-
         <div class="card">
           <div class="card-body text-center">
             <div class="list-unstyled ">
@@ -173,33 +170,32 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <form>
-            <ul class="list-unstyled">
-              <?php foreach ($messages as $message) : ?>
+          <form form action="./index.php" method="post">
+            <?php foreach ($messages as $message) : ?>
+              <ul class="list-unstyled">
                 <li class="d-flex justify-content-between mb-4">
                   <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                   <div class="card">
                     <div class="card-header d-flex justify-content-between p-3">
-                      <p class="fw-bold mb-0"><?php echo $message['user']; ?></p>
+                      <p class="fw-bold mb-0"><?php echo $message->usuario_id ?></p>
                     </div>
                     <div class="card-body">
                       <p class="mb-0">
-                        <?php echo $message['content']; ?>
+                        <?php echo $message->descripcion_mensaje ?>
                       </p>
                     </div>
                   </div>
                 </li>
-              <?php endforeach; ?>
-            </ul>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Escribe un mensaje...">
-              <button class="btn btn-primary" type="submit" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</button>
-            </div>
+              </ul>
+              <div class="input-group">
+                <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
+                <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_id ?>">
+                <button class="btn btn-primary" type="submit" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</button>
+              </div>
+            <?php endforeach; ?>
           </form>
         </div>
       </div>
-
     </div>
-
   </div>
 </section>

@@ -309,7 +309,7 @@
             </ul>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Escribe un mensaje...">
-              <button class="btn btn-primary" type="submit"><i class="bi bi-send me-2"></i>Enviar</button>
+              <button class="btn btn-primary" type="submit" name="enviarMensajesAdmin" id="enviarMensajesAdmin"><i class="bi bi-send me-2"></i>Enviar</button>
             </div>
           </form>
         </div>

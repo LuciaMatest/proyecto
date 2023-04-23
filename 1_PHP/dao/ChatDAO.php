@@ -82,4 +82,5 @@ class ChatDAO extends FactoryBD implements DAO
             return true;
         }
     }
+
 }
