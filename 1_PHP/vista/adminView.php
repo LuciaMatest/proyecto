@@ -289,79 +289,24 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <ul class="list-unstyled">
-            <li class="d-flex justify-content-between mb-4">
-              <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">John Doe</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="d-flex justify-content-between mb-4">
-              <div class="card w-100">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">Lulú</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    laudantium.
-                  </p>
-                </div>
-              </div>
-              <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-            </li>
-            <li class="d-flex justify-content-between mb-4">
-              <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">John Doe</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="d-flex justify-content-between mb-4">
-              <div class="card w-100">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">Lulú</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    laudantium.
-                  </p>
-                </div>
-              </div>
-              <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-            </li>
-            <li class="d-flex justify-content-between mb-4">
-              <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-              <div class="card">
-                <div class="card-header d-flex justify-content-between p-3">
-                  <p class="fw-bold mb-0">John Doe</p>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
           <form>
+            <ul class="list-unstyled">
+              <?php foreach ($messages as $message) : ?>
+                <li class="d-flex justify-content-between mb-4">
+                  <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between p-3">
+                      <p class="fw-bold mb-0"><?php echo $message['user']; ?></p>
+                    </div>
+                    <div class="card-body">
+                      <p class="mb-0">
+                        <?php echo $message['content']; ?>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              <?php endforeach; ?>
+            </ul>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Escribe un mensaje...">
               <button class="btn btn-primary" type="submit"><i class="bi bi-send me-2"></i>Enviar</button>
