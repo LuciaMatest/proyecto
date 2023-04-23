@@ -52,7 +52,6 @@ CREATE TABLE usuario (
 CREATE TABLE mensaje (
   `id_mensaje` int PRIMARY KEY AUTO_INCREMENT,
   `descripcion_mensaje` varchar(255) NOT NULL,
-  `admin_mensaje` boolean NOT NULL,
   `fecha_mensaje` datetime,
   `usuario_id` int
 );
