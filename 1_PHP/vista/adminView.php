@@ -277,25 +277,40 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
           <form form action="./index.php" method="post">
             <ul class="list-unstyled">
               <?php foreach ($messages as $message) : ?>
-                <li class="d-flex justify-content-between mb-4">
-                  <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                  <div class="card">
-                    <div class="card-header d-flex justify-content-between p-3">
-                      <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                <?php if ($message->usuario_nombre === 'Lulú') : ?>
+                  <li class="d-flex justify-content-between mb-4">
+                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                    <div class="card w-100">
+                      <div class="card-header d-flex justify-content-between p-3">
+                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0">
+                          <?php echo $message->descripcion_mensaje ?>
+                        </p>
+                      </div>
                     </div>
-                    <div class="card-body">
-                      <p class="mb-0">
-                        <?php echo $message->descripcion_mensaje ?>
-                      </p>
+                  </li>
+                <?php else : ?>
+                  <li class="d-flex justify-content-between mb-4">
+                    <div class="card w-100">
+                      <div class="card-header d-flex justify-content-between p-3">
+                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0"><?php echo $message->descripcion_mensaje ?></p>
+                      </div>
                     </div>
-                  </div>
-                </li>
+                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                  </li>
+                <?php endif; ?>
               <?php endforeach; ?>
             </ul>
             <div class="input-group">
