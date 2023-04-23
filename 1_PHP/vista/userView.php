@@ -171,28 +171,42 @@
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
           <form form action="./index.php" method="post">
-            <?php foreach ($messages as $message) : ?>
-              <ul class="list-unstyled">
-                <li class="d-flex justify-content-between mb-4">
-                  <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                  <div class="card">
-                    <div class="card-header d-flex justify-content-between p-3">
-                      <p class="fw-bold mb-0"><?php echo $message->usuario_id ?></p>
+            <ul class="list-unstyled">
+              <?php foreach ($messages as $message) : ?>
+                <?php if ($message->usuario_nombre === 'Lulú') : ?>
+                  <li class="d-flex justify-content-between mb-4">
+                    <div class="card w-100">
+                      <div class="card-header d-flex justify-content-between p-3">
+                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0"><?php echo $message->descripcion_mensaje ?></p>
+                      </div>
                     </div>
-                    <div class="card-body">
-                      <p class="mb-0">
-                        <?php echo $message->descripcion_mensaje ?>
-                      </p>
+                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                  </li>
+                <?php else : ?>
+                  <li class="d-flex justify-content-between mb-4">
+                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                    <div class="card">
+                      <div class="card-header d-flex justify-content-between p-3">
+                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0">
+                          <?php echo $message->descripcion_mensaje ?>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
-              <div class="input-group">
-                <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
-                <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_id ?>">
-                <button class="btn btn-primary" type="submit" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</button>
-              </div>
-            <?php endforeach; ?>
+                  </li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </ul>
+            <div class="input-group">
+              <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
+              <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
+              <button class="btn btn-primary" type="submit" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</button>
+            </div>
           </form>
         </div>
       </div>

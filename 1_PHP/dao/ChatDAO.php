@@ -12,7 +12,7 @@ class ChatDAO extends FactoryBD implements DAO
                 $objeto->id_mensaje,
                 $objeto->descripcion_mensaje,
                 $objeto->fecha_mensaje,
-                $objeto->usuario_id
+                $objeto->usuario_nombre
             );
             array_push($arrayMensaje, $mensaje);
         }
@@ -30,7 +30,7 @@ class ChatDAO extends FactoryBD implements DAO
                 $objeto->id_mensaje,
                 $objeto->descripcion_mensaje,
                 $objeto->fecha_mensaje,
-                $objeto->usuario_id
+                $objeto->usuario_nombre
             );
         } else {
             $_SESSION['error'] = '<span style="color:brown"> No existe el mensaje</span>';
@@ -39,11 +39,11 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function update($objeto)
     {
-        $actualiza = 'update mensaje set descripcion_mensaje=?,fecha_mensaje=?,usuario_id=? where id_mensaje=?;';
+        $actualiza = 'update mensaje set descripcion_mensaje=?,fecha_mensaje=?,usuario_nombre=? where id_mensaje=?;';
         $datos = array(
             $objeto->descripcion_mensaje,
             $objeto->fecha_mensaje,
-            $objeto->usuario_id,
+            $objeto->usuario_nombre,
             $objeto->id_mensaje
         );
         $resultado = parent::ejecuta($actualiza, $datos);
@@ -56,11 +56,11 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = "insert into mensaje (descripcion_mensaje, fecha_mensaje, usuario_id) values (?,?,?)";
+        $inserta = "insert into mensaje (descripcion_mensaje, fecha_mensaje, usuario_nombre) values (?,?,?)";
         $datos = array(
             $objeto->descripcion_mensaje,
             $objeto->fecha_mensaje,
-            $objeto->usuario_id
+            $objeto->usuario_nombre
         );
         $resultado = parent::ejecuta($inserta, $datos);
         if ($resultado->rowCount() == 0) {

@@ -4,15 +4,15 @@ class Chat
     private $id_mensaje;
     private $descripcion_mensaje;
     private $fecha_mensaje;
-    private $usuario_id;
+    private $usuario_nombre;
 
 
-    public function __construct($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $usuario_id)
+    public function __construct($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $usuario_nombre)
     {
         $this->id_mensaje = $id_mensaje;
         $this->descripcion_mensaje = $descripcion_mensaje;
         $this->fecha_mensaje = $fecha_mensaje;
-        $this->usuario_id = $usuario_id;
+        $this->usuario_nombre = $usuario_nombre;
     }
 
     public function __get($get)

@@ -159,16 +159,11 @@
 
 <section id="chat" style="display: none;">
   <div class="container py-5">
-
     <div class="row">
-
       <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
-
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Clientes</h5>
-
         <div class="card">
           <div class="card-body">
-
             <ul class="list-unstyled mb-0">
               <li class="my-2">
                 <div class="container">
@@ -183,7 +178,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="collapse" id="cliente1">
                   <div class="container mt-4">
                     <form>
@@ -220,7 +214,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="collapse" id="cliente2">
                   <div class="container mt-4">
                     <form>
@@ -257,7 +250,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="collapse" id="cliente3">
                   <div class="container mt-4">
                     <form>
@@ -285,22 +277,21 @@
           </div>
         </div>
       </div>
-
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <form>
+          <form form action="./index.php" method="post">
             <ul class="list-unstyled">
               <?php foreach ($messages as $message) : ?>
                 <li class="d-flex justify-content-between mb-4">
                   <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                   <div class="card">
                     <div class="card-header d-flex justify-content-between p-3">
-                      <p class="fw-bold mb-0"><?php echo $message['user']; ?></p>
+                      <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
                     </div>
                     <div class="card-body">
                       <p class="mb-0">
-                        <?php echo $message['content']; ?>
+                        <?php echo $message->descripcion_mensaje ?>
                       </p>
                     </div>
                   </div>
@@ -308,14 +299,13 @@
               <?php endforeach; ?>
             </ul>
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Escribe un mensaje...">
+              <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
+              <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
               <button class="btn btn-primary" type="submit" name="enviarMensajesAdmin" id="enviarMensajesAdmin"><i class="bi bi-send me-2"></i>Enviar</button>
             </div>
           </form>
         </div>
       </div>
-
     </div>
-
   </div>
 </section>

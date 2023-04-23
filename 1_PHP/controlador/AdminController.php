@@ -1,16 +1,8 @@
 <?php
-if (isset($_REQUEST['enviarMensaje'])) {
-    if (empty($_REQUEST['descripcion_mensaje']) || empty($_REQUEST['usuario_id'])) {
-        echo "<script>alert('Por favor, complete todos los campos');</script>";
-        header("Location: ./index.php?page=chat");
-        exit();
-    }
-
-    $descripcion_mensaje = $_REQUEST['descripcion_mensaje'];
-    $usuario_id = $_REQUEST['usuario_id'];
-    $this->addMessage($descripcion_mensaje, $usuario_id);
-
-    // Redirigir a la página de inicio
-    header("Location: ./index.php");
-    exit();
+if (isset($_REQUEST['enviarMensajesAdmin'])) {
+    $messages = ChatDAO::findAll();
+    $nuevoMessage = new Chat(null, $_REQUEST['descripcion_mensaje'], date('Y-m-d'), $_REQUEST['usuario_nombre']);
+    ChatDAO::insert($nuevoMessage);
+} else {
+    $messages = ChatDAO::findAll();
 }
