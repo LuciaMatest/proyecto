@@ -44,7 +44,7 @@ CREATE TABLE usuario (
   `telefono_usuario` int NOT NULL,
   `email_usuario` varchar(255) NOT NULL,
   `contrasena_usuario` varchar(255) UNIQUE NOT NULL,
-  `borrado_usuario` boolean NOT NULL,
+  `borrado_usuario` boolean NOT NULL DEFAULT 0,
   `tipo_usuario` ENUM('usuario', 'admin') NOT NULL DEFAULT 'usuario'
 );
 
