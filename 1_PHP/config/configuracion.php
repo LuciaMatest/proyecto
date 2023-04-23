@@ -9,7 +9,8 @@ $controladores = array(
     'proyecto' => './controlador/ProyectoController.php',
     'producto' => './controlador/ProductoController.php',
     'admin' => './controlador/AdminController.php',
-    'user' => './controlador/UserController.php'
+    'user' => './controlador/UserController.php',
+    'chat' => './controlador/ChatController.php'
 );
 
 //Modelo
@@ -20,6 +21,7 @@ require_once('./modelo/Mensaje.php');
 require_once('./modelo/Producto.php');
 require_once('./modelo/Proyecto.php');
 require_once('./modelo/Usuario.php');
+require_once('./modelo/Chat.php');
 
 //Vista
 $vistas = array(
@@ -29,8 +31,8 @@ $vistas = array(
     'proyecto' => './vista/proyectoView.php',
     'producto' => './vista/productoView.php',
     'admin' => './vista/adminView.php',
-    'user' => './vista/userView.php'
-
+    'user' => './vista/userView.php',
+    'chat' => './controlador/chatView.php'
 );
 
 //Core
