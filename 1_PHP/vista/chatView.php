@@ -11,5 +11,5 @@
     <label for="message">Mensaje:</label>
     <input type="text" name="message" id="message" required>
     <br>
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Enviar" name="enviarMensaje" id="enviarMensaje">
 </form>
