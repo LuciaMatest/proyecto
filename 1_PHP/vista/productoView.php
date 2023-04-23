@@ -1,9 +1,7 @@
 <div class="product">
     <section class="py-5 text-center container">
         <form action="./index.php" method="post">
-            <a href="" class="btn-back pt-sm-5 pt-lg-0" name="volver">
-                <i class="bi bi-chevron-left"></i>
-            </a>
+            <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver" value="Atrás">
         </form>
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
