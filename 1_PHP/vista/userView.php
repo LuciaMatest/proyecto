@@ -5,7 +5,7 @@
     </form>
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="text-light">Usuario<? //echo $_SESSION['nombre_usuario']; 
+        <h1 class="text-light">Usuario<? echo $_SESSION['nombre_usuario']; 
                                       ?></h1>
         <a class="privadas" href="#" data-target="perfil">
           <i class="bi bi-person-gear"></i>
@@ -22,8 +22,7 @@
       </div>
     </div>
     <p class="intro text-center justify-text">
-      Bienvenido/a a tu área privada <? //echo $_SESSION["nombre_usuario"]; 
-                                      ?>, donde encontrarás todo lo que necesitas para mantener tus proyectos y comunicarte con el diseñador a cargo.
+      Bienvenido/a a tu área privada <? echo $_SESSION["nombre_usuario"]; ?>, donde encontrarás todo lo que necesitas para mantener tus proyectos y comunicarte con el diseñador a cargo.
       <br>Aquí encontrarás tu perfil, todos tus proyectos y un chat donde podrás contactarme directamente.
       <br>¡Explora y disfruta de tu experiencia!
     </p>
@@ -37,60 +36,80 @@
         <div class="card mb-4">
           <div class="card-body text-center">
             <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
-            <h5 class="my-3">John Smith</h5>
-            <div class="d-flex justify-content-center mb-2">
-              <? if (isset($_REQUEST['editar'])) {
-                echo '<button type="button" class="btn btn-outline-primary ms-1">Guardar</button>';
-                echo '<button type="button" class="btn btn-outline-primary ms-1">Cancelar</button>';
-              } else {
-              ?>
-                <button type="button" class="btn btn-primary">Editar perfíl</button>
-              <? } ?>
-            </div>
+            <h5 class="my-3"><? echo $usuario->$nombre_usuario?></h5>
+            <?php if (isset($_REQUEST['editar'])): ?>
+              <div class="d-flex justify-content-center mb-2">
+                <input type="submit" class="btn btn-outline-primary ms-1" name="guardarCambios">Guardar cambios</input>
+                <input type="submit" class="btn btn-outline-primary ms-1" onclick="location.reload()">Cancelar</input>
+              </div>
+            <?php else: ?>
+              <div class="d-flex justify-content-center mb-2">
+              <input type="submit" class="btn btn-outline-primary" name="editar">Editar perfíl</input>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Nombre</p>
+      <form action="./index.php" method="post">
+        <div class="datosUser col-lg-8">
+          <input type="hidden" name="nombre" value="<? echo $usuario->$nombre_usuario?>">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Nombre</p>
+                </div>
+                <div class="col-sm-9">
+                  <?php if (isset($_POST['editar'])): ?>
+                    <input type="text" class="form-control" name="nombre" value="<? echo $usuario->$nombre_usuario?>">
+                  <?php else: ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$nombre_usuario?></p>
+                  <?php endif; ?>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <?php if (isset($_POST['editar'])): ?>
+                    <input type="email" class="form-control" name="email" value="<? echo $usuario->$email_usuario?>">
+                  <?php else: ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$email_usuario?></p>
+                  <?php endif; ?>
+                </div>
               </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Teléfono</p>
+                </div>
+                <div class="col-sm-9">
+                  <?php if (isset($_POST['editar'])): ?>
+                    <input type="number" class="form-control" name="telefono" value="<? echo $usuario->$telefono_usuario?>">
+                  <?php else: ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$telefono_usuario?></p>
+                  <?php endif; ?>
+                </div>
               </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Teléfono</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(098) 765-4321</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Contraseña</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">*********</p>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Contraseña</p>
+                </div>
+                <div class="col-sm-9">
+                <?php if (isset($_POST['editar'])): ?>
+                    <input type="pass" class="form-control" name="contrasena" value="<? echo $usuario->$contrasena_usuario?>">
+                  <?php else: ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$contrasena_usuario?></p>
+                  <?php endif; ?>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>
@@ -104,46 +123,21 @@
           <th scope="col"><strong>Proyecto</strong></th>
           <th scope="col"><strong>Fecha</strong></th>
           <th scope="col"><strong>Factura</strong></th>
-          <th scope="col"><strong>-</strong></th>
+          <th scope="col"><strong>Acciones</strong></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row"> 2</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
+        <?php foreach ($proyectos as $index => $proyecto): ?>
+            <tr>
+              <th scope="row"><?php echo $index + 1 ?></th>
+              <td><?php echo $proyecto['nombre_proyecto'] ?></td>
+              <td><?php echo $proyecto['fecha_proyecto'] ?></td>
+              <td><a href="<?php echo $proyecto['factura_id'] ?>">Ver factura</a></td>
+              <td>
+                <button class="btn btn-primary mb-1">Archivos</button>
+              </td>
+            </tr>
+          <?php endforeach ?>
       </tbody>
     </table>
   </div>
@@ -157,9 +151,9 @@
           <div class="card-body text-center">
             <div class="list-unstyled ">
               <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">John Smith</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
-              <p class="text-muted">Bay Area, San Francisco, CA</p>
+              <h5 class="my-3">Lucía Mateos</h5>
+              <p class="text-muted mb-1">Ilustradora, diseñadora y desarrolladora web</p>
+              <p class="text-muted">L-V 9:00-14:00/17:00-20:00 <br> S-D 9:00-14:00</p>
             </div>
           </div>
         </div>
@@ -204,7 +198,7 @@
             <div class="input-group">
               <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
               <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
-              <button class="btn btn-primary" type="submit" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</button>
+              <input type="submit" class="btn btn-primary" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</input>
             </div>
           </form>
         </div>
