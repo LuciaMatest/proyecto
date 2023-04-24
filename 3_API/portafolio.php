@@ -10,5 +10,14 @@ if ($recurso) {
     if ($recurso[1] == 'producto') {
         $controlador = new ProductosControlador();
         $controlador->controlar();
+    } elseif ($recurso[1] == 'proyecto') {
+        $controlador = new ProductosControlador();
+        $controlador->controlar();
+    } elseif ($recurso[1] == 'archivos') {
+        $controlador = new ProductosControlador();
+        $controlador->controlar();
+    } elseif ($recurso[1] == 'producto') {
+        $controlador = new ProductosControlador();
+        $controlador->controlar();
     }
 }
