@@ -279,6 +279,22 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
+          <div id="messages-container">
+            <!-- Los mensajes se cargarán aquí mediante AJAX -->
+          </div>
+
+          <form id="message-form" action="./index.php" method="post">
+            <ul class="list-unstyled" id="messages-list">
+              <!-- Los mensajes se insertarán aquí mediante la función renderMessages -->
+            </ul>
+            <div class="input-group">
+              <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
+              <input type="hidden" name="usuario_id" id="usuario_id" value="<?php echo $user_id; ?>">
+              <button class="btn btn-primary" type="submit" name="enviarMensajesAdmin" id="enviarMensajesAdmin"><i class="bi bi-send me-2"></i>Enviar</button>
+            </div>
+          </form>
+
+
           <form form action="./index.php" method="post">
             <ul class="list-unstyled">
               <?php foreach ($messages as $message) : ?>
