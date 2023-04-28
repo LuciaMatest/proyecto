@@ -53,8 +53,9 @@ CREATE TABLE mensaje (
   `id_mensaje` int PRIMARY KEY AUTO_INCREMENT,
   `descripcion_mensaje` varchar(255) NOT NULL,
   `fecha_mensaje` datetime,
-  `usuario_nombre` varchar(255)
-);
+  `id_usuario_envia` int,
+  `id_usuario_recibe` int
+); 
 
 -- FACTURA
 CREATE TABLE factura (
@@ -75,7 +76,9 @@ ALTER TABLE `proyecto` ADD FOREIGN KEY (`factura_id`) REFERENCES `factura` (`id_
 
 ALTER TABLE `archivo` ADD FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id_proyecto`);
 
-ALTER TABLE `mensaje` ADD FOREIGN KEY (`usuario_nombre`) REFERENCES `usuario` (`nombre_usuario`);
+ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_envia`) REFERENCES `usuario` (`id_usuario`);
+
+ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_recibe`) REFERENCES `usuario` (`id_usuario`);
 
 INSERT INTO categoria (nombre_categoria) VALUES('disenos');
 INSERT INTO categoria (nombre_categoria) VALUES('ilustraciones');
@@ -89,4 +92,4 @@ INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, pr
 INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Ilustracion 1', '"En la Sala de los Menesteres Secretos, Harry descubre un lugar mágico lleno de tesoros y misterios que esperan ser explorados"', 'ilustracion1.jpg', 79.99, 3, 2, null);
 INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Web 1', '"El Doctor y su fiel TARDIS viajan por el tiempo y el espacio en una aventura intergaláctica"', 'web1.jpg', 45.90, 4, 3, null);
 
-INSERT INTO mensaje (descripcion_mensaje,fecha_mensaje,usuario_nombre) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.','2023-04-23 12:34:56', 'Lulú');
+INSERT INTO mensaje (descripcion_mensaje,fecha_mensaje,id_usuario_envia,id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.','2023-04-23 12:34:56', '1','2');

@@ -16,7 +16,6 @@ $controladores = array(
 require_once('./modelo/Archivo.php');
 require_once('./modelo/Categoria.php');
 require_once('./modelo/Factura.php');
-require_once('./modelo/Mensaje.php');
 require_once('./modelo/Producto.php');
 require_once('./modelo/Proyecto.php');
 require_once('./modelo/Usuario.php');
