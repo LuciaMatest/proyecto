@@ -12,7 +12,8 @@ class ChatDAO extends FactoryBD implements DAO
                 $objeto->id_mensaje,
                 $objeto->descripcion_mensaje,
                 $objeto->fecha_mensaje,
-                $objeto->usuario_nombre
+                $objeto->id_usuario_envia,
+                $objeto->id_usuario_recibe
             );
             array_push($arrayMensaje, $mensaje);
         }
@@ -30,7 +31,8 @@ class ChatDAO extends FactoryBD implements DAO
                 $objeto->id_mensaje,
                 $objeto->descripcion_mensaje,
                 $objeto->fecha_mensaje,
-                $objeto->usuario_nombre
+                $objeto->id_usuario_envia,
+                $objeto->id_usuario_recibe
             );
         } else {
             $_SESSION['error'] = '<span style="color:brown"> No existe el mensaje</span>';
@@ -39,12 +41,13 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function update($objeto)
     {
-        $actualiza = 'update mensaje set descripcion_mensaje=?,fecha_mensaje=?,usuario_nombre=? where id_mensaje=?;';
+        $actualiza = 'update mensaje set descripcion_mensaje=?,fecha_mensaje=?,id_usuario_envia=?,id_usuario_recibe=? where id_mensaje=?;';
         $datos = array(
-            $objeto->descripcion_mensaje,
-            $objeto->fecha_mensaje,
-            $objeto->usuario_nombre,
-            $objeto->id_mensaje
+                $objeto->id_mensaje,
+                $objeto->descripcion_mensaje,
+                $objeto->fecha_mensaje,
+                $objeto->id_usuario_envia,
+                $objeto->id_usuario_recibe
         );
         $resultado = parent::ejecuta($actualiza, $datos);
         if ($resultado->rowCount() == 0) {
@@ -56,7 +59,7 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = "insert into mensaje (descripcion_mensaje, fecha_mensaje, usuario_nombre) values (?,?,?)";
+        $inserta = "insert into mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) values (?,?,?,?)";
         $datos = array(
             $objeto->descripcion_mensaje,
             $objeto->fecha_mensaje,
