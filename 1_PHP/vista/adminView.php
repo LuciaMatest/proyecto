@@ -293,46 +293,6 @@
               <button class="btn btn-primary" type="submit" name="enviarMensajesAdmin" id="enviarMensajesAdmin"><i class="bi bi-send me-2"></i>Enviar</button>
             </div>
           </form>
-
-
-          <form form action="./index.php" method="post">
-            <ul class="list-unstyled">
-              <?php foreach ($messages as $message) : ?>
-                <?php if ($message->usuario_nombre === 'Lulú') : ?>
-                  <li class="d-flex justify-content-between mb-4">
-                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                    <div class="card w-100">
-                      <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
-                      </div>
-                      <div class="card-body">
-                        <p class="mb-0">
-                          <?php echo $message->descripcion_mensaje ?>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                <?php else : ?>
-                  <li class="d-flex justify-content-between mb-4">
-                    <div class="card w-100">
-                      <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
-                      </div>
-                      <div class="card-body">
-                        <p class="mb-0"><?php echo $message->descripcion_mensaje ?></p>
-                      </div>
-                    </div>
-                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                  </li>
-                <?php endif; ?>
-              <?php endforeach; ?>
-            </ul>
-            <div class="input-group">
-              <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
-              <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
-              <button class="btn btn-primary" type="submit" name="enviarMensajesAdmin" id="enviarMensajesAdmin"><i class="bi bi-send me-2"></i>Enviar</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>
