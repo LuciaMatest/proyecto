@@ -1,11 +1,13 @@
 <div class="product">
   <section class="py-5 text-center container">
     <form action="./index.php" method="post">
-      <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver" value="Atrás">
+      <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
+        <i class="flechaVolver bi bi-arrow-left-circle"></i>
+      </button>
     </form>
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="text-light">Usuario<? echo $_SESSION['nombre_usuario']; 
+        <h1 class="text-light">Usuario<? echo $_SESSION['nombre_usuario'];
                                       ?></h1>
         <a class="privadas" href="#" data-target="perfil">
           <i class="bi bi-person-gear"></i>
@@ -36,15 +38,15 @@
         <div class="card mb-4">
           <div class="card-body text-center">
             <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
-            <h5 class="my-3"><? echo $usuario->$nombre_usuario?></h5>
-            <?php if (isset($_REQUEST['editar'])): ?>
+            <h5 class="my-3"><? echo $usuario->$nombre_usuario ?></h5>
+            <?php if (isset($_REQUEST['editar'])) : ?>
               <div class="d-flex justify-content-center mb-2">
                 <input type="submit" class="btn btn-outline-primary ms-1" name="guardarCambios">Guardar cambios</input>
                 <input type="submit" class="btn btn-outline-primary ms-1" onclick="location.reload()">Cancelar</input>
               </div>
-            <?php else: ?>
+            <?php else : ?>
               <div class="d-flex justify-content-center mb-2">
-              <input type="submit" class="btn btn-outline-primary" name="editar">Editar perfíl</input>
+                <input type="submit" class="btn btn-outline-primary" name="editar">Editar perfíl</input>
               </div>
             <?php endif; ?>
           </div>
@@ -52,7 +54,7 @@
       </div>
       <form action="./index.php" method="post">
         <div class="datosUser col-lg-8">
-          <input type="hidden" name="nombre" value="<? echo $usuario->$nombre_usuario?>">
+          <input type="hidden" name="nombre" value="<? echo $usuario->$nombre_usuario ?>">
           <div class="card mb-4">
             <div class="card-body">
               <div class="row">
@@ -60,10 +62,10 @@
                   <p class="mb-0">Nombre</p>
                 </div>
                 <div class="col-sm-9">
-                  <?php if (isset($_POST['editar'])): ?>
-                    <input type="text" class="form-control" name="nombre" value="<? echo $usuario->$nombre_usuario?>">
-                  <?php else: ?>
-                    <p class="text-muted mb-0"><? echo $usuario->$nombre_usuario?></p>
+                  <?php if (isset($_POST['editar'])) : ?>
+                    <input type="text" class="form-control" name="nombre" value="<? echo $usuario->$nombre_usuario ?>">
+                  <?php else : ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$nombre_usuario ?></p>
                   <?php endif; ?>
                 </div>
               </div>
@@ -73,10 +75,10 @@
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <?php if (isset($_POST['editar'])): ?>
-                    <input type="email" class="form-control" name="email" value="<? echo $usuario->$email_usuario?>">
-                  <?php else: ?>
-                    <p class="text-muted mb-0"><? echo $usuario->$email_usuario?></p>
+                  <?php if (isset($_POST['editar'])) : ?>
+                    <input type="email" class="form-control" name="email" value="<? echo $usuario->$email_usuario ?>">
+                  <?php else : ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$email_usuario ?></p>
                   <?php endif; ?>
                 </div>
               </div>
@@ -86,10 +88,10 @@
                   <p class="mb-0">Teléfono</p>
                 </div>
                 <div class="col-sm-9">
-                  <?php if (isset($_POST['editar'])): ?>
-                    <input type="number" class="form-control" name="telefono" value="<? echo $usuario->$telefono_usuario?>">
-                  <?php else: ?>
-                    <p class="text-muted mb-0"><? echo $usuario->$telefono_usuario?></p>
+                  <?php if (isset($_POST['editar'])) : ?>
+                    <input type="number" class="form-control" name="telefono" value="<? echo $usuario->$telefono_usuario ?>">
+                  <?php else : ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$telefono_usuario ?></p>
                   <?php endif; ?>
                 </div>
               </div>
@@ -99,10 +101,10 @@
                   <p class="mb-0">Contraseña</p>
                 </div>
                 <div class="col-sm-9">
-                <?php if (isset($_POST['editar'])): ?>
-                    <input type="pass" class="form-control" name="contrasena" value="<? echo $usuario->$contrasena_usuario?>">
-                  <?php else: ?>
-                    <p class="text-muted mb-0"><? echo $usuario->$contrasena_usuario?></p>
+                  <?php if (isset($_POST['editar'])) : ?>
+                    <input type="pass" class="form-control" name="contrasena" value="<? echo $usuario->$contrasena_usuario ?>">
+                  <?php else : ?>
+                    <p class="text-muted mb-0"><? echo $usuario->$contrasena_usuario ?></p>
                   <?php endif; ?>
                 </div>
               </div>
@@ -127,17 +129,17 @@
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($proyectos as $index => $proyecto): ?>
-            <tr>
-              <th scope="row"><?php echo $index + 1 ?></th>
-              <td><?php echo $proyecto['nombre_proyecto'] ?></td>
-              <td><?php echo $proyecto['fecha_proyecto'] ?></td>
-              <td><a href="<?php echo $proyecto['factura_id'] ?>">Ver factura</a></td>
-              <td>
-                <button class="btn btn-primary mb-1">Archivos</button>
-              </td>
-            </tr>
-          <?php endforeach ?>
+        <?php foreach ($proyectos as $index => $proyecto) : ?>
+          <tr>
+            <th scope="row"><?php echo $index + 1 ?></th>
+            <td><?php echo $proyecto['nombre_proyecto'] ?></td>
+            <td><?php echo $proyecto['fecha_proyecto'] ?></td>
+            <td><a href="<?php echo $proyecto['factura_id'] ?>">Ver factura</a></td>
+            <td>
+              <button class="btn btn-primary mb-1">Archivos</button>
+            </td>
+          </tr>
+        <?php endforeach ?>
       </tbody>
     </table>
   </div>

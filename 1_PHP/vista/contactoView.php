@@ -6,10 +6,9 @@
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
     <form action="./index.php" method="post">
-        <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver" value="Atrás">
-        <!-- <a href="" class="btn-back pt-sm-5 pt-lg-0" name="volver">
-            <i class="bi bi-chevron-left"></i>
-        </a> -->
+        <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
+            <i class="flechaVolver bi bi-arrow-left-circle"></i>
+        </button>
         <div class="d-flex align-items-center justify-content-center">
             <div class="container-fluid">
                 <div class="row">

@@ -17,22 +17,42 @@ main section h2 {
   height: 100vh;
 }
 
-#section1>.background>div>.home {
+#section1>.background>div>div>.home {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   width: 28%;
-  margin-top: 30px;
+  margin-top: 45px;
 }
 
-#section1>.background>div>.person {
+#section1>.background>div>div>.person {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-90%, -50%);
   width: 50%;
+}
+
+#homeText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#homeConte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.bienvenida {
+  position: absolute;
+  top: 10%;
+  color: white;
+  font-weight: bolder;
 }
 
 /* Proyectos */
@@ -171,37 +191,16 @@ main section h2 {
 /* Botón para volver atras */
 .volver {
   position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  top: 90px;
-  left: 62px;
-  background-color: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: #115053;
+  left: 70px;
   cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
 }
 
-.volver::before {
-  position: absolute;
-  display: block;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  color: #ffffff;
-  background-color: #115053;
-  content: "\f062";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 600;
-  z-index: 20;
-  top: -10px;
-  left: -10px;
-  line-height: 36px;
-  text-align: center;
-  font-size: 24px;
-  transition: all 0.5s ease;
-  transform: rotate(-20deg);
+.flechaVolver {
+  color: white;
+  font-size: 19px;
 }
 
 .pie {
@@ -226,7 +225,7 @@ main section h2 {
     background-size: auto;
   }
 
-  #section1>.background>div>.home {
+  #section1>.background>div>div>.home {
     width: 50%;
   }
 
@@ -238,7 +237,7 @@ main section h2 {
     width: 70%;
   }
 
-  #section1>.background>div>.person {
+  #section1>.background>div>div>.person {
     transform: translate(-97%, 0%);
     width: 60%;
   }
@@ -252,16 +251,23 @@ main section h2 {
     margin-top: 5px;
   }
 
+  .bienvenida {
+    top: 22%;
+  }
 }
 
 @media screen and (min-width: 740px) and (max-width: 1000px) {
 
-  #section1>.background>div>.home,
+  #section1>.background>div>div>.home,
   #section2>.background>div>div>.proyectos {
     width: 40%;
   }
 
   #section3>.background>div>.sobre {
     width: 70%;
+  }
+
+  .bienvenida {
+    top: 17%;
   }
 }

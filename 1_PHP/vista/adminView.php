@@ -1,11 +1,15 @@
 <div class="product">
   <section class="py-5 text-center container">
-    <form action="./index.php" method="post">
-      <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver" value="Atrás">
-    </form>
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="text-light">Admin</h1>
+        <div class="d-flex justify-content-center">
+          <form action="./index.php" method="post">
+            <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
+              <i class="flechaVolver bi bi-arrow-left-circle"></i>
+            </button>
+          </form>
+          <h1 class="text-light">Admin</h1>
+        </div>
         <a class="privadas" href="#" data-target="perfil">
           <i class="bi bi-person-gear"></i>
           <span>Perfil</span>
@@ -30,7 +34,7 @@
         <div class="card mb-4">
           <div class="card-body text-center">
             <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
-            <h5 class="my-3">John Smith</h5>
+            <h5 class="my-3"><? echo $_SESSION['nombre_usuario']; ?></h5>
             <div class="d-flex justify-content-center mb-2">
               <? if (isset($_REQUEST['editar'])) {
                 echo '<button type="button" class="btn btn-outline-primary ms-1">Guardar</button>';
@@ -279,18 +283,43 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <div id="messages-container">
-            <!-- Los mensajes se cargarán aquí mediante AJAX -->
-          </div>
-
-          <form id="message-form" action="./index.php" method="post">
-            <ul class="list-unstyled" id="messages-list">
-              <!-- Los mensajes se insertarán aquí mediante la función renderMessages -->
+          <form form action="./index.php" method="post">
+            <ul class="list-unstyled">
+              <?php foreach ($messages as $message) : ?>
+                <?php if ($message->usuario_nombre === 'Lulú') : ?>
+                  <li class="d-flex justify-content-between mb-4">
+                    <div class="card w-100">
+                      <div class="card-header d-flex justify-content-between p-3">
+                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0"><?php echo $message->descripcion_mensaje ?></p>
+                      </div>
+                    </div>
+                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                  </li>
+                <?php else : ?>
+                  <li class="d-flex justify-content-between mb-4">
+                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                    <div class="card w-100">
+                      <div class="card-header d-flex justify-content-between p-3">
+                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
+                      </div>
+                      <div class="card-body">
+                        <p class="mb-0">
+                          <?php echo $message->descripcion_mensaje ?>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                <?php endif; ?>
+                <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
+              <?php endforeach; ?>
             </ul>
             <div class="input-group">
               <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
-              <input type="hidden" name="usuario_id" id="usuario_id" value="<?php echo $user_id; ?>">
-              <button class="btn btn-primary" type="submit" name="enviarMensajesAdmin" id="enviarMensajesAdmin"><i class="bi bi-send me-2"></i>Enviar</button>
+              <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
+              <input type="submit" class="btn btn-primary" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</input>
             </div>
           </form>
         </div>

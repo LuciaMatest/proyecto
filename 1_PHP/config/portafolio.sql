@@ -80,9 +80,9 @@ ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_envia`) REFERENCES `usuario` 
 
 ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_recibe`) REFERENCES `usuario` (`id_usuario`);
 
-INSERT INTO categoria (nombre_categoria) VALUES('disenos');
-INSERT INTO categoria (nombre_categoria) VALUES('ilustraciones');
-INSERT INTO categoria (nombre_categoria) VALUES('web');
+INSERT INTO categoria (nombre_categoria) VALUES('Diseño');
+INSERT INTO categoria (nombre_categoria) VALUES('Ilustraciones');
+INSERT INTO categoria (nombre_categoria) VALUES('Web');
 
 
 INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES ('Lulú',656656565,'admin@gmail.com','admin', 0, 'admin');

@@ -1,8 +1,8 @@
 <?
 if (isset($_REQUEST['volver'])) {
-    $_SESSION['controlador'] = $controladores['home'];
-    $_SESSION['pagina'] = 'Home';
-    $_SESSION['vista'] = $vistas['home'];
+    $_SESSION['controlador'] = $controladores['proyecto'];
+    $_SESSION['pagina'] = 'Proyecto';
+    $_SESSION['vista'] = $vistas['proyecto'];
     require_once $_SESSION['controlador'];
 } elseif (isset($_REQUEST['contacto'])) {
     $_SESSION['controlador'] = $controladores['contacto'];

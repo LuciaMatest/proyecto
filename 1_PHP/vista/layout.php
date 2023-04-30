@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./webroot/css/main.css">
     <link rel="stylesheet" href="./webroot/css/loader.css">
     <link rel="stylesheet" href="./webroot/css/login.css">
-    <link rel="stylesheet" href="./webroot/css/proyectos.css">
+    <link rel="stylesheet" href="./webroot/css/proyecto.css">
     <link rel="stylesheet" href="./webroot/css/contacto.css">
     <link rel="stylesheet" href="./webroot/css/producto.css">
     <link rel="stylesheet" href="./webroot/css/privada.css">
@@ -86,7 +86,7 @@
     <div id="login" class="form-container">
         <div class="form-background"></div>
         <div class="form-content">
-            <form action="./index.php" method="post" id="logSig">
+            <form action="./index.php" method="post">
                 <a href="#" id="closeBtn"><i class="bi bi-x-lg"></i></a>
                 <div class="section">
                     <div class="container-fluid">
@@ -102,23 +102,30 @@
                                                 <div class="center-wrap">
                                                     <div class="section text-center">
                                                         <h4 class="mb-4 pb-3">Iniciar sesión</h4>
+                                                        <?
+                                                        if (isset($_SESSION['error'])) {
+                                                            echo $_SESSION['error'];
+                                                            unset($_SESSION['error']);
+                                                        }
+                                                        ?>
                                                         <div class="form-group">
                                                             <i class="input-icon bi bi-at"></i>
-                                                            <input type="email" class="form-style" id="email_usuario" name="email_usuario" placeholder="Email">
+                                                            <input type="email" class="form-style" id="email_usuario" name="email_usuario" placeholder="Email" value="<?php if (isset($_COOKIE['email_usuario'])) {
+                                                                                                                                                                            echo $_COOKIE['email_usuario'];
+                                                                                                                                                                        } ?>">
                                                         </div>
                                                         <div class="form-group mt-2">
                                                             <i class="input-icon bi bi-lock"></i>
                                                             <input type="password" class="form-style" id="contrasena_usuario" name="contrasena_usuario" placeholder="Contraseña">
                                                         </div>
                                                         <div class="mt-2">
-                                                            <?
-                                                            if (isset($_SESSION['error'])) {
-                                                                echo $_SESSION['error'];
-                                                                unset($_SESSION['error']);
-                                                            }
-                                                            ?>
+                                                            <!-- Al loguearse el usuario puede seleccionar recuerdame para que cuando cierre sesion se mantenga su nombre de usuario y solo tenga que escribir de nuevo la contraseña -->
+                                                            <input type="radio" id="recuerdame" name="recuerdame" <?php if (isset($_COOKIE['recuerdame'])) {
+                                                                echo 'checked';
+                                                            } ?> />
+                                                            <label for="recuerdame" class="text-light ms-2">Recuerdame</label>
                                                         </div>
-                                                        <input type="submit" value="Acceder" name="enviar" id="enviar" class="btn mt-4">
+                                                        <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,92 +137,106 @@
                                                             <?php
                                                             $placeholder = "Nombre completo";
                                                             $style = "";
+                                                            $iconStyle = "";
 
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("nombre")) {
                                                                     $placeholder = "Introduce nombre completo";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 }
                                                             }
                                                             ?>
                                                             <input type="text" class="form-style" placeholder="<?php echo $placeholder; ?>" name="nombre" id="nombre" style="<?php echo $style; ?>">
-                                                            <i class="input-icon bi bi-person"></i>
+                                                            <i class="input-icon bi bi-person" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
                                                         <div class="form-group mt-2">
                                                             <?php
                                                             $placeholder = "Teléfono";
                                                             $style = "";
+                                                            $iconStyle = "";
 
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("telefono")) {
                                                                     $placeholder = "Introduce teléfono";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 } elseif (!patronTelefono()) {
                                                                     $placeholder = "Teléfono no válido, revise";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 }
                                                             }
                                                             ?>
                                                             <input type="tel" class="form-style" placeholder="<?php echo $placeholder; ?>" name="telefono" id="telefono" style="<?php echo $style; ?>">
-                                                            <i class="input-icon bi bi-telephone"></i>
+                                                            <i class="input-icon bi bi-telephone" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
                                                         <div class="form-group mt-2">
                                                             <?php
                                                             $placeholder = "Email";
                                                             $style = "";
+                                                            $iconStyle = "";
 
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("email")) {
                                                                     $placeholder = "Introduce email";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 } elseif (!patronEmail()) {
                                                                     $placeholder = "Email no válida, revise";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 }
                                                             }
                                                             ?>
                                                             <input type="email" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="email" id="email">
-                                                            <i class="input-icon bi bi-at"></i>
+                                                            <i class="input-icon bi bi-at" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
                                                         <div class="form-group mt-2">
                                                             <?php
                                                             $placeholder = "Contraseña";
                                                             $style = "";
+                                                            $iconStyle = "";
 
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("contraseña")) {
                                                                     $placeholder = "Introduce contraseña";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 } elseif (!patronEmail()) {
                                                                     $placeholder = "Contraseña no válida, revise";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 }
                                                             }
                                                             ?>
                                                             <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña" id="contraseña">
-                                                            <i class="input-icon bi bi-lock"></i>
+                                                            <i class="input-icon bi bi-lock" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
                                                         <div class="form-group mt-2">
                                                             <?php
                                                             $placeholder = "Repetir contraseña";
                                                             $style = "";
+                                                            $iconStyle = "";
 
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("contraseña2")) {
                                                                     $placeholder = "Introduce contraseña";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 } elseif (!patronContraseña()) {
                                                                     $placeholder = "Contraseña no válida, revise";
                                                                     $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                    $iconStyle = "color: brown;";
                                                                 }
                                                             }
                                                             ?>
                                                             <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
-                                                            <i class="input-icon bi bi-lock"></i>
+                                                            <i class="input-icon bi bi-lock" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
                                                         <?
                                                         if (isset($_SESSION['error'])) {
@@ -223,7 +244,7 @@
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
-                                                        <input type="submit" value="Registrarse" name="registrar" id="registrar" class="btn mt-4">
+                                                        <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -243,7 +264,7 @@
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 my-2">
             <p class="col-md-4 mb-0">&copy; 2023 Código artístico</p>
 
-            <a href="#" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <a href="./index.php" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                 <img src="./webroot/recursos/logo_blanco.png" alt="logo">
             </a>
 

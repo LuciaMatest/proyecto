@@ -7,9 +7,14 @@
     <!-- Home -->
     <section id="section1">
         <div class="background">
-            <div class="text-center">
-                <img src="webroot/recursos/home.png" alt="home" class="home rounded mx-auto d-block">
-                <img src="webroot/recursos/pru.png" alt="person" class="person">
+            <div class="text-center" id="homeText">
+                <div class="contenido-centrado" id="homeConte">
+                    <?php if (estaValidado()) : ?>
+                        <h1 class="bienvenida">Bienvenido/a <? echo $_SESSION['nombre_usuario']; ?></h1>
+                    <?php endif; ?>
+                    <img src="webroot/recursos/home.png" alt="home" class="home rounded mx-auto d-block">
+                    <img src="webroot/recursos/pru.png" alt="person" class="person">
+                </div>
             </div>
         </div>
     </section>

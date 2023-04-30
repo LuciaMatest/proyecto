@@ -25,9 +25,9 @@ botones.forEach(boton => {
 
 //Categorias
 //Cuando se pulse en una de las categorias cada una mostrara el div correspondiente
-const disenosDiv = document.getElementById('disenos');
-const ilustracionesDiv = document.getElementById('ilustraciones');
-const webDiv = document.getElementById('web');
+const disenosDiv = document.getElementById('Diseño');
+const ilustracionesDiv = document.getElementById('Ilustraciones');
+const webDiv = document.getElementById('Web');
 
 const categorias = document.querySelectorAll('.categorias');
 
@@ -48,6 +48,7 @@ categorias.forEach((categoria) => {
     categorias.classList.remove("oculto");
   });
 });
+
 
 //Área privada
 //Cuando se pulse en una de las areas cada una mostrara el div correspondiente
@@ -94,70 +95,3 @@ closeBtn.addEventListener('click', function() {
   header.style.display = 'block';
   closeBtn.removeEventListener('click');
 });
-
-
-$(document).ready(function () {
-  // Carga los mensajes al cargar la página
-  fetchMessages();
-
-  // Envía el formulario y recarga los mensajes
-  $('#message-form').on('submit', function (e) {
-    e.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: './index.php',
-      data: $(this).serialize(),
-      success: function () {
-        fetchMessages();
-      },
-    });
-  });
-});
-
-function fetchMessages() {
-  $.ajax({
-    type: 'GET',
-    url: 'fetch_messages.php',
-    dataType: 'json',
-    success: function (messages) {
-      renderMessages(messages);
-    },
-  });
-}
-
-function renderMessages(messages) {
-  var messageList = $('#messages-container');
-  messageList.empty();
-
-  messages.forEach(function (message) {
-    if (message.usuario_nombre === 'Lulú') {
-      messageList.append(`
-        <li class="d-flex justify-content-between mb-4">
-          <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-          <div class="card w-100">
-            <div class="card-header d-flex justify-content-between p-3">
-              <p class="fw-bold mb-0">\${message.usuario_nombre}</p>
-            </div>
-            <div class="card-body">
-              <p class="mb-0">\${message.descripcion_mensaje}</p>
-            </div>
-          </div>
-        </li>
-      `)
-    } else {
-      messageList.append(`
-        <li class="d-flex justify-content-between mb-4">
-          <div class="card w-100">
-            <div class="card-header d-flex justify-content-between p-3">
-              <p class="fw-bold mb-0">\${message.usuario_nombre}</p>
-            </div>
-            <div class="card-body">
-              <p class="mb-0">\${message.descripcion_mensaje}</p>
-            </div>
-          </div>
-          <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-        </li>
-      `);
-    }
-  });
-}

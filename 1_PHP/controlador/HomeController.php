@@ -48,6 +48,17 @@ if (isset($_REQUEST['ver'])) {
         if (isset($_REQUEST['email_usuario'])) {
             $email = $_REQUEST['email_usuario'];
             $pass = $_REQUEST['contrasena_usuario'];
+
+            //Recuerdame
+            if (isset($_REQUEST["recuerdame"])) {
+                setcookie("email_usuario", $email);
+                setcookie("recuerdame", $email);
+            } else {
+                // Si no queremos seguir recordando
+                setcookie("email_usuario", $email, time() - 1);
+                setcookie("recuerdame", $email, time() - 1);
+            }
+
             if (empty($email)) {
                 $_SESSION['error'] = '<script>alert("Debe rellenar el email");</script>';
             }

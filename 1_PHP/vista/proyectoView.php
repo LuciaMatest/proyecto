@@ -1,22 +1,26 @@
 <div class="proyect">
     <section class="py-5 text-center container">
-        <form action="./index.php" method="post">
-            <input type="submit" class="volver btn-back pt-sm-5 pt-lg-0" name="volver" id="volver" value="Atrás">
-        </form>
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="pro text-light">Categorías</h1>
-                <a class="categorias" href="#" data-target="disenos">
+                <div class="d-flex justify-content-center">
+                    <form action="./index.php" method="post">
+                        <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
+                            <i class="flechaVolver bi bi-arrow-left-circle"></i>
+                        </button>
+                    </form>
+                    <h1 class="pro text-light">Categorías</h1>
+                </div>
+                <a class="categorias" href="#" data-target="Diseño">
                     <i class="bi bi-bounding-box-circles"></i>
                     <span>Diseño gráfico</span>
                 </a>
-                <a class="categorias" href="#" data-target="ilustraciones">
+                <a class="categorias" href="#" data-target="Ilustraciones">
                     <i class="bi bi-brush"></i>
                     <span>Ilustraciones</span>
                 </a>
-                <a class="categorias" href="#" data-target="web">
+                <a class="categorias" href="#" data-target="Web">
                     <i class="bi bi-pc-display-horizontal"></i>
-                    <span>Diseño web</span>
+                    <span>Desarrollo web</span>
                 </a>
             </div>
         </div>
@@ -28,6 +32,7 @@
     </section>
 </div>
 
+
 <form action="./index.php" method="post">
     <?php foreach ($array_categorias as $key => $categoria) : ?>
         <?php if ($key === 0) : ?>
@@ -36,7 +41,8 @@
                 <div id="<?php echo $categoria->nombre_categoria ?>" class="album" style="display: none;">
                 <?php endif; ?>
                 <div class="container">
-                    <div class="row row-cols-1">
+                    <div class="row row-cols-1 text-center">
+                        <h1><?php echo $categoria->nombre_categoria ?></h1>
                         <?php foreach ($array_productos as $producto) : ?>
                             <?php if ($producto->categoria_id === $categoria->id_categoria) : ?>
                                 <div class="col my-3">
