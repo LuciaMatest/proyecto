@@ -86,7 +86,7 @@
     <div id="login" class="form-container">
         <div class="form-background"></div>
         <div class="form-content">
-            <form action="./index.php" method="post">
+            <form action="./index.php" method="post" id="logSig">
                 <a href="#" id="closeBtn"><i class="bi bi-x-lg"></i></a>
                 <div class="section">
                     <div class="container-fluid">
@@ -118,7 +118,7 @@
                                                             }
                                                             ?>
                                                         </div>
-                                                        <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
+                                                        <input type="submit" value="Acceder" name="enviar" id="enviar" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,90 +127,95 @@
                                                     <div class="section text-center">
                                                         <h4 class="mb-3 pb-3">Registrarse</h4>
                                                         <div class="form-group">
-                                                            <input type="text" class="form-style" placeholder="Nombre completo" name="nombre" id="nombre">
-                                                            <i class="input-icon bi bi-person"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido
+                                                            <?php
+                                                            $placeholder = "Nombre completo";
+                                                            $style = "";
+
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("nombre")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce nombre completo</span>
-                                                            <?
+                                                                    $placeholder = "Introduce nombre completo";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 }
                                                             }
                                                             ?>
+                                                            <input type="text" class="form-style" placeholder="<?php echo $placeholder; ?>" name="nombre" id="nombre" style="<?php echo $style; ?>">
+                                                            <i class="input-icon bi bi-person"></i>
                                                         </div>
+
                                                         <div class="form-group mt-2">
-                                                            <input type="tel" class="form-style" placeholder="Teléfono" name="telefono" id="telefono">
-                                                            <i class="input-icon bi bi-telephone"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
+                                                            <?php
+                                                            $placeholder = "Teléfono";
+                                                            $style = "";
+
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("telefono")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce telefono</span>
-                                                                <?
+                                                                    $placeholder = "Introduce teléfono";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 } elseif (!patronTelefono()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Teléfono no válida, revise</span>
-                                                            <?
+                                                                    $placeholder = "Teléfono no válido, revise";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 }
                                                             }
                                                             ?>
+                                                            <input type="tel" class="form-style" placeholder="<?php echo $placeholder; ?>" name="telefono" id="telefono" style="<?php echo $style; ?>">
+                                                            <i class="input-icon bi bi-telephone"></i>
                                                         </div>
+
                                                         <div class="form-group mt-2">
-                                                            <input type="email" class="form-style" placeholder="Email" name="email" id="email">
-                                                            <i class="input-icon bi bi-at"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
+                                                            <?php
+                                                            $placeholder = "Email";
+                                                            $style = "";
+
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("email")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce email</span>
-                                                                <?
+                                                                    $placeholder = "Introduce email";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 } elseif (!patronEmail()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Email no válida, revise</span>
-                                                            <?
+                                                                    $placeholder = "Email no válida, revise";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 }
                                                             }
                                                             ?>
+                                                            <input type="email" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="email" id="email">
+                                                            <i class="input-icon bi bi-at"></i>
                                                         </div>
+
                                                         <div class="form-group mt-2">
-                                                            <input type="password" class="form-style" placeholder="Contraseña" name="contraseña" id="contraseña">
-                                                            <i class="input-icon bi bi-lock"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
+                                                            <?php
+                                                            $placeholder = "Contraseña";
+                                                            $style = "";
+
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("contraseña")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce contraseña</span>
-                                                                <?
-                                                                } elseif (!patronContraseña()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Contraseña no válida, revise</span>
-                                                            <?
+                                                                    $placeholder = "Introduce contraseña";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
+                                                                } elseif (!patronEmail()) {
+                                                                    $placeholder = "Contraseña no válida, revise";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 }
                                                             }
                                                             ?>
-                                                        </div>
-                                                        <div class="form-group mt-2">
-                                                            <input type="password" class="form-style" placeholder="Repetir contraseña" name="contraseña2" id="contraseña2">
+                                                            <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña" id="contraseña">
                                                             <i class="input-icon bi bi-lock"></i>
-                                                            <?
-                                                            //Si el campo está vacio hay que introducir dato requerido y si no cumple los requisitos se pide repetir intento
+                                                        </div>
+
+                                                        <div class="form-group mt-2">
+                                                            <?php
+                                                            $placeholder = "Repetir contraseña";
+                                                            $style = "";
+
                                                             if (isset($_REQUEST['registrar'])) {
                                                                 if (vacio("contraseña2")) {
-                                                            ?>
-                                                                    <span style="color:brown"> Introduce contraseña</span>
-                                                                <?
+                                                                    $placeholder = "Introduce contraseña";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 } elseif (!patronContraseña()) {
-                                                                ?>
-                                                                    <span style="color:brown"> Contraseña no válida, revise</span>
-                                                            <?
+                                                                    $placeholder = "Contraseña no válida, revise";
+                                                                    $style = "font-weight: bold; color: brown; background-color: white;";
                                                                 }
                                                             }
                                                             ?>
+                                                            <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
+                                                            <i class="input-icon bi bi-lock"></i>
                                                         </div>
                                                         <?
                                                         if (isset($_SESSION['error'])) {
@@ -218,7 +223,7 @@
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
-                                                        <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
+                                                        <input type="submit" value="Registrarse" name="registrar" id="registrar" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>

@@ -37,10 +37,10 @@ if (isset($_REQUEST['ver'])) {
                     $_SESSION['email'] = $usuario->email_usuario;
                     $_SESSION['contraseña'] = $usuario->contrasena_usuario;
                 } else {
-                    $_SESSION['error'] = '<span style="color:brown"> No se ha podido registrar </span>';
+                    $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
                 }
             } else {
-                $_SESSION['error'] = '<span style="color:brown"> No se ha validado, compruebe </span>';
+                $_SESSION['error'] = '<script>alert("No se ha validado, compruebe");</script>';
             }
         }
     } else {
@@ -49,10 +49,10 @@ if (isset($_REQUEST['ver'])) {
             $email = $_REQUEST['email_usuario'];
             $pass = $_REQUEST['contrasena_usuario'];
             if (empty($email)) {
-                $_SESSION['error'] = 'Debe rellenar el email';
+                $_SESSION['error'] = '<script>alert("Debe rellenar el email");</script>';
             }
             if (empty($pass)) {
-                $_SESSION['error'] = 'Debe rellenar la contraseña';
+                $_SESSION['error'] = '<script>alert("Debe rellenar la contraseña");</script>';
             } else {
                 $usuario = UsuarioDAO::valida($email, $pass);
                 if ($usuario != null) {
