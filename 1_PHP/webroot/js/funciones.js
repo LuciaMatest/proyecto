@@ -95,3 +95,38 @@ closeBtn.addEventListener('click', function() {
   header.style.display = 'block';
   closeBtn.removeEventListener('click');
 });
+
+
+$(document).ready(function() {
+  $("#contactForm").on("submit", function(e) {
+    e.preventDefault();
+
+    // Recopilar los datos del formulario
+    var nombre = $("#nombreContacto").val();
+    var email = $("#emailContacto").val();
+    var mensaje = $("#mensajeContacto").val();
+
+    // Preparar los datos para AJAX
+    var data = {
+      nombreContacto: nombre,
+      emailContacto: email,
+      mensajeContacto: mensaje
+    };
+
+    // Enviar los datos utilizando AJAX
+    $.ajax({
+      type: "POST",
+      url: "ruta/al/archivo/servidor.php", // Cambiar esta ruta al archivo de tu servidor que procesará los datos del formulario
+      data: data,
+      success: function(response) {
+        // Manejar la respuesta del servidor
+        alert("Mensaje enviado con éxito");
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        // Manejar errores
+        alert("Error al enviar el mensaje");
+      }
+    });
+  });
+});
+

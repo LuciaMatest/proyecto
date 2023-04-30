@@ -5,10 +5,7 @@
     <div class="position-fixed bottom-0 start-0">
         <img src="webroot/recursos/fondo/Capa5.png">
     </div>
-    <form action="./index.php" method="post">
-        <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
-            <i class="flechaVolver bi bi-arrow-left-circle"></i>
-        </button>
+    <form id="contactForm" method="post">
         <div class="d-flex align-items-center justify-content-center">
             <div class="container-fluid">
                 <div class="row">
@@ -16,21 +13,26 @@
                         <!-- Formulario -->
                         <div class="card shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-center">Formulario de contacto</h3>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver" style="left:23px;top: 23px;">
+                                        <i class="flechaVolver bi bi-arrow-left-circle text-dark"></i>
+                                    </button>
+                                    <h3 class="card-title text-center">Formulario de contacto</h3>
+                                </div>
                                 <p class="text-center mb-4">Si quieres contratar algón servicio no dudes en contactar conmigo!</p>
                                 <div class="form-group mb-3">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre">
+                                    <input type="text" class="form-control" id="nombreContacto" name="nombreContacto" placeholder="Ingresa tu nombre" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="email">Correo electrónico:</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
+                                    <input type="email" class="form-control" id="emailContacto" name="emailContacto" placeholder="Ingresa tu correo electrónico" required>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="mensaje">Mensaje:</label>
-                                    <textarea class="form-control" id="mensaje" rows="5" placeholder="Ingresa tu mensaje"></textarea>
+                                    <textarea class="form-control" id="mensajeContacto" name="mensajeContacto" rows="5" placeholder="Ingresa tu mensaje" required></textarea>
                                 </div>
-                                <input type="submit" value="Enviar" name="enviar" class="btn btn-primary float-end">
+                                <input type="submit" value="Enviar" name="enviarContacto" class="btn btn-primary float-end">
                             </div>
                         </div>
                     </div>
