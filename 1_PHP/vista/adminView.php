@@ -229,7 +229,7 @@
                           <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $usuario->nombre_usuario; ?></span>
                         </div>
                         <div class="col-auto">
-                          <button type="submit" class="transparent-button" name="verChat" id="verChat" data-id="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-chat-dots"></i></button>
+                          <button type="submit" class="transparent-button" name="verChat" id="verChat"><i class="bi bi-chat-dots"></i></button>
                           <button type="submit" class="transparent-button" name="editarUsuario" id="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $usuario->id_usuario; ?>" aria-expanded="false"><i class="bi bi-pencil-square me-2"></i></button>
                           <button type="submit" class="transparent-button" name="borrarUsuario" id="borrarUsuario"><i class="bi bi-trash3"></i></button>
                         </div>
@@ -312,22 +312,23 @@
 
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
-        <div class="chatMensaje chat-container d-flex flex-column" style="min-height: 400px;">
+        <div class="chat-container d-flex flex-column" style="min-height: 400px;">
           <form action="./index.php" method="post">
-            <?php
-            require_once('./config/conexion.php');
-            // Transacción
-            try {
-              $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
-              $sql = 'SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario ORDER BY fecha_mensaje ASC;';
-              $resultado = mysqli_query($conexion, $sql);
-              // Mostrar mensajes
-              if ($resultado->num_rows > 0) {
-                echo '<ul class="list-unstyled">';
-                while ($message = $resultado->fetch_object()) {
-                  $nombreUsuario = $message->nombre_usuario;
-                  if ($nombreUsuario === 'Lulú') {
-                    echo '<li class="d-flex justify-content-between mb-4">
+            <div id="chatMensaje">
+              <?php
+              require_once('./config/conexion.php');
+              // Transacción
+              try {
+                $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
+                $sql = 'SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario ORDER BY fecha_mensaje ASC;';
+                $resultado = mysqli_query($conexion, $sql);
+                // Mostrar mensajes
+                if ($resultado->num_rows > 0) {
+                  echo '<ul class="list-unstyled">';
+                  while ($message = $resultado->fetch_object()) {
+                    $nombreUsuario = $message->nombre_usuario;
+                    if ($nombreUsuario === 'Lulú') {
+                      echo '<li class="d-flex justify-content-between mb-4">
                     <div class="card w-100">
                     <div class="card-header d-flex justify-content-between p-3">
                     <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
@@ -338,8 +339,8 @@
                     </div>
                     <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                   </li>';
-                  } else {
-                    echo '<li class="d-flex justify-content-between mb-4">
+                    } else {
+                      echo '<li class="d-flex justify-content-between mb-4">
                     <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                       <div class="card w-100">
                         <div class="card-header d-flex justify-content-between p-3">
@@ -350,26 +351,27 @@
                         </div>
                       </div>
                     </li>';
+                    }
                   }
+                  echo '</ul>';
+                } else {
+                  echo "<p>No hay mensajes.</p>";
                 }
-                echo '</ul>';
-              } else {
-                echo "<p>No hay mensajes.</p>";
+                // Cerrar conexión
+                mysqli_close($conexion);
+              } catch (Exception $ex) {
+                if ($ex->getCode() == 2002) {
+                  echo '<span style="color:brown"> Fallo de conexión </span>';
+                }
+                if ($ex->getCode() == 1049) {
+                  echo '<span style="color:brown"> Base de datos desconocida </span>';
+                }
+                if ($ex->getCode() == 1045) {
+                  echo '<span style="color:brown"> Datos incorrectos </span>';
+                }
               }
-              // Cerrar conexión
-              mysqli_close($conexion);
-            } catch (Exception $ex) {
-              if ($ex->getCode() == 2002) {
-                echo '<span style="color:brown"> Fallo de conexión </span>';
-              }
-              if ($ex->getCode() == 1049) {
-                echo '<span style="color:brown"> Base de datos desconocida </span>';
-              }
-              if ($ex->getCode() == 1045) {
-                echo '<span style="color:brown"> Datos incorrectos </span>';
-              }
-            }
-            ?>
+              ?>
+            </div>
             <div class="input-group">
               <input type="text" class="form-control" id="messageInput" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
               <input type="submit" class="btn btn-primary" id="sendMessageBtn" name="enviarMensajesUser" value="Enviar">
