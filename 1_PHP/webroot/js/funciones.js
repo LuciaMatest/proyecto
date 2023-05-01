@@ -147,3 +147,5 @@ tipoSelect.addEventListener("change", function (event) {
     proyectoDiv.style.display = "block";
   }
 });
+
+//Chat

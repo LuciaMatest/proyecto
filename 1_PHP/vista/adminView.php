@@ -229,7 +229,7 @@
                           <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $usuario->nombre_usuario; ?></span>
                         </div>
                         <div class="col-auto">
-                          <button type="submit" class="transparent-button" name="verChat" id="verChat"><i class="bi bi-chat-dots"></i></button>
+                          <button type="submit" class="transparent-button" name="verChat" id="verChat" data-id="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-chat-dots"></i></button>
                           <button type="submit" class="transparent-button" name="editarUsuario" id="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $usuario->id_usuario; ?>" aria-expanded="false"><i class="bi bi-pencil-square me-2"></i></button>
                           <button type="submit" class="transparent-button" name="borrarUsuario" id="borrarUsuario"><i class="bi bi-trash3"></i></button>
                         </div>
@@ -312,7 +312,7 @@
 
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
-        <div class="chat-container d-flex flex-column" style="min-height: 400px;">
+        <div class="chatMensaje chat-container d-flex flex-column" style="min-height: 400px;">
           <form action="./index.php" method="post">
             <?php
             require_once('./config/conexion.php');
