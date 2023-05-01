@@ -49,7 +49,6 @@
         </div>
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
           <div class="datosUser col-lg-8">
-            <input type="hidden" name="id_usuario" value="<? echo $_SESSION['id_usuario']; ?>">
             <div class="card mb-4">
               <div class="card-body">
                 <div class="row">
@@ -57,10 +56,21 @@
                     <p class="mb-0">Nombre</p>
                   </div>
                   <div class="col-sm-9">
-                    <?php if (isset($_POST['editarPerfil'])) : ?>
-                      <input type="text" class="form-control campo-perfil" name="nombrePerfil" value="<? echo $_SESSION['nombre_usuario']; ?>">
+                    <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                      <input type="text" class="form-control campo-perfil" name="nombre" value="<? if ($_SESSION['accion'] == 'editar') {
+                                                                                                  echo $usuario->nombre_usuario;
+                                                                                                } ?>">
+                      <?
+                      if (isset($_REQUEST['guardarCambios'])) {
+                        if (vacio("nombre")) {
+                      ?>
+                          <span style="color:brown"> Introduce nombre</span>
+                      <?
+                        }
+                      }
+                      ?>
                     <?php else : ?>
-                      <p class="text-muted mb-0"><? echo $_SESSION['nombre_usuario']; ?></p>
+                      <input type="text" class="dato text-muted mb-0" name="nombre" value="<?php echo $_SESSION['nombre_usuario']; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -70,10 +80,25 @@
                     <p class="mb-0">Teléfono</p>
                   </div>
                   <div class="col-sm-9">
-                    <?php if (isset($_POST['editarPerfil'])) : ?>
-                      <input type="number" class="form-control campo-perfil" name="telefonoPerfil" value="<? echo $_SESSION['telefono_usuario']; ?>">
+                    <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                      <input type="number" class="form-control campo-perfil" name="telefono" value="<? if ($_SESSION['accion'] == 'editar') {
+                                                                                                      echo $usuario->telefono_usuario;
+                                                                                                    } ?>">
+                      <?
+                      if (isset($_REQUEST['guardarCambios'])) {
+                        if (vacio("telefono")) {
+                      ?>
+                          <span style="color:brown"> Introduce teléfono</span>
+                        <?
+                        } elseif (!patronTelefono()) {
+                        ?>
+                          <span style="color:brown"> Teléfono no válida, revise</span>
+                      <?
+                        }
+                      }
+                      ?>
                     <?php else : ?>
-                      <p class="text-muted mb-0"><? echo $_SESSION['telefono_usuario']; ?></p>
+                      <input type="text" class="dato text-muted mb-0" name="telefono" value="<?php echo $_SESSION['telefono_usuario']; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -83,10 +108,25 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <?php if (isset($_POST['editarPerfil'])) : ?>
-                      <input type="email" class="form-control campo-perfil" name="emailPerfil" value="<? echo $_SESSION['email_usuario']; ?>">
+                    <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                      <input type="email" class="form-control campo-perfil" name="email" value="<? if ($_SESSION['accion'] == 'editar') {
+                                                                                                  echo $usuario->email_usuario;
+                                                                                                } ?>">
+                      <?
+                      if (isset($_REQUEST['guardarCambios'])) {
+                        if (vacio("email")) {
+                      ?>
+                          <span style="color:brown"> Introduce correo</span>
+                        <?
+                        } elseif (!patronEmail()) {
+                        ?>
+                          <span style="color:brown"> Correo no válida, revise</span>
+                      <?
+                        }
+                      }
+                      ?>
                     <?php else : ?>
-                      <p class="text-muted mb-0"><? echo $_SESSION['email_usuario']; ?></p>
+                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $_SESSION['email_usuario']; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -96,10 +136,25 @@
                     <p class="mb-0">Contraseña</p>
                   </div>
                   <div class="col-sm-9">
-                    <?php if (isset($_POST['editarPerfil'])) : ?>
-                      <input type="password" class="form-control campo-perfil" name="contraseñaPerfil" value="<? echo $_SESSION['contrasena_usuario']; ?>">
+                    <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                      <input type="text" class="form-control campo-perfil" name="contraseña" value="<? if ($_SESSION['accion'] == 'editar') {
+                                                                                                      echo $usuario->contrasena_usuario;
+                                                                                                    } ?>">
+                      <?
+                      if (isset($_REQUEST['guardarCambios'])) {
+                        if (vacio("contraseña")) {
+                      ?>
+                          <span style="color:brown"> Introduce contraseña</span>
+                        <?
+                        } elseif (!patronContraseña()) {
+                        ?>
+                          <span style="color:brown"> Contraseña no válida, revise</span>
+                      <?
+                        }
+                      }
+                      ?>
                     <?php else : ?>
-                      <p class="text-muted mb-0"><? echo $_SESSION['contrasena_usuario']; ?></p>
+                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -113,9 +168,9 @@
 </section>
 
 <section id="gestor" style="display: none;">
-  <div class="d-flex justify-content-end me-5 my-3">
+  <div class="d-flex justify-content-end me-5 mt-3">
     <form action="./index.php" method="post">
-      <input type="submit" class="new btn btn-primary my-3 ml-3" name="nuevoProyecto" id="nuevoProyecto" value="Nuevo proyecto">
+      <input type="submit" class="new btn btn-primary" name="nuevoProyecto" id="nuevoProyecto" value="Nuevo proyecto">
     </form>
   </div>
   <div class="table-responsive" style="text-align: center;">
