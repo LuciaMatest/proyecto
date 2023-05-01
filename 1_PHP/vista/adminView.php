@@ -3,11 +3,9 @@
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <div class="d-flex justify-content-center">
-          <form action="./index.php" method="post">
-            <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
-              <i class="flechaVolver bi bi-arrow-left-circle"></i>
-            </button>
-          </form>
+          <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver1">
+            <i class="flechaVolver bi bi-arrow-left-circle"></i>
+          </button>
           <h1 class="text-light">Admin</h1>
         </div>
         <a class="privadas" href="#" data-target="perfil">
@@ -28,76 +26,100 @@
 </div>
 
 <section id="perfil">
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
-            <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
-            <h5 class="my-3"><? echo $_SESSION['nombre_usuario']; ?></h5>
-            <div class="d-flex justify-content-center mb-2">
-              <? if (isset($_REQUEST['editar'])) {
-                echo '<button type="button" class="btn btn-outline-primary ms-1">Guardar</button>';
-                echo '<button type="button" class="btn btn-outline-primary ms-1">Cancelar</button>';
-              } else {
-              ?>
-                <button type="button" class="btn btn-primary">Editar</button>
-              <? } ?>
+  <form action="./index.php" method="post">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
+              <h2 class="my-3"><? echo $_SESSION['nombre_usuario']; ?></h2>
+              <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                <div class="d-flex justify-content-center align-items-center mb-2">
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" id="guardarCambios" name="guardarCambios">Guardar cambios</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary ms-1" onclick="location.reload()">Cancelar</button>
+                </div>
+              <?php else : ?>
+                <div class="d-flex justify-content-center align-items-center mb-2">
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" id="editarPerfil" onclick="editarPerfil()">Editar perfíl</button>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Nombre</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Teléfono</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(098) 765-4321</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Contraseña</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">*********</p>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+          <div class="datosUser col-lg-8">
+            <input type="hidden" name="id_usuario" value="<? echo $_SESSION['id_usuario']; ?>">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Nombre</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <?php if (isset($_POST['editarPerfil'])) : ?>
+                      <input type="text" class="form-control campo-perfil" name="nombrePerfil" value="<? echo $_SESSION['nombre_usuario']; ?>">
+                    <?php else : ?>
+                      <p class="text-muted mb-0"><? echo $_SESSION['nombre_usuario']; ?></p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Teléfono</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <?php if (isset($_POST['editarPerfil'])) : ?>
+                      <input type="number" class="form-control campo-perfil" name="telefonoPerfil" value="<? echo $_SESSION['telefono_usuario']; ?>">
+                    <?php else : ?>
+                      <p class="text-muted mb-0"><? echo $_SESSION['telefono_usuario']; ?></p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <?php if (isset($_POST['editarPerfil'])) : ?>
+                      <input type="email" class="form-control campo-perfil" name="emailPerfil" value="<? echo $_SESSION['email_usuario']; ?>">
+                    <?php else : ?>
+                      <p class="text-muted mb-0"><? echo $_SESSION['email_usuario']; ?></p>
+                    <?php endif; ?>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Contraseña</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <?php if (isset($_POST['editarPerfil'])) : ?>
+                      <input type="password" class="form-control campo-perfil" name="contraseñaPerfil" value="<? echo $_SESSION['contrasena_usuario']; ?>">
+                    <?php else : ?>
+                      <p class="text-muted mb-0"><? echo $_SESSION['contrasena_usuario']; ?></p>
+                    <?php endif; ?>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </section>
 
 <section id="gestor" style="display: none;">
-  <div class="d-flex justify-content-start">
-    <button class="new btn btn-primary my-3 ml-3" name="nuevoProyecto">Nuevo proyecto</button>
+  <div class="d-flex justify-content-end me-5 my-3">
+    <form action="./index.php" method="post">
+      <input type="submit" class="new btn btn-primary my-3 ml-3" name="nuevoProyecto" id="nuevoProyecto" value="Nuevo proyecto">
+    </form>
   </div>
   <div class="table-responsive" style="text-align: center;">
-    <table class="table table-striped text-successtable-border border-light">
+    <table class="table table-striped text-success table-bordered border-light">
       <thead class="border-light">
         <tr>
           <th scope="col">#</th>
@@ -109,53 +131,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td>Pepe</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1" name="editar"><i class="bi bi-pencil-square me-2"></i>Editar</button>
-            <button class="btn btn-primary mb-1" name="archivos"><i class="bi bi-file-earmark me-2"></i>Archivos</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row"> 2</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td>Pepe</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Editar</button>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td>Pepe</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Editar</button>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Ilustración familiar</td>
-          <td>20/04/2023</td>
-          <td>Pepe</td>
-          <td><a href="#">enlace</a></td>
-          <td>
-            <button class="btn btn-primary mb-1">Editar</button>
-            <button class="btn btn-primary mb-1">Archivos</button>
-          </td>
-        </tr>
+        <?php if (!empty($array_proyectos)) : ?>
+          <?php foreach ($array_proyectos as $proyecto) : ?>
+            <tr>
+              <th scope="row"><?php echo $proyecto->id_proyecto ?></th>
+              <td><?php echo $proyecto->nombre_proyecto ?></td>
+              <td><?php echo $proyecto->fecha_proyecto ?></td>
+              <td><?php echo $proyecto->usuario_id ?></td>
+              <td><a href="<?php echo $proyecto->factura_id ?>">Ver factura</a></td>
+              <td>
+                <button class="btn btn-primary mb-1" name="editar"><i class="bi bi-pencil-square me-2"></i>Editar</button>
+                <button class="btn btn-primary mb-1" name="archivos"><i class="bi bi-file-earmark me-2"></i>Archivos</button>
+              </td>
+            </tr>
+          <?php endforeach ?>
+        <?php else : ?>
+          <tr>
+            <td colspan="6">No hay proyectos disponibles.</td>
+          </tr>
+        <?php endif; ?>
       </tbody>
     </table>
-  </div>
   </div>
 </section>
 

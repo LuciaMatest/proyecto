@@ -21,4 +21,66 @@ if (isset($_REQUEST['volver'])) {
         $_SESSION['vista'] = $vistas['user'];
         require_once $_SESSION['controlador'];
     }
+} else {
+    if (isset($_POST['reg-log']) && $_POST['reg-log'] == '1') {
+        // El input reg-log está activo, ejecutar el código de registrarse
+        if (isset($_REQUEST['registrar'])) {
+            if (validarNuevoUsuario()) {
+                $usuario = new Usuario(null, $_REQUEST['nombre'], $_REQUEST['telefono'], $_REQUEST['email'], $_REQUEST['contraseña'], 0, null);
+                if (UsuarioDAO::insert($usuario)) {
+                    $usuario = UsuarioDAO::valida($_REQUEST['email'], $_REQUEST['contraseña']);
+                    $_SESSION['controlador'] = $controladores['home'];
+                    $_SESSION['vista'] = $vistas['home'];
+                    $_SESSION['validado'] = true;
+                    $_SESSION['id_usuario'] = $usuario->id_usuario;
+                    $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
+                    $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
+                    $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
+                    $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
+                    $_SESSION['email_usuario'] = $usuario->email_usuario;
+                } else {
+                    $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
+                }
+            } else {
+                $_SESSION['error'] = '<script>alert("No se ha validado, compruebe");</script>';
+            }
+        }
+    } else {
+        // El input reg-log no está activo, ejecutar el código de login
+        if (isset($_REQUEST['email_usuario'])) {
+            $email = $_REQUEST['email_usuario'];
+            $pass = $_REQUEST['contrasena_usuario'];
+
+            //Recuerdame
+            if (isset($_REQUEST["recuerdame"])) {
+                setcookie("email_usuario", $email);
+                setcookie("recuerdame", $email);
+            } else {
+                // Si no queremos seguir recordando
+                setcookie("email_usuario", $email, time() - 1);
+                setcookie("recuerdame", $email, time() - 1);
+            }
+
+            if (empty($email)) {
+                $_SESSION['error'] = '<script>alert("Debe rellenar el email");</script>';
+            }
+            if (empty($pass)) {
+                $_SESSION['error'] = '<script>alert("Debe rellenar la contraseña");</script>';
+            } else {
+                $usuario = UsuarioDAO::valida($email, $pass);
+                if ($usuario != null) {
+                    $_SESSION['validado'] = true;
+                    $_SESSION['email_usuario'] = $email;
+                    $_SESSION['id_usuario'] = $usuario->id_usuario;
+                    $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
+                    $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
+                    $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
+                    $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
+                    $_SESSION['vista'] = $vistas['home'];
+                    $_SESSION['controlador'] = $controladores['home'];
+                    header('Location: ./index.php');
+                }
+            }
+        }
+    }
 }

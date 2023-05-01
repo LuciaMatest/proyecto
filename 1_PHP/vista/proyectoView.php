@@ -3,11 +3,9 @@
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <div class="d-flex justify-content-center">
-                    <form action="./index.php" method="post">
-                        <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver">
-                            <i class="flechaVolver bi bi-arrow-left-circle"></i>
-                        </button>
-                    </form>
+                    <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver5">
+                        <i class="flechaVolver bi bi-arrow-left-circle"></i>
+                    </button>
                     <h1 class="pro text-light">Categorías</h1>
                 </div>
                 <a class="categorias" href="#" data-target="Diseño">

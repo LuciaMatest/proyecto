@@ -9,7 +9,8 @@ $controladores = array(
     'proyecto' => './controlador/ProyectoController.php',
     'producto' => './controlador/ProductoController.php',
     'admin' => './controlador/AdminController.php',
-    'user' => './controlador/UserController.php'
+    'user' => './controlador/UserController.php',
+    'nuevo' => './controlador/NuevoProController.php'
 );
 
 //Modelo
@@ -29,7 +30,8 @@ $vistas = array(
     'proyecto' => './vista/proyectoView.php',
     'producto' => './vista/productoView.php',
     'admin' => './vista/adminView.php',
-    'user' => './vista/userView.php'
+    'user' => './vista/userView.php',
+    'nuevo' => './vista/nuevoProView.php'
 );
 
 //Core
@@ -41,4 +43,5 @@ require_once('./dao/FactoryBD.php');
 require_once('./dao/UsuarioDAO.php');
 require_once('./dao/CategoriaDAO.php');
 require_once('./dao/ProductoDAO.php');
+require_once('./dao/ProyectoDAO.php');
 require_once('./dao/ChatDAO.php');

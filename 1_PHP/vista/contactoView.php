@@ -14,8 +14,8 @@
                         <div class="card shadow">
                             <div class="card-body">
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver" style="left:23px;top: 23px;">
-                                        <i class="flechaVolver bi bi-arrow-left-circle text-dark"></i>
+                                    <button type="button" class="volver btn-outline-primary d-flex align-items-center" onclick="window.history.back();">
+                                        <i class="flechaVolver bi bi-arrow-left-circle text-black"></i>
                                     </button>
                                     <h3 class="card-title text-center">Formulario de contacto</h3>
                                 </div>

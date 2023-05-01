@@ -92,4 +92,11 @@ INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, pr
 INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Ilustracion 1', '"En la Sala de los Menesteres Secretos, Harry descubre un lugar mágico lleno de tesoros y misterios que esperan ser explorados"', 'ilustracion1.jpg', 79.99, 3, 2, null);
 INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Web 1', '"El Doctor y su fiel TARDIS viajan por el tiempo y el espacio en una aventura intergaláctica"', 'web1.jpg', 45.90, 4, 3, null);
 
+INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)
+VALUES ('Factura 1', '2023-05-01 00:00:00', '2023-04-30 00:00:00', 'pendiente');
+
+SET @ultimo_id_factura = LAST_INSERT_ID();
+INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)
+VALUES ('Ilustraciones familiares', '2023-05-01 00:00:00', 2, @ultimo_id_factura);
+
 INSERT INTO mensaje (descripcion_mensaje,fecha_mensaje,id_usuario_envia,id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.','2023-04-23 12:34:56', '1','2');

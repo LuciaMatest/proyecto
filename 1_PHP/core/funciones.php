@@ -99,3 +99,22 @@ function validarNuevoUsuario()
         return false;
     }
 }
+
+function validarUsuario()
+{
+    if (isset($_REQUEST['guardarCambios'])) {
+        if (!vacio('id_usuario') && UsuarioDAO::findById($_REQUEST['id_usuario']) != null) {
+            if (!vacio('nombre')) {
+                if (!vacio('email') && patronEmail()) {
+                    if (!vacio('telefono') && patronTelefono()) {
+                        if (!vacio('contraseña') && patronContraseña()) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        return false;
+    }
+}

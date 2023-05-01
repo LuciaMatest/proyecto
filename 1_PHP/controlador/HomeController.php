@@ -27,15 +27,17 @@ if (isset($_REQUEST['ver'])) {
         if (isset($_REQUEST['registrar'])) {
             if (validarNuevoUsuario()) {
                 $usuario = new Usuario(null, $_REQUEST['nombre'], $_REQUEST['telefono'], $_REQUEST['email'], $_REQUEST['contraseña'], 0, null);
-
                 if (UsuarioDAO::insert($usuario)) {
+                    $usuario = UsuarioDAO::valida($_REQUEST['email'], $_REQUEST['contraseña']);
                     $_SESSION['controlador'] = $controladores['home'];
                     $_SESSION['vista'] = $vistas['home'];
                     $_SESSION['validado'] = true;
-                    $_SESSION['nombre'] = $usuario->nombre_usuario;
-                    $_SESSION['telefono'] = $usuario->telefono_usuario;
-                    $_SESSION['email'] = $usuario->email_usuario;
-                    $_SESSION['contraseña'] = $usuario->contrasena_usuario;
+                    $_SESSION['id_usuario'] = $usuario->id_usuario;
+                    $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
+                    $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
+                    $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
+                    $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
+                    $_SESSION['email_usuario'] = $usuario->email_usuario;
                 } else {
                     $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
                 }

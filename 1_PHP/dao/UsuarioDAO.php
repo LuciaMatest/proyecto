@@ -45,15 +45,13 @@ class UsuarioDAO extends FactoryBD implements DAO
 
     public static function update($objeto)
     {
-        $actualiza = 'update usuario set nombre_usuario=?,telefono_usuario=?,email_usuario=?,contrasena_usuario=?,borrado_usuario=?,tipo_usuario=? where id_usuario=?;';
+        $actualiza = 'update usuario set nombre_usuario=?,telefono_usuario=?,email_usuario=?,contrasena_usuario=? where id_usuario=?;';
         $datos = array(
-            $objeto->id_usuario,
             $objeto->nombre_usuario,
             $objeto->telefono_usuario,
             $objeto->email_usuario,
             $objeto->contrasena_usuario,
-            $objeto->borrado_usuario,
-            $objeto->tipo_usuario
+            $objeto->id_usuario
         );
         $resultado = parent::ejecuta($actualiza, $datos);
         if ($resultado->rowCount() == 0) {

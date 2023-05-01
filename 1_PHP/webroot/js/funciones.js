@@ -1,3 +1,26 @@
+// Almacenar la URL actual en una cookie antes de navegar a otra página
+document.cookie = "previousUrl=" + encodeURIComponent(window.location.href) + ";path=/";
+
+// Función para obtener el valor de una cookie
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
+
+// Manejar el evento del botón "volver"
+document.querySelectorAll(".volver").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        var oldURL = decodeURIComponent(getCookie("previousUrl"));
+        if (oldURL) {
+            window.location.href = oldURL;
+        } else {
+            window.history.back();
+        }
+    });
+});
+
+
 // Pantalla de carga
 //Se mostrará el gif durante 2,6 segundos antes de mostrar la pagina principal de la web
 setTimeout(function() {
@@ -97,36 +120,30 @@ closeBtn.addEventListener('click', function() {
 });
 
 
-$(document).ready(function() {
-  $("#contactForm").on("submit", function(e) {
-    e.preventDefault();
+//Cuando pulsamos Editar perfil, la información del usuario se vuelve editable.
+const campos = document.querySelectorAll('.campo-perfil');
+const btnEditar = document.querySelector('#editarPerfil');
 
-    // Recopilar los datos del formulario
-    var nombre = $("#nombreContacto").val();
-    var email = $("#emailContacto").val();
-    var mensaje = $("#mensajeContacto").val();
-
-    // Preparar los datos para AJAX
-    var data = {
-      nombreContacto: nombre,
-      emailContacto: email,
-      mensajeContacto: mensaje
-    };
-
-    // Enviar los datos utilizando AJAX
-    $.ajax({
-      type: "POST",
-      url: "ruta/al/archivo/servidor.php", // Cambiar esta ruta al archivo de tu servidor que procesará los datos del formulario
-      data: data,
-      success: function(response) {
-        // Manejar la respuesta del servidor
-        alert("Mensaje enviado con éxito");
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        // Manejar errores
-        alert("Error al enviar el mensaje");
-      }
-    });
+function editarPerfil() {
+  campos.forEach(campo => {
+    campo.readOnly = !campo.readOnly;
   });
-});
+  btnEditar.style.display = btnEditar.style.display === 'none' ? 'block' : 'none';
+}
 
+//Para elegir crear o proyecto o producto nuevo
+const tipoSelect = document.getElementById("tipo");
+  const productoDiv = document.querySelector(".producto");
+  const proyectoDiv = document.querySelector(".proyecto");
+
+tipoSelect.addEventListener("change", function (event) {
+  const selectedOption = event.target.value;
+
+  if (selectedOption === "producto") {
+    productoDiv.style.display = "block";
+    proyectoDiv.style.display = "none";
+  } else if (selectedOption === "proyecto") {
+    productoDiv.style.display = "none";
+    proyectoDiv.style.display = "block";
+  }
+});
