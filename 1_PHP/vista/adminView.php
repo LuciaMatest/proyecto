@@ -218,114 +218,93 @@
         <div class="card">
           <div class="card-body">
             <ul class="list-unstyled mb-0">
-              <li class="my-2">
-                <div class="container">
-                  <div class="row align-items-center justify-content-between">
-                    <div class="col-auto">
-                      <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                      <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
+              <?php $index = 0; ?>
+              <?php foreach ($array_usuarios as $usuario) : ?>
+                <?php if ($index != 0) : ?>
+                  <li class="my-3">
+                    <div class="container">
+                      <div class="row align-items-center justify-content-between">
+                        <div class="col-auto">
+                          <img src="./webroot/recursos/perfil/perfil.png" alt="Imagen de ejemplo" class="rounded-circle" width="50">
+                          <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $usuario->nombre_usuario; ?></span>
+                        </div>
+                        <div class="col-auto">
+                          <button type="submit" class="transparent-button" name="verChat" id="verChat"><i class="bi bi-chat-dots"></i></button>
+                          <button type="submit" class="transparent-button" name="editarUsuario" id="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $usuario->id_usuario; ?>" aria-expanded="false"><i class="bi bi-pencil-square me-2"></i></button>
+                          <button type="submit" class="transparent-button" name="borrarUsuario" id="borrarUsuario"><i class="bi bi-trash3"></i></button>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-auto">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cliente1" aria-expanded="false">Editar</button>
-                      <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
+                    <div class="collapse" id="<?php echo $usuario->id_usuario; ?>">
+                      <div class="container mt-4">
+                        <form>
+                          <div class="mb-2">
+                            <?php
+                            $placeholder = $usuario->nombre_usuario;
+                            $style = "";
+
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("nombre")) {
+                                $placeholder = "Introduce nombre";
+                                $style = "font-weight: bold; color: brown;";
+                              }
+                            }
+                            ?>
+                            <input type="text" class="form-control" id="nombre" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>">
+                          </div>
+                          <div class="mb-2">
+                            <?php
+                            $placeholder = $usuario->email_usuario;
+                            $style = "";
+
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("email")) {
+                                $placeholder = "Introduce email";
+                                $style = "font-weight: bold; color: brown;";
+                              }
+                            }
+                            ?>
+                            <input type="email" class="form-control" id="email" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>">
+                          </div>
+                          <div class="mb-2">
+                            <?php
+                            $placeholder = $usuario->contrasena_usuario;
+                            $style = "";
+
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("contraseña")) {
+                                $placeholder = "Introduce la contraseña";
+                                $style = "font-weight: bold; color: brown;";
+                              }
+                            }
+                            ?>
+                            <input type="password" class="form-control" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña" id="contraseña">
+                          </div>
+                          <div class="mb-2">
+                            <?php
+                            $placeholder = "Repite la contraseña";
+                            $style = "";
+
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("contraseña2")) {
+                                $placeholder = "Confirme la contraseña";
+                                $style = "font-weight: bold; color: brown;";
+                              }
+                            }
+                            ?>
+                            <input type="password" class="form-control" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
+                          </div>
+                          <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarUsuario" id="guardarUsuario">Guardar cambios</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary" onclick="location.reload()">Cancelar</button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div class="collapse" id="cliente1">
-                  <div class="container mt-4">
-                    <form>
-                      <div class="mb-2">
-                        <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-                      </div>
-                      <div class="mb-2">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                      </div>
-                      <div class="mb-2">
-                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                      </div>
-                      <div class="mb-2">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme su contraseña">
-                      </div>
-                      <div class="d-flex justify-content-between">
-                        <button class="btn btn-toggle align-items-center rounded collapsed">Guardar cambios</button>
-                        <button class="btn btn-toggle align-items-center rounded collapsed">Cancelar</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </li>
-              <li class="my-2">
-                <div class="container">
-                  <div class="row align-items-center justify-content-between">
-                    <div class="col-auto">
-                      <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                      <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
-                    </div>
-                    <div class="col-auto">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cliente2" aria-expanded="false">Editar</button>
-                      <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="collapse" id="cliente2">
-                  <div class="container mt-4">
-                    <form>
-                      <div class="mb-2">
-                        <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-                      </div>
-                      <div class="mb-2">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                      </div>
-                      <div class="mb-2">
-                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                      </div>
-                      <div class="mb-2">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme su contraseña">
-                      </div>
-                      <div class="d-flex justify-content-between">
-                        <button class="btn btn-toggle align-items-center rounded collapsed">Guardar cambios</button>
-                        <button class="btn btn-toggle align-items-center rounded collapsed">Cancelar</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </li>
-              <li class="my-2">
-                <div class="container">
-                  <div class="row align-items-center justify-content-between">
-                    <div class="col-auto">
-                      <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                      <span class="ms-3 fw-bold" style="font-size: 17px;">John Doe</span>
-                    </div>
-                    <div class="col-auto">
-                      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#cliente3" aria-expanded="false">Editar</button>
-                      <button class="btn btn-toggle align-items-center rounded collapsed">Borrar</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="collapse" id="cliente3">
-                  <div class="container mt-4">
-                    <form>
-                      <div class="mb-2">
-                        <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-                      </div>
-                      <div class="mb-2">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                      </div>
-                      <div class="mb-2">
-                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
-                      </div>
-                      <div class="mb-2">
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme su contraseña">
-                      </div>
-                      <div class="d-flex justify-content-between">
-                        <button class="btn btn-toggle align-items-center rounded collapsed">Guardar cambios</button>
-                        <button class="btn btn-toggle align-items-center rounded collapsed">Cancelar</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </li>
+                  </li>
+                <?php endif; ?>
+                <?php $index++; ?>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
@@ -334,43 +313,66 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <form form action="./index.php" method="post">
-            <ul class="list-unstyled">
-              <?php foreach ($messages as $message) : ?>
-                <?php if ($message->usuario_nombre === 'Lulú') : ?>
-                  <li class="d-flex justify-content-between mb-4">
+          <form action="./index.php" method="post">
+            <?php
+            require_once('./config/conexion.php');
+            // Transacción
+            try {
+              $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
+              $sql = 'SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario ORDER BY fecha_mensaje ASC;';
+              $resultado = mysqli_query($conexion, $sql);
+              // Mostrar mensajes
+              if ($resultado->num_rows > 0) {
+                echo '<ul class="list-unstyled">';
+                while ($message = $resultado->fetch_object()) {
+                  $nombreUsuario = $message->nombre_usuario;
+                  if ($nombreUsuario === 'Lulú') {
+                    echo '<li class="d-flex justify-content-between mb-4">
                     <div class="card w-100">
-                      <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
-                      </div>
-                      <div class="card-body">
-                        <p class="mb-0"><?php echo $message->descripcion_mensaje ?></p>
-                      </div>
+                    <div class="card-header d-flex justify-content-between p-3">
+                    <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
                     </div>
-                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                  </li>
-                <?php else : ?>
-                  <li class="d-flex justify-content-between mb-4">
-                    <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                    <div class="card w-100">
-                      <div class="card-header d-flex justify-content-between p-3">
-                        <p class="fw-bold mb-0"><?php echo $message->usuario_nombre ?></p>
-                      </div>
-                      <div class="card-body">
-                        <p class="mb-0">
-                          <?php echo $message->descripcion_mensaje ?>
-                        </p>
-                      </div>
+                    <div class="card-body">
+                    <p class="mb-0">' . $message->descripcion_mensaje . '</p>
                     </div>
-                  </li>
-                <?php endif; ?>
-                <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
-              <?php endforeach; ?>
-            </ul>
+                    </div>
+                    <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                  </li>';
+                  } else {
+                    echo '<li class="d-flex justify-content-between mb-4">
+                    <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                      <div class="card w-100">
+                        <div class="card-header d-flex justify-content-between p-3">
+                          <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
+                        </div>
+                        <div class="card-body">
+                          <p class="mb-0">' . $message->descripcion_mensaje . '</p>
+                        </div>
+                      </div>
+                    </li>';
+                  }
+                }
+                echo '</ul>';
+              } else {
+                echo "<p>No hay mensajes.</p>";
+              }
+              // Cerrar conexión
+              mysqli_close($conexion);
+            } catch (Exception $ex) {
+              if ($ex->getCode() == 2002) {
+                echo '<span style="color:brown"> Fallo de conexión </span>';
+              }
+              if ($ex->getCode() == 1049) {
+                echo '<span style="color:brown"> Base de datos desconocida </span>';
+              }
+              if ($ex->getCode() == 1045) {
+                echo '<span style="color:brown"> Datos incorrectos </span>';
+              }
+            }
+            ?>
             <div class="input-group">
-              <input type="text" class="form-control" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
-              <input type="hidden" name="usuario_id" value="<?php echo $message->usuario_nombre ?>">
-              <input type="submit" class="btn btn-primary" name="enviarMensajesUser" id="enviarMensajesUser"><i class="bi bi-send me-2"></i>Enviar</input>
+              <input type="text" class="form-control" id="messageInput" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
+              <input type="submit" class="btn btn-primary" id="sendMessageBtn" name="enviarMensajesUser" value="Enviar">
             </div>
           </form>
         </div>

@@ -100,3 +100,4 @@ INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)
 VALUES ('Ilustraciones familiares', '2023-05-01 00:00:00', 2, @ultimo_id_factura);
 
 INSERT INTO mensaje (descripcion_mensaje,fecha_mensaje,id_usuario_envia,id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.','2023-04-23 12:34:56', '1','2');
+INSERT INTO mensaje (descripcion_mensaje,fecha_mensaje,id_usuario_envia,id_usuario_recibe) VALUES ('Hola, necesito ayuda con un diseño','2023-05-01 12:34:56', '2','1');

@@ -224,7 +224,7 @@
         <div class="card">
           <div class="card-body text-center">
             <div class="list-unstyled">
-              <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">Lucía Mateos</h5>
               <p class="text-muted mb-1">Ilustradora, diseñadora y desarrolladora web</p>
               <p class="text-muted">L-V 9:00-14:00/17:00-20:00 <br> S-D 9:00-14:00</p>
@@ -249,8 +249,9 @@
                 echo '<ul class="list-unstyled">';
                 while ($message = $resultado->fetch_object()) {
                   $nombreUsuario = $message->nombre_usuario;
-                  if ($message->id_usuario_envia === 1) {
+                  if ($nombreUsuario === 'Lulú') {
                     echo '<li class="d-flex justify-content-between mb-4">
+                    <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                       <div class="card w-100">
                         <div class="card-header d-flex justify-content-between p-3">
                           <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
@@ -259,11 +260,9 @@
                           <p class="mb-0">' . $message->descripcion_mensaje . '</p>
                         </div>
                       </div>
-                      <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                     </li>';
                   } else {
                     echo '<li class="d-flex justify-content-between mb-4">
-                      <img src="https://via.placeholder.com/150" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                       <div class="card w-100">
                         <div class="card-header d-flex justify-content-between p-3">
                           <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
@@ -272,6 +271,7 @@
                           <p class="mb-0">' . $message->descripcion_mensaje . '</p>
                         </div>
                       </div>
+                      <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                     </li>';
                   }
                 }

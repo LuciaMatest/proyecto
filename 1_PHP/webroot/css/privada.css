@@ -49,3 +49,20 @@
 .dato:focus::placeholder {
     color: transparent;
 }
+
+.transparent-button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.transparent-button>i {
+    color: #115053;
+}
+
+.transparent-button:hover,
+.transparent-button:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    box-shadow: none;
+}

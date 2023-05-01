@@ -37,11 +37,11 @@ if (isset($_REQUEST['nuevoProyecto'])) {
 
         $_SESSION['vista'] = $vistas['admin'];
         $_SESSION['controlador'] = $controladores['admin'];
-        $usuario = UsuarioDAO::findAll();
     }
     $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
 } else {
     $array_proyectos = ProyectoDAO::findAll();
+    $array_usuarios = UsuarioDAO::findAll();
     $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
-    // $messages = ChatDAO::findAll();
+    $messages = ChatDAO::findAll();
 }
