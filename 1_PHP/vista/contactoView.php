@@ -22,15 +22,19 @@
                                 <p class="text-center mb-4">Si quieres contratar algón servicio no dudes en contactar conmigo!</p>
                                 <div class="form-group mb-3">
                                     <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombreContacto" name="nombreContacto" placeholder="Ingresa tu nombre">
+                                    <input type="text" class="form-control" id="nombreContacto" name="nombreContacto" placeholder="Ingrese su nombre">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="number" class="form-control" id="telefonoContacto" name="telefonoContacto" placeholder="Ingrese su teléfono">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="email">Correo electrónico:</label>
-                                    <input type="email" class="form-control" id="emailContacto" name="emailContacto" placeholder="Ingresa tu correo electrónico">
+                                    <input type="email" class="form-control" id="emailContacto" name="emailContacto" placeholder="Ingrese su correo electrónico">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="mensaje">Mensaje:</label>
-                                    <textarea class="form-control" id="mensajeContacto" name="mensajeContacto" rows="5" placeholder="Ingresa tu mensaje"></textarea>
+                                    <textarea class="form-control" id="mensajeContacto" name="mensajeContacto" rows="5" placeholder="Ingrese su mensaje"></textarea>
                                 </div>
                                 <input type="submit" value="Enviar" name="enviarContacto" class="btn btn-primary float-end">
                             </div>

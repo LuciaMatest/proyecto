@@ -1,5 +1,25 @@
 <?php
-if (isset($_REQUEST['volver'])) {
+if (isset($_REQUEST['enviarContacto'])) {
+    if (isset($_POST['nombreContacto']) && isset($_POST['telefonoContacto']) && isset($_POST['emailContacto']) && isset($_POST['mensajeContacto'])) {
+        $nombre = $_POST['nombreContacto'];
+        $telefono = $_POST['telefonoContacto'];
+        $email = $_POST['emailContacto'];
+        $mensaje = $_POST['mensajeContacto'];
+    
+        $to = "lucia.codigoartistico@gmail.com";
+        $subject = "Mensaje de formulario de contacto";
+        $body = "Nombre: " . $nombre . "\nTeléfono:" .$telefono. "\nCorreo electrónico: " . $email . "\nMensaje:\n" . $mensaje;
+        $headers = "From: " . $email;
+    
+        if (mail($to, $subject, $body, $headers)) {
+            echo "Mensaje enviado";
+        } else {
+            echo "Error al enviar el mensaje";
+        }
+    } else {
+        echo "Por favor, completa todos los campos del formulario";
+    }
+} elseif (isset($_REQUEST['volver'])) {
     $_SESSION['controlador'] = $controladores['home'];
     $_SESSION['pagina'] = 'Home';
     $_SESSION['vista'] = $vistas['home'];
