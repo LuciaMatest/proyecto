@@ -18,12 +18,15 @@ $(document).ready(function () {
               mensajeContacto: mensaje
           },
           success: function (response) {
-            // Muestra una alerta con la respuesta del servidor
-              alert(response); 
-          },
-          error: function (jqXHR, textStatus, errorThrown) {
-              alert("Error al enviar el mensaje: " + textStatus + " " + errorThrown);
-          }
+            $("#modalAvisoMensaje").text(response); 
+            $("#modalAviso").modal("show"); 
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $("#modalAvisoMensaje").text("Error al enviar el mensaje: " + textStatus + " " + errorThrown);
+            $("#modalAviso").modal("show");
+        }
       });
   });
 });
+
+
