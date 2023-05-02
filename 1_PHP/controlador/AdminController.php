@@ -43,5 +43,4 @@ if (isset($_REQUEST['nuevoProyecto'])) {
     $array_proyectos = ProyectoDAO::findAll();
     $array_usuarios = UsuarioDAO::findAll();
     $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
-    $messages = ChatDAO::findAll();
 }
