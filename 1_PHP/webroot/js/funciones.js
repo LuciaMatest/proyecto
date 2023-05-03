@@ -10,7 +10,8 @@ function getCookie(name) {
 
 // Manejar el evento del botón "volver"
 document.querySelectorAll(".volver").forEach(function (btn) {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", function (evento) {
+      evento.preventDefault();
         var oldURL = decodeURIComponent(getCookie("previousUrl"));
         if (oldURL) {
             window.location.href = oldURL;
@@ -35,7 +36,8 @@ setTimeout(function() {
 const botones = document.querySelectorAll('.circle');
 
 botones.forEach(boton => {
-  boton.addEventListener('click', () => {
+  boton.addEventListener('click', (evento) => {
+    evento.preventDefault();
     botones.forEach(boton => {
       boton.classList.remove('activo');
       boton.style.transform = 'scale(1)';
@@ -56,6 +58,7 @@ const categorias = document.querySelectorAll('.categorias');
 
 categorias.forEach((categoria) => {
   categoria.addEventListener('click', (evento) => {
+    evento.preventDefault();
     const target = evento.currentTarget.getAttribute('data-target');
 
     disenosDiv.style.display = 'none';
@@ -83,6 +86,7 @@ const privadas = document.querySelectorAll('.privadas');
 
 privadas.forEach((categoria) => {
   categoria.addEventListener('click', (evento) => {
+    evento.preventDefault();
     const target = evento.currentTarget.getAttribute('data-target');
 
     perfilDiv.style.display = 'none';
@@ -107,13 +111,15 @@ const header = document.getElementById("headerNav");
 const closeBtn = document.getElementById('closeBtn');
 
 // Cuando se pulse el botón de login se abrirá
-formBtn.addEventListener("click", () => {
+formBtn.addEventListener("click", (evento) => {
+  evento.preventDefault();
   formContainer.style.display = "flex";
   header.style.display = "none";
 });
 
 // Cuando se pulse el botón X se cerrará
-closeBtn.addEventListener('click', function() {
+closeBtn.addEventListener('click', function(evento) {
+  evento.preventDefault();
   formContainer.style.display = 'none';
   header.style.display = 'block';
   closeBtn.removeEventListener('click');
@@ -136,8 +142,9 @@ const tipoSelect = document.getElementById("tipo");
   const productoDiv = document.querySelector(".producto");
   const proyectoDiv = document.querySelector(".proyecto");
 
-tipoSelect.addEventListener("change", function (event) {
-  const selectedOption = event.target.value;
+tipoSelect.addEventListener("change", function (evento) {
+  evento.preventDefault();
+  const selectedOption = evento.target.value;
 
   if (selectedOption === "producto") {
     productoDiv.style.display = "block";
