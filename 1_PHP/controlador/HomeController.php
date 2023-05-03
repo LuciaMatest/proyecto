@@ -38,6 +38,8 @@ if (isset($_REQUEST['ver'])) {
                     $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
                     $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
                     $_SESSION['email_usuario'] = $usuario->email_usuario;
+
+                    $_SESSION['success'] = '¡Se ha registrado correctamente!';
                 } else {
                     $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
                 }

@@ -238,9 +238,14 @@
                                                             <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
                                                             <i class="input-icon bi bi-lock" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
-                                                        <?
+                                                        <?php
+                                                        if (isset($_SESSION['success'])) {
+                                                            echo '<p style="color:green">' . $_SESSION['success'] . "</p>";
+                                                            unset($_SESSION['success']);
+                                                        }
+
                                                         if (isset($_SESSION['error'])) {
-                                                            echo $_SESSION['error'];
+                                                            echo '<p style="color:red">' . $_SESSION['error'] . "</p>";
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
