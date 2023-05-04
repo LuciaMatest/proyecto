@@ -63,7 +63,8 @@ class ChatDAO extends FactoryBD implements DAO
         $datos = array(
             $objeto->descripcion_mensaje,
             $objeto->fecha_mensaje,
-            $objeto->usuario_nombre
+            $objeto->id_usuario_envia,
+            $objeto->id_usuario_recibe
         );
         $resultado = parent::ejecuta($inserta, $datos);
         if ($resultado->rowCount() == 0) {
