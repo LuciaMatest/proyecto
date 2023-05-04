@@ -108,7 +108,20 @@ VALUES ('Logotipo tienda', NOW(), 4, @ultimo_id_factura);
 INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)
 VALUES ('Diseño web - tienda', NOW(), 4, @ultimo_id_factura);
 
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, 2);
+INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, 4);
 INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 1);
 INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, ¿cuales son tus precios?', NOW(), 3, 1);
 INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Estos son los precios, un saludo', NOW(), 1, 3);
+
+
+-- Mediante un TRIGGER ejecutaremos automaticamente la misma consulta que consiste en enviar un mensaje de bienvenida al chat de los nuevos usuarios
+DELIMITER //
+CREATE TRIGGER enviar_mensaje_bienvenida
+AFTER INSERT ON usuario
+FOR EACH ROW
+BEGIN
+  INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe)
+  VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, NEW.id_usuario);
+END;
+//
+DELIMITER ;

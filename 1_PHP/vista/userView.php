@@ -250,7 +250,7 @@
             // Transacción
             try {
               $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
-              $sql = 'SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario ORDER BY fecha_mensaje ASC;';
+              $sql = "SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario WHERE (mensaje.id_usuario_envia = $id_usuario_actual OR mensaje.id_usuario_recibe = $id_usuario_actual) ORDER BY fecha_mensaje ASC;";
               $resultado = mysqli_query($conexion, $sql);
               // Mostrar mensajes
               if ($resultado->num_rows > 0) {
