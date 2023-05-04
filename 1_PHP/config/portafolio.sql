@@ -94,10 +94,19 @@ INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, pr
 
 INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)
 VALUES ('Factura 1', '2023-05-01 00:00:00', '2023-04-30 00:00:00', 'pendiente');
+INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)
+VALUES ('Factura 2', NOW(), NOW(), 'pendiente');
+INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)
+VALUES ('Factura 3', NOW(), NOW(), 'pagado');
 
 SET @ultimo_id_factura = LAST_INSERT_ID();
 INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)
 VALUES ('Ilustraciones familiares', '2023-05-01 00:00:00', 2, @ultimo_id_factura);
+
+INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)
+VALUES ('Logotipo tienda', NOW(), 4, @ultimo_id_factura);
+INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)
+VALUES ('Diseño web - tienda', NOW(), 4, @ultimo_id_factura);
 
 INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, 2);
 INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 1);

@@ -194,10 +194,17 @@
         </tr>
       </thead>
       <tbody>
-        <?php if (!empty($array_proyectos)) : ?>
-          <?php foreach ($array_proyectos as $proyecto) : ?>
+        <?php
+        $id_usuario_actual = $_SESSION['id_usuario'];
+        $array_proyectos_usuario = array_filter($array_proyectos, function ($proyecto) use ($id_usuario_actual) {
+          return $proyecto->usuario_id == $id_usuario_actual;
+        });
+        $contadorProyectos = 1;
+        ?>
+        <?php if (!empty($array_proyectos_usuario)) : ?>
+          <?php foreach ($array_proyectos_usuario as $proyecto) : ?>
             <tr>
-              <th scope="row"><?php echo $proyecto->id_proyecto ?></th>
+              <th scope="row"><?php echo $contadorProyectos ?></th>
               <td><?php echo $proyecto->nombre_proyecto ?></td>
               <td><?php echo $proyecto->fecha_proyecto ?></td>
               <td><a href="<?php echo $proyecto->factura_id ?>">Ver factura</a></td>
@@ -205,7 +212,8 @@
                 <button class="btn btn-primary mb-1">Mostrar archivos</button>
               </td>
             </tr>
-          <?php endforeach ?>
+          <?php $contadorProyectos++;
+          endforeach ?>
         <?php else : ?>
           <tr>
             <td colspan="5">No hay proyectos disponibles.</td>
@@ -213,9 +221,9 @@
         <?php endif; ?>
       </tbody>
     </table>
-    <input type="hidden" name="id_usuario" value="<? echo $_SESSION['id_usuario']; ?>">
   </div>
 </section>
+
 
 <section id="chat" style="display: none;">
   <div class="container py-5">
