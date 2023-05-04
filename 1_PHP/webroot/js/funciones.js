@@ -21,7 +21,6 @@ document.querySelectorAll(".volver").forEach(function (btn) {
     });
 });
 
-
 // Pantalla de carga
 //Se mostrará el gif durante 2,6 segundos antes de mostrar la pagina principal de la web
 setTimeout(function() {
@@ -74,7 +73,6 @@ categorias.forEach((categoria) => {
     categorias.classList.remove("oculto");
   });
 });
-
 
 //Área privada
 //Cuando se pulse en una de las areas cada una mostrara el div correspondiente

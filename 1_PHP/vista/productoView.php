@@ -37,6 +37,7 @@
                         This is a wider card with supporting text below as a natural lead-in to
                         additional content.Multiple lines of text that form the lede, informing new readers quickly and efficiently
                         about what’s most interesting in this post’s contents.</p>
+                        <!-- Dos caras de la misma moneda -->
                 </div>
             </div>
         </div>
