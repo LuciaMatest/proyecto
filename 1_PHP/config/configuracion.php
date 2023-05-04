@@ -40,8 +40,11 @@ require_once('./core/funciones.php');
 //Dao
 require_once('./dao/DAO.php');
 require_once('./dao/FactoryBD.php');
-require_once('./dao/UsuarioDAO.php');
+require_once('./dao/ArchivoDAO.php');
 require_once('./dao/CategoriaDAO.php');
+require_once('./dao/ChatDAO.php');
+require_once('./dao/FacturaDAO.php');
 require_once('./dao/ProductoDAO.php');
 require_once('./dao/ProyectoDAO.php');
-require_once('./dao/ChatDAO.php');
+require_once('./dao/UsuarioDAO.php');
+
