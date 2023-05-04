@@ -312,7 +312,7 @@
 
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
-        <div class="chat-container d-flex flex-column" style="min-height: 400px;">
+        <div id="chatModal" class="chat-container d-flex flex-column" style="min-height: 400px;">
           <?php
           if (isset($_REQUEST['verChat'])) {
             $id_usuario_actual = $_SESSION['id_usuario'];
@@ -323,7 +323,8 @@
               // Transacción
               try {
                 $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
-                $sql = "SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario WHERE (mensaje.id_usuario_envia = $id_usuario_boton OR mensaje.id_usuario_recibe = $id_usuario_boton) AND (mensaje.id_usuario_envia = $id_usuario_actual OR mensaje.id_usuario_recibe = $id_usuario_actual) ORDER BY fecha_mensaje ASC;";
+                // La consulta solo selecciona mensajes entre el administrador y el usuario cuyo botón fue presionado
+                $sql = "SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario WHERE ((mensaje.id_usuario_envia = $id_usuario_boton AND mensaje.id_usuario_recibe = $id_usuario_actual) OR (mensaje.id_usuario_envia = $id_usuario_actual AND mensaje.id_usuario_recibe = $id_usuario_boton)) ORDER BY fecha_mensaje ASC;";
                 $resultado = mysqli_query($conexion, $sql);
                 // Mostrar mensajes
                 if ($resultado->num_rows > 0) {
@@ -332,28 +333,28 @@
                     $nombreUsuario = $message->nombre_usuario;
                     if ($nombreUsuario === 'Lulú') {
                       echo '<li class="d-flex justify-content-between mb-4">
-                                <div class="card w-100">
-                                <div class="card-header d-flex justify-content-between p-3">
-                                <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
-                                </div>
-                                <div class="card-body">
-                                <p class="mb-0">' . $message->descripcion_mensaje . '</p>
-                                </div>
-                                </div>
-                                <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                              </li>';
+                    <div class="card w-100">
+                    <div class="card-header d-flex justify-content-between p-3">
+                    <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
+                    </div>
+                    <div class="card-body">
+                    <p class="mb-0">' . $message->descripcion_mensaje . '</p>
+                    </div>
+                    </div>
+                    <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                  </li>';
                     } else {
                       echo '<li class="d-flex justify-content-between mb-4">
-                              <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                                <div class="card w-100">
-                                  <div class="card-header d-flex justify-content-between p-3">
-                                    <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
-                                  </div>
-                                  <div class="card-body">
-                                    <p class="mb-0">' . $message->descripcion_mensaje . '</p>
-                                  </div>
-                                </div>
-                              </li>';
+                    <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                      <div class="card w-100">
+                        <div class="card-header d-flex justify-content-between p-3">
+                          <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
+                        </div>
+                        <div class="card-body">
+                          <p class="mb-0">' . $message->descripcion_mensaje . '</p>
+                        </div>
+                      </div>
+                    </li>';
                     }
                   }
                   echo '</ul>';
@@ -379,7 +380,6 @@
 
           <form method="post">
             <div class="input-group">
-              <!-- <input type="hidden" name="id_usuario" value="<?php //echo $usuario->id_usuario; ?>"> -->
               <input type="text" class="form-control" id="messageInput" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
               <input type="submit" class="btn btn-primary" id="sendMessageBtn" name="enviarMensajesUser" value="Enviar">
             </div>
