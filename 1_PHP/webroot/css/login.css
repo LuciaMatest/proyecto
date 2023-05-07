@@ -81,6 +81,10 @@ h6 span {
   min-height: 100vh;
 }
 
+#recuerdame{
+  display: block;
+}
+
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
   display: none;

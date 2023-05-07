@@ -59,12 +59,12 @@ class ProyectoDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = 'insert into proyecto values (?,?,?,?)';
-        $objeto = (array)$objeto;
-        $datos = array();
-        foreach ($objeto as $att) {
-            array_push($datos, $att);
-        }
+        $inserta = 'insert into proyecto values (null,?,current_date,?,?)';
+        $datos = array(
+            $objeto->nombre_proyecto,
+            $objeto->usuario_id,
+            $objeto->factura_id
+        );
         $resultado = parent::ejecuta($inserta, $datos);
         if ($resultado->rowCount() == 0) {
             return false;

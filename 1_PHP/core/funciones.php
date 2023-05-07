@@ -42,7 +42,7 @@ function existe($nombre)
 
 function patronEmail()
 {
-    $patron = '/^[a-zA-Z0-9]+@(gmail|hotmail)\.(com|es)$/';
+    $patron = '/^[a-zA-Z0-9]+([._-][a-zA-Z0-9]+)*@(gmail|hotmail|outlook)\.(com|es)$/';
     if (preg_match($patron, $_REQUEST['email']) == 1) {
         return true;
     }
@@ -67,21 +67,14 @@ function patronTelefono()
     return false;
 }
 
-// function patronImagenAlta()
-// {
-//     $patron = '/^[^.]+\.(jpg|png|bmp)$/';
-//     if (preg_match($patron, $_FILES['imagen_alta']['name']) == 1) {
-//         return true;
-//     }
-//     return false;
-// }
-
-// function subirImagenAlta()
-// {
-//     $ruta = './webroot/imagen/producto/' . $_FILES['imagen_alta']['name'];
-//     move_uploaded_file($_FILES['imagen_alta']['tmp_name'], $ruta);
-// }
-
+function patronImagen()
+{
+    $patron = '/^[^.]+\.(jpg|png|bmp)$/';
+    if (preg_match($patron, $_FILES['imagen_alta']['name']) == 1) {
+        return true;
+    }
+    return false;
+}
 
 function validarNuevoUsuario()
 {

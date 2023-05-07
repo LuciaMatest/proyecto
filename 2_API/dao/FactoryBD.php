@@ -1,5 +1,5 @@
 <?  
-    require_once './config/conexionBD.php';
+    require_once './config/conexion.php';
 
     class FactoryBD{
 

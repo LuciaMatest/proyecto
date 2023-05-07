@@ -6,17 +6,7 @@ class FacturaDAO extends FactoryBD implements DAO
         $sql = 'select * from factura;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayFactura = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $factura = new Factura(
-                $objeto->id_factura,
-                $objeto->nombre_factura,
-                $objeto->fecha_pago,
-                $objeto->fecha_factura,
-                $objeto->estado
-            );
-            array_push($arrayFactura, $factura);
-        }
+        $arrayFactura = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayFactura;
     }
 
@@ -25,15 +15,22 @@ class FacturaDAO extends FactoryBD implements DAO
         $sql = 'select * from factura where id_factura=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return $factura = new Factura(
-                $objeto->id_factura,
-                $objeto->nombre_factura,
-                $objeto->fecha_pago,
-                $objeto->fecha_factura,
-                $objeto->estado
-            );
+            return $objeto;
+        } else {
+            $_SESSION['error'] = '<span style="color:brown"> No existe el factura</span>';
+        }
+    }
+
+    public static function findByFecha($fecha)
+    {
+        $sql = 'select * from factura where fecha_factura=?;';
+        $datos = array($fecha);
+        $resultado = parent::ejecuta($sql, $datos);
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
+        if ($objeto) {
+            return $objeto;
         } else {
             $_SESSION['error'] = '<span style="color:brown"> No existe el factura</span>';
         }
@@ -60,14 +57,13 @@ class FacturaDAO extends FactoryBD implements DAO
     public static function insert($objeto)
     {
         $inserta = "insert into factura (nombre_factura, fecha_pago, fecha_factura, estado) values (?,?,?,?)";
-        $datos = array(
-            $objeto->nombre_factura,
-            $objeto->fecha_pago,
-            $objeto->fecha_factura,
-            $objeto->estado
-        );
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $objeto = (array)$objeto;
+        $datos = array();
+        foreach ($objeto as $att) {
+            array_push($datos, $att);
+        }
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;

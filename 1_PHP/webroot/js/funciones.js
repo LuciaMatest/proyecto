@@ -1,34 +1,14 @@
-// Almacenar la URL actual en una cookie antes de navegar a otra página
-document.cookie = "previousUrl=" + encodeURIComponent(window.location.href) + ";path=/";
 
-// Función para obtener el valor de una cookie
-function getCookie(name) {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length == 2) return parts.pop().split(";").shift();
-}
-
-// Manejar el evento del botón "volver"
-document.querySelectorAll(".volver").forEach(function (btn) {
-    btn.addEventListener("click", function (evento) {
-      evento.preventDefault();
-        var oldURL = decodeURIComponent(getCookie("previousUrl"));
-        if (oldURL) {
-            window.location.href = oldURL;
-        } else {
-            window.history.back();
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  // Pantalla de carga
+  // Se mostrará el gif durante 2,6 segundos antes de mostrar la pagina principal de la web
+  setTimeout(function() {
+    // Oculta la pantalla de carga
+    document.querySelector('.loader').style.display = 'none';
+    // Muestra el contenido de la página
+    document.querySelector('.contenido-pagina').style.display = 'block';
+  }, 2600);
 });
-
-// Pantalla de carga
-//Se mostrará el gif durante 2,6 segundos antes de mostrar la pagina principal de la web
-setTimeout(function() {
-  // Oculta la pantalla de carga
-  document.querySelector('.loader').style.display = 'none';
-  // Muestra el contenido de la página
-  document.querySelector('.contenido-pagina').style.display = 'block';
-}, 2600);
 
 //Navegador de circulos
 //Cuando se pulse en uno de los botones este se hará más pequeño que los demás mientras se encuentre en esa sección
@@ -136,19 +116,68 @@ function editarPerfil() {
 }
 
 //Para elegir crear o proyecto o producto nuevo
-const tipoSelect = document.getElementById("tipo");
+document.addEventListener("DOMContentLoaded", function () {
+  const tipoSelect = document.getElementById("tipo");
   const productoDiv = document.querySelector(".producto");
   const proyectoDiv = document.querySelector(".proyecto");
 
-tipoSelect.addEventListener("change", function (evento) {
-  evento.preventDefault();
-  const selectedOption = evento.target.value;
+  tipoSelect.addEventListener("change", function (evento) {
+    evento.preventDefault();
+    const selectedOption = evento.target.value;
 
-  if (selectedOption === "producto") {
-    productoDiv.style.display = "block";
-    proyectoDiv.style.display = "none";
-  } else if (selectedOption === "proyecto") {
-    productoDiv.style.display = "none";
-    proyectoDiv.style.display = "block";
-  }
+    if (selectedOption === "producto") {
+      productoDiv.style.display = "block";
+      proyectoDiv.style.display = "none";
+    } else if (selectedOption === "proyecto") {
+      productoDiv.style.display = "none";
+      proyectoDiv.style.display = "block";
+    }
+  });
+});
+
+//Para elegir proyectos o productos
+document.addEventListener("DOMContentLoaded", function () {
+  const tablaSelect = document.getElementById("tablas");
+  const productoTabla = document.querySelector(".tablaProducto");
+  const proyectoTabla = document.querySelector(".tablaProyecto");
+
+  tablaSelect.addEventListener("change", function (evento) {
+    evento.preventDefault();
+    const selectedOption = evento.target.value;
+
+    if (selectedOption === "tablaProducto") {
+      productoTabla.style.display = "block";
+      proyectoTabla.style.display = "none";
+    } else if (selectedOption === "tablaProyecto") {
+      productoTabla.style.display = "none";
+      proyectoTabla.style.display = "block";
+    }
+  });
+});
+
+$(document).ready(function(){
+  // Si el usuario quiere eliminar al usuario
+  $("#borrarUsuario").click(function(){
+    const confirmacion = confirm("¿Estás seguro de que deseas eliminar al usuario?");
+    
+    if (confirmacion) {
+      // Obtén el ID del usuario que deseas eliminar (necesitarás modificar esto para obtener el ID correcto)
+      const idUsuario = this.getAttribute("data-id");
+      
+      // Envía una solicitud AJAX al servidor para eliminar al usuario de la base de datos
+      $.ajax({
+        url: "eliminar_usuario.php",
+        method: "POST",
+        data: { id_usuario: idUsuario },
+        success: function(response) {
+          console.log(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.error(textStatus, errorThrown);
+        }
+      });
+    } else {
+      console.log("Eliminación de usuario cancelada");
+    }
+  });
 });

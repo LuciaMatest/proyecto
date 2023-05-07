@@ -1,25 +1,57 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require_once './webroot/PHPMailer-6.8.0/src/Exception.php';
+require_once './webroot/PHPMailer-6.8.0/src/PHPMailer.php';
+require_once './webroot/PHPMailer-6.8.0/src/SMTP.php';
+
 if (isset($_REQUEST['enviarContacto'])) {
-    if (isset($_POST['nombreContacto']) && isset($_POST['telefonoContacto']) && isset($_POST['emailContacto']) && isset($_POST['mensajeContacto'])) {
-        $nombre = $_POST['nombreContacto'];
-        $telefono = $_POST['telefonoContacto'];
-        $email = $_POST['emailContacto'];
-        $mensaje = $_POST['mensajeContacto'];
-    
-        $to = "lucia.codigoartistico@gmail.com";
-        $subject = "Mensaje de formulario de contacto";
-        $body = "Nombre: " . $nombre . "\nTeléfono:" .$telefono. "\nCorreo electrónico: " . $email . "\nMensaje:\n" . $mensaje;
-        $headers = "From: " . $email;
-    
-        if (mail($to, $subject, $body, $headers)) {
-            echo "Mensaje enviado";
-        } else {
-            echo "Error al enviar el mensaje";
-        }
-    } else {
-        echo "Por favor, completa todos los campos del formulario";
+
+
+    // Recuperar los valores del formulario
+    $nombre = $_POST['nombreContacto'];
+    $email = $_POST['emailContacto'];
+    $asunto = $_POST['asuntoContacto'];
+    $mensaje = $_POST['mensajeContacto'];
+
+    // Crear una instancia de PHPMailer; pasar `true` para habilitar excepciones
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configuración del servidor
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'lucia.codigoartistico@gmail.com';
+        $mail->Password   = 'vyiigvrplmghgtih';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        // Remitente y destinatario
+        $mail->setFrom('lucia.codigoartistico@gmail.com', 'Codigo Artistico');
+        $mail->addAddress('lucia.codigoartistico@gmail.com', 'Codigo Artistico');
+
+        // Contenido
+        $mail->isHTML(true);
+        $mail->Subject = $asunto;
+        $mail->Body    = nl2br("Nombre: {$nombre}<br>Email: {$email}<br>Mensaje: {$mensaje}");
+
+        $mail->send();
+
+        // Guardar el mensaje de éxito en la sesión
+        $_SESSION['success'] = 'El mensaje ha sido enviado correctamente';
+        $_SESSION['vista'] = $vistas['home'];
+        $_SESSION['controlador'] = $controladores['home'];
+        $_SESSION['pagina'] = 'Home';
+    } catch (Exception $e) {
+        // Guardar el mensaje de error en la sesión
+        $_SESSION['error'] = "No se pudo enviar el mensaje. Error del correo: {$mail->ErrorInfo}";
     }
-} elseif (isset($_REQUEST['volver'])) {
+} elseif (isset($_REQUEST['volverAtras'])) {
     $_SESSION['controlador'] = $controladores['home'];
     $_SESSION['pagina'] = 'Home';
     $_SESSION['vista'] = $vistas['home'];
@@ -44,10 +76,10 @@ if (isset($_REQUEST['enviarContacto'])) {
 
                     $_SESSION['success'] = '¡Se ha registrado correctamente!';
                 } else {
-                    $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
+                    $_SESSION['error'] = 'No se ha podido registrar';
                 }
             } else {
-                $_SESSION['error'] = '<script>alert("No se ha validado, compruebe");</script>';
+                $_SESSION['error'] = 'No se ha validado, compruebe';
             }
         }
     } else {
@@ -67,10 +99,10 @@ if (isset($_REQUEST['enviarContacto'])) {
             }
 
             if (empty($email)) {
-                $_SESSION['error'] = '<script>alert("Debe rellenar el email");</script>';
+                $_SESSION['error'] = 'Debe rellenar el email';
             }
             if (empty($pass)) {
-                $_SESSION['error'] = '<script>alert("Debe rellenar la contraseña");</script>';
+                $_SESSION['error'] = 'Debe rellenar la contraseña';
             } else {
                 $usuario = UsuarioDAO::valida($email, $pass);
                 if ($usuario != null) {
@@ -83,6 +115,8 @@ if (isset($_REQUEST['enviarContacto'])) {
                     $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
                     $_SESSION['vista'] = $vistas['home'];
                     $_SESSION['controlador'] = $controladores['home'];
+
+                    $_SESSION['success'] = 'Inicio de sesión exitoso';
                     header('Location: ./index.php');
                 }
             }

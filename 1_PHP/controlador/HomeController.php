@@ -41,10 +41,10 @@ if (isset($_REQUEST['ver'])) {
 
                     $_SESSION['success'] = '¡Se ha registrado correctamente!';
                 } else {
-                    $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
+                    $_SESSION['error'] = 'No se ha podido registrar';
                 }
             } else {
-                $_SESSION['error'] = '<script>alert("No se ha validado, compruebe");</script>';
+                $_SESSION['error'] = 'No se ha validado, compruebe';
             }
         }
     } else {
@@ -64,10 +64,10 @@ if (isset($_REQUEST['ver'])) {
             }
 
             if (empty($email)) {
-                $_SESSION['error'] = '<script>alert("Debe rellenar el email");</script>';
+                $_SESSION['error'] = 'Debe rellenar el email';
             }
             if (empty($pass)) {
-                $_SESSION['error'] = '<script>alert("Debe rellenar la contraseña");</script>';
+                $_SESSION['error'] = 'Debe rellenar la contraseña';
             } else {
                 $usuario = UsuarioDAO::valida($email, $pass);
                 if ($usuario != null) {
@@ -80,6 +80,8 @@ if (isset($_REQUEST['ver'])) {
                     $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
                     $_SESSION['vista'] = $vistas['home'];
                     $_SESSION['controlador'] = $controladores['home'];
+
+                    $_SESSION['success'] = 'Inicio de sesión exitoso';
                     header('Location: ./index.php');
                 }
             }

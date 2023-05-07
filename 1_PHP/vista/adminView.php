@@ -3,9 +3,11 @@
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <div class="d-flex justify-content-center">
-          <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver1">
-            <i class="flechaVolver bi bi-arrow-left-circle"></i>
-          </button>
+          <form action="./index.php" method="post">
+            <button type="submit" class="volver volverAdmin btn-outline-primary d-flex align-items-center" name="volverAdmin">
+              <i class="bi bi-arrow-left-circle text-white"></i>
+            </button>
+          </form>
           <h1 class="text-light">Admin</h1>
         </div>
         <a class="privadas" href="#" data-target="perfil">
@@ -168,12 +170,16 @@
 </section>
 
 <section id="gestor" style="display: none;">
-  <div class="d-flex justify-content-end me-5 mt-3">
+  <div class="d-flex justify-content-end me-5 my-4">
+    <select id="tablas" class="form-select mx-3">
+      <option value="tablaProyecto">Proyectos</option>
+      <option value="tablaProducto">Productos</option>
+    </select>
     <form action="./index.php" method="post">
-      <input type="submit" class="new btn btn-primary" name="nuevoProyecto" id="nuevoProyecto" value="Nuevo proyecto">
+      <input type="submit" class="new btn btn-primary" name="nuevoProyecto" id="nuevoProyecto" value="Añadir">
     </form>
   </div>
-  <div class="table-responsive" style="text-align: center;">
+  <div class="tablaProyecto table-responsive" style="text-align: center;">
     <table class="table table-striped text-success table-bordered border-light">
       <thead class="border-light">
         <tr>
@@ -208,6 +214,45 @@
       </tbody>
     </table>
   </div>
+  <div class="tablaProducto table-responsive" style="display: none;text-align: center;">
+    <table class="table table-striped text-success table-bordered border-light">
+      <thead class="border-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"><strong>Producto</strong></th>
+          <th scope="col"><strong>Descripción</strong></th>
+          <th scope="col"><strong>Imagen</strong></th>
+          <th scope="col"><strong>Precio</strong></th>
+          <th scope="col"><strong>Cantidad</strong></th>
+          <th scope="col"><strong>Categoría</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php if (!empty($array_productos)) : ?>
+          <?php foreach ($array_productos as $producto) : ?>
+            <tr>
+              <th scope="row"><?php echo $producto->id_producto ?></th>
+              <td><?php echo $producto->nombre_producto ?></td>
+              <td><?php echo $producto->descripcion_producto ?></td>
+              <td>
+                <form action="./index.php" method="post">
+                  <input type="hidden" name="modalImagen" value="<?php echo $producto->id_producto ?>">
+                  <input type="image" src="./webroot/recursos/proyecto/<?php echo $producto->imagen_producto ?>" alt="<?php echo $producto->imagen_producto ?>" width="100" height="50">
+                </form>
+              </td>
+              <td><?php echo $producto->precio ?></td>
+              <td><?php echo $producto->cantidad ?></td>
+              <td><?php echo $producto->categoria_id ?></td>
+            </tr>
+          <?php endforeach ?>
+        <?php else : ?>
+          <tr>
+            <td colspan="6">No hay productos disponibles.</td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <section id="chat" style="display: none;">
@@ -229,15 +274,15 @@
                           <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $usuario->nombre_usuario; ?></span>
                         </div>
                         <div class="col-auto">
-                          <button type="submit" class="transparent-button" name="verChat" id="verChat" data-id="<?php echo $usuario->id_usuario; ?>" value="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-chat-dots"></i></button>
-                          <button type="submit" class="transparent-button" name="editarUsuario" id="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $usuario->id_usuario; ?>" aria-expanded="false"><i class="bi bi-pencil-square me-2"></i></button>
-                          <button type="submit" class="transparent-button" name="borrarUsuario" id="borrarUsuario"><i class="bi bi-trash3"></i></button>
+                          <button class="transparent-button" name="verChat" id="verChat" data-id="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-chat-dots"></i></button>
+                          <button class="transparent-button" name="editarUsuario" id="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $usuario->id_usuario; ?>" aria-expanded="false"><i class="bi bi-pencil-square me-2"></i></button>
+                          <button class="transparent-button" name="borrarUsuario" id="borrarUsuario" data-id="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-trash3"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="collapse" id="<?php echo $usuario->id_usuario; ?>">
                       <div class="container mt-4">
-                        <form>
+                        <form action="./index.php" method="post">
                           <div class="mb-2">
                             <?php
                             $placeholder = $usuario->nombre_usuario;
@@ -313,72 +358,9 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div id="chatModal" class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <?php
-          if (isset($_REQUEST['verChat'])) {
-            $id_usuario_actual = $_SESSION['id_usuario'];
-            $id_usuario_boton = $_POST['verChat'];
-
-            if ($id_usuario_actual == $id_usuario_boton) {
-              require_once('./config/conexion.php');
-              // Transacción
-              try {
-                $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
-                // La consulta solo selecciona mensajes entre el administrador y el usuario cuyo botón fue presionado
-                $sql = "SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario WHERE ((mensaje.id_usuario_envia = $id_usuario_boton AND mensaje.id_usuario_recibe = $id_usuario_actual) OR (mensaje.id_usuario_envia = $id_usuario_actual AND mensaje.id_usuario_recibe = $id_usuario_boton)) ORDER BY fecha_mensaje ASC;";
-                $resultado = mysqli_query($conexion, $sql);
-                // Mostrar mensajes
-                if ($resultado->num_rows > 0) {
-                  echo '<ul class="list-unstyled">';
-                  while ($message = $resultado->fetch_object()) {
-                    $nombreUsuario = $message->nombre_usuario;
-                    if ($nombreUsuario === 'Lulú') {
-                      echo '<li class="d-flex justify-content-between mb-4">
-                    <div class="card w-100">
-                    <div class="card-header d-flex justify-content-between p-3">
-                    <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
-                    </div>
-                    <div class="card-body">
-                    <p class="mb-0">' . $message->descripcion_mensaje . '</p>
-                    </div>
-                    </div>
-                    <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                  </li>';
-                    } else {
-                      echo '<li class="d-flex justify-content-between mb-4">
-                    <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                      <div class="card w-100">
-                        <div class="card-header d-flex justify-content-between p-3">
-                          <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
-                        </div>
-                        <div class="card-body">
-                          <p class="mb-0">' . $message->descripcion_mensaje . '</p>
-                        </div>
-                      </div>
-                    </li>';
-                    }
-                  }
-                  echo '</ul>';
-                } else {
-                  echo "<p>No hay mensajes.</p>";
-                }
-                // Cerrar conexión
-                mysqli_close($conexion);
-              } catch (Exception $ex) {
-                if ($ex->getCode() == 2002) {
-                  echo '<span style="color:brown"> Fallo de conexión </span>';
-                }
-                if ($ex->getCode() == 1049) {
-                  echo '<span style="color:brown"> Base de datos desconocida </span>';
-                }
-                if ($ex->getCode() == 1045) {
-                  echo '<span style="color:brown"> Datos incorrectos </span>';
-                }
-              }
-            }
-          }
-          ?>
-
-          <form method="post">
+          <div id="chatbox">
+          </div>
+          <form method="post" id="myForm">
             <div class="input-group">
               <input type="text" class="form-control" id="messageInput" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
               <input type="submit" class="btn btn-primary" id="sendMessageBtn" name="enviarMensajesUser" value="Enviar">

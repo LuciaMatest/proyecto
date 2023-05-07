@@ -1,15 +1,13 @@
 <?php
 class Archivo
 {
-    private $id_archivo;
     private $nombre_archivo;
     private $url_archivo;
     private $descripcion_archivo;
     private $proyecto_id;
 
-    public function __construct($id_archivo, $nombre_archivo, $url_archivo, $descripcion_archivo, $proyecto_id)
+    public function __construct($nombre_archivo, $url_archivo, $descripcion_archivo, $proyecto_id)
     {
-        $this->id_archivo = $id_archivo;
         $this->nombre_archivo = $nombre_archivo;
         $this->url_archivo = $url_archivo;
         $this->descripcion_archivo = $descripcion_archivo;

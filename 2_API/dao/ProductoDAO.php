@@ -6,20 +6,7 @@ class ProductoDAO extends FactoryBD implements DAO
         $sql = 'select * from producto;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayProducto = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $producto = new Producto(
-                $objeto->id_producto,
-                $objeto->nombre_producto,
-                $objeto->descripcion_producto,
-                $objeto->imagen_producto,
-                $objeto->precio,
-                $objeto->cantidad,
-                $objeto->categoria_id,
-                $objeto->proyecto_id
-            );
-            array_push($arrayProducto, $objeto);
-        }
+        $arrayProducto = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayProducto;
     }
 
@@ -28,18 +15,9 @@ class ProductoDAO extends FactoryBD implements DAO
         $sql = 'select * from producto where id_producto=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return $producto = new Producto(
-                $objeto->id_producto,
-                $objeto->nombre_producto,
-                $objeto->descripcion_producto,
-                $objeto->imagen_producto,
-                $objeto->precio,
-                $objeto->cantidad,
-                $objeto->categoria_id,
-                $objeto->proyecto_id
-            );
+            return $objeto;
         } else {
             return 'No existe el producto';
         }
@@ -74,8 +52,8 @@ class ProductoDAO extends FactoryBD implements DAO
         foreach ($objeto as $att) {
             array_push($datos, $att);
         }
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;

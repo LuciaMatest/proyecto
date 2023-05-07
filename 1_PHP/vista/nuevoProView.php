@@ -3,13 +3,15 @@
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <div class="d-flex justify-content-center">
-                    <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver3">
-                        <i class="flechaVolver bi bi-arrow-left-circle"></i>
-                    </button>
-                    <h1 class="text-light">Nuevo proyecto/producto</h1>
+                    <form action="./index.php" method="post">
+                        <button type="submit" class="volver volverNuevo btn-outline-primary d-flex align-items-center" name="volverNuevo">
+                            <i class="bi bi-arrow-left-circle text-white"></i>
+                        </button>
+                    </form>
+                    <h1 class="text-light">Nuevo</h1>
                 </div>
                 <div class="my-3">
-                    <select class="form-select" id="tipo">
+                    <select id="tipo" class="form-select">
                         <option value="producto">Nuevo producto</option>
                         <option value="proyecto">Nuevo proyecto</option>
                     </select>
@@ -20,7 +22,7 @@
 </div>
 
 <div class="container my-4">
-    <form>
+    <form action="./index.php" method="post" enctype="multipart/form-data">
         <!-- Campos para productos -->
         <div class="producto">
             <div class="mb-3">

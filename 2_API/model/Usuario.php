@@ -1,7 +1,6 @@
 <?php
 class Usuario
 {
-    private $id_usuario;
     private $nombre_usuario;
     private $telefono_usuario;
     private $email_usuario;
@@ -9,9 +8,8 @@ class Usuario
     private $borrado_usuario;
     private $tipo_usuario;
 
-    public function __construct($id_usuario, $nombre_usuario, $telefono_usuario, $email_usuario, $contrasena_usuario, $borrado_usuario, $tipo_usuario)
+    public function __construct($nombre_usuario, $telefono_usuario, $email_usuario, $contrasena_usuario, $borrado_usuario, $tipo_usuario)
     {
-        $this->id_usuario = $id_usuario;
         $this->nombre_usuario = $nombre_usuario;
         $this->telefono_usuario = $telefono_usuario;
         $this->email_usuario = $email_usuario;

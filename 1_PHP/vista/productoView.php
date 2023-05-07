@@ -2,27 +2,29 @@
     <section class="py-5 text-center container">
         <div class="row pt-5">
             <div class="d-flex justify-content-center">
-                <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver4">
-                    <i class="flechaVolver bi bi-arrow-left-circle"></i>
-                </button>
-                <h1 class="pro text-light">Ilustraciones del señor de los anillos</h1>
+                <form action="./index.php" method="post">
+                    <button type="submit" class="volver volverProducto btn-outline-primary d-flex align-items-center" name="volverProducto">
+                        <i class="bi bi-arrow-left-circle text-white"></i>
+                    </button>
+                </form>
+                <h1 class="prod text-light"><? echo $producto->nombre_producto; ?></h1>
             </div>
         </div>
     </section>
 </div>
 <div class="productTitle p-2 p-md-4 mb-4">
     <div class="col-md-6 px-0">
-        <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently
-            about what’s most interesting in this post’s contents.</p>
+        <p class="lead my-3"><? echo $producto->descripcion_producto; ?></p>
     </div>
 </div>
+
 
 <div class="productDesc container my-5">
     <section class="row row-cols-1 my-4">
         <div class="col">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="700" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <div class="col-auto">
+                    <svg class="bd-placeholder-img" width="400" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <title>Placeholder</title>
                         <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
                     </svg>
@@ -37,7 +39,7 @@
                         This is a wider card with supporting text below as a natural lead-in to
                         additional content.Multiple lines of text that form the lede, informing new readers quickly and efficiently
                         about what’s most interesting in this post’s contents.</p>
-                        <!-- Dos caras de la misma moneda -->
+                    <!-- Dos caras de la misma moneda -->
                 </div>
             </div>
         </div>
@@ -140,7 +142,7 @@
         </div>
     </section>
 
-    <section class="row py-4">
+    <!-- <section class="row py-4">
         <div class="col-md-8">
             <div class="row featurette">
                 <div class="col-md-7 order-md-2">
@@ -274,5 +276,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 </div>

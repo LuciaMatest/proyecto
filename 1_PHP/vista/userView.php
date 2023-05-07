@@ -3,9 +3,11 @@
     <div class="row pt-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <div class="d-flex justify-content-center">
-          <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver6">
-            <i class="flechaVolver bi bi-arrow-left-circle"></i>
-          </button>
+          <form action="./index.php" method="post">
+            <button type="submit" class="volver volverUser btn-outline-primary d-flex align-items-center" name="volverUser">
+              <i class="bi bi-arrow-left-circle text-white"></i>
+            </button>
+          </form>
           <h1 class="text-light">
             <?php
             if (isset($_SESSION['nombre_usuario'])) {
@@ -244,7 +246,7 @@
       <div class="col-md-6 col-lg-7 col-xl-8">
         <h5 class="font-weight-bold mb-3 text-center text-lg-start">Chat</h5>
         <div class="chat-container d-flex flex-column" style="min-height: 400px;">
-          <form action="./index.php" method="post">
+          <div id="chatbox">
             <?php
             require_once('./config/conexion.php');
             // Transacción
@@ -265,22 +267,22 @@
                           <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
                         </div>
                         <div class="card-body">
-                          <p class="mb-0">' . $message->descripcion_mensaje . '</p>
+                        <p class="mb-0">' . $message->descripcion_mensaje . '</p>
                         </div>
                       </div>
-                    </li>';
+                      </li>';
                   } else {
                     echo '<li class="d-flex justify-content-between mb-4">
                       <div class="card w-100">
-                        <div class="card-header d-flex justify-content-between p-3">
+                      <div class="card-header d-flex justify-content-between p-3">
                           <p class="fw-bold mb-0">' . $nombreUsuario . '</p>
-                        </div>
-                        <div class="card-body">
+                          </div>
+                          <div class="card-body">
                           <p class="mb-0">' . $message->descripcion_mensaje . '</p>
-                        </div>
-                      </div>
+                          </div>
+                          </div>
                       <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                    </li>';
+                      </li>';
                   }
                 }
                 echo '</ul>';
@@ -301,6 +303,8 @@
               }
             }
             ?>
+          </div>
+          <form action="" method="post">
             <div class="input-group">
               <input type="text" class="form-control" id="messageInput" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
               <input type="submit" class="btn btn-primary" id="sendMessageBtn" name="enviarMensajesUser" value="Enviar">

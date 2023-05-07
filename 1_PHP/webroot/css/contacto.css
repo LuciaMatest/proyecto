@@ -4,9 +4,9 @@
   height: 100vh;
 }
 
-.fondo>form>div>div>div>div>.card {
+#formContact {
   border: none;
-  transform: translate(0%, 30%);
+  transform: translate(0%, 23%);
 }
 
 .card-body {
@@ -16,7 +16,7 @@
 
 .form-control:focus {
   box-shadow: none;
-  border-color: #115053;
+  border-color: #082a2c;
 }
 
 .btn-primary {
@@ -32,4 +32,8 @@
 
 .btn-primary:focus {
   box-shadow: none;
+}
+
+.mensajeExito {
+  display: none;
 }

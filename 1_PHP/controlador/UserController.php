@@ -1,5 +1,5 @@
 <?php
-if (isset($_REQUEST['volver'])) {
+if (isset($_REQUEST['volverUser'])) {
     $_SESSION['controlador'] = $controladores['home'];
     $_SESSION['pagina'] = 'Home';
     $_SESSION['vista'] = $vistas['home'];

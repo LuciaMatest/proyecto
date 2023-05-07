@@ -1,7 +1,6 @@
 <?php
 class Producto
 {
-    private $id_producto;
     private $nombre_producto;
     private $descripcion_producto;
     private $imagen_producto;
@@ -10,9 +9,8 @@ class Producto
     private $categoria_id;
     private $proyecto_id;
 
-    public function __construct($id_producto, $nombre_producto, $descripcion_producto, $imagen_producto, $precio, $cantidad, $categoria_id, $proyecto_id)
+    public function __construct($nombre_producto, $descripcion_producto, $imagen_producto, $precio, $cantidad, $categoria_id, $proyecto_id)
     {
-        $this->id_producto = $id_producto;
         $this->nombre_producto = $nombre_producto;
         $this->descripcion_producto = $descripcion_producto;
         $this->imagen_producto = $imagen_producto;

@@ -50,52 +50,23 @@ header>div>div>.btn-group {
   color: #b3b3b3;
 }
 
-span{
+span {
   cursor: pointer;
 }
 
-/* Cuando alguien pase por encima de los botones el ratón aparecerá un mensaje para saber que hace ese botón */
-/* .popover {
-  position: relative;
+.recuerdame-container {
+  display: flex;
+  align-items: center;
 }
 
-.popover:before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: 9999;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 8px 8px 8px;
-  border-color: transparent transparent #333 transparent;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 
-.popover:after {
-  content: attr(data-content);
-  display: block;
-  position: absolute;
-  z-index: 9999;
-  background-color: #333;
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.4;
-  padding: 8px 12px;
-  border-radius: 4px;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
-}
+@media screen and (max-width: 422px) {
 
-.popover:hover:before,
-.popover:hover:after {
-  opacity: 0.7;
-} */
+  #login>span,
+  #contacto>span,
+  #privada>span,
+  #logout>span {
+    display: none;
+  }
+  
+}

@@ -3,9 +3,11 @@
         <div class="row pt-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <div class="d-flex justify-content-center">
-                    <button class="volver btn-outline-primary d-flex align-items-center" name="volver" id="volver5">
-                        <i class="flechaVolver bi bi-arrow-left-circle"></i>
-                    </button>
+                    <form action="./index.php" method="post">
+                        <button type="submit" class="volver volverProyecto btn-outline-primary d-flex align-items-center" name="volverProyecto">
+                            <i class="bi bi-arrow-left-circle text-white"></i>
+                        </button>
+                    </form>
                     <h1 class="pro text-light">Categorías</h1>
                 </div>
                 <a class="categorias" href="#" data-target="Diseño">
@@ -46,7 +48,7 @@
                                 <div class="col my-3">
                                     <div class="card shadow-sm my-3">
                                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img" name="productoSVG">
-                                            <a href="./index.php?producto=1" target="_self">
+                                            <a href="./index.php?producto=<?php echo $producto->id_producto; ?>" target="_self">
                                                 <title><?php echo $producto->nombre_producto ?></title>
                                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/<?php echo $producto->imagen_producto ?>" preserveAspectRatio="xMidYMid slice" />
                                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
@@ -61,5 +63,5 @@
                 </div>
                 </div>
             </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 </form>

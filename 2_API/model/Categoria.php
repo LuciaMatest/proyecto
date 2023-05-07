@@ -1,12 +1,10 @@
 <?php
 class Categoria
 {
-    private $id_categoria;
     private $nombre_categoria;
 
-    public function __construct($id_categoria, $nombre_categoria)
+    public function __construct($nombre_categoria)
     {
-        $this->id_categoria = $id_categoria;
         $this->nombre_categoria = $nombre_categoria;
     }
 

@@ -217,6 +217,13 @@ main section h2 {
   color: white;
 }
 
+@media screen and (max-width: 360px) {
+  .volverAtras {
+    left: 20px;
+    top: 20px;
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 739px) {
 
   #section1>.background,
@@ -253,6 +260,24 @@ main section h2 {
 
   .bienvenida {
     top: 22%;
+  }
+
+  .volver {
+    left: 31px;
+    top: 21px;
+  }
+
+  .volverProyecto,
+  .volverAdmin,
+  .volverUser,
+  .volverNuevo {
+    left: 36px;
+    top: 90px;
+  }
+
+  .volverProducto {
+    left: 35px;
+    top: 93px;
   }
 }
 

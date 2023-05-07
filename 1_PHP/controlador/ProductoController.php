@@ -1,5 +1,5 @@
 <?
-if (isset($_REQUEST['volver'])) {
+if (isset($_REQUEST['volverProducto'])) {
     $_SESSION['controlador'] = $controladores['proyecto'];
     $_SESSION['pagina'] = 'Proyecto';
     $_SESSION['vista'] = $vistas['proyecto'];
@@ -22,6 +22,8 @@ if (isset($_REQUEST['volver'])) {
         require_once $_SESSION['controlador'];
     }
 } else {
+    $producto = ProductoDAO::findById($_REQUEST['id_producto']);
+
     if (isset($_POST['reg-log']) && $_POST['reg-log'] == '1') {
         // El input reg-log está activo, ejecutar el código de registrarse
         if (isset($_REQUEST['registrar'])) {
@@ -41,10 +43,10 @@ if (isset($_REQUEST['volver'])) {
 
                     $_SESSION['success'] = '¡Se ha registrado correctamente!';
                 } else {
-                    $_SESSION['error'] = '<script>alert("No se ha podido registrar");</script>';
+                    $_SESSION['error'] = 'No se ha podido registrar';
                 }
             } else {
-                $_SESSION['error'] = '<script>alert("No se ha validado, compruebe");</script>';
+                $_SESSION['error'] = 'No se ha validado, compruebe';
             }
         }
     } else {
@@ -64,10 +66,10 @@ if (isset($_REQUEST['volver'])) {
             }
 
             if (empty($email)) {
-                $_SESSION['error'] = '<script>alert("Debe rellenar el email");</script>';
+                $_SESSION['error'] = 'Debe rellenar el email';
             }
             if (empty($pass)) {
-                $_SESSION['error'] = '<script>alert("Debe rellenar la contraseña");</script>';
+                $_SESSION['error'] = 'Debe rellenar la contraseña';
             } else {
                 $usuario = UsuarioDAO::valida($email, $pass);
                 if ($usuario != null) {
@@ -80,6 +82,8 @@ if (isset($_REQUEST['volver'])) {
                     $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
                     $_SESSION['vista'] = $vistas['home'];
                     $_SESSION['controlador'] = $controladores['home'];
+
+                    $_SESSION['success'] = 'Inicio de sesión exitoso';
                     header('Location: ./index.php');
                 }
             }

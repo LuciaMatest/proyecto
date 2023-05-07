@@ -9,7 +9,7 @@ if (isset($_REQUEST['nuevoProyecto'])) {
     $_SESSION['pagina'] = 'Nuevo';
     $_SESSION['vista'] = $vistas['nuevo'];
     require_once $_SESSION['controlador'];
-} elseif (isset($_REQUEST['volver'])) {
+} elseif (isset($_REQUEST['volverAdmin'])) {
     $_SESSION['controlador'] = $controladores['home'];
     $_SESSION['pagina'] = 'Home';
     $_SESSION['vista'] = $vistas['home'];
@@ -39,8 +39,11 @@ if (isset($_REQUEST['nuevoProyecto'])) {
         $_SESSION['controlador'] = $controladores['admin'];
     }
     $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
+} elseif (isset($_REQUEST['guardarUsuario'])) {
 } else {
     $array_proyectos = ProyectoDAO::findAll();
+    $array_productos = ProductoDAO::findAll();
     $array_usuarios = UsuarioDAO::findAll();
+    $array_mensajes = ChatDAO::findAll();
     $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
 }

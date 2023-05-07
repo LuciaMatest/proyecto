@@ -12,7 +12,7 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;300;400;500;600&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- Bootstrap Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -55,13 +55,13 @@
                         <? } else {
                         ?>
                             <li class="nav-item">
-                                <span class="btn-outline-primary d-flex align-items-center" name="login" id="login">
+                                <span class="btn-outline-primary d-flex align-items-center me-3" name="login" id="login">
                                     <i class="bi bi-person-circle me-2"></i>
                                     <span>Iniciar Sesión / Registro</span>
                                 </span>
                             </li>
                             <li class="nav-item">
-                                <button class="btn btn-outline-primary d-flex align-items-center" name="contacto" id="contacto">
+                                <button class="btn-outline-primary d-flex align-items-center" name="contacto" id="contacto">
                                     <i class="bi bi-question-circle me-2"></i>
                                     <span>Contacto</span>
                                 </button>
@@ -102,12 +102,6 @@
                                                 <div class="center-wrap">
                                                     <div class="section text-center">
                                                         <h4 class="mb-4 pb-3">Iniciar sesión</h4>
-                                                        <?
-                                                        if (isset($_SESSION['error'])) {
-                                                            echo $_SESSION['error'];
-                                                            unset($_SESSION['error']);
-                                                        }
-                                                        ?>
                                                         <div class="form-group">
                                                             <i class="input-icon bi bi-at"></i>
                                                             <input type="email" class="form-style" id="email_usuario" name="email_usuario" placeholder="Email" value="<?php if (isset($_COOKIE['email_usuario'])) {
@@ -118,13 +112,24 @@
                                                             <i class="input-icon bi bi-lock"></i>
                                                             <input type="password" class="form-style" id="contrasena_usuario" name="contrasena_usuario" placeholder="Contraseña">
                                                         </div>
-                                                        <div class="mt-2">
+                                                        <div class="mt-3 ms-3 recuerdame-container">
                                                             <!-- Al loguearse el usuario puede seleccionar recuerdame para que cuando cierre sesion se mantenga su nombre de usuario y solo tenga que escribir de nuevo la contraseña -->
-                                                            <input type="radio" id="recuerdame" name="recuerdame" <?php if (isset($_COOKIE['recuerdame'])) {
-                                                                                                                        echo 'checked';
-                                                                                                                    } ?> />
-                                                            <label for="recuerdame" class="text-light ms-2">Recuerdame</label>
+                                                            <input type="checkbox" id="recuerdame" name="recuerdame" <?php if (isset($_COOKIE['recuerdame'])) {
+                                                                                                                            echo 'checked';
+                                                                                                                        } ?> />
+                                                            <label for="recuerdame" class="text-light ms-2">Recuérdame</label>
                                                         </div>
+                                                        <?php
+                                                        if (isset($_SESSION['success'])) {
+                                                            echo '<script>alert("' . $_SESSION['success'] . '");</script>';
+                                                            unset($_SESSION['success']);
+                                                        }
+
+                                                        if (isset($_SESSION['error'])) {
+                                                            echo '<script>alert("' . $_SESSION['error'] . '");</script>';
+                                                            unset($_SESSION['error']);
+                                                        }
+                                                        ?>
                                                         <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
                                                     </div>
                                                 </div>
@@ -240,12 +245,12 @@
                                                         </div>
                                                         <?php
                                                         if (isset($_SESSION['success'])) {
-                                                            echo '<p style="color:green">' . $_SESSION['success'] . "</p>";
+                                                            echo '<script>alert("' . $_SESSION['success'] . '");</script>';
                                                             unset($_SESSION['success']);
                                                         }
 
                                                         if (isset($_SESSION['error'])) {
-                                                            echo '<p style="color:red">' . $_SESSION['error'] . "</p>";
+                                                            echo '<script>alert("' . $_SESSION['error'] . '");</script>';
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
@@ -283,7 +288,6 @@
     <script src="./webroot/js/chat.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

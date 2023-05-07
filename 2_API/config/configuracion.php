@@ -25,10 +25,10 @@ require_once './dao/ProyectoDAO.php';
 require_once './dao/UsuarioDAO.php';
 
 // Model
-require_once './modelo/Archivo.php';
-require_once './modelo/Categoria.php';
-require_once './modelo/Factura.php';
-require_once './modelo/Producto.php';
-require_once './modelo/Proyecto.php';
-require_once './modelo/Usuario.php';
-require_once './modelo/Chat.php';
+require_once './model/Archivo.php';
+require_once './model/Categoria.php';
+require_once './model/Factura.php';
+require_once './model/Producto.php';
+require_once './model/Proyecto.php';
+require_once './model/Usuario.php';
+require_once './model/Chat.php';

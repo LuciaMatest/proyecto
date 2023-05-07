@@ -6,17 +6,7 @@ class ProyectoDAO extends FactoryBD implements DAO
         $sql = 'select * from proyecto;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayProyecto = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $proyecto = new Proyecto(
-                $objeto->id_proyecto,
-                $objeto->nombre_proyecto,
-                $objeto->fecha_proyecto,
-                $objeto->usuario_id,
-                $objeto->factura_id
-            );
-            array_push($arrayProyecto, $objeto);
-        }
+        $arrayProyecto = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayProyecto;
     }
 
@@ -25,15 +15,9 @@ class ProyectoDAO extends FactoryBD implements DAO
         $sql = 'select * from proyecto where id_proyecto=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return $proyecto = new Proyecto(
-                $objeto->id_proyecto,
-                $objeto->nombre_proyecto,
-                $objeto->fecha_proyecto,
-                $objeto->usuario_id,
-                $objeto->factura_id
-            );
+            return $objeto;
         } else {
             return 'No existe el proyecto';
         }
@@ -65,8 +49,8 @@ class ProyectoDAO extends FactoryBD implements DAO
         foreach ($objeto as $att) {
             array_push($datos, $att);
         }
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;
