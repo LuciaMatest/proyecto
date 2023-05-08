@@ -46,13 +46,13 @@
                     <br>¡Espero que te gusten!
                 </p>
                 <div class="d-flex justify-content-center align-items-center mt-2" id="redes">
-                    <a href="https://instagram.com/lulu.ilustracion?igshid=YmMyMTA2M2Y=" class="mx-2 p-1">
+                    <a href="https://instagram.com/lulu.ilustracion?igshid=YmMyMTA2M2Y=" class="mx-2 p-1" target="_blank">
                         <img src="webroot/recursos/redes/instagram.png" alt="ig" class="img-fluid">
                     </a>
-                    <a href="https://www.linkedin.com/in/luluilustracion/" class="mx-2 p-1">
+                    <a href="https://www.linkedin.com/in/luluilustracion/" class="mx-2 p-1" target="_blank">
                         <img src="webroot/recursos/redes/linkedin.png" alt="link" class="img-fluid">
                     </a>
-                    <a href="https://www.tiktok.com/@lulu.ilustracion?_t=8bFX3XdNlh8&_r=1" class="mx-2 p-1">
+                    <a href="https://www.tiktok.com/@lulu.ilustracion?_t=8bFX3XdNlh8&_r=1" class="mx-2 p-1" target="_blank">
                         <img src="webroot/recursos/redes/tik-tok.png" alt="tik" class="img-fluid">
                     </a>
                 </div>
