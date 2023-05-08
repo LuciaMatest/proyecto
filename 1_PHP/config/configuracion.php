@@ -14,7 +14,7 @@ $controladores = array(
 );
 
 //Modelo
-require_once('./modelo/Archivo.php');
+require_once('./modelo/Imagen.php');
 require_once('./modelo/Categoria.php');
 require_once('./modelo/Factura.php');
 require_once('./modelo/Producto.php');
@@ -40,7 +40,7 @@ require_once('./core/funciones.php');
 //Dao
 require_once('./dao/DAO.php');
 require_once('./dao/FactoryBD.php');
-require_once('./dao/ArchivoDAO.php');
+require_once('./dao/ImagenDAO.php');
 require_once('./dao/CategoriaDAO.php');
 require_once('./dao/ChatDAO.php');
 require_once('./dao/FacturaDAO.php');

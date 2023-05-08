@@ -50,7 +50,7 @@
                                         <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img" name="productoSVG">
                                             <a href="./index.php?producto=<?php echo $producto->id_producto; ?>" target="_self">
                                                 <title><?php echo $producto->nombre_producto ?></title>
-                                                <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/<?php echo $producto->imagen_producto ?>" preserveAspectRatio="xMidYMid slice" />
+                                                <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/<?php echo $producto->url_imagen ?>" preserveAspectRatio="xMidYMid slice" />
                                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
                                                 <text x="50%" y="50%" fill="white"><?php echo $producto->descripcion_producto ?></text>
                                             </a>

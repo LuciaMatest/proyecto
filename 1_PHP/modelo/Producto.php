@@ -4,22 +4,22 @@ class Producto
     private $id_producto;
     private $nombre_producto;
     private $descripcion_producto;
-    private $imagen_producto;
     private $precio;
     private $cantidad;
     private $categoria_id;
     private $proyecto_id;
+    private $imagen_id;
 
-    public function __construct($id_producto, $nombre_producto, $descripcion_producto, $imagen_producto, $precio, $cantidad, $categoria_id, $proyecto_id)
+    public function __construct($id_producto, $nombre_producto, $descripcion_producto, $precio, $cantidad, $categoria_id, $proyecto_id, $imagen_id)
     {
         $this->id_producto = $id_producto;
         $this->nombre_producto = $nombre_producto;
         $this->descripcion_producto = $descripcion_producto;
-        $this->imagen_producto = $imagen_producto;
         $this->precio = $precio;
         $this->cantidad = $cantidad;
         $this->categoria_id = $categoria_id;
         $this->proyecto_id = $proyecto_id;
+        $this->imagen_id = $imagen_id;
     }
 
     public function __get($get)

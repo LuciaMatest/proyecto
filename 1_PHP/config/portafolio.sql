@@ -7,6 +7,12 @@ CREATE TABLE categoria (
   `nombre_categoria` varchar(255) NOT NULL
 );
 
+-- IMAGENES DE PRODUCTOS
+CREATE TABLE imagen (
+  `id_imagen` int PRIMARY KEY AUTO_INCREMENT,
+  `url_imagen` varchar(255) NOT NULL 
+);
+
 -- PRODUCTOS QUE COMPONEN UN PROYECTO
 CREATE TABLE producto (
   `id_producto` int PRIMARY KEY AUTO_INCREMENT,
@@ -19,14 +25,6 @@ CREATE TABLE producto (
   `imagen_id` int
 );
 
-
-CREATE TABLE producto_imagen (
-  `id_imagen` int PRIMARY KEY AUTO_INCREMENT,
-  `producto_id` int NOT NULL,
-  `url_imagen` varchar(255) NOT NULL
-);
-
-
 -- TRABAJOS REALIZADOS
 CREATE TABLE proyecto (
   `id_proyecto` int PRIMARY KEY AUTO_INCREMENT,
@@ -34,15 +32,6 @@ CREATE TABLE proyecto (
   `fecha_proyecto` datetime NOT NULL,
   `usuario_id` int,
   `factura_id` int
-);
-
--- DOCUMENTOS QUE COMPARTIR CON EL CLIENTE
-CREATE TABLE archivo (
-  `id_archivo` int PRIMARY KEY AUTO_INCREMENT,
-  `nombre_archivo` varchar(255) NOT NULL,
-  `url_archivo` varchar(255) NOT NULL,
-  `descripcion_archivo` varchar(255) NOT NULL,
-  `proyecto_id` int
 );
 
 -- USUARIO
@@ -63,7 +52,7 @@ CREATE TABLE mensaje (
   `fecha_mensaje` datetime,
   `id_usuario_envia` int,
   `id_usuario_recibe` int
-); 
+);
 
 -- FACTURA
 CREATE TABLE factura (
@@ -76,45 +65,13 @@ CREATE TABLE factura (
 
 ALTER TABLE `producto` ADD FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id_categoria`);
 ALTER TABLE `producto` ADD FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id_proyecto`);
-ALTER TABLE `producto` ADD FOREIGN KEY (`imagen_id`) REFERENCES `producto_imagen` (`id_imagen`);
-
-ALTER TABLE `producto_imagen` ADD FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id_producto`);
+ALTER TABLE `producto` ADD FOREIGN KEY (`imagen_id`) REFERENCES `imagen` (`id_imagen`);
 
 ALTER TABLE `proyecto` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_usuario`);
 ALTER TABLE `proyecto` ADD FOREIGN KEY (`factura_id`) REFERENCES `factura` (`id_factura`);
 
-ALTER TABLE `archivo` ADD FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id_proyecto`);
-
 ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_envia`) REFERENCES `usuario` (`id_usuario`);
 ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_recibe`) REFERENCES `usuario` (`id_usuario`);
-
-INSERT INTO categoria (nombre_categoria) VALUES('Diseño');
-INSERT INTO categoria (nombre_categoria) VALUES('Ilustraciones');
-INSERT INTO categoria (nombre_categoria) VALUES('Web');
-
-
-INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES ('Lulú',656656565,'admin@gmail.com','admin', 0, 'admin');
-INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES('Alfredo',666666666,'usuario1@gmail.com','usuario1', 0 ,'usuario');
-
-INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Diseño 1', '"El mundo de la Tierra Media: Ilustracion inspirada en El Señor de los Anillos"', 'diseno1.jpg', 99.99, 10, 1, null);
-INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Ilustracion 1', '"En la Sala de los Menesteres Secretos, Harry descubre un lugar mágico lleno de tesoros y misterios que esperan ser explorados"', 'ilustracion1.jpg', 79.99, 3, 2, null);
-INSERT INTO producto (nombre_producto, descripcion_producto, imagen_producto, precio, cantidad, categoria_id, proyecto_id) VALUES ('Web 1', '"El Doctor y su fiel TARDIS viajan por el tiempo y el espacio en una aventura intergaláctica"', 'web1.jpg', 45.90, 4, 3, null);
-
-INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 1', '2023-05-01 00:00:00', '2023-04-30 00:00:00', 'pendiente');
-INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 2', NOW(), NOW(), 'pendiente');
-INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 3', NOW(), NOW(), 'pagado');
-
-INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)VALUES ('Ilustraciones familiares', '2023-05-01 00:00:00', 2, 1);
-INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)VALUES ('Logotipo tienda', NOW(), 4, 2);
-INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id)VALUES ('Diseño web - tienda', NOW(), 4, 3);
-
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, 4);
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 1);
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, ¿cuales son tus precios?', NOW(), 3, 1);
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Estos son los precios, un saludo', NOW(), 1, 3);
-
-
-INSERT INTO archivo (nombre_archivo, url_archivo, descripcion_archivo, proyecto_id)VALUES ('mujeres', './webroot/archivos/archivo1.jpg', 'Archivo de ejemplo', 2);
 
 -- Mediante un TRIGGER ejecutaremos automaticamente la misma consulta que consiste en enviar un mensaje de bienvenida al chat de los nuevos usuarios
 DELIMITER //
@@ -127,3 +84,27 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+INSERT INTO categoria (nombre_categoria) VALUES('Diseño');
+INSERT INTO categoria (nombre_categoria) VALUES('Ilustraciones');
+INSERT INTO categoria (nombre_categoria) VALUES('Web');
+
+INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES ('Lulú',656656565,'lucia@gmail.com','lucia', 0, 'admin');
+INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES('Alfredo',666666666,'usuario1@gmail.com','usuario1', 0 ,'usuario');
+
+INSERT INTO imagen (url_imagen) VALUES ('diseno1.jpg');
+INSERT INTO imagen (url_imagen) VALUES ('ilustracion1.jpg');
+INSERT INTO imagen (url_imagen) VALUES ('web1.jpg');
+
+INSERT INTO producto (nombre_producto, descripcion_producto, precio, cantidad, categoria_id, proyecto_id, imagen_id) VALUES ('Diseño 1', '"El mundo de la Tierra Media: Ilustracion inspirada en El Señor de los Anillos"', 10.99, 100, 1, null, 1);
+INSERT INTO producto (nombre_producto, descripcion_producto, precio, cantidad, categoria_id, proyecto_id, imagen_id) VALUES ('Ilustracion 1', '"En la Sala de los Menesteres Secretos, Harry descubre un lugar mágico lleno de tesoros y misterios que esperan ser explorados"', 20.84 , 100, 2, null, 2);
+INSERT INTO producto (nombre_producto, descripcion_producto, precio, cantidad, categoria_id, proyecto_id, imagen_id) VALUES ('Web 1', '"El Doctor y su fiel TARDIS viajan por el tiempo y el espacio en una aventura intergaláctica"',5.41, 100, 3, null, 3);
+
+INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 1', NOW(), NOW(), 'pendiente');
+INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 2', NOW(), NOW(), 'pagado');
+
+INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id) VALUES('Ilustraciones familiares', NOW(), 2, 1);
+INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id) VALUES('Logotipo tienda', NOW(), 2, 2);
+
+INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, 2);
+INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 1);
