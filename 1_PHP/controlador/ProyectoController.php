@@ -35,7 +35,7 @@ if (isset($_REQUEST['volverProyecto'])) {
         // El input reg-log está activo, ejecutar el código de registrarse
         if (isset($_REQUEST['registrar'])) {
             if (validarNuevoUsuario()) {
-                $usuario = new Usuario(null, $_REQUEST['nombre'], $_REQUEST['telefono'], $_REQUEST['email'], $_REQUEST['contraseña'], 0, null);
+                $usuario = new Usuario(null, $_REQUEST['nombre'], $_REQUEST['telefono'], $_REQUEST['email'], sha1($_REQUEST['contraseña']), 0, null);
                 if (UsuarioDAO::insert($usuario)) {
                     $usuario = UsuarioDAO::valida($_REQUEST['email'], $_REQUEST['contraseña']);
                     $_SESSION['controlador'] = $controladores['home'];

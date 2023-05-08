@@ -35,34 +35,41 @@ botones.forEach(boton => {
 
 //Categorias
 //Cuando se pulse en una de las categorias cada una mostrara el div correspondiente
-const disenosDiv = document.getElementById('Diseño');
-const ilustracionesDiv = document.getElementById('Ilustraciones');
-const webDiv = document.getElementById('Web');
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.href.includes("proyectoView.php")) {
+    const disenosDiv = document.getElementById('Diseño');
+    const ilustracionesDiv = document.getElementById('Ilustraciones');
+    const webDiv = document.getElementById('Web');
 
-const categorias = document.querySelectorAll('.categorias');
+    const categorias = document.querySelectorAll('.categorias');
 
-categorias.forEach((categoria) => {
-  categoria.addEventListener('click', (evento) => {
-    evento.preventDefault();
-    const target = evento.currentTarget.getAttribute('data-target');
+    categorias.forEach((categoria) => {
+      categoria.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        const target = evento.currentTarget.getAttribute('data-target');
 
-    disenosDiv.style.display = 'none';
-    ilustracionesDiv.style.display = 'none';
-    webDiv.style.display = 'none';
+        disenosDiv.style.display = 'none';
+        ilustracionesDiv.style.display = 'none';
+        webDiv.style.display = 'none';
 
-    disenosDiv.classList.add("oculto");
-    ilustracionesDiv.classList.add("oculto");
-    webDiv.classList.add("oculto");
+        disenosDiv.classList.add("oculto");
+        ilustracionesDiv.classList.add("oculto");
+        webDiv.classList.add("oculto");
 
-    const divToShow = document.querySelector(`#${target}`);
-    divToShow.style.display = 'block';
-    categoria.classList.remove("oculto");
-  });
+        const divToShow = document.querySelector(`#${target}`);
+        divToShow.style.display = 'block';
+        categoria.classList.remove("oculto");
+      });
+    });
+
+  }
 });
 
 //Área privada
 //Cuando se pulse en una de las areas cada una mostrara el div correspondiente
-const perfilDiv = document.getElementById('perfil');
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.href.includes("proyectoView.php")) {
+    const perfilDiv = document.getElementById('perfil');
 const gestorDiv = document.getElementById('gestor');
 const chatDiv = document.getElementById('chat');
 
@@ -85,6 +92,8 @@ privadas.forEach((categoria) => {
     divToShow.style.display = 'block';
     categoria.classList.remove("oculto");
   });
+});
+  }
 });
 
 //Login - Sign in
