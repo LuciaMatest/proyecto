@@ -84,16 +84,15 @@
 
     <!-- Formulario login y sign in -->
     <div id="login" class="form-container">
-        <div class="form-background"></div>
-        <div class="form-content">
-            <form action="./index.php" method="post">
+        <form action="./index.php" method="post">
+            <div class="form-background"></div>
+            <div class="form-content">
                 <a href="#" id="closeBtn"><i class="bi bi-x-lg"></i></a>
                 <div class="section">
                     <div class="container-fluid">
                         <div class="row full-height justify-content-center">
                             <div class="col-12 text-center align-self-center py-5">
                                 <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                                    <h6 class="mb-0 pb-3"><span>Iniciar sesión </span><span>Registrarse</span></h6>
                                     <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" value="1" />
                                     <label for="reg-log"></label>
                                     <div class="card-3d-wrap mx-auto">
@@ -119,18 +118,22 @@
                                                                                                                         } ?> />
                                                             <label for="recuerdame" class="text-light ms-2">Recuérdame</label>
                                                         </div>
-                                                        <?php
-                                                        if (isset($_SESSION['success'])) {
-                                                            echo '<script>alert("' . $_SESSION['success'] . '");</script>';
-                                                            unset($_SESSION['success']);
-                                                        }
+                                                        <div>
+                                                            <?php
+                                                            if (isset($_SESSION['success'])) {
+                                                                echo '<script>alert("' . $_SESSION['success'] . '");</script>';
+                                                                unset($_SESSION['success']);
+                                                            }
 
-                                                        if (isset($_SESSION['error'])) {
-                                                            echo '<script>alert("' . $_SESSION['error'] . '");</script>';
-                                                            unset($_SESSION['error']);
-                                                        }
-                                                        ?>
-                                                        <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
+                                                            if (isset($_SESSION['error'])) {
+                                                                echo '<script>alert("' . $_SESSION['error'] . '");</script>';
+                                                                unset($_SESSION['error']);
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div>
+                                                            <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -243,18 +246,22 @@
                                                             <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
                                                             <i class="input-icon bi bi-lock" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
-                                                        <?php
-                                                        if (isset($_SESSION['success'])) {
-                                                            echo '<script>alert("' . $_SESSION['success'] . '");</script>';
-                                                            unset($_SESSION['success']);
-                                                        }
+                                                        <div>
+                                                            <?php
+                                                            if (isset($_SESSION['success'])) {
+                                                                echo '<script>alert("' . $_SESSION['success'] . '");</script>';
+                                                                unset($_SESSION['success']);
+                                                            }
 
-                                                        if (isset($_SESSION['error'])) {
-                                                            echo '<script>alert("' . $_SESSION['error'] . '");</script>';
-                                                            unset($_SESSION['error']);
-                                                        }
-                                                        ?>
-                                                        <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
+                                                            if (isset($_SESSION['error'])) {
+                                                                echo '<script>alert("' . $_SESSION['error'] . '");</script>';
+                                                                unset($_SESSION['error']);
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <div>
+                                                            <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -265,8 +272,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+        </form>
     </div>
 
     <!-- Footer -->
@@ -283,12 +289,12 @@
             </ul>
         </footer>
     </div>
-    <script src="./webroot/js/funciones.js"></script>
-    <script src="./webroot/js/contacto.js"></script>
-    <script src="./webroot/js/chat.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="./webroot/js/funciones.js"></script>
+    <script src="./webroot/js/contacto.js"></script>
+    <script src="./webroot/js/chat.js"></script>
 </body>
 
 </html>

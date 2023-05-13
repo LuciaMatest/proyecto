@@ -1,5 +1,5 @@
 <?php
-    define('USER', 'lucia');
-    define('PASS', 'lucia');
+    define('USER', 'ubuntu');
+    define('PASS', 'Lucia28.');
     define('BBDD', 'portafolio');
 ?>

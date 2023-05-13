@@ -41,12 +41,12 @@ if (isset($_REQUEST['volverProducto'])) {
                     $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
                     $_SESSION['email_usuario'] = $usuario->email_usuario;
 
-                    $_SESSION['success'] = '¡Se ha registrado correctamente!';
+                    $_SESSION['success'] = "¡Se ha registrado correctamente!";
                 } else {
-                    $_SESSION['error'] = 'No se ha podido registrar';
+                    $_SESSION['error'] = "No se ha podido registrar";
                 }
             } else {
-                $_SESSION['error'] = 'No se ha validado, compruebe';
+                $_SESSION['error'] = "No se ha validado, compruebe";
             }
         }
     } else {
@@ -66,10 +66,10 @@ if (isset($_REQUEST['volverProducto'])) {
             }
 
             if (empty($email)) {
-                $_SESSION['error'] = 'Debe rellenar el email';
+                $_SESSION['error'] = "Debe rellenar el email";
             }
             if (empty($pass)) {
-                $_SESSION['error'] = 'Debe rellenar la contraseña';
+                $_SESSION['error'] = "Debe rellenar la contraseña";
             } else {
                 $usuario = UsuarioDAO::valida($email, $pass);
                 if ($usuario != null) {
@@ -83,7 +83,7 @@ if (isset($_REQUEST['volverProducto'])) {
                     $_SESSION['vista'] = $vistas['home'];
                     $_SESSION['controlador'] = $controladores['home'];
 
-                    $_SESSION['success'] = 'Inicio de sesión exitoso';
+                    $_SESSION['success'] = "Inicio de sesión exitoso";
                     header('Location: ./index.php');
                 }
             }

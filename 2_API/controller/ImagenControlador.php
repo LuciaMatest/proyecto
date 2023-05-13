@@ -1,5 +1,5 @@
 <?
-class ArchivoControlador extends ControladorPadre
+class ImagenControlador extends ControladorPadre
 {
     public function controlar()
     {
@@ -29,35 +29,18 @@ class ArchivoControlador extends ControladorPadre
         $recurso = self::recurso();
         if (count($recurso) == 2) {
             if (!$parametros) {
-                //Si no se pone nada mostrara todos los archivos
-                $lista = ArchivoDAO::findAll();
+                //Si no se pone nada mostrara todas las imagenes
+                $lista = ImagenDAO::findAll();
                 $data = json_encode($lista);
                 self::respuesta(
                     $data,
                     array('Content-Type: application/json', 'HTTP/1.1 200 OK')
                 );
-            } else {
-                //Listar archivos por nombre
-                if (isset($_GET['nombre'])) {
-                    $archivo = ArchivoDAO::findByName($_GET['nombre']);
-                    $data = json_encode($archivo);
-                    self::respuesta(
-                        $data,
-                        array('Content-Type: application/json', 'HTTP/1.1 200 OK')
-                    );
-                } else if (isset($_GET['proyecto'])) {
-                    //Listar archivos por id de proyecto
-                    $sensores = ArchivoDAO::findByIdProd($_GET["proyecto"]);
-                    $data = json_encode($sensores);
-                    self::respuesta($data, array('Content-Type: application/json', 'HTTP/1.1 200 OK'));
-                } else {
-                    self::respuesta('', array('HTTP/1.1 400 No se ha utilizado un filtro correcto'));
-                }
             }
         } elseif (count($recurso) == 3) {
-            //Listar archivos por id
-            $archivo = ArchivoDAO::findById($recurso[2]);
-            $data = json_encode($archivo);
+            //Listar imagenes por id
+            $imagen = ImagenDAO::findById($recurso[2]);
+            $data = json_encode($imagen);
             self::respuesta(
                 $data,
                 array('Content-Type: application/json', 'HTTP/1.1 200 OK')
@@ -70,9 +53,9 @@ class ArchivoControlador extends ControladorPadre
         $body = file_get_contents('php://input');
         $dato = json_decode($body, true);
 
-        if (isset($dato['nombre_archivo']) && isset($dato['url_archivo']) && isset($dato['descripcion_archivo']) && isset($dato['proyecto_id'])) {
-            $archivo = new Archivo($dato['nombre_archivo'], $dato['url_archivo'], $dato['descripcion_archivo'], $dato['proyecto_id']);
-            if (ArchivoDAO::insert($archivo)) {
+        if (isset($dato['url_imagen'])) {
+            $imagen = new Imagen($dato['url_imagen']);
+            if (ImagenDAO::insert($imagen)) {
                 self::respuesta(
                     '',
                     array('Content-Type: application/json', 'HTTP/1.1 200 OK')
@@ -90,10 +73,10 @@ class ArchivoControlador extends ControladorPadre
             $body = file_get_contents('php://input');
             $dato = json_decode($body, true);
 
-            if (isset($dato['nombre_archivo']) && isset($dato['url_archivo']) && isset($dato['descripcion_archivo']) && isset($dato['proyecto_id'])) {
-                $archivo = new Archivo($dato['nombre_archivo'], $dato['url_archivo'], $dato['descripcion_archivo'], $dato['proyecto_id']);
-                $archivo->id_archivo = $recurso[2];
-                if (ArchivoDAO::update($archivo)) {
+            if (isset($dato['url_imagen'])) {
+                $imagen = new Imagen($dato['url_imagen']);
+                $imagen->id_imagen = $recurso[2];
+                if (ImagenDAO::update($imagen)) {
                     self::respuesta(
                         '',
                         array('Content-Type: application/json', 'HTTP/1.1 200 OK')
@@ -106,7 +89,7 @@ class ArchivoControlador extends ControladorPadre
                 }
             }
         } else {
-            self::respuesta('', array('HTTP/1.1 400 El recurso esta mal formado /conciertos/{id}'));
+            self::respuesta('', array('HTTP/1.1 400 El recurso esta mal formado /imagen/{id}'));
         }
     }
 
@@ -114,7 +97,7 @@ class ArchivoControlador extends ControladorPadre
     {
         $recurso = self::recurso();
         if (count($recurso) == 3) {
-            if (ArchivoDAO::delete($recurso[2])) {
+            if (ImagenDAO::delete($recurso[2])) {
                 self::respuesta(
                     '',
                     array('Content-Type: application/json', 'HTTP/1.1 200 OK')

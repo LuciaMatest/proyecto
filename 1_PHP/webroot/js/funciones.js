@@ -35,41 +35,34 @@ botones.forEach(boton => {
 
 //Categorias
 //Cuando se pulse en una de las categorias cada una mostrara el div correspondiente
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.href.includes("proyectoView.php")) {
-    const disenosDiv = document.getElementById('Diseño');
-    const ilustracionesDiv = document.getElementById('Ilustraciones');
-    const webDiv = document.getElementById('Web');
+const disenosDiv = document.getElementById('Diseño');
+const ilustracionesDiv = document.getElementById('Ilustraciones');
+const webDiv = document.getElementById('Web');
 
-    const categorias = document.querySelectorAll('.categorias');
+const categorias = document.querySelectorAll('.categorias');
 
-    categorias.forEach((categoria) => {
-      categoria.addEventListener('click', (evento) => {
-        evento.preventDefault();
-        const target = evento.currentTarget.getAttribute('data-target');
+categorias.forEach((categoria) => {
+  categoria.addEventListener('click', (evento) => {
+    evento.preventDefault();
+    const target = evento.currentTarget.getAttribute('data-target');
 
-        disenosDiv.style.display = 'none';
-        ilustracionesDiv.style.display = 'none';
-        webDiv.style.display = 'none';
+    disenosDiv.style.display = 'none';
+    ilustracionesDiv.style.display = 'none';
+    webDiv.style.display = 'none';
 
-        disenosDiv.classList.add("oculto");
-        ilustracionesDiv.classList.add("oculto");
-        webDiv.classList.add("oculto");
+    disenosDiv.classList.add("oculto");
+    ilustracionesDiv.classList.add("oculto");
+    webDiv.classList.add("oculto");
 
-        const divToShow = document.querySelector(`#${target}`);
-        divToShow.style.display = 'block';
-        categoria.classList.remove("oculto");
-      });
-    });
-
-  }
+    const divToShow = document.querySelector(`#${target}`);
+    divToShow.style.display = 'block';
+    categoria.classList.remove("oculto");
+  });
 });
 
 //Área privada
 //Cuando se pulse en una de las areas cada una mostrara el div correspondiente
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.href.includes("proyectoView.php")) {
-    const perfilDiv = document.getElementById('perfil');
+const perfilDiv = document.getElementById('perfil');
 const gestorDiv = document.getElementById('gestor');
 const chatDiv = document.getElementById('chat');
 
@@ -92,8 +85,6 @@ privadas.forEach((categoria) => {
     divToShow.style.display = 'block';
     categoria.classList.remove("oculto");
   });
-});
-  }
 });
 
 //Login - Sign in
@@ -120,15 +111,13 @@ closeBtn.addEventListener('click', function (evento) {
 
 
 //Cuando pulsamos Editar perfil, la información del usuario se vuelve editable.
-const campos = document.querySelectorAll('.campo-perfil');
-const btnEditar = document.querySelector('#editarPerfil');
-
 function editarPerfil() {
-  campos.forEach(campo => {
-    campo.readOnly = !campo.readOnly;
+  const camposPerfil = document.querySelectorAll('.campo-perfil');
+  camposPerfil.forEach((campo) => {
+    campo.removeAttribute('readonly');
   });
-  btnEditar.style.display = btnEditar.style.display === 'none' ? 'block' : 'none';
 }
+
 
 //Para elegir crear o proyecto o producto nuevo
 document.addEventListener("DOMContentLoaded", function () {

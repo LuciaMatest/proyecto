@@ -29,12 +29,13 @@
 
 <section id="perfil">
   <form action="./index.php" method="post">
+    <input type="hidden" name="id_usuario" value="<? echo $_SESSION['id_usuario']; ?>">
     <div class="container py-5">
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
+              <img src="./webroot/recursos/perfil/perfil.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
               <h2 class="my-3"><? echo $_SESSION['nombre_usuario']; ?></h2>
               <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
@@ -113,7 +114,7 @@
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="email" class="form-control campo-perfil" name="email" value="<? if ($_SESSION['accion'] == 'editar') {
                                                                                                   echo $usuario->email_usuario;
-                                                                                                } ?>">
+                                                                                                } ?>" autocomplete="off">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
                         if (vacio("email")) {
@@ -128,7 +129,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $_SESSION['email_usuario']; ?>" readonly>
+                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $_SESSION['email_usuario']; ?>" readonly autocomplete="off">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -141,7 +142,7 @@
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="text" class="form-control campo-perfil" name="contraseña" value="<? if ($_SESSION['accion'] == 'editar') {
                                                                                                       echo $usuario->contrasena_usuario;
-                                                                                                    } ?>">
+                                                                                                    } ?>" autocomplete="new-password">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
                         if (vacio("contraseña")) {
@@ -156,7 +157,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly>
+                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly autocomplete="new-password">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -309,7 +310,7 @@
                               }
                             }
                             ?>
-                            <input type="email" class="form-control" id="email" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>">
+                            <input type="email" class="form-control" id="email" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" autocomplete="off">
                           </div>
                           <div class="mb-2">
                             <?php
@@ -323,7 +324,7 @@
                               }
                             }
                             ?>
-                            <input type="password" class="form-control" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña" id="contraseña">
+                            <input type="password" class="form-control" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña" id="contraseña" autocomplete="new-password">
                           </div>
                           <div class="mb-2">
                             <?php
@@ -337,7 +338,7 @@
                               }
                             }
                             ?>
-                            <input type="password" class="form-control" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
+                            <input type="password" class="form-control" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2" autocomplete="new-password">
                           </div>
                           <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarUsuario" id="guardarUsuario">Guardar cambios</button>

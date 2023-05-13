@@ -35,11 +35,11 @@ if (isset($_REQUEST['nuevoProyecto'])) {
         $_SESSION['id_usuario'] = $_REQUEST['id_usuario'];
 
 
-        $_SESSION['vista'] = $vistas['admin'];
-        $_SESSION['controlador'] = $controladores['admin'];
+        $_SESSION['vista'] = $vistas['user'];
+        $_SESSION['controlador'] = $controladores['user'];
+        $usuario = UsuarioDAO::findAll();
     }
     $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
-} elseif (isset($_REQUEST['guardarUsuario'])) {
 } else {
     $array_proyectos = ProyectoDAO::findAll();
     $array_productos = ProductoDAO::findAll();

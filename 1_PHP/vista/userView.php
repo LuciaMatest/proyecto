@@ -127,7 +127,7 @@
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="email" class="form-control campo-perfil" name="email" value="<? if ($_SESSION['accion'] == 'editar') {
                                                                                                   echo $usuario->email_usuario;
-                                                                                                } ?>">
+                                                                                                } ?>" autocomplete="off">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
                         if (vacio("email")) {
@@ -142,7 +142,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $_SESSION['email_usuario']; ?>" readonly>
+                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $_SESSION['email_usuario']; ?>" readonly autocomplete="off">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -155,7 +155,7 @@
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="text" class="form-control campo-perfil" name="contraseña" value="<? if ($_SESSION['accion'] == 'editar') {
                                                                                                       echo $usuario->contrasena_usuario;
-                                                                                                    } ?>">
+                                                                                                    } ?>" autocomplete="new-password">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
                         if (vacio("contraseña")) {
@@ -170,7 +170,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly>
+                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly autocomplete="new-password">
                     <?php endif; ?>
                   </div>
                 </div>

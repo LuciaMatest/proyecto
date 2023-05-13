@@ -3,8 +3,8 @@ require_once './config/configuracion.php';
 
 $recurso = ControladorPadre::recurso();
 if ($recurso) {
-    if ($recurso[1] == 'archivo') {
-        $controlador = new ArchivoControlador();
+    if ($recurso[1] == 'imagen') {
+        $controlador = new ImagenControlador();
         $controlador->controlar();
     } else if ($recurso[1] == 'categoria') {
         $controlador = new CategoriaControlador();

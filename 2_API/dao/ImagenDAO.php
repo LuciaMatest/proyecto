@@ -1,47 +1,34 @@
 <?php
-class CategoriaDAO extends FactoryBD implements DAO
+class ImagenDAO extends FactoryBD implements DAO
 {
     public static function findAll()
     {
-        $sql = 'select * from categoria;';
+        $sql = 'select * from imagen;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayCategoria = $resultado->fetchAll(PDO::FETCH_ASSOC);
-        return $arrayCategoria;
+        $arrayImagen = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        return $arrayImagen;
     }
 
     public static function findById($id)
     {
-        $sql = 'select * from categoria where id_categoria=?;';
+        $sql = 'select * from imagen where id_imagen = ?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
         $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = 'No existe el categoria';
-        }
-    }
-
-    public static function findByName($nombre)
-    {
-        $sql = 'select * from categoria where nombre_categoria = ?;';
-        $datos = array($nombre);
-        $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
-        if ($objeto) {
-            return $objeto;
-        } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el categoria</span>';
+            $_SESSION['error'] = 'No existe la imagen';
         }
     }
 
     public static function update($objeto)
     {
-        $actualiza = 'update categoria set nombre_categoria=? where id_categoria=?;';
+        $actualiza = 'update imagen set url_imagen=? where id_imagen=?;';
         $datos = array(
-            $objeto->id_categoria,
-            $objeto->nombre_categoria
+            $objeto->url_imagen,
+            $objeto->id_imagen
         );
         $resultado = parent::ejecuta($actualiza, $datos);
         if ($resultado->rowCount() == 0) {
@@ -53,7 +40,7 @@ class CategoriaDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = 'insert into categoria (nombre_categoria) values (?)';
+        $inserta = 'insert into imagen (url_imagen) values (?)';
         $objeto = (array)$objeto;
         $datos = array();
         foreach ($objeto as $att) {
@@ -69,7 +56,7 @@ class CategoriaDAO extends FactoryBD implements DAO
 
     public static function delete($id)
     {
-        $elimina = 'delete from categoria where id_categoria=?';
+        $elimina = 'delete from imagen where id_imagen=?';
         $datos = array($id);
         $resultado = parent::ejecuta($elimina, $datos);
         if ($resultado->rowCount() == 0) {
