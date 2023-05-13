@@ -70,7 +70,7 @@ function patronTelefono()
 function patronImagen()
 {
     $patron = '/^[^.]+\.(jpg|png|bmp)$/';
-    if (preg_match($patron, $_FILES['imagen']['name']) == 1) {
+    if (preg_match($patron, $_FILES['imagen_alta']['name']) == 1) {
         return true;
     }
     return false;
@@ -78,7 +78,7 @@ function patronImagen()
 
 function validarNuevoUsuario()
 {
-    if ($_REQUEST['accion'] == 'Registrarse') {
+    if (isset($_REQUEST['registrar'])) {
         if (!vacio('nombre')) {
             if (!vacio('telefono') && patronTelefono()) {
                 if (!vacio('email') && patronEmail()) {
@@ -95,18 +95,19 @@ function validarNuevoUsuario()
 
 function validarUsuario()
 {
-    if (!vacio('id_usuario') && UsuarioDAO::findById($_REQUEST['id_usuario']) != null) {
-        if (!vacio('nombre')) {
-            if (!vacio('email') && patronEmail()) {
-                if (!vacio('telefono') && patronTelefono()) {
-                    if (!vacio('contraseña') && !vacio('contraseña2') && patronContraseña() && $_REQUEST['contraseña'] == $_REQUEST['contraseña2']) {
-                        return true;
+    if (isset($_REQUEST['guardarCambios'])) {
+        if (!vacio('id_usuario') && UsuarioDAO::findById($_REQUEST['id_usuario']) != null) {
+            if (!vacio('nombre')) {
+                if (!vacio('email') && patronEmail()) {
+                    if (!vacio('telefono') && patronTelefono()) {
+                        if (!vacio('contraseña') && patronContraseña()) {
+                            return true;
+                        }
                     }
                 }
             }
         }
+    } else {
+        return false;
     }
-    return false;
 }
-
-

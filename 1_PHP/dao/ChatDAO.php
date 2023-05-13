@@ -35,7 +35,7 @@ class ChatDAO extends FactoryBD implements DAO
                 $objeto->id_usuario_recibe
             );
         } else {
-            $_SESSION['error'] = 'No existe el mensaje';
+            $_SESSION['error'] = '<span style="color:brown"> No existe el mensaje</span>';
         }
     }
 

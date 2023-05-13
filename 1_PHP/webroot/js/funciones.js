@@ -35,34 +35,41 @@ botones.forEach(boton => {
 
 //Categorias
 //Cuando se pulse en una de las categorias cada una mostrara el div correspondiente
-const disenosDiv = document.getElementById('Diseño');
-const ilustracionesDiv = document.getElementById('Ilustraciones');
-const webDiv = document.getElementById('Web');
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.href.includes("proyectoView.php")) {
+    const disenosDiv = document.getElementById('Diseño');
+    const ilustracionesDiv = document.getElementById('Ilustraciones');
+    const webDiv = document.getElementById('Web');
 
-const categorias = document.querySelectorAll('.categorias');
+    const categorias = document.querySelectorAll('.categorias');
 
-categorias.forEach((categoria) => {
-  categoria.addEventListener('click', (evento) => {
-    evento.preventDefault();
-    const target = evento.currentTarget.getAttribute('data-target');
+    categorias.forEach((categoria) => {
+      categoria.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        const target = evento.currentTarget.getAttribute('data-target');
 
-    disenosDiv.style.display = 'none';
-    ilustracionesDiv.style.display = 'none';
-    webDiv.style.display = 'none';
+        disenosDiv.style.display = 'none';
+        ilustracionesDiv.style.display = 'none';
+        webDiv.style.display = 'none';
 
-    disenosDiv.classList.add("oculto");
-    ilustracionesDiv.classList.add("oculto");
-    webDiv.classList.add("oculto");
+        disenosDiv.classList.add("oculto");
+        ilustracionesDiv.classList.add("oculto");
+        webDiv.classList.add("oculto");
 
-    const divToShow = document.querySelector(`#${target}`);
-    divToShow.style.display = 'block';
-    categoria.classList.remove("oculto");
-  });
+        const divToShow = document.querySelector(`#${target}`);
+        divToShow.style.display = 'block';
+        categoria.classList.remove("oculto");
+      });
+    });
+
+  }
 });
 
 //Área privada
 //Cuando se pulse en una de las areas cada una mostrara el div correspondiente
-const perfilDiv = document.getElementById('perfil');
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.href.includes("proyectoView.php")) {
+    const perfilDiv = document.getElementById('perfil');
 const gestorDiv = document.getElementById('gestor');
 const chatDiv = document.getElementById('chat');
 
@@ -85,6 +92,8 @@ privadas.forEach((categoria) => {
     divToShow.style.display = 'block';
     categoria.classList.remove("oculto");
   });
+});
+  }
 });
 
 //Login - Sign in
@@ -109,10 +118,22 @@ closeBtn.addEventListener('click', function (evento) {
   closeBtn.removeEventListener('click');
 });
 
+
+//Cuando pulsamos Editar perfil, la información del usuario se vuelve editable.
+const campos = document.querySelectorAll('.campo-perfil');
+const btnEditar = document.querySelector('#editarPerfil');
+
+function editarPerfil() {
+  campos.forEach(campo => {
+    campo.readOnly = !campo.readOnly;
+  });
+  btnEditar.style.display = btnEditar.style.display === 'none' ? 'block' : 'none';
+}
+
 //Para elegir crear o proyecto o producto nuevo
 document.addEventListener("DOMContentLoaded", function () {
-  const tipoSelect = document.getElementById("tipo");
-  if (tipoSelect) {
+  if (window.location.href.includes("adminView.php")) {
+    const tipoSelect = document.getElementById("tipo");
     const productoDiv = document.querySelector(".producto");
     const proyectoDiv = document.querySelector(".proyecto");
 
@@ -130,22 +151,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
 //Para elegir proyectos o productos
 document.addEventListener("DOMContentLoaded", function () {
-  const tablaSelect = document.getElementById("tablas");
-  const productoTabla = document.querySelector(".tablaProducto");
-  const proyectoTabla = document.querySelector(".tablaProyecto");
+  if (window.location.href.includes("nuevoProView.php")) {
+    const tablaSelect = document.getElementById("tablas");
+    const productoTabla = document.querySelector(".tablaProducto");
+    const proyectoTabla = document.querySelector(".tablaProyecto");
 
-  tablaSelect.addEventListener("change", function (evento) {
-    evento.preventDefault();
-    const selectedOption = evento.target.value;
+    tablaSelect.addEventListener("change", function (evento) {
+      evento.preventDefault();
+      const selectedOption = evento.target.value;
 
-    if (selectedOption === "tablaProducto") {
-      productoTabla.style.display = "block";
-      proyectoTabla.style.display = "none";
-    } else if (selectedOption === "tablaProyecto") {
-      productoTabla.style.display = "none";
-      proyectoTabla.style.display = "block";
-    }
-  });
+      if (selectedOption === "tablaProducto") {
+        productoTabla.style.display = "block";
+        proyectoTabla.style.display = "none";
+      } else if (selectedOption === "tablaProyecto") {
+        productoTabla.style.display = "none";
+        proyectoTabla.style.display = "block";
+      }
+    });
+  }
 });

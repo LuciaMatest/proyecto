@@ -4,7 +4,7 @@
             <div class="col-lg-6 col-md-8 mx-auto">
                 <div class="d-flex justify-content-center">
                     <form action="./index.php" method="post">
-                        <button type="submit" class="volver volverProyecto btn-outline-primary d-flex align-items-center" name="volverProyecto" title="Volver al proyecto">
+                        <button type="submit" class="volver volverProyecto btn-outline-primary d-flex align-items-center" name="volverProyecto">
                             <i class="bi bi-arrow-left-circle text-white"></i>
                         </button>
                     </form>

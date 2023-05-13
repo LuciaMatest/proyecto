@@ -52,12 +52,12 @@
               <h2 class="my-3"><? echo $_SESSION['nombre_usuario']; ?></h2>
               <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
-                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarCambios">Guardar cambios</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" id="guardarCambios" name="guardarCambios">Guardar cambios</button>
                   <button type="submit" class="btn btn-lg btn-block btn-primary ms-1" onclick="location.reload()">Cancelar</button>
                 </div>
               <?php else : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
-                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" onclick="editarPerfil()">Editar perfíl</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" id="editarPerfil" onclick="editarPerfil()">Editar perfíl</button>
                 </div>
               <?php endif; ?>
             </div>
@@ -153,7 +153,9 @@
                   </div>
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
-                      <input type="text" class="form-control campo-perfil" name="contraseña">
+                      <input type="text" class="form-control campo-perfil" name="contraseña" value="<? if ($_SESSION['accion'] == 'editar') {
+                                                                                                      echo $usuario->contrasena_usuario;
+                                                                                                    } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
                         if (vacio("contraseña")) {
@@ -172,30 +174,6 @@
                     <?php endif; ?>
                   </div>
                 </div>
-                <?php if (isset($_REQUEST['editarPerfil'])) : ?>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <p class="mb-0">Repetir contraseña</p>
-                    </div>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control campo-perfil" name="contraseña2" value="">
-                      <?
-                      if (isset($_REQUEST['guardarCambios'])) {
-                        if (vacio("contraseña2")) {
-                      ?>
-                          <span style="color:brown"> Repite la contraseña</span>
-                        <?
-                        } elseif (!patronContraseña()) {
-                        ?>
-                          <span style="color:brown"> Contraseña no válida, revise</span>
-                      <?
-                        }
-                      }
-                      ?>
-                    </div>
-                  </div>
-                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -274,7 +252,6 @@
             // Transacción
             try {
               $conexion = mysqli_connect($_SERVER['SERVER_ADDR'], USER, PASS, BBDD);
-              $conexion->set_charset("utf8mb4");
               $sql = "SELECT mensaje.*, usuario.nombre_usuario FROM mensaje JOIN usuario ON mensaje.id_usuario_envia = usuario.id_usuario WHERE (mensaje.id_usuario_envia = $id_usuario_actual OR mensaje.id_usuario_recibe = $id_usuario_actual) ORDER BY fecha_mensaje ASC;";
               $resultado = mysqli_query($conexion, $sql);
               // Mostrar mensajes
@@ -329,8 +306,8 @@
           </div>
           <form action="" method="post">
             <div class="input-group">
-              <input type="text" class="form-control" id="inputMessageUser" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
-              <input type="submit" class="btn btn-primary" id="sendMessageBtnUser" name="enviarMensajesUser" value="Enviar">
+              <input type="text" class="form-control" id="messageInput" name="descripcion_mensaje" placeholder="Escribe un mensaje...">
+              <input type="submit" class="btn btn-primary" id="sendMessageBtn" name="enviarMensajesUser" value="Enviar">
             </div>
           </form>
         </div>

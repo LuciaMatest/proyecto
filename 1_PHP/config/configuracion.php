@@ -10,8 +10,7 @@ $controladores = array(
     'producto' => './controlador/ProductoController.php',
     'admin' => './controlador/AdminController.php',
     'user' => './controlador/UserController.php',
-    'nuevo' => './controlador/NuevoProController.php',
-    'factura' => './controlador/FacturaController.php'
+    'nuevo' => './controlador/NuevoProController.php'
 );
 
 //Modelo
@@ -32,8 +31,7 @@ $vistas = array(
     'producto' => './vista/productoView.php',
     'admin' => './vista/adminView.php',
     'user' => './vista/userView.php',
-    'nuevo' => './vista/nuevoProView.php',
-    'factura' => './vista/facturaView.php'
+    'nuevo' => './vista/nuevoProView.php'
 );
 
 //Core
