@@ -109,20 +109,10 @@ closeBtn.addEventListener('click', function (evento) {
   closeBtn.removeEventListener('click');
 });
 
-
-//Cuando pulsamos Editar perfil, la información del usuario se vuelve editable.
-function editarPerfil() {
-  const camposPerfil = document.querySelectorAll('.campo-perfil');
-  camposPerfil.forEach((campo) => {
-    campo.removeAttribute('readonly');
-  });
-}
-
-
 //Para elegir crear o proyecto o producto nuevo
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.href.includes("adminView.php")) {
-    const tipoSelect = document.getElementById("tipo");
+  const tipoSelect = document.getElementById("tipo");
+  if (tipoSelect) {
     const productoDiv = document.querySelector(".producto");
     const proyectoDiv = document.querySelector(".proyecto");
 
@@ -140,25 +130,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 //Para elegir proyectos o productos
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.href.includes("nuevoProView.php")) {
-    const tablaSelect = document.getElementById("tablas");
-    const productoTabla = document.querySelector(".tablaProducto");
-    const proyectoTabla = document.querySelector(".tablaProyecto");
+  const tablaSelect = document.getElementById("tablas");
+  const productoTabla = document.querySelector(".tablaProducto");
+  const proyectoTabla = document.querySelector(".tablaProyecto");
 
-    tablaSelect.addEventListener("change", function (evento) {
-      evento.preventDefault();
-      const selectedOption = evento.target.value;
+  tablaSelect.addEventListener("change", function (evento) {
+    evento.preventDefault();
+    const selectedOption = evento.target.value;
 
-      if (selectedOption === "tablaProducto") {
-        productoTabla.style.display = "block";
-        proyectoTabla.style.display = "none";
-      } else if (selectedOption === "tablaProyecto") {
-        productoTabla.style.display = "none";
-        proyectoTabla.style.display = "block";
-      }
-    });
-  }
+    if (selectedOption === "tablaProducto") {
+      productoTabla.style.display = "block";
+      proyectoTabla.style.display = "none";
+    } else if (selectedOption === "tablaProyecto") {
+      productoTabla.style.display = "none";
+      proyectoTabla.style.display = "block";
+    }
+  });
 });

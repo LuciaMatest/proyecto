@@ -65,8 +65,8 @@ class UsuarioControlador extends ControladorPadre
         $body = file_get_contents('php://input');
         $dato = json_decode($body, true);
 
-        if (isset($dato['nombre_usuario']) && isset($dato['telefono_usuario']) && isset($dato['email_usuario']) && isset($dato['contrasena_usuario']) && isset($dato['borrado_usuario']) && isset($dato['tipo_usuario'])) {
-            $usuario = new Usuario($dato['nombre_usuario'], $dato['telefono_usuario'], $dato['email_usuario'], $dato['contrasena_usuario'], $dato['borrado_usuario'], $dato['tipo_usuario']);
+        if (isset($dato['nombre_usuario']) && isset($dato['telefono_usuario']) && isset($dato['email_usuario']) && isset($dato['contrasena_usuario']) && isset($dato['borrado_usuario'])) {
+            $usuario = new Usuario($dato['nombre_usuario'], $dato['telefono_usuario'], $dato['email_usuario'], $dato['contrasena_usuario'], $dato['borrado_usuario']);
             if (UsuarioDAO::insert($usuario)) {
                 self::respuesta(
                     '',
@@ -85,8 +85,8 @@ class UsuarioControlador extends ControladorPadre
             $body = file_get_contents('php://input');
             $dato = json_decode($body, true);
 
-            if (isset($dato['nombre_usuario']) && isset($dato['telefono_usuario']) && isset($dato['email_usuario']) && isset($dato['contrasena_usuario']) && isset($dato['borrado_usuario']) && isset($dato['tipo_usuario'])) {
-                $usuario = new Usuario($dato['nombre_usuario'], $dato['telefono_usuario'], $dato['email_usuario'], $dato['contrasena_usuario'], $dato['borrado_usuario'], $dato['tipo_usuario']);
+            if (isset($dato['nombre_usuario']) && isset($dato['telefono_usuario']) && isset($dato['email_usuario']) && isset($dato['contrasena_usuario']) && isset($dato['borrado_usuario'])) {
+                $usuario = new Usuario($dato['nombre_usuario'], $dato['telefono_usuario'], $dato['email_usuario'], $dato['contrasena_usuario'], $dato['borrado_usuario']);
                 $usuario->id_usuario = $recurso[2];
                 if (UsuarioDAO::update($usuario)) {
                     self::respuesta(
