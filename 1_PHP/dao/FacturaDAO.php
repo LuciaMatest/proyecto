@@ -35,7 +35,7 @@ class FacturaDAO extends FactoryBD implements DAO
                 $objeto->estado
             );
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el factura</span>';
+            $_SESSION['error'] = 'No existe el factura';
         }
     }
 

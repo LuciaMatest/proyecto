@@ -7,14 +7,14 @@
                         <i class="bi bi-arrow-left-circle text-white"></i>
                     </button>
                 </form>
-                <h1 class="prod text-light"><? echo $producto->nombre_producto; ?></h1>
+                <h1 class="prod text-light"></h1>
             </div>
         </div>
     </section>
 </div>
 <div class="productTitle p-2 p-md-4 mb-4">
     <div class="col-md-6 px-0">
-        <p class="lead my-3"><? echo $producto->descripcion_producto; ?></p>
+        <p class="lead my-3"></p>
     </div>
 </div>
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portafolio de diseño y desarrollo web" />
     <meta name="author" content="Lucía Mateos Esteban" />
@@ -93,9 +94,8 @@
                         <div class="row full-height justify-content-center">
                             <div class="col-12 text-center align-self-center py-5">
                                 <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                                    <h6 class="mb-0 pb-3"><span>Iniciar sesión </span><span>Registrarse</span></h6>
                                     <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" value="1" />
-                                    <label for="reg-log"></label>
+                                    <label for="reg-log" class="text-light"><span class="opacity-0">Iniciar sesión/Registrarse</span></label>
                                     <div class="card-3d-wrap mx-auto">
                                         <div class="card-3d-wrapper">
                                             <div class="card-front">
@@ -104,13 +104,13 @@
                                                         <h4 class="mb-4 pb-3">Iniciar sesión</h4>
                                                         <div class="form-group">
                                                             <i class="input-icon bi bi-at"></i>
-                                                            <input type="email" class="form-style" id="email_usuario" name="email_usuario" placeholder="Email" value="<?php if (isset($_COOKIE['email_usuario'])) {
-                                                                                                                                                                            echo $_COOKIE['email_usuario'];
-                                                                                                                                                                        } ?>">
+                                                            <input type="email" class="form-style" name="email_usuario" placeholder="Email" value="<?php if (isset($_COOKIE['email_usuario'])) {
+                                                                                                                                                        echo $_COOKIE['email_usuario'];
+                                                                                                                                                    } ?>">
                                                         </div>
                                                         <div class="form-group mt-2">
                                                             <i class="input-icon bi bi-lock"></i>
-                                                            <input type="password" class="form-style" id="contrasena_usuario" name="contrasena_usuario" placeholder="Contraseña">
+                                                            <input type="password" class="form-style" name="contrasena_usuario" placeholder="Contraseña">
                                                         </div>
                                                         <div class="mt-3 ms-3 recuerdame-container">
                                                             <!-- Al loguearse el usuario puede seleccionar recuerdame para que cuando cierre sesion se mantenga su nombre de usuario y solo tenga que escribir de nuevo la contraseña -->
@@ -130,7 +130,7 @@
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
-                                                        <input type="submit" value="Acceder" name="enviar" class="btn mt-4">
+                                                        <input type="submit" value="Acceder" name="accion" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,7 +152,7 @@
                                                                 }
                                                             }
                                                             ?>
-                                                            <input type="text" class="form-style" placeholder="<?php echo $placeholder; ?>" name="nombre" id="nombre" style="<?php echo $style; ?>">
+                                                            <input type="text" class="form-style" placeholder="<?php echo $placeholder; ?>" name="nombre" style="<?php echo $style; ?>">
                                                             <i class="input-icon bi bi-person" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
@@ -174,7 +174,7 @@
                                                                 }
                                                             }
                                                             ?>
-                                                            <input type="tel" class="form-style" placeholder="<?php echo $placeholder; ?>" name="telefono" id="telefono" style="<?php echo $style; ?>">
+                                                            <input type="tel" class="form-style" placeholder="<?php echo $placeholder; ?>" name="telefono" style="<?php echo $style; ?>">
                                                             <i class="input-icon bi bi-telephone" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
@@ -196,7 +196,7 @@
                                                                 }
                                                             }
                                                             ?>
-                                                            <input type="email" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="email" id="email">
+                                                            <input type="email" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="email">
                                                             <i class="input-icon bi bi-at" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
@@ -218,7 +218,7 @@
                                                                 }
                                                             }
                                                             ?>
-                                                            <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña" id="contraseña">
+                                                            <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña">
                                                             <i class="input-icon bi bi-lock" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
 
@@ -240,7 +240,7 @@
                                                                 }
                                                             }
                                                             ?>
-                                                            <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2" id="contraseña2">
+                                                            <input type="password" class="form-style" placeholder="<?php echo $placeholder; ?>" style="<?php echo $style; ?>" name="contraseña2">
                                                             <i class="input-icon bi bi-lock" style="<?php echo $iconStyle; ?>"></i>
                                                         </div>
                                                         <?php
@@ -254,7 +254,7 @@
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
-                                                        <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
+                                                        <input type="submit" value="Registrarse" name="accion" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,6 +268,7 @@
             </form>
         </div>
     </div>
+
 
     <!-- Footer -->
     <div class="pie container-fluid">
@@ -283,12 +284,12 @@
             </ul>
         </footer>
     </div>
-    <script src="./webroot/js/funciones.js"></script>
-    <script src="./webroot/js/contacto.js"></script>
-    <script src="./webroot/js/chat.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="./webroot/js/funciones.js"></script>
+    <script src="./webroot/js/funciones2.js"></script>
+    <!-- <script src="./webroot/js/chat.js"></script> -->
 </body>
 
 </html>

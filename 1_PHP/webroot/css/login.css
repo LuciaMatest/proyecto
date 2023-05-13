@@ -95,39 +95,38 @@ h6 span {
   position: relative;
   display: block;
   text-align: center;
-  width: 60px;
-  height: 16px;
-  border-radius: 8px;
+  width: 180px;
+  height: 50px;
+  border-radius: 30px;
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .checkbox:checked+label:before,
 .checkbox:not(:checked)+label:before {
   position: absolute;
   display: block;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 95px;
+  height: 40px;
+  border-radius: 30px;
   color: #ffffff;
   background-color: #115053;
-  content: "\f062";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 600;
+  content: "Registrarse  🡢";
+  font-weight: 300;
   z-index: 20;
-  top: -10px;
-  left: -10px;
+  top: 5px;
+  left: 5px;
   line-height: 36px;
   text-align: center;
-  font-size: 24px;
+  font-size: 14px;
   transition: all 0.5s ease;
-  transform: rotate(-20deg); 
 }
 
 .checkbox:checked+label:before {
-  transform: translateX(44px) rotate(20deg);
+  content: "🡠 Iniciar sesión";
+  transform: translateX(80px);
 }
 
 .card-3d-wrap {

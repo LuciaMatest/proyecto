@@ -1,4 +1,4 @@
-CREATE DATABASE portafolio;  
+﻿CREATE DATABASE portafolio;  
 USE portafolio;
 
 -- CATEGORIAS DE LOS PRODUCTOS
