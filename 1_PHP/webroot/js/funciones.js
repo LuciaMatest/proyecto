@@ -111,8 +111,8 @@ closeBtn.addEventListener('click', function (evento) {
 
 //Para elegir crear o proyecto o producto nuevo
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.href.includes("adminView.php")) {
-    const tipoSelect = document.getElementById("tipo");
+  const tipoSelect = document.getElementById("tipo");
+  if (tipoSelect) {
     const productoDiv = document.querySelector(".producto");
     const proyectoDiv = document.querySelector(".proyecto");
 
@@ -130,16 +130,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 //Para elegir proyectos o productos
 document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.href.includes("nuevoProView.php")) {
-    const tablaSelect = document.getElementById("tablas");
+  const tablaSelect = document.getElementById("tablas");
+  if (tablaSelect) {
     const productoTabla = document.querySelector(".tablaProducto");
     const proyectoTabla = document.querySelector(".tablaProyecto");
 
     tablaSelect.addEventListener("change", function (evento) {
-      evento.preventDefault();
       const selectedOption = evento.target.value;
 
       if (selectedOption === "tablaProducto") {

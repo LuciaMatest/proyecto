@@ -232,10 +232,18 @@
               <td><?php echo $proyecto->nombre_proyecto ?></td>
               <td><?php echo $proyecto->fecha_proyecto ?></td>
               <td><?php echo $proyecto->usuario_id ?></td>
-              <td><a href="<?php echo $proyecto->factura_id ?>">Ver factura</a></td>
               <td>
-                <button class="btn btn-primary mb-1" name="editar"><i class="bi bi-pencil-square me-2"></i>Editar</button>
-                <button class="btn btn-primary mb-1" name="archivos"><i class="bi bi-file-earmark me-2"></i>Archivos</button>
+                <form action="./index.php" method="post">
+                  <input type="hidden" name="factura_id" value="<?php echo $proyecto->factura_id ?>">
+                  <button type="submit" class="btn btn-primary mb-1" name="verFactura" id="verFactura">
+                    <i class="bi bi-receipt-cutoff me-2"></i>Ver factura
+                  </button>
+                </form>
+              <td>
+                <form action="./index.php" method="post">
+                  <button type="submit" class="btn btn-primary mb-1" name="editar"><i class="bi bi-pencil-square me-2"></i>Editar</button>
+                  <button type="submit" class="btn btn-primary mb-1" name="archivos"><i class="bi bi-file-earmark me-2"></i>Archivos</button>
+                </form>
               </td>
             </tr>
           <?php endforeach ?>

@@ -4,10 +4,11 @@ if (isset($_REQUEST['nuevoProyecto'])) {
     $_SESSION['pagina'] = 'Nuevo';
     $_SESSION['vista'] = $vistas['nuevo'];
     require_once $_SESSION['controlador'];
-} elseif (isset($_REQUEST['nuevoProyecto'])) {
-    $_SESSION['controlador'] = $controladores['nuevo'];
-    $_SESSION['pagina'] = 'Nuevo';
-    $_SESSION['vista'] = $vistas['nuevo'];
+} elseif (isset($_REQUEST['verFactura'])) {
+    $proyecto = ProyectoDAO::findById($_REQUEST['id_proyecto']);
+    $_SESSION['controlador'] = $controladores['factura'];
+    $_SESSION['pagina'] = 'Facturas';
+    $_SESSION['vista'] = $vistas['factura'];
     require_once $_SESSION['controlador'];
 } elseif (isset($_REQUEST['volverAdmin'])) {
     $_SESSION['controlador'] = $controladores['home'];
