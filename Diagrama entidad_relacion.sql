@@ -38,11 +38,11 @@ CREATE TABLE `usuario` (
 );
 
 CREATE TABLE `mensaje` (
-  `id_mensajes` int PRIMARY KEY AUTO_INCREMENT,
-  `descripcion_mensajes` varchar(255) NOT NULL,
-  `fecha_mensajes` datetime,
-  `id_usuario_envia` int,
-  `id_usuario_recibe` int
+  `id_mensaje` int PRIMARY KEY AUTO_INCREMENT,
+  `descripcion_mensaje` varchar(255) NOT NULL,
+  `fecha_mensaje` datetime,
+  `usuario_id` int,
+  `admin_d` boolean NOT NULL
 );
 
 CREATE TABLE `factura` (
@@ -63,6 +63,4 @@ ALTER TABLE `proyecto` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_
 
 ALTER TABLE `proyecto` ADD FOREIGN KEY (`factura_id`) REFERENCES `factura` (`id_factura`);
 
-ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_envia`) REFERENCES `usuario` (`id_usuario`);
-
-ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_recibe`) REFERENCES `usuario` (`id_usuario`);
+ALTER TABLE `mensaje` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_usuario`);

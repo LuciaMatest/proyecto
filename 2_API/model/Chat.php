@@ -1,6 +1,7 @@
 <?php
 class Chat
 {
+    private $id_mensaje;
     private $descripcion_mensaje;
     private $fecha_mensaje;
     private $id_usuario_envia;

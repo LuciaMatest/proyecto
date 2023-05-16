@@ -1,6 +1,7 @@
 <?php
 class Proyecto
 {
+    private $id_proyecto;
     private $nombre_proyecto;
     private $fecha_proyecto;
     private $usuario_id;

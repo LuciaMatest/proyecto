@@ -1,6 +1,7 @@
 <?php
 class Categoria
 {
+    private $id_categoria;
     private $nombre_categoria;
 
     public function __construct($nombre_categoria)

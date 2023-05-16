@@ -1,6 +1,7 @@
 <?php
 class Imagen
 {
+    private $id_imagen;
     private $url_imagen;
 
     public function __construct($url_imagen)

@@ -1,6 +1,7 @@
 <?php
 class Producto
 {
+    private $id_producto;
     private $nombre_producto;
     private $descripcion_producto;
     private $imagen_producto;

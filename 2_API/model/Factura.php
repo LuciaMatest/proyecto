@@ -1,6 +1,7 @@
 <?php
 class Factura
 {
+    private $id_factura;
     private $nombre_factura;
     private $fecha_pago;
     private $fecha_factura;
