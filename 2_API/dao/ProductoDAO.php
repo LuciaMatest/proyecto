@@ -3,7 +3,7 @@ class ProductoDAO extends FactoryBD implements DAO
 {
     public static function findAll()
     {
-        $sql = 'select * from producto;';
+        $sql = 'select producto.*, imagen.url_imagen from producto join imagen on producto.imagen_id = imagen.id_imagen;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
         $arrayProducto = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -12,7 +12,7 @@ class ProductoDAO extends FactoryBD implements DAO
 
     public static function findById($id)
     {
-        $sql = 'select * from producto where id_producto=?;';
+        $sql = 'select producto.*, imagen.url_imagen from producto join imagen on producto.imagen_id = imagen.id_imagen where id_producto=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
         $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
