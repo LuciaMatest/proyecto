@@ -130,7 +130,7 @@
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
-                                                        <input type="submit" value="Acceder" name="accion" class="btn mt-4">
+                                                        <input type="submit" value="Acceder" name="acceder" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -254,7 +254,7 @@
                                                             unset($_SESSION['error']);
                                                         }
                                                         ?>
-                                                        <input type="submit" value="Registrarse" name="accion" class="btn mt-4">
+                                                        <input type="submit" value="Registrarse" name="registrar" class="btn mt-4">
                                                     </div>
                                                 </div>
                                             </div>
