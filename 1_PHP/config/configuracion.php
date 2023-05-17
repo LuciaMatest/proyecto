@@ -2,6 +2,10 @@
 //Base de datos
 require_once('./config/conexion.php');
 
+//Consumir api
+require_once('./peticiones/curl.php');
+require_once('./core/peticiones.php');
+
 //Controladores
 $controladores = array(
     'home' => './controlador/HomeController.php',
