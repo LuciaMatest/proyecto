@@ -3,43 +3,21 @@ class ProductoDAO extends FactoryBD implements DAO
 {
     public static function findAll()
     {
-        $sql = 'select producto.*, imagen.url_imagen from producto join imagen on producto.imagen_id = imagen.id_imagen;';
+        $sql = 'select * from producto;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayProducto = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $producto = new Producto(
-                $objeto->id_producto,
-                $objeto->nombre_producto,
-                $objeto->descripcion_producto,
-                $objeto->precio,
-                $objeto->cantidad,
-                $objeto->categoria_id,
-                $objeto->proyecto_id,
-                $objeto->imagen_id
-            );
-            array_push($arrayProducto, $objeto);
-        }
+        $arrayProducto = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayProducto;
     }
 
     public static function findById($id)
     {
-        $sql = 'select p.*, i.url_imagen from producto p join imagen i on p.imagen_id = i.id_imagen where p.id_producto = ?;';
+        $sql = 'select * from producto where id_producto=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return $producto = new Producto(
-                $objeto->id_producto,
-                $objeto->nombre_producto,
-                $objeto->descripcion_producto,
-                $objeto->precio,
-                $objeto->cantidad,
-                $objeto->categoria_id,
-                $objeto->proyecto_id,
-                $objeto->imagen_id
-            );
+            return $objeto;
         } else {
             return 'No existe el producto';
         }
@@ -47,15 +25,15 @@ class ProductoDAO extends FactoryBD implements DAO
 
     public static function update($objeto)
     {
-        $actualiza = 'update producto set nombre_producto=?,descripcion_producto=?,precio=?,cantidad=?,categoria_id=?,imagen_id=?,proyecto_id=? where id_producto=?;';
+        $actualiza = 'update producto set nombre_producto=?,descripcion_producto=?,imagen_producto=?,precio=?,cantidad=?,categoria_id=?,proyecto_id=? where id_producto=?;';
         $datos = array(
             $objeto->nombre_producto,
             $objeto->descripcion_producto,
+            $objeto->imagen_producto,
             $objeto->precio,
             $objeto->cantidad,
             $objeto->categoria_id,
             $objeto->proyecto_id,
-            $objeto->imagen_id,
             $objeto->id_producto
         );
         $resultado = parent::ejecuta($actualiza, $datos);
@@ -68,14 +46,14 @@ class ProductoDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = 'insert into producto values (null,?,?,?,?,?,?,?)';
+        $inserta = 'insert into producto values (?,?,?,?,?,?,?,?)';
         $objeto = (array)$objeto;
         $datos = array();
         foreach ($objeto as $att) {
             array_push($datos, $att);
         }
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;

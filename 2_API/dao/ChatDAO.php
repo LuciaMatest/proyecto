@@ -25,8 +25,8 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function findByIdUser($idUsuario)
     {
-        $sql = 'select * from mensaje where id_usuario_envia=? or id_usuario_recibe=?;';
-        $datos = array($idUsuario, $idUsuario);
+        $sql = 'select * from mensaje where usuario_id=?;';
+        $datos = array($idUsuario);
         $resultado = parent::ejecuta($sql, $datos);
         $arrayMensajes = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayMensajes;
@@ -35,13 +35,13 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function update($objeto)
     {
-        $actualiza = 'update mensaje set descripcion_mensaje=?,fecha_mensaje=?,id_usuario_envia=?,id_usuario_recibe=? where id_mensaje=?;';
+        $actualiza = 'update mensaje set descripcion_mensaje=?,fecha_mensaje=?,usuario_id=?,admin_d=? where id_mensaje=?;';
         $datos = array(
             $objeto->id_mensaje,
             $objeto->descripcion_mensaje,
             $objeto->fecha_mensaje,
-            $objeto->id_usuario_envia,
-            $objeto->id_usuario_recibe
+            $objeto->usuario_id,
+            $objeto->admin_d
         );
         $resultado = parent::ejecuta($actualiza, $datos);
         if ($resultado->rowCount() == 0) {
@@ -53,7 +53,7 @@ class ChatDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = "insert into mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) values (?,?,?,?)";
+        $inserta = "insert into mensaje (descripcion_mensaje, fecha_mensaje, usuario_id, admin_d) values (?,?,?,?)";
         $objeto = (array)$objeto;
         $datos = array();
         foreach ($objeto as $att) {

@@ -6,14 +6,7 @@ class ImagenDAO extends FactoryBD implements DAO
         $sql = 'select * from imagen;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayImagen = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $imagen = new Imagen(
-                $objeto->id_imagen,
-                $objeto->url_imagen
-            );
-            array_push($arrayImagen, $objeto);
-        }
+        $arrayImagen = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayImagen;
     }
 
@@ -22,14 +15,11 @@ class ImagenDAO extends FactoryBD implements DAO
         $sql = 'select * from imagen where id_imagen = ?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return $imagen = new Imagen(
-                $objeto->id_imagen,
-                $objeto->url_imagen
-            );
+            return $objeto;
         } else {
-            return 'No existe la imagen';
+            $_SESSION['error'] = 'No existe la imagen';
         }
     }
 
@@ -50,14 +40,14 @@ class ImagenDAO extends FactoryBD implements DAO
 
     public static function insert($objeto)
     {
-        $inserta = 'insert into imagen values (null,?)';
+        $inserta = 'insert into imagen (url_imagen) values (?)';
         $objeto = (array)$objeto;
         $datos = array();
         foreach ($objeto as $att) {
             array_push($datos, $att);
         }
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;

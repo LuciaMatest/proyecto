@@ -6,14 +6,7 @@ class CategoriaDAO extends FactoryBD implements DAO
         $sql = 'select * from categoria;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayCategoria = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $categoria = new Categoria(
-                $objeto->id_categoria,
-                $objeto->nombre_categoria
-            );
-            array_push($arrayCategoria, $objeto);
-        }
+        $arrayCategoria = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayCategoria;
     }
 
@@ -22,14 +15,24 @@ class CategoriaDAO extends FactoryBD implements DAO
         $sql = 'select * from categoria where id_categoria=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return $categoria = new Categoria(
-                $objeto->id_categoria,
-                $objeto->nombre_categoria
-            );
+            return $objeto;
         } else {
-            return 'No existe el categoria';
+            $_SESSION['error'] = 'No existe el categoria';
+        }
+    }
+
+    public static function findByName($nombre)
+    {
+        $sql = 'select * from categoria where nombre_categoria = ?;';
+        $datos = array($nombre);
+        $resultado = parent::ejecuta($sql, $datos);
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
+        if ($objeto) {
+            return $objeto;
+        } else {
+            $_SESSION['error'] = '<span style="color:brown"> No existe el categoria</span>';
         }
     }
 
@@ -56,8 +59,8 @@ class CategoriaDAO extends FactoryBD implements DAO
         foreach ($objeto as $att) {
             array_push($datos, $att);
         }
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;

@@ -6,19 +6,7 @@ class UsuarioDAO extends FactoryBD implements DAO
         $sql = 'select * from usuario;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayUsuario = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $usuario = new Usuario(
-                $objeto->id_usuario,
-                $objeto->nombre_usuario,
-                $objeto->telefono_usuario,
-                $objeto->email_usuario,
-                $objeto->contrasena_usuario,
-                $objeto->borrado_usuario,
-                $objeto->tipo_usuario
-            );
-            array_push($arrayUsuario, $usuario);
-        }
+        $arrayUsuario = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayUsuario;
     }
 
@@ -27,42 +15,27 @@ class UsuarioDAO extends FactoryBD implements DAO
         $sql = 'select * from usuario where id_usuario=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return new Usuario(
-                $objeto->id_usuario,
-                $objeto->nombre_usuario,
-                $objeto->telefono_usuario,
-                $objeto->email_usuario,
-                $objeto->contrasena_usuario,
-                $objeto->borrado_usuario,
-                $objeto->tipo_usuario
-            );
+            return $objeto;
         } else {
-            $_SESSION['error'] = 'No existe el usuario buscado por su id';
+            $_SESSION['error'] = '<span style="color:brown"> No existe el usuario</span>';
         }
     }
 
-    public static function findUserActive()
+    public static function findByName($nombre)
     {
-        $sql = 'select * from usuario where borrado_usuario = 0;';
-        $datos = array();
+        $sql = 'select * from usuario where nombre_usuario=?;';
+        $datos = array($nombre);
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayUsuario = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $usuario = new Usuario(
-                $objeto->id_usuario,
-                $objeto->nombre_usuario,
-                $objeto->telefono_usuario,
-                $objeto->email_usuario,
-                $objeto->contrasena_usuario,
-                $objeto->borrado_usuario,
-                $objeto->tipo_usuario
-            );
-            array_push($arrayUsuario, $usuario);
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
+        if ($objeto) {
+            return $objeto;
+        } else {
+            $_SESSION['error'] = '<span style="color:brown"> No existe el usuario</span>';
         }
-        return $arrayUsuario;
     }
+
 
     public static function update($objeto)
     {
@@ -82,31 +55,16 @@ class UsuarioDAO extends FactoryBD implements DAO
         }
     }
 
-    public static function borradoLogic($objeto)
-    {
-        $actualiza = 'update usuario set borrado_usuario = 1 where id_usuario=?;';
-        $datos = array($objeto->id_usuario);
-        $resultado = parent::ejecuta($actualiza, $datos);
-        if ($resultado->rowCount() == 0) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
     public static function insert($objeto)
     {
         $inserta = "insert into usuario (nombre_usuario, telefono_usuario, email_usuario, contrasena_usuario, borrado_usuario) values (?,?,?,?,?)";
-        $datos = array(
-            $objeto->nombre_usuario,
-            $objeto->telefono_usuario,
-            $objeto->email_usuario,
-            $objeto->contrasena_usuario,
-            0
-        );
-        $resultado = parent::ejecuta($inserta, $datos);
-        if ($resultado->rowCount() == 0) {
+        $objeto = (array)$objeto;
+        $datos = array();
+        foreach ($objeto as $att) {
+            array_push($datos, $att);
+        }
+        $devuelve = parent::ejecuta($inserta, $datos);
+        if ($devuelve->rowCount() == 0) {
             return false;
         } else {
             return true;
@@ -128,12 +86,8 @@ class UsuarioDAO extends FactoryBD implements DAO
 
     public static function valida($email, $pass)
     {
-        // Aplicar el hash SHA1 a la contraseña
-        $hashed_pass = sha1($pass);
-
         $sql = 'select * from usuario where email_usuario=? and contrasena_usuario=?;';
-        // Reemplazar $pass con $hashed_pass en el array $datos
-        $datos = array($email, $hashed_pass);
+        $datos = array($email, $pass);
         $resultado = parent::ejecuta($sql, $datos);
         $objeto = $resultado->fetchObject();
         if ($objeto) {
@@ -147,7 +101,7 @@ class UsuarioDAO extends FactoryBD implements DAO
                 $objeto->tipo_usuario
             );
         } else {
-            $_SESSION['error'] = 'No existe el usuario';
+            $_SESSION['error'] = '<span style="color:brown"> No existe el usuario</span>';
             return null;
         }
     }
