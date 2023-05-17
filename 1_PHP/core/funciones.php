@@ -78,7 +78,7 @@ function patronImagen()
 
 function validarNuevoUsuario()
 {
-    if ($_REQUEST['accion'] == 'Registrarse') {
+    if ($_REQUEST['registrar']) {
         if (!vacio('nombre')) {
             if (!vacio('telefono') && patronTelefono()) {
                 if (!vacio('email') && patronEmail()) {
