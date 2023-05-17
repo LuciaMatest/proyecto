@@ -19,7 +19,7 @@ class FacturaDAO extends FactoryBD implements DAO
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el factura</span>';
+            $_SESSION['error'] = 'No existe el factura';
         }
     }
 
@@ -32,7 +32,7 @@ class FacturaDAO extends FactoryBD implements DAO
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el factura</span>';
+            $_SESSION['error'] = 'No existe el factura';
         }
     }
 
