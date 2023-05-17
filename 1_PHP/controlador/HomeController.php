@@ -22,7 +22,7 @@ if (isset($_REQUEST['ver'])) {
         require_once $_SESSION['controlador'];
     }
 } else {
-    if ($_REQUEST['accion'] == 'Registrarse') {
+    if (isset($_REQUEST['registrar'])) {
         if (validarNuevoUsuario()) {
             $usuario = new Usuario(null, $_REQUEST['nombre'], $_REQUEST['telefono'], $_REQUEST['email'], sha1($_REQUEST['contraseña']), 0, null);
             if (UsuarioDAO::insert($usuario)) {
@@ -44,7 +44,7 @@ if (isset($_REQUEST['ver'])) {
         } else {
             $_SESSION['error'] = 'No se ha validado, compruebe';
         }
-    } elseif ($_REQUEST['accion'] == 'Acceder') {
+    } elseif (isset($_REQUEST['acceder'])) {
         $email = $_REQUEST['email_usuario'];
         $pass = $_REQUEST['contrasena_usuario']; // Corrección aquí
 
