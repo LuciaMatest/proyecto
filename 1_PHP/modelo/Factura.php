@@ -7,9 +7,8 @@ class Factura
     private $fecha_factura;
     private $estado;
 
-    public function __construct($id_factura, $nombre_factura, $fecha_pago, $fecha_factura, $estado)
+    public function __construct($nombre_factura, $fecha_pago, $fecha_factura, $estado)
     {
-        $this->id_factura = $id_factura;
         $this->nombre_factura = $nombre_factura;
         $this->fecha_pago = $fecha_pago;
         $this->fecha_factura = $fecha_factura;

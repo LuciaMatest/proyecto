@@ -8,9 +8,8 @@ class Proyecto
     private $factura_id;
 
 
-    public function __construct($id_proyecto, $nombre_proyecto, $fecha_proyecto, $usuario_id, $factura_id)
+    public function __construct($nombre_proyecto, $fecha_proyecto, $usuario_id, $factura_id)
     {
-        $this->id_proyecto = $id_proyecto;
         $this->nombre_proyecto = $nombre_proyecto;
         $this->fecha_proyecto = $fecha_proyecto;
         $this->usuario_id = $usuario_id;

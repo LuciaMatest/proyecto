@@ -38,8 +38,8 @@ class ChatControlador extends ControladorPadre
                 );
             } else {
                 //Listar mensajes por usuario
-                if ((isset($_GET['id_usuario_envia'])) && (isset($_GET['id_usuario_recibe']))) {
-                    $mensaje = ChatDAO::findByIdUser($_GET['id_usuario_envia'], $_GET['id_usuario_recibe']);
+                if ((isset($_GET['usuario_id']))) {
+                    $mensaje = ChatDAO::findByIdUser($_GET['usuario_id']);
                     $data = json_encode($mensaje);
                     self::respuesta(
                         $data,
@@ -66,8 +66,8 @@ class ChatControlador extends ControladorPadre
         $dato = json_decode($body, true);
         $dato['fecha_mensaje'] = date('Y-m-d H:i:s');
 
-        if (isset($dato['descripcion_mensaje']) && isset($dato['fecha_mensaje']) && isset($dato['id_usuario_envia']) && isset($dato['id_usuario_recibe'])) {
-            $mensaje = new Chat($dato['descripcion_mensaje'], $dato['fecha_mensaje'], $dato['id_usuario_envia'], $dato['id_usuario_recibe']);
+        if (isset($dato['descripcion_mensaje']) && isset($dato['fecha_mensaje']) && isset($dato['usuario_id']) && isset($dato['admin_d'])) {
+            $mensaje = new Chat($dato['descripcion_mensaje'], $dato['fecha_mensaje'], $dato['usuario_id'], $dato['admin_d']);
             if (ChatDAO::insert($mensaje)) {
                 self::respuesta(
                     '',
@@ -86,8 +86,8 @@ class ChatControlador extends ControladorPadre
             $body = file_get_contents('php://input');
             $dato = json_decode($body, true);
 
-            if (isset($dato['descripcion_mensaje']) && isset($dato['fecha_mensaje']) && isset($dato['id_usuario_envia']) && isset($dato['id_usuario_recibe'])) {
-                $mensaje = new Chat($dato['descripcion_mensaje'], $dato['fecha_mensaje'], $dato['id_usuario_envia'], $dato['id_usuario_recibe']);
+            if (isset($dato['descripcion_mensaje']) && isset($dato['fecha_mensaje']) && isset($dato['usuario_id']) && isset($dato['admin_d'])) {
+                $mensaje = new Chat($dato['descripcion_mensaje'], $dato['fecha_mensaje'], $dato['usuario_id'], $dato['admin_d']);
                 $mensaje->id_mensaje = $recurso[2];
                 if (ChatDAO::update($mensaje)) {
                     self::respuesta(
