@@ -1,20 +1,12 @@
-CREATE DATABASE portafolio;  
-USE portafolio;
+create database portafolio;  
+use portafolio;
 
--- CATEGORIAS DE LOS PRODUCTOS
-CREATE TABLE categoria (
+CREATE TABLE `categoria` (
   `id_categoria` int PRIMARY KEY AUTO_INCREMENT,
   `nombre_categoria` varchar(255) NOT NULL
 );
 
--- IMAGENES DE PRODUCTOS
-CREATE TABLE imagen (
-  `id_imagen` int PRIMARY KEY AUTO_INCREMENT,
-  `url_imagen` varchar(255) NOT NULL 
-);
-
--- PRODUCTOS QUE COMPONEN UN PROYECTO
-CREATE TABLE producto (
+CREATE TABLE `producto` (
   `id_producto` int PRIMARY KEY AUTO_INCREMENT,
   `nombre_producto` varchar(255) NOT NULL,
   `descripcion_producto` varchar(255) NOT NULL,
@@ -25,8 +17,12 @@ CREATE TABLE producto (
   `imagen_id` int
 );
 
--- TRABAJOS REALIZADOS
-CREATE TABLE proyecto (
+CREATE TABLE `imagen` (
+  `id_imagen` int PRIMARY KEY AUTO_INCREMENT,
+  `url_imagen` varchar(255) NOT NULL
+);
+
+CREATE TABLE `proyecto` (
   `id_proyecto` int PRIMARY KEY AUTO_INCREMENT,
   `nombre_proyecto` varchar(255) NOT NULL,
   `fecha_proyecto` datetime NOT NULL,
@@ -34,63 +30,47 @@ CREATE TABLE proyecto (
   `factura_id` int
 );
 
--- USUARIO
-CREATE TABLE usuario (
+CREATE TABLE `usuario` (
   `id_usuario` int PRIMARY KEY AUTO_INCREMENT,
   `nombre_usuario` varchar(255) NOT NULL,
   `telefono_usuario` int NOT NULL,
   `email_usuario` varchar(255) NOT NULL,
   `contrasena_usuario` varchar(255) UNIQUE NOT NULL,
-  `borrado_usuario` boolean NOT NULL DEFAULT 0,
-  `tipo_usuario` ENUM('usuario', 'admin') NOT NULL DEFAULT 'usuario'
+  `borrado_usuario` boolean NOT NULL DEFAULT (0),
+  `tipo_usuario` ENUM ('usuario', 'admin') NOT NULL DEFAULT ('usuario')
 );
 
--- CHAT
-CREATE TABLE mensaje (
+CREATE TABLE `mensaje` (
   `id_mensaje` int PRIMARY KEY AUTO_INCREMENT,
   `descripcion_mensaje` varchar(255) NOT NULL,
   `fecha_mensaje` datetime,
-  `id_usuario_envia` int,
-  `id_usuario_recibe` int
+  `usuario_id` int,
+  `admin_d` boolean NOT NULL
 );
 
--- FACTURA
-CREATE TABLE factura (
+CREATE TABLE `factura` (
   `id_factura` int PRIMARY KEY AUTO_INCREMENT,
   `nombre_factura` varchar(255) NOT NULL,
   `fecha_pago` datetime NOT NULL,
   `fecha_factura` datetime NOT NULL,
-  `estado` ENUM ('pendiente', 'pagado') NOT NULL
+  `estado` ENUM ('pendiente', 'pagado') NOT NULL DEFAULT ('pendiente')
 );
 
 ALTER TABLE `producto` ADD FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id_categoria`);
+
 ALTER TABLE `producto` ADD FOREIGN KEY (`proyecto_id`) REFERENCES `proyecto` (`id_proyecto`);
+
 ALTER TABLE `producto` ADD FOREIGN KEY (`imagen_id`) REFERENCES `imagen` (`id_imagen`);
 
 ALTER TABLE `proyecto` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_usuario`);
+
 ALTER TABLE `proyecto` ADD FOREIGN KEY (`factura_id`) REFERENCES `factura` (`id_factura`);
 
-ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_envia`) REFERENCES `usuario` (`id_usuario`);
-ALTER TABLE `mensaje` ADD FOREIGN KEY (`id_usuario_recibe`) REFERENCES `usuario` (`id_usuario`);
-
--- Mediante un TRIGGER ejecutaremos automaticamente la misma consulta que consiste en enviar un mensaje de bienvenida al chat de los nuevos usuarios
-DELIMITER //
-CREATE TRIGGER enviar_mensaje_bienvenida
-AFTER INSERT ON usuario
-FOR EACH ROW
-BEGIN
-  INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe)
-  VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, NEW.id_usuario);
-END;
-//
-DELIMITER ;
+ALTER TABLE `mensaje` ADD FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_usuario`);
 
 INSERT INTO categoria (nombre_categoria) VALUES('Diseño');
 INSERT INTO categoria (nombre_categoria) VALUES('Ilustraciones');
 INSERT INTO categoria (nombre_categoria) VALUES('Web');
-
-INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES ('Lulú',654702478,'lucia@gmail.com','lucia', 0, 'admin');
-INSERT INTO usuario (nombre_usuario,telefono_usuario,email_usuario,contrasena_usuario,borrado_usuario,tipo_usuario) VALUES('Alfredo',666666666,'usuario1@gmail.com','usuario1', 0 ,'usuario');
 
 INSERT INTO imagen (url_imagen) VALUES ('diseno1.jpg');
 INSERT INTO imagen (url_imagen) VALUES ('ilustracion1.jpg');
@@ -100,11 +80,43 @@ INSERT INTO producto (nombre_producto, descripcion_producto, precio, cantidad, c
 INSERT INTO producto (nombre_producto, descripcion_producto, precio, cantidad, categoria_id, proyecto_id, imagen_id) VALUES ('Ilustracion 1', '"En la Sala de los Menesteres Secretos, Harry descubre un lugar mágico lleno de tesoros y misterios que esperan ser explorados"', 20.84 , 100, 2, null, 2);
 INSERT INTO producto (nombre_producto, descripcion_producto, precio, cantidad, categoria_id, proyecto_id, imagen_id) VALUES ('Web 1', '"El Doctor y su fiel TARDIS viajan por el tiempo y el espacio en una aventura intergaláctica"',5.41, 100, 3, null, 3);
 
-INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 1', NOW(), NOW(), 'pendiente');
-INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES ('Factura 2', NOW(), NOW(), 'pagado');
+INSERT INTO usuario (nombre_usuario, telefono_usuario, email_usuario, contrasena_usuario, tipo_usuario)
+VALUES ('Lulú', 654702478, 'lulu1@gmail.com', SHA1('lulu1'), 'admin');
+INSERT INTO usuario (nombre_usuario, telefono_usuario, email_usuario, contrasena_usuario)
+VALUES ('Sara', 625451545, 'sara1@gmail.com', SHA1('sara1'));
 
-INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id) VALUES('Ilustraciones familiares', NOW(), 2, 1);
-INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id, factura_id) VALUES('Logotipo tienda', NOW(), 2, 2);
+-- INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES (CONCAT("#", FLOOR(RAND() * 100000)), NOW(), NOW(), 'pendiente');
 
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), 1, 2);
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, id_usuario_envia, id_usuario_recibe) VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 1);
+INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id) VALUES ('Ilustraciones familiares', NOW(), 2);
+
+INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, usuario_id, admin_d)VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 0);
+
+-- Mediante un TRIGGER ejecutaremos automaticamente la misma consulta que consiste en enviar un mensaje de bienvenida al chat de los nuevos usuarios
+DELIMITER //
+CREATE TRIGGER enviar_mensaje_bienvenida
+AFTER INSERT ON usuario
+FOR EACH ROW
+BEGIN
+  INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, usuario_id, admin_d)
+  VALUES ('Bienvenido al chat, si tienes alguna pregunta, no dudes en hacérmela saber.', NOW(), NEW.id_usuario, 1);
+END;
+//
+DELIMITER ;
+
+-- Mediante un TRIGGER ejecutaremos automaticamente la factura del proyecto que creemos.
+DELIMITER //
+CREATE TRIGGER generar_factura
+BEFORE INSERT ON proyecto
+FOR EACH ROW
+BEGIN
+  DECLARE factura_nombre VARCHAR(255);
+  
+  SET factura_nombre = CONCAT("#", FLOOR(RAND() * 100000));
+  INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)
+  VALUES (factura_nombre, NEW.fecha_proyecto, NEW.fecha_proyecto, 'pendiente');
+  
+  SET NEW.factura_id = LAST_INSERT_ID();
+END;
+//
+DELIMITER ;
+
