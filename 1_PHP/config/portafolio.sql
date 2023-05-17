@@ -87,9 +87,9 @@ VALUES ('Sara', 625451545, 'sara1@gmail.com', SHA1('sara1'));
 
 -- INSERT INTO factura (nombre_factura, fecha_pago, fecha_factura, estado)VALUES (CONCAT("#", FLOOR(RAND() * 100000)), NOW(), NOW(), 'pendiente');
 
-INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id) VALUES ('Ilustraciones familiares', NOW(), 2);
+-- INSERT INTO proyecto (nombre_proyecto, fecha_proyecto, usuario_id) VALUES ('Ilustraciones familiares', NOW(), 2);
 
-INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, usuario_id, admin_d)VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 0);
+-- INSERT INTO mensaje (descripcion_mensaje, fecha_mensaje, usuario_id, admin_d)VALUES ('Hola, necesito ayuda con un diseño', NOW(), 2, 0);
 
 -- Mediante un TRIGGER ejecutaremos automaticamente la misma consulta que consiste en enviar un mensaje de bienvenida al chat de los nuevos usuarios
 DELIMITER //
