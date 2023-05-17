@@ -34,7 +34,7 @@ if (isset($_REQUEST['volverProyecto'])) {
 
     $array_categorias = getAllCategorias();
     $array_productos = getAllProductos();
-
+    
     if (isset($_REQUEST['registrar'])) {
         if (validarNuevoUsuario()) {
             $usuario = new Usuario(null, $_REQUEST['nombre'], $_REQUEST['telefono'], $_REQUEST['email'], sha1($_REQUEST['contraseña']), 0, null);
