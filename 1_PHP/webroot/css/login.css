@@ -126,7 +126,7 @@ h6 span {
 
 .checkbox:checked+label:before {
   content: "🡠 Iniciar sesión";
-  transform: translateX(80px);
+  transform: translateX(75px);
 }
 
 .card-3d-wrap {
