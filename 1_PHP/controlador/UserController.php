@@ -34,8 +34,8 @@ if (isset($_REQUEST['volverUser'])) {
             $_SESSION['email_usuario'] = $_REQUEST['email'];
 
             $_SESSION['success'] = 'Perfil actualizado!';
-            $_SESSION['vista'] = $vistas['admin'];
-            $_SESSION['controlador'] = $controladores['admin'];
+            $_SESSION['vista'] = $vistas['user'];
+            $_SESSION['controlador'] = $controladores['user'];
         }
     } else {
         // Mostrar un mensaje de error si las contraseñas no coinciden

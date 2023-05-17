@@ -7,7 +7,7 @@
                         <i class="bi bi-arrow-left-circle text-white"></i>
                     </button>
                 </form>
-                <h1 class="prod text-light"><?php echo $producto->nombre_producto ?></h1>
+                <h1 class="prod text-light"><?php echo $producto['nombre_producto'] ?></h1>
             </div>
         </div>
     </section>
@@ -15,7 +15,7 @@
 <div class="productTitle p-2 p-md-4 mb-4">
     <div class="col-md-6">
         <h2 class="lead my-3"><?php echo $categoria->nombre_categoria ?></h2>
-        <p class="lead my-3"><?php echo $producto->descripcion_producto ?></p>
+        <p class="lead my-3"><?php echo $producto['descripcion_producto'] ?></p>
     </div>
     <form class="row g-3" action="./index.php" method="post">
         <div class="d-flex justify-content-end">

@@ -35,15 +35,15 @@
           <div class="card mb-4">
             <div class="card-body text-center">
               <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
-              <h2 class="my-3"><?php echo $usuario->nombre_usuario; ?></h2>
+              <h2 class="my-3"><?php echo $usuario['nombre_usuario']; ?></h2>
               <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
-                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarCambios" value="<?php echo $usuario->id_usuario; ?>">Guardar cambios</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarCambios" value="<?php echo $usuario['id_usuario']; ?>">Guardar cambios</button>
                   <button type="submit" class="btn btn-lg btn-block btn-primary ms-1" onclick="location.reload()">Cancelar</button>
                 </div>
               <?php else : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
-                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" onclick="editarPerfil()" value="<?php echo $usuario->id_usuario; ?>">Editar perfíl</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" onclick="editarPerfil()" value="<?php echo $usuario['id_usuario']; ?>">Editar perfíl</button>
                 </div>
               <?php endif; ?>
             </div>
@@ -66,7 +66,7 @@
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="text" class="form-control campo-perfil" name="nombre" value="<? if ($_SESSION['accion'] == 'editar') {
-                                                                                                  echo $usuario->nombre_usuario;
+                                                                                                  echo $usuario['nombre_usuario'];
                                                                                                 } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
@@ -78,7 +78,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="text" class="dato text-muted mb-0" name="nombre" value="<?php echo $usuario->nombre_usuario; ?>" readonly>
+                      <input type="text" class="dato text-muted mb-0" name="nombre" value="<?php echo $usuario['nombre_usuario']; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="number" class="form-control campo-perfil" name="telefono" value="<? if ($_SESSION['accion'] == 'editar') {
-                                                                                                      echo $usuario->telefono_usuario;
+                                                                                                      echo $usuario['telefono_usuario'];
                                                                                                     } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
@@ -106,7 +106,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="text" class="dato text-muted mb-0" name="telefono" value="<?php echo $usuario->telefono_usuario; ?>" readonly>
+                      <input type="text" class="dato text-muted mb-0" name="telefono" value="<?php echo $usuario['telefono_usuario']; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -118,7 +118,7 @@
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="email" class="form-control campo-perfil" name="email" value="<? if ($_SESSION['accion'] == 'editar') {
-                                                                                                  echo $usuario->email_usuario;
+                                                                                                  echo $usuario['email_usuario'];
                                                                                                 } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
@@ -134,7 +134,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $usuario->email_usuario; ?>" readonly autocomplete="username">
+                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $usuario['email_usuario']; ?>" readonly autocomplete="username">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -160,7 +160,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly autocomplete="current-password">
+                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario['contrasena_usuario']; ?>" readonly autocomplete="current-password">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -234,14 +234,14 @@
         <?php if (!empty($array_proyectos)) : ?>
           <?php foreach ($array_proyectos as $proyecto) : ?>
             <tr>
-              <th scope="row"><?php echo $proyecto->id_proyecto ?></th>
-              <td><?php echo $proyecto->nombre_proyecto ?></td>
-              <td><?php echo $proyecto->fecha_proyecto ?></td>
-              <td><?php echo $proyecto->usuario_id ?></td>
+              <th scope="row"><?php echo $proyecto['id_proyecto'] ?></th>
+              <td><?php echo $proyecto['nombre_proyecto'] ?></td>
+              <td><?php echo $proyecto['fecha_proyecto'] ?></td>
+              <td><?php echo $proyecto['usuario_id'] ?></td>
               <td>
                 <form action="./index.php" method="post">
-                  <input type="hidden" name="factura_id" value="<?php echo $proyecto->factura_id ?>">
-                  <input type="hidden" name="id_proyecto" value="<?php echo $proyecto->id_proyecto ?>">
+                  <input type="hidden" name="factura_id" value="<?php echo $proyecto['factura_id'] ?>">
+                  <input type="hidden" name="id_proyecto" value="<?php echo $proyecto['id_proyecto'] ?>">
                   <button type="submit" class="btn btn-link text-decoration-underline text-primary" name="verFacturaAdmin">
                     <i class="bi bi-receipt-cutoff me-2"></i>Ver factura
                   </button>
@@ -279,18 +279,18 @@
         <?php if (!empty($array_productos)) : ?>
           <?php foreach ($array_productos as $producto) : ?>
             <tr>
-              <th scope="row"><?php echo $producto->id_producto ?></th>
-              <td><?php echo $producto->nombre_producto ?></td>
-              <td><?php echo $producto->descripcion_producto ?></td>
+              <th scope="row"><?php echo $producto['id_producto'] ?></th>
+              <td><?php echo $producto['nombre_producto'] ?></td>
+              <td><?php echo $producto['descripcion_producto'] ?></td>
               <td>
                 <form action="./index.php" method="post">
-                  <input type="hidden" name="modalImagen" value="<?php echo $producto->id_producto ?>">
-                  <input type="image" src="./webroot/recursos/proyecto/<?php echo $producto->imagen_producto ?>" alt="<?php echo $producto->imagen_producto ?>" width="100" height="50">
+                  <input type="hidden" name="modalImagen" value="<?php echo $producto['id_producto'] ?>">
+                  <input type="image" src="./webroot/recursos/proyecto/<?php echo $producto['imagen_producto'] ?>" alt="<?php echo $producto['imagen_producto'] ?>" width="100" height="50">
                 </form>
               </td>
-              <td><?php echo $producto->precio ?></td>
-              <td><?php echo $producto->cantidad ?></td>
-              <td><?php echo $producto->categoria_id ?></td>
+              <td><?php echo $producto['precio'] ?></td>
+              <td><?php echo $producto['cantidad'] ?></td>
+              <td><?php echo $producto['categoria_id'] ?></td>
             </tr>
           <?php endforeach ?>
         <?php else : ?>

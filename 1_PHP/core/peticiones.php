@@ -49,11 +49,14 @@ function getIdUsuario($id_usuario)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron usuarios con el ID: " . $id_usuario . "\n";
+    // Decodificar la respuesta JSON
+    $usuario = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($usuario)) {
+        return $usuario;
     } else {
-        return $respuesta;
+        echo "No se encontraron usuarios con la id: " . $id_usuario . "\n";
     }
 }
 
@@ -166,11 +169,14 @@ function getIdProyecto($id_proyecto)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron proyectos con el ID: " . $id_proyecto . "\n";
+    // Decodificar la respuesta JSON
+    $proyecto = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($proyecto)) {
+        return $proyecto;
     } else {
-        return $respuesta;
+        echo "No se encontraron proyecto con la id: " . $id_proyecto . "\n";
     }
 }
 
@@ -266,11 +272,14 @@ function getIdProducto($id_producto)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron productos con el ID: " . $id_producto . "\n";
+    // Decodificar la respuesta JSON
+    $producto = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($producto)) {
+        return $producto;
     } else {
-        return $respuesta;
+        echo "No se encontraron producto con id: " . $id_producto . "\n";
     }
 }
 
@@ -373,11 +382,14 @@ function getIdFactura($id_factura)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron facturas con el ID: " . $id_factura . "\n";
+    // Decodificar la respuesta JSON
+    $facturas = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($facturas)) {
+        return $facturas;
     } else {
-        return $respuesta;
+        echo "No se encontraron usuarios con el nombre: " . $id_factura . "\n";
     }
 }
 
@@ -492,11 +504,14 @@ function getIdImagen($id_imagen)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron imágenes con el ID: " . $id_imagen . "\n";
+    // Decodificar la respuesta JSON
+    $imagen = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($imagen)) {
+        return $imagen;
     } else {
-        return $respuesta;
+        echo "No se encontraron imagen con id: " . $id_imagen . "\n";
     }
 }
 
@@ -586,11 +601,14 @@ function getIdCategoria($id_categoria)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron categorias con el ID: " . $id_categoria . "\n";
+    // Decodificar la respuesta JSON
+    $categoria = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($categoria)) {
+        return $categoria;
     } else {
-        return $respuesta;
+        echo "No se encontraron categoria con id: " . $id_categoria . "\n";
     }
 }
 
@@ -698,11 +716,14 @@ function getIdMensaje($id_mensaje)
     // Llamar a la función get($url) con la URL construida
     $respuesta = get($url);
 
-    // Verificar si el array está vacío o no
-    if (empty($respuesta)) {
-        echo "No se encontraron mensajes con el ID: " . $id_mensaje . "\n";
+    // Decodificar la respuesta JSON
+    $mensaje = json_decode($respuesta, true);
+
+    // Verificar si la respuesta es válida
+    if (is_array($mensaje)) {
+        return $mensaje;
     } else {
-        return $respuesta;
+        echo "No se encontraron mensaje con id: " . $id_mensaje . "\n";
     }
 }
 
@@ -717,6 +738,7 @@ function getMensajeIdUsuario($id_usuario)
 
     // Procesar la respuesta
     $mensaje = json_decode($response, true);
+    
     if (is_array($mensaje) && !empty($mensaje)) {
         return $mensaje;
     } else {

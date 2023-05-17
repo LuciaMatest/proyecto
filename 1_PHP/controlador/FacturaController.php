@@ -88,22 +88,22 @@ if (isset($_REQUEST['volverFactura'])) {
     </head>
     <body>
         <div class="header">
-            <h1>Factura: ' . $factura->nombre_factura . '</h1>
+            <h1>Factura: ' . $factura['nombre_factura'] . '</h1>
         </div>
         <div class="invoice-details">
             <h2>Detalles de la factura</h2>
             <table>
             <tr>
                 <th>Fecha de pago:</th>
-                <td> ' . $factura->fecha_pago . '</td>
+                <td> ' . $factura['fecha_pago'] . '</td>
             </tr>
             <tr>
                 <th>Fecha de factura:</th>
-                <td> ' . $factura->fecha_factura . '</td>
+                <td> ' . $factura['fecha_factura'] . '</td>
             </tr>
             <tr>
                 <th>Estado:</th>
-                <td> ' . $factura->estado . '</td>
+                <td> ' . $factura['estado'] . '</td>
             </tr>
             </table>
         </div>
@@ -112,11 +112,11 @@ if (isset($_REQUEST['volverFactura'])) {
             <table>
             <tr>
                 <th>Nombre del proyecto:</th>
-                <td> ' . $proyecto->nombre_proyecto . '</td>
+                <td> ' . $proyecto['nombre_proyecto'] . '</td>
             </tr>
             <tr>
                 <th>Fecha del proyecto:</th>
-                <td> ' . $proyecto->fecha_proyecto . '</td>
+                <td> ' . $proyecto['fecha_proyecto'] . '</td>
             </tr>
             </table>
         </div>
@@ -131,6 +131,8 @@ if (isset($_REQUEST['volverFactura'])) {
     header('Content-Disposition: attachment; filename="factura.pdf"');
     $pdf->Output('factura.pdf', 'I');
 } else {
-    $factura = FacturaDAO::findById($_SESSION['id_factura']);
-    $proyecto = ProyectoDAO::findById($_SESSION['id_proyecto']);
+    // $factura = FacturaDAO::findById($_SESSION['id_factura']);
+    // $proyecto = ProyectoDAO::findById($_SESSION['id_proyecto']);
+    $factura = getIdFactura($_SESSION['id_factura']);
+    $proyecto = getIdProyecto($_SESSION['id_proyecto']);
 }

@@ -40,8 +40,7 @@ if (isset($_REQUEST['nuevoProyecto'])) {
     $contrasena2 = $_REQUEST['contraseña2'];
     if ($contrasena === $contrasena2) {
         $_SESSION['accion'] = 'editar';
-        $id_usuario = $_REQUEST['guardarUsuario'];
-        $usuario = UsuarioDAO::findById($id_usuario);
+        $usuario = UsuarioDAO::findById($_SESSION['id_usuario']);
         $usuario->nombre_usuario = $_REQUEST['nombre'];
         $usuario->telefono_usuario = $_REQUEST['telefono'];
         $usuario->email_usuario = $_REQUEST['email'];

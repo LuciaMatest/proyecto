@@ -77,8 +77,8 @@ if (isset($_SESSION['success'])) {
                   <div class="row">
                     <p class="mb-0 fw-bold text-secondary small">* Para modificar datos, ingrese toda la información y la contraseña actual dos veces; para cambiar solo la contraseña, ingrese nueva contraseña dos veces.</p>
                   </div>
+                  <hr>
                 <?php endif; ?>
-                <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <p class="mb-0">Nombre</p>
@@ -86,7 +86,7 @@ if (isset($_SESSION['success'])) {
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="text" class="form-control campo-perfil" name="nombre" value="<? if ($_SESSION['accion'] == 'editar') {
-                                                                                                  echo $usuario->nombre_usuario;
+                                                                                                  echo $usuario['nombre_usuario'];
                                                                                                 } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
@@ -110,7 +110,7 @@ if (isset($_SESSION['success'])) {
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="number" class="form-control campo-perfil" name="telefono" value="<? if ($_SESSION['accion'] == 'editar') {
-                                                                                                      echo $usuario->telefono_usuario;
+                                                                                                      echo $usuario['telefono_usuario'];
                                                                                                     } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
@@ -138,7 +138,7 @@ if (isset($_SESSION['success'])) {
                   <div class="col-sm-9">
                     <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                       <input type="email" class="form-control campo-perfil" name="email" value="<? if ($_SESSION['accion'] == 'editar') {
-                                                                                                  echo $usuario->email_usuario;
+                                                                                                  echo $usuario['email_usuario'];
                                                                                                 } ?>">
                       <?
                       if (isset($_REQUEST['guardarCambios'])) {
@@ -180,7 +180,7 @@ if (isset($_SESSION['success'])) {
                       }
                       ?>
                     <?php else : ?>
-                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario->contrasena_usuario; ?>" readonly>
+                      <input type="password" class="dato text-muted mb-0" name="contraseña" value="<?php echo $usuario['contrasena_usuario']; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ if (isset($_SESSION['success'])) {
         <?php
         $id_usuario_actual = $_SESSION['id_usuario'];
         $array_proyectos_usuario = array_filter($array_proyectos, function ($proyecto) use ($id_usuario_actual) {
-          return $proyecto->usuario_id == $id_usuario_actual;
+          return $proyecto['usuario_id'] == $id_usuario_actual;
         });
         $contadorProyectos = 1;
         ?>
@@ -241,12 +241,12 @@ if (isset($_SESSION['success'])) {
           <?php foreach ($array_proyectos_usuario as $proyecto) : ?>
             <tr>
               <th scope="row"><?php echo $contadorProyectos ?></th>
-              <td><?php echo $proyecto->nombre_proyecto ?></td>
-              <td><?php echo $proyecto->fecha_proyecto ?></td>
+              <td><?php echo $proyecto['nombre_proyecto'] ?></td>
+              <td><?php echo $proyecto['fecha_proyecto'] ?></td>
               <td>
                 <form action="./index.php" method="post">
-                  <input type="hidden" name="factura_id" value="<?php echo $proyecto->factura_id ?>">
-                  <input type="hidden" name="id_proyecto" value="<?php echo $proyecto->id_proyecto ?>">
+                  <input type="hidden" name="factura_id" value="<?php echo $proyecto['factura_id'] ?>">
+                  <input type="hidden" name="id_proyecto" value="<?php echo $proyecto['id_proyecto'] ?>">
                   <button type="submit" class="btn btn-link text-decoration-underline text-primary" name="verFacturaUser"><i class="bi bi-receipt-cutoff me-2"></i>Ver factura</button>
                 </form>
               </td>
