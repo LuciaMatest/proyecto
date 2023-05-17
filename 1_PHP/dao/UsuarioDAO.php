@@ -6,19 +6,7 @@ class UsuarioDAO extends FactoryBD implements DAO
         $sql = 'select * from usuario;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayUsuario = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $usuario = new Usuario(
-                $objeto->id_usuario,
-                $objeto->nombre_usuario,
-                $objeto->telefono_usuario,
-                $objeto->email_usuario,
-                $objeto->contrasena_usuario,
-                $objeto->borrado_usuario,
-                $objeto->tipo_usuario
-            );
-            array_push($arrayUsuario, $usuario);
-        }
+        $arrayUsuario = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayUsuario;
     }
 
@@ -27,19 +15,24 @@ class UsuarioDAO extends FactoryBD implements DAO
         $sql = 'select * from usuario where id_usuario=?;';
         $datos = array($id);
         $resultado = parent::ejecuta($sql, $datos);
-        $objeto = $resultado->fetchObject();
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
         if ($objeto) {
-            return new Usuario(
-                $objeto->id_usuario,
-                $objeto->nombre_usuario,
-                $objeto->telefono_usuario,
-                $objeto->email_usuario,
-                $objeto->contrasena_usuario,
-                $objeto->borrado_usuario,
-                $objeto->tipo_usuario
-            );
+            return $objeto;
         } else {
-            $_SESSION['error'] = 'No existe el usuario buscado por su id';
+            $_SESSION['error'] = 'No existe el usuario';
+        }
+    }
+
+    public static function findByName($nombre)
+    {
+        $sql = 'select * from usuario where nombre_usuario=?;';
+        $datos = array($nombre);
+        $resultado = parent::ejecuta($sql, $datos);
+        $objeto = $resultado->fetch(PDO::FETCH_ASSOC);
+        if ($objeto) {
+            return $objeto;
+        } else {
+            $_SESSION['error'] = 'No existe el usuario';
         }
     }
 
@@ -48,19 +41,7 @@ class UsuarioDAO extends FactoryBD implements DAO
         $sql = 'select * from usuario where borrado_usuario = 0;';
         $datos = array();
         $resultado = parent::ejecuta($sql, $datos);
-        $arrayUsuario = array();
-        while ($objeto = $resultado->fetchObject()) {
-            $usuario = new Usuario(
-                $objeto->id_usuario,
-                $objeto->nombre_usuario,
-                $objeto->telefono_usuario,
-                $objeto->email_usuario,
-                $objeto->contrasena_usuario,
-                $objeto->borrado_usuario,
-                $objeto->tipo_usuario
-            );
-            array_push($arrayUsuario, $usuario);
-        }
+        $arrayUsuario = $resultado->fetchAll(PDO::FETCH_ASSOC);
         return $arrayUsuario;
     }
 

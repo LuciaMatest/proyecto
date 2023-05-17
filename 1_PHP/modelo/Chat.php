@@ -8,8 +8,9 @@ class Chat
     private $admin_d;
 
 
-    public function __construct($descripcion_mensaje, $fecha_mensaje, $usuario_id, $admin_d)
+    public function __construct($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $usuario_id, $admin_d)
     {
+        $this->id_mensaje = $id_mensaje;
         $this->descripcion_mensaje = $descripcion_mensaje;
         $this->fecha_mensaje = $fecha_mensaje;
         $this->usuario_id = $usuario_id;

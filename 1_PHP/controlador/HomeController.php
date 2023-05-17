@@ -30,12 +30,12 @@ if (isset($_REQUEST['ver'])) {
                 $_SESSION['controlador'] = $controladores['home'];
                 $_SESSION['vista'] = $vistas['home'];
                 $_SESSION['validado'] = true;
-                $_SESSION['id_usuario'] = $usuario->id_usuario;
-                $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
-                $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
-                $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
-                $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
-                $_SESSION['email_usuario'] = $usuario->email_usuario;
+                $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                $_SESSION['nombre_usuario'] = $usuario['nombre_usuario'];
+                $_SESSION['telefono_usuario'] = $usuario['telefono_usuario'];
+                $_SESSION['email_usuario'] = $usuario['email_usuario'];
+                $_SESSION['borrado_usuario'] = $usuario['borrado_usuario'];
+                $_SESSION['tipo_usuario'] = $usuario_SESSION['tipo_usuario'];
 
                 $_SESSION['success'] = '¡Se ha registrado correctamente!';
             } else {
@@ -68,11 +68,11 @@ if (isset($_REQUEST['ver'])) {
             if ($usuario != null) {
                 $_SESSION['validado'] = true;
                 $_SESSION['email_usuario'] = $email;
-                $_SESSION['id_usuario'] = $usuario->id_usuario;
-                $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
-                $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
-                $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
-                $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
+                $_SESSION['id_usuario'] = $usuario['id_usuario'];
+                $_SESSION['nombre_usuario'] = $usuario['nombre_usuario'];
+                $_SESSION['telefono_usuario'] = $usuario['telefono_usuario'];
+                $_SESSION['borrado_usuario'] = $usuario['borrado_usuario'];
+                $_SESSION['tipo_usuario'] = $usuario_SESSION['tipo_usuario'];
                 if (esAdmin()) {
                     $_SESSION['controlador'] = $controladores['admin'];
                     $_SESSION['vista'] = $vistas['admin'];

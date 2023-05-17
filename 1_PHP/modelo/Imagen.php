@@ -4,8 +4,9 @@ class Imagen
     private $id_imagen;
     private $url_imagen;
 
-    public function __construct($url_imagen)
+    public function __construct($id_imagen, $url_imagen)
     {
+        $this->id_imagen = $id_imagen;
         $this->url_imagen = $url_imagen;
     }
 
