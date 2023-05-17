@@ -73,8 +73,13 @@ if (isset($_REQUEST['ver'])) {
                 $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
                 $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
                 $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
-                $_SESSION['vista'] = $vistas['home'];
-                $_SESSION['controlador'] = $controladores['home'];
+                if (esAdmin()) {
+                    $_SESSION['controlador'] = $controladores['admin'];
+                    $_SESSION['vista'] = $vistas['admin'];
+                } else {
+                    $_SESSION['vista'] = $vistas['home'];
+                    $_SESSION['controlador'] = $controladores['home'];
+                }
 
                 $_SESSION['success'] = 'Inicio de sesión exitoso';
                 header('Location: ./index.php');

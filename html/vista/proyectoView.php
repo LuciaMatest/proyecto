@@ -33,35 +33,36 @@
 </div>
 
 
-<form action="./index.php" method="post">
-    <?php foreach ($array_categorias as $key => $categoria) : ?>
-        <?php if ($key === 0) : ?>
-            <div id="<?php echo $categoria->nombre_categoria ?>" class="album">
-            <?php else : ?>
-                <div id="<?php echo $categoria->nombre_categoria ?>" class="album" style="display: none;">
-                <?php endif; ?>
-                <div class="container">
-                    <div class="row row-cols-1 text-center">
-                        <h1><?php echo $categoria->nombre_categoria ?></h1>
-                        <?php foreach ($array_productos as $producto) : ?>
-                            <?php if ($producto->categoria_id === $categoria->id_categoria) : ?>
-                                <div class="col my-3">
-                                    <div class="card shadow-sm my-3">
-                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img" name="productoSVG">
-                                            <a href="./index.php?producto=<?php echo $producto->id_producto; ?>" target="_self">
+<?php foreach ($array_categorias as $key => $categoria) : ?>
+    <?php if ($key === 0) : ?>
+        <div id="<?php echo $categoria->nombre_categoria ?>" class="album">
+        <?php else : ?>
+            <div id="<?php echo $categoria->nombre_categoria ?>" class="album" style="display: none;">
+            <?php endif; ?>
+            <div class="container">
+                <div class="row row-cols-1 text-center">
+                    <h1><?php echo $categoria->nombre_categoria ?></h1>
+                    <?php foreach ($array_productos as $producto) : ?>
+                        <?php if ($producto->categoria_id === $categoria->id_categoria) : ?>
+                            <div class="col my-3">
+                                <div class="card shadow-sm my-3">
+                                    <form action="./index.php" method="post">
+                                        <input type="hidden" name="id_producto" value="<?php echo $producto->id_producto ?>">
+                                        <input type="hidden" name="id_categoria" value="<?php echo $categoria->id_categoria ?>">
+                                        <button type="submit" class="botonProductos btn btn-outline-none text-white" name="mostrarProducto" style="width: 100%; height: auto;">
+                                            <svg class="bd-placeholder-img card-img-top" width="100%" height="300px" role="img" name="productoSVG" preserveAspectRatio="xMidYMid meet">
                                                 <title><?php echo $producto->nombre_producto ?></title>
                                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/<?php echo $producto->url_imagen ?>" preserveAspectRatio="xMidYMid slice" />
                                                 <image x="0" y="0" width="100%" height="100%" xlink:href="./webroot/recursos/proyecto/rect1.png" preserveAspectRatio="xMidYMid slice" class="negro" />
-                                                <text x="50%" y="50%" fill="white"><?php echo $producto->descripcion_producto ?></text>
-                                            </a>
-                                        </svg>
-                                    </div>
+                                                <text x="50%" y="50%" fill="white" class="textoProducto"><?php echo $producto->descripcion_producto ?></text>
+                                            </svg>
+                                        </button>
+                                    </form>
                                 </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
+            </div>
         <?php endforeach; ?>
-</form>

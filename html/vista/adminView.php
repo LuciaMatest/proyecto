@@ -35,15 +35,15 @@
           <div class="card mb-4">
             <div class="card-body text-center">
               <img src="./webroot/recursos/perfil/perfil2.png" alt="avatar" class="rounded-circle img-fluid" style="width: 120px;">
-              <h2 class="my-3"><? echo $_SESSION['nombre_usuario']; ?></h2>
+              <h2 class="my-3"><?php echo $usuario->nombre_usuario; ?></h2>
               <?php if (isset($_REQUEST['editarPerfil'])) : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
-                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarCambios">Guardar cambios</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarCambios" value="<?php echo $usuario->id_usuario; ?>">Guardar cambios</button>
                   <button type="submit" class="btn btn-lg btn-block btn-primary ms-1" onclick="location.reload()">Cancelar</button>
                 </div>
               <?php else : ?>
                 <div class="d-flex justify-content-center align-items-center mb-2">
-                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" onclick="editarPerfil()">Editar perfíl</button>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary" name="editarPerfil" onclick="editarPerfil()" value="<?php echo $usuario->id_usuario; ?>">Editar perfíl</button>
                 </div>
               <?php endif; ?>
             </div>
@@ -53,6 +53,12 @@
           <div class="datosUser col-lg-8">
             <div class="card mb-4">
               <div class="card-body">
+                <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                  <div class="row">
+                    <p class="mb-0 fw-bold text-secondary small">* Para modificar datos, ingrese toda la información y la contraseña actual dos veces; para cambiar solo la contraseña, ingrese nueva contraseña dos veces.</p>
+                  </div>
+                  <hr>
+                <?php endif; ?>
                 <div class="row">
                   <div class="col-sm-3">
                     <p class="mb-0">Nombre</p>
@@ -72,7 +78,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="text" class="dato text-muted mb-0" name="nombre" value="<?php echo $_SESSION['nombre_usuario']; ?>" readonly>
+                      <input type="text" class="dato text-muted mb-0" name="nombre" value="<?php echo $usuario->nombre_usuario; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -100,7 +106,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="text" class="dato text-muted mb-0" name="telefono" value="<?php echo $_SESSION['telefono_usuario']; ?>" readonly>
+                      <input type="text" class="dato text-muted mb-0" name="telefono" value="<?php echo $usuario->telefono_usuario; ?>" readonly>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -128,7 +134,7 @@
                       }
                       ?>
                     <?php else : ?>
-                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $_SESSION['email_usuario']; ?>" readonly autocomplete="username">
+                      <input type="email" class="dato text-muted mb-0" name="email" value="<?php echo $usuario->email_usuario; ?>" readonly autocomplete="username">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -212,7 +218,7 @@
       <input type="submit" class="new btn btn-primary" name="nuevoProyecto" id="nuevoProyecto" value="Añadir">
     </form>
   </div>
-  <div class="tablaProyecto table-responsive" style="text-align: center;">
+  <div class="tablaProyecto table-responsive table-scroll" style="text-align: center;">
     <table class="table table-striped text-success table-bordered border-light">
       <thead class="border-light">
         <tr>
@@ -235,7 +241,8 @@
               <td>
                 <form action="./index.php" method="post">
                   <input type="hidden" name="factura_id" value="<?php echo $proyecto->factura_id ?>">
-                  <button type="submit" class="btn btn-primary mb-1" name="verFactura" id="verFactura">
+                  <input type="hidden" name="id_proyecto" value="<?php echo $proyecto->id_proyecto ?>">
+                  <button type="submit" class="btn btn-link text-decoration-underline text-primary" name="verFacturaAdmin">
                     <i class="bi bi-receipt-cutoff me-2"></i>Ver factura
                   </button>
                 </form>
@@ -255,7 +262,7 @@
       </tbody>
     </table>
   </div>
-  <div class="tablaProducto table-responsive" style="display: none;text-align: center;">
+  <div class="tablaProducto table-responsive table-scroll" style="display: none;text-align: center;">
     <table class="table table-striped text-success table-bordered border-light">
       <thead class="border-light">
         <tr>
@@ -305,39 +312,125 @@
           <div class="card-body">
             <ul class="list-unstyled mb-0">
               <?php $index = 0; ?>
-              <?php foreach ($array_usuarios as $usuario) : ?>
+              <?php foreach ($array_usuarios as $otrousuario) : ?>
                 <?php if ($index != 0) : ?>
                   <li class="my-3">
                     <div class="container">
                       <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                           <img src="./webroot/recursos/perfil/perfil.png" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                          <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $usuario->nombre_usuario; ?></span>
+                          <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $otrousuario->nombre_usuario; ?></span>
                         </div>
-                        <div class="col-auto">
-                          <button class="transparent-button" name="verChat" data-id="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-chat-dots"></i></button>
-                          <button class="transparent-button" name="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $usuario->id_usuario; ?>" aria-expanded="false"><i class="bi bi-pencil-square me-2"></i></button>
-                          <button class="transparent-button" name="borrarUsuario" data-id="<?php echo $usuario->id_usuario; ?>"><i class="bi bi-trash3"></i></button>
+                        <div class="col-auto d-flex justify-content-center align-items-center">
+                          <form action="./index.php" method="post">
+                            <input type="hidden" name="id_usuario" value="<?php echo $otrousuario->id_usuario; ?>">
+                            <button class="transparent-button" name="verChat" value="<?php echo $otrousuario->id_usuario; ?>">
+                              <i class="bi bi-chat-dots"></i>
+                            </button>
+                          </form>
+                          <button class="transparent-button" name="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $otrousuario->id_usuario; ?>" aria-expanded="false">
+                            <i class="bi bi-pencil-square me-2"></i>
+                          </button>
+                          <form action="./index.php" method="post">
+                            <button type="submit" class="transparent-button" name="borrarUsuario" value="<?php echo $otrousuario->id_usuario; ?>" onclick="return confirm('¿Estás seguro de que deseas borrar este usuario?');">
+                              <i class="bi bi-trash3"></i>
+                            </button>
+                          </form>
                         </div>
+                        <?php
+                        if (isset($_SESSION['success'])) {
+                          echo '<script>alert("' . $_SESSION['success'] . '");</script>';
+                          unset($_SESSION['success']);
+                        }
+
+                        if (isset($_SESSION['error'])) {
+                          echo '<script>alert("' . $_SESSION['error'] . '");</script>';
+                          unset($_SESSION['error']);
+                        }
+                        ?>
                       </div>
                     </div>
-                    <div class="collapse" id="<?php echo $usuario->id_usuario; ?>">
+                    <div class="collapse" id="<?php echo $otrousuario->id_usuario; ?>">
                       <div class="container mt-4">
                         <form action="./index.php" method="post">
                           <div class="mb-2">
-                            <input type="text" class="form-control" placeholder="<?php echo $usuario->nombre_usuario; ?>" name="nombreUser">
+                            <input type="text" class="form-control" value="<?php echo $otrousuario->nombre_usuario; ?>" name="nombreUser">
+                            <?
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("nombreUser")) {
+                            ?>
+                                <span style="color:brown"> Introduce nombre</span>
+                            <?
+                              }
+                            }
+                            ?>
                           </div>
                           <div class="mb-2">
-                            <input type="email" class="form-control" placeholder="<?php echo $usuario->email_usuario; ?>" name="emailUser" autocomplete="username">
+                            <input type="number" class="form-control" value="<? echo $otrousuario->telefono_usuario; ?>" name="telefonoUser">
+                            <?
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("telefonoUser")) {
+                            ?>
+                                <span style="color:brown"> Introduce teléfono</span>
+                              <?
+                              } elseif (!patronTelefono()) {
+                              ?>
+                                <span style="color:brown"> Teléfono no válida, revise</span>
+                            <?
+                              }
+                            }
+                            ?>
+                          </div>
+                          <div class="mb-2">
+                            <input type="email" class="form-control" value="<?php echo $otrousuario->email_usuario; ?>" name="emailUser" autocomplete="username">
+                            <?
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("emailUser")) {
+                            ?>
+                                <span style="color:brown"> Introduce correo</span>
+                              <?
+                              } elseif (!patronEmail()) {
+                              ?>
+                                <span style="color:brown"> Correo no válida, revise</span>
+                            <?
+                              }
+                            }
+                            ?>
                           </div>
                           <div class="mb-2">
                             <input type="password" class="form-control" placeholder="Introduce nueva contraseña" name="contraseñaUser" autocomplete="new-password">
+                            <?
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("contraseñaUser")) {
+                            ?>
+                                <span style="color:brown"> Introduce contraseña</span>
+                              <?
+                              } elseif (!patronContraseña()) {
+                              ?>
+                                <span style="color:brown"> Contraseña no válida, revise</span>
+                            <?
+                              }
+                            }
+                            ?>
                           </div>
                           <div class="mb-2">
                             <input type="password" class="form-control" placeholder="Repite la contraseña" name="contraseña2User" autocomplete="new-password">
+                            <?
+                            if (isset($_REQUEST['guardarUsuario'])) {
+                              if (vacio("contraseña2User")) {
+                            ?>
+                                <span style="color:brown"> Repite la contraseña</span>
+                              <?
+                              } elseif (!patronContraseña()) {
+                              ?>
+                                <span style="color:brown"> Contraseña no válida, revise</span>
+                            <?
+                              }
+                            }
+                            ?>
                           </div>
                           <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarUsuario">Guardar cambios</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarUsuario" value="<?php echo $otrousuario->id_usuario; ?>">Guardar cambios</button>
                             <button type="submit" class="btn btn-lg btn-block btn-primary" onclick="location.reload()">Cancelar</button>
                           </div>
                         </form>

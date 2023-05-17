@@ -270,7 +270,8 @@ main section h2 {
   .volverProyecto,
   .volverAdmin,
   .volverUser,
-  .volverNuevo {
+  .volverNuevo,
+  .volverFactura {
     left: 36px;
     top: 90px;
   }

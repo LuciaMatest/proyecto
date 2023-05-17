@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['success'])) {
+  echo '<script>alert("' . $_SESSION['success'] . '");</script>';
+  unset($_SESSION['success']);
+}
+?>
 <div class="product">
   <section class="py-5 text-center container">
     <div class="row pt-5">
@@ -67,6 +73,12 @@
           <div class="datosUser col-lg-8">
             <div class="card mb-4">
               <div class="card-body">
+                <?php if (isset($_REQUEST['editarPerfil'])) : ?>
+                  <div class="row">
+                    <p class="mb-0 fw-bold text-secondary small">* Para modificar datos, ingrese toda la información y la contraseña actual dos veces; para cambiar solo la contraseña, ingrese nueva contraseña dos veces.</p>
+                  </div>
+                <?php endif; ?>
+                <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <p class="mb-0">Nombre</p>
@@ -206,7 +218,7 @@
 </section>
 
 <section id="gestor" style="display: none;">
-  <div class="table-responsive" style="text-align: center;">
+  <div class="table-responsive table-scroll" style="text-align: center;">
     <table class="table table-striped text-success table-bordered border-light mt-5">
       <thead class="border-light">
         <tr>
@@ -231,7 +243,13 @@
               <th scope="row"><?php echo $contadorProyectos ?></th>
               <td><?php echo $proyecto->nombre_proyecto ?></td>
               <td><?php echo $proyecto->fecha_proyecto ?></td>
-              <td><a href="<?php echo $proyecto->factura_id ?>">Ver factura</a></td>
+              <td>
+                <form action="./index.php" method="post">
+                  <input type="hidden" name="factura_id" value="<?php echo $proyecto->factura_id ?>">
+                  <input type="hidden" name="id_proyecto" value="<?php echo $proyecto->id_proyecto ?>">
+                  <button type="submit" class="btn btn-link text-decoration-underline text-primary" name="verFacturaUser"><i class="bi bi-receipt-cutoff me-2"></i>Ver factura</button>
+                </form>
+              </td>
               <td>
                 <button class="btn btn-primary mb-1">Mostrar archivos</button>
               </td>

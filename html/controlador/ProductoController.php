@@ -1,8 +1,8 @@
-<?php
-if (isset($_REQUEST['volverProyecto'])) {
-    $_SESSION['controlador'] = $controladores['home'];
-    $_SESSION['pagina'] = 'Home';
-    $_SESSION['vista'] = $vistas['home'];
+<?
+if (isset($_REQUEST['volverProducto'])) {
+    $_SESSION['controlador'] = $controladores['proyecto'];
+    $_SESSION['pagina'] = 'Proyecto';
+    $_SESSION['vista'] = $vistas['proyecto'];
     require_once $_SESSION['controlador'];
 } elseif (isset($_REQUEST['contacto'])) {
     $_SESSION['controlador'] = $controladores['contacto'];
@@ -21,15 +21,20 @@ if (isset($_REQUEST['volverProyecto'])) {
         $_SESSION['vista'] = $vistas['user'];
         require_once $_SESSION['controlador'];
     }
-} elseif (isset($_REQUEST['producto'])) {
-    $producto_id = $_REQUEST['producto'];
-    $_SESSION['controlador'] = $controladores['producto'];
-    $_SESSION['pagina'] = 'Producto';
-    $_SESSION['vista'] = $vistas['producto'];
-    require_once $_SESSION['controlador'];
+} elseif (isset($_REQUEST['elegirProducto'])) {
+    if(estaValidado() && esUsuario()){
+        $_SESSION['success'] = 'Si quieres saber más de este producto ponte en contacto conmigo por el chat, Gracias!';
+        $_SESSION['controlador'] = $controladores['user'];
+        $_SESSION['vista'] = $vistas['user'];
+    } else {
+        $_SESSION['success'] = 'Por favor, ponte en contacto conmigo mediante el formulario!';
+        $_SESSION['controlador'] = $controladores['contacto'];
+        $_SESSION['vista'] = $vistas['contacto'];
+    }
 } else {
-    $array_categorias = CategoriaDAO::findAll();
-    $array_productos = ProductoDAO::findAll();
+    $producto = ProductoDAO::findById($_SESSION['id_producto']);
+    $categoria = CategoriaDAO::findById($_SESSION['id_categoria']);
+    $id_imagen = $_SESSION['imagen_id'];
 
     if ($_REQUEST['accion'] == 'Registrarse') {
         if (validarNuevoUsuario()) {
@@ -82,8 +87,13 @@ if (isset($_REQUEST['volverProyecto'])) {
                 $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
                 $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
                 $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
-                $_SESSION['vista'] = $vistas['home'];
-                $_SESSION['controlador'] = $controladores['home'];
+                if (esAdmin()) {
+                    $_SESSION['controlador'] = $controladores['admin'];
+                    $_SESSION['vista'] = $vistas['admin'];
+                } else {
+                    $_SESSION['vista'] = $vistas['home'];
+                    $_SESSION['controlador'] = $controladores['home'];
+                }
 
                 $_SESSION['success'] = 'Inicio de sesión exitoso';
                 header('Location: ./index.php');

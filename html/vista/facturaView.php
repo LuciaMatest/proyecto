@@ -23,18 +23,17 @@
   <div class="row">
     <div class="col-6">
       <h2>Detalles de la factura</h2>
-      <p>Fecha de pago: <?php echo $factura->fecha_pago ?></p>
-      <p>Fecha de factura: <?php echo $factura->fecha_factura ?></p>
-      <p>Estado: <?php echo $factura->estado ?></p>
+      <p>Fecha de pago:<strong> <?php echo $factura->fecha_pago ?> </strong></p>
+      <p>Fecha de factura:<strong> <?php echo $factura->fecha_factura ?></strong></p>
+      <p>Estado:<strong> <?php echo $factura->estado ?></strong></p>
     </div>
     <div class="col-6">
       <h2>Proyecto relacionado</h2>
-      <p>Nombre del proyecto: <?php echo $proyecto->nombre_proyecto ?></p>
-      <p>Fecha del proyecto: <?php echo $proyecto->fecha_proyecto ?></p>
-      <p>Usuario asignado: <?php echo $usuario->nombre_usuario ?></p>
+      <p>Nombre del proyecto:<strong> <?php echo $proyecto->nombre_proyecto ?></strong></p>
+      <p>Fecha del proyecto:<strong> <?php echo $proyecto->fecha_proyecto ?></strong></p>
     </div>
   </div>
-  <div class="row mt-4">
+  <div class="row my-5">
     <div class="col-12">
       <h3>Descargar factura</h3>
       <form action="./index.php" method="post" target="_blank">

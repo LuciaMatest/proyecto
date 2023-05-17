@@ -1,26 +1,61 @@
-<?
-if (isset($_REQUEST['volverProducto'])) {
-    $_SESSION['controlador'] = $controladores['proyecto'];
-    $_SESSION['pagina'] = 'Proyecto';
-    $_SESSION['vista'] = $vistas['proyecto'];
-    require_once $_SESSION['controlador'];
-} elseif (isset($_REQUEST['contacto'])) {
-    $_SESSION['controlador'] = $controladores['contacto'];
-    $_SESSION['pagina'] = 'Contacto';
-    $_SESSION['vista'] = $vistas['contacto'];
-    require_once $_SESSION['controlador'];
-} elseif (isset($_REQUEST['privada'])) {
-    if (esAdmin()) {
-        $_SESSION['controlador'] = $controladores['admin'];
-        $_SESSION['pagina'] = 'Área privada - Admin';
-        $_SESSION['vista'] = $vistas['admin'];
-        require_once $_SESSION['controlador'];
-    } else {
-        $_SESSION['controlador'] = $controladores['user'];
-        $_SESSION['pagina'] = 'Área privada - Usuario';
-        $_SESSION['vista'] = $vistas['user'];
-        require_once $_SESSION['controlador'];
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require_once './webroot/PHPMailer-6.8.0/src/Exception.php';
+require_once './webroot/PHPMailer-6.8.0/src/PHPMailer.php';
+require_once './webroot/PHPMailer-6.8.0/src/SMTP.php';
+
+if (isset($_REQUEST['enviarContacto'])) {
+
+
+    // Recuperar los valores del formulario
+    $nombre = $_POST['nombreContacto'];
+    $email = $_POST['emailContacto'];
+    $asunto = $_POST['asuntoContacto'];
+    $mensaje = $_POST['mensajeContacto'];
+
+    // Crear una instancia de PHPMailer; pasar `true` para habilitar excepciones
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configuración del servidor
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'lucia.codigoartistico@gmail.com';
+        $mail->Password   = 'vyiigvrplmghgtih';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        // Remitente y destinatario
+        $mail->setFrom('lucia.codigoartistico@gmail.com', 'Codigo Artistico');
+        $mail->addAddress('lucia.codigoartistico@gmail.com', 'Codigo Artistico');
+
+        // Contenido
+        $mail->isHTML(true);
+        $mail->Subject = $asunto;
+        $mail->Body    = nl2br("Nombre: {$nombre}<br>Email: {$email}<br>Mensaje: {$mensaje}");
+
+        $mail->send();
+
+        // Guardar el mensaje de éxito en la sesión
+        $_SESSION['success'] = 'El mensaje ha sido enviado correctamente';
+        $_SESSION['vista'] = $vistas['home'];
+        $_SESSION['controlador'] = $controladores['home'];
+        $_SESSION['pagina'] = 'Home';
+    } catch (Exception $e) {
+        // Guardar el mensaje de error en la sesión
+        $_SESSION['error'] = 'No se pudo enviar el mensaje. Error del correo: {$mail->ErrorInfo}';
     }
+} elseif (isset($_REQUEST['volverAtras'])) {
+    $_SESSION['controlador'] = $controladores['home'];
+    $_SESSION['pagina'] = 'Home';
+    $_SESSION['vista'] = $vistas['home'];
+    require_once $_SESSION['controlador'];
 } else {
     if ($_REQUEST['accion'] == 'Registrarse') {
         if (validarNuevoUsuario()) {
@@ -73,8 +108,13 @@ if (isset($_REQUEST['volverProducto'])) {
                 $_SESSION['telefono_usuario'] = $usuario->telefono_usuario;
                 $_SESSION['borrado_usuario'] = $usuario->borrado_usuario;
                 $_SESSION['tipo_usuario'] = $usuario->tipo_usuario;
-                $_SESSION['vista'] = $vistas['home'];
-                $_SESSION['controlador'] = $controladores['home'];
+                if (esAdmin()) {
+                    $_SESSION['controlador'] = $controladores['admin'];
+                    $_SESSION['vista'] = $vistas['admin'];
+                } else {
+                    $_SESSION['vista'] = $vistas['home'];
+                    $_SESSION['controlador'] = $controladores['home'];
+                }
 
                 $_SESSION['success'] = 'Inicio de sesión exitoso';
                 header('Location: ./index.php');

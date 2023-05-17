@@ -1,4 +1,5 @@
 <?php
+//Funciones genéricas para el uso de la API que en peticiones.php se usaran en cada una de las opciones que disponemos
 function get($url)
 {
     // Inicializar cURL
