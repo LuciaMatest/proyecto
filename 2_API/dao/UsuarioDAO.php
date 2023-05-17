@@ -19,7 +19,7 @@ class UsuarioDAO extends FactoryBD implements DAO
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el usuario</span>';
+            $_SESSION['error'] = 'No existe el usuario';
         }
     }
 
@@ -32,7 +32,7 @@ class UsuarioDAO extends FactoryBD implements DAO
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el usuario</span>';
+            $_SESSION['error'] = 'No existe el usuario';
         }
     }
 
@@ -101,7 +101,7 @@ class UsuarioDAO extends FactoryBD implements DAO
                 $objeto->tipo_usuario
             );
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el usuario</span>';
+            $_SESSION['error'] = 'No existe el usuario';
             return null;
         }
     }

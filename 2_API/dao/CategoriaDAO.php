@@ -32,7 +32,7 @@ class CategoriaDAO extends FactoryBD implements DAO
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el categoria</span>';
+            $_SESSION['error'] = 'No existe el categoria';
         }
     }
 

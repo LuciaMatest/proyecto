@@ -19,7 +19,7 @@ class ChatDAO extends FactoryBD implements DAO
         if ($objeto) {
             return $objeto;
         } else {
-            $_SESSION['error'] = '<span style="color:brown"> No existe el mensaje</span>';
+            $_SESSION['error'] = 'No existe el mensaje';
         }
     }
 
