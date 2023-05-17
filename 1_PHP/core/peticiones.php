@@ -138,49 +138,6 @@ function deleteUsuario($id_usuario)
     // Retornar el resultado de la petición
     return $response;
 }
-
-function validateUsuario($email_usuario, $contrasena_usuario)
-{
-    // Construir la URL de validar con el email y la contraseña
-    $url = "https://example.com/api/validateUser?email=" . $email_usuario . "&password=" . $contrasena_usuario;
-
-    // Inicializar cURL
-    $ch = curl_init();
-
-    // Establecer opciones de cURL
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    // Ejecutar la solicitud y obtener la respuesta
-    $response = curl_exec($ch);
-
-    // Verificar si ocurrió algún error
-    if (curl_errno($ch)) {
-        echo 'Error: ' . curl_error($ch);
-    }
-
-    // Cerrar cURL
-    curl_close($ch);
-
-    // Parse the response
-    $objeto = json_decode($response);
-    if ($objeto) {
-        return $usuario = new Usuario(
-            $objeto->id_usuario,
-            $objeto->nombre_usuario,
-            $objeto->telefono_usuario,
-            $objeto->email_usuario,
-            $objeto->contrasena_usuario,
-            $objeto->borrado_usuario,
-            $objeto->tipo_usuario
-        );
-    } else {
-        $_SESSION['error'] = 'No existe el usuario';
-        return null;
-    }
-}
-
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 // PROYECTO
 function getAllProyectos()
@@ -393,7 +350,7 @@ function deleteProducto($id_producto)
 function getAllFacturas()
 {
     // URL de la API para obtener todas las facturas
-    $url = "http://192.168.0.214/factura/2_API/portafolio/factura";
+    $url = "http://192.168.0.214/proyecto/2_API/portafolio/factura";
 
     // Llamada a la función get() con la URL de la API
     $response = get($url);
@@ -512,7 +469,7 @@ function deleteFactura($id_factura)
 function getAllImagenes()
 {
     // URL de la API para obtener todas las imágenes
-    $url = "http://192.168.0.214/imagen/2_API/portafolio/imagen";
+    $url = "http://192.168.0.214/proyecto/2_API/portafolio/imagen";
 
     // Llamada a la función get() con la URL de la API
     $response = get($url);
@@ -566,7 +523,7 @@ function postImagen($url_imagen)
     return $resultado;
 }
 
-function putFactura($id_imagen, $url_imagen)
+function putImagen($id_imagen, $url_imagen)
 {
     // Construir la URL de modificación con la id del imagen
     $base_url = "http://192.168.0.214/proyecto/2_API/portafolio/imagen/";
@@ -574,10 +531,7 @@ function putFactura($id_imagen, $url_imagen)
 
     // Crear el array de datos
     $datosActualizados = array(
-        'nombre_factura' => $nombre_factura,
-        'fecha_pago' => $fecha_pago,
-        'fecha_factura' => $fecha_factura,
-        'estado' => $estado
+        'url_imagen' => $url_imagen
     );
 
     // Convertir los datos de la factura en formato JSON
@@ -590,7 +544,7 @@ function putFactura($id_imagen, $url_imagen)
     return $response;
 }
 
-function deleteFactura($id_imagen)
+function deleteImagen($id_imagen)
 {
     // Construir la URL de borrado con la id de la imagen
     $base_url = "http://192.168.0.214/proyecto/2_API/portafolio/imagen/";
@@ -609,7 +563,7 @@ function deleteFactura($id_imagen)
 function getAllCategorias()
 {
     // URL de la API para obtener todas las categorias
-    $url = "http://192.168.0.214/imagen/2_API/portafolio/categoria";
+    $url = "http://192.168.0.214/proyecto/2_API/portafolio/categoria";
 
     // Llamada a la función get() con la URL de la API
     $response = get($url);
@@ -643,7 +597,7 @@ function getIdCategoria($id_categoria)
     }
 }
 
-function getNameUsuario($nombre_categoria)
+function getNameCategoria($nombre_categoria)
 {
     // Construir la URL de búsqueda con el nombre de la categoria
     $baseUrl = "http://192.168.0.214/proyecto/2_API/portafolio/categoria";
@@ -702,7 +656,7 @@ function putCategoria($id_categoria, $nombre_categoria)
     return $response;
 }
 
-function deleteFactura($id_categoria)
+function deleteCategoria($id_categoria)
 {
     // Construir la URL de borrado con la id de la categoria
     $base_url = "http://192.168.0.214/proyecto/2_API/portafolio/categoria/";
@@ -721,7 +675,7 @@ function deleteFactura($id_categoria)
 function getAllMensajes()
 {
     // URL de la API para obtener todas los mensajes
-    $url = "http://192.168.0.214/imagen/2_API/portafolio/mensaje";
+    $url = "http://192.168.0.214/proyecto/2_API/portafolio/mensaje";
 
     // Llamada a la función get() con la URL de la API
     $response = get($url);
@@ -759,7 +713,7 @@ function getMensajeIdUsuario($id_usuario)
 {
     // Construir la URL de búsqueda con la id del usuario que envia o recibe mensaje
     $baseUrl = "http://192.168.0.214/proyecto/2_API/portafolio/mensaje";
-    $url = $baseUrl . "?id_usuario_envia=" . $id_usuario . "&id_usuario_recibe=" . $id_usuario;
+    $url = $baseUrl . "?usuario_id=" . $id_usuario;
 
     // Llamar a la función get($url) con la URL construida
     $response = get($url);
@@ -773,17 +727,17 @@ function getMensajeIdUsuario($id_usuario)
     }
 }
 
-function postMensaje($descripcion_mensaje, $fecha_mensaje, $id_usuario_envia, $id_usuario_recibe)
+function postMensaje($descripcion_mensaje, $fecha_mensaje, $usuario_id, $admin_d)
 {
     // Definir la URL para insertar mensajes
     $url = "http://192.168.0.214/proyecto/2_API/portafolio/mensaje";
 
     // Crear el array de datos
     $datosMensaje = array(
-        'descripcion_mensajes' => $descripcion_mensajes,
-        'fecha_mensajes' => $fecha_mensajes,
-        'id_usuario_envia' => $id_usuario_envia,
-        'id_usuario_recibe' => $id_usuario_recibe
+        'descripcion_mensajes' => $descripcion_mensaje,
+        'fecha_mensajes' => $fecha_mensaje,
+        'usuario_id' => $usuario_id,
+        'admin_d' => $admin_d
     );
 
     // Convertir el array de datos a formato JSON
@@ -796,7 +750,7 @@ function postMensaje($descripcion_mensaje, $fecha_mensaje, $id_usuario_envia, $i
     return $resultado;
 }
 
-function putMensaje($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $id_usuario_envia, $id_usuario_recibe)
+function putMensaje($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $usuario_id, $admin_d)
 {
     // Construir la URL de modificación con la id del mensaje
     $base_url = "http://192.168.0.214/proyecto/2_API/portafolio/mensaje/";
@@ -804,10 +758,10 @@ function putMensaje($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $id_usuar
 
     // Crear el array de datos
     $datosActualizados = array(
-        'descripcion_mensajes' => $descripcion_mensajes,
-        'fecha_mensajes' => $fecha_mensajes,
-        'id_usuario_envia' => $id_usuario_envia,
-        'id_usuario_recibe' => $id_usuario_recibe
+        'descripcion_mensajes' => $descripcion_mensaje,
+        'fecha_mensajes' => $fecha_mensaje,
+        'usuario_id' => $usuario_id,
+        'admin_d' => $admin_d
     );
 
     // Convertir los datos del usuario en formato JSON
@@ -820,7 +774,7 @@ function putMensaje($id_mensaje, $descripcion_mensaje, $fecha_mensaje, $id_usuar
     return $response;
 }
 
-function deleteFactura($id_mensaje)
+function deleteMensaje($id_mensaje)
 {
     // Construir la URL de borrado con la id del mensaje
     $base_url = "http://192.168.0.214/proyecto/2_API/portafolio/mensaje/";
