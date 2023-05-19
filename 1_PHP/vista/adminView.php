@@ -319,20 +319,20 @@
                       <div class="row align-items-center justify-content-between">
                         <div class="col-auto">
                           <img src="./webroot/recursos/perfil/perfil.png" alt="Imagen de ejemplo" class="rounded-circle" width="50">
-                          <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $otrousuario->nombre_usuario; ?></span>
+                          <span class="ms-3 fw-bold" style="font-size: 15px;"><?php echo $otrousuario['nombre_usuario']; ?></span>
                         </div>
                         <div class="col-auto d-flex justify-content-center align-items-center">
                           <form action="./index.php" method="post">
-                            <input type="hidden" name="id_usuario" value="<?php echo $otrousuario->id_usuario; ?>">
-                            <button class="transparent-button" name="verChat" value="<?php echo $otrousuario->id_usuario; ?>">
+                            <input type="hidden" name="id_usuario" value="<?php echo $otrousuario['id_usuario']; ?>">
+                            <button class="transparent-button" name="verChat" value="<?php echo $otrousuario['id_usuario']; ?>">
                               <i class="bi bi-chat-dots"></i>
                             </button>
                           </form>
-                          <button class="transparent-button" name="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $otrousuario->id_usuario; ?>" aria-expanded="false">
+                          <button class="transparent-button" name="editarUsuario" data-bs-toggle="collapse" data-bs-target="#<?php echo $otrousuario['id_usuario']; ?>" aria-expanded="false">
                             <i class="bi bi-pencil-square me-2"></i>
                           </button>
                           <form action="./index.php" method="post">
-                            <button type="submit" class="transparent-button" name="borrarUsuario" value="<?php echo $otrousuario->id_usuario; ?>" onclick="return confirm('¿Estás seguro de que deseas borrar este usuario?');">
+                            <button type="submit" class="transparent-button" name="borrarUsuario" value="<?php echo $otrousuario['id_usuario']; ?>" onclick="return confirm('¿Estás seguro de que deseas borrar este usuario?');">
                               <i class="bi bi-trash3"></i>
                             </button>
                           </form>
@@ -350,11 +350,11 @@
                         ?>
                       </div>
                     </div>
-                    <div class="collapse" id="<?php echo $otrousuario->id_usuario; ?>">
+                    <div class="collapse" id="<?php echo $otrousuario['id_usuario']; ?>">
                       <div class="container mt-4">
                         <form action="./index.php" method="post">
                           <div class="mb-2">
-                            <input type="text" class="form-control" value="<?php echo $otrousuario->nombre_usuario; ?>" name="nombreUser">
+                            <input type="text" class="form-control" value="<?php echo $otrousuario['nombre_usuario']; ?>" name="nombreUser">
                             <?
                             if (isset($_REQUEST['guardarUsuario'])) {
                               if (vacio("nombreUser")) {
@@ -366,7 +366,7 @@
                             ?>
                           </div>
                           <div class="mb-2">
-                            <input type="number" class="form-control" value="<? echo $otrousuario->telefono_usuario; ?>" name="telefonoUser">
+                            <input type="number" class="form-control" value="<? echo $otrousuario['telefono_usuario']; ?>" name="telefonoUser">
                             <?
                             if (isset($_REQUEST['guardarUsuario'])) {
                               if (vacio("telefonoUser")) {
@@ -382,7 +382,7 @@
                             ?>
                           </div>
                           <div class="mb-2">
-                            <input type="email" class="form-control" value="<?php echo $otrousuario->email_usuario; ?>" name="emailUser" autocomplete="username">
+                            <input type="email" class="form-control" value="<?php echo $otrousuario['email_usuario']; ?>" name="emailUser" autocomplete="username">
                             <?
                             if (isset($_REQUEST['guardarUsuario'])) {
                               if (vacio("emailUser")) {
@@ -430,7 +430,7 @@
                             ?>
                           </div>
                           <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarUsuario" value="<?php echo $otrousuario->id_usuario; ?>">Guardar cambios</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary" name="guardarUsuario" value="<?php echo $otrousuario['id_usuario']; ?>">Guardar cambios</button>
                             <button type="submit" class="btn btn-lg btn-block btn-primary" onclick="location.reload()">Cancelar</button>
                           </div>
                         </form>

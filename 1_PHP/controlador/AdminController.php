@@ -72,10 +72,10 @@ if (isset($_REQUEST['nuevoProyecto'])) {
     if ($contrasenaUser === $contrasena2User) {
         $id_otrousuario = $_REQUEST['guardarUsuario'];
         $otrousuario = UsuarioDAO::findById($id_otrousuario);
-        $otrousuario->nombre_usuario = $_REQUEST['nombreUser'];
-        $otrousuario->telefono_usuario = $_REQUEST['telefonoUser'];
-        $otrousuario->email_usuario = $_REQUEST['emailUser'];
-        $otrousuario->contrasena_usuario = sha1($_REQUEST['contraseñaUser']);
+        $otrousuario['']nombre_usuario = $_REQUEST['nombreUser'];
+        $otrousuario['']telefono_usuario = $_REQUEST['telefonoUser'];
+        $otrousuario['']email_usuario = $_REQUEST['emailUser'];
+        $otrousuario['']contrasena_usuario = sha1($_REQUEST['contraseñaUser']);
 
         if (!UsuarioDAO::update($otrousuario)) {
             $_SESSION['error'] = 'Debe rellenar todos los campos para que se pueda modificar el perfil';
